@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#       _                              
-#      | |                             
-#    __| |_ __ ___  __ _ _ __ ___  ___ 
-#   / _` | '__/ _ \/ _` | '_ ` _ \/ __|
-#  | (_| | | |  __/ (_| | | | | | \__ \
-#   \__,_|_|  \___|\__,_|_| |_| |_|___/ .
-#
-# A 'Fog Creek'–inspired demo by Kenneth Reitz™
-
 import os
 from flask import Flask, request, render_template, jsonify
 import test
@@ -52,15 +43,17 @@ def homepage():
 def rlol():
     return jsonify(test.lol())
   
-@app.route('/dreams', methods=['GET', 'POST'])
+@app.route('/news', methods=['GET', 'POST'])
 def dreams():
-    """Simple API endpoint for dreams. 
-    In memory, ephemeral, like real dreams.
+    """Simple API endpoint for news. 
+     Transient and Only Exists as long as the server is running
+     For this case, we wont be storing data here but could build our
+     user authentication systems using firebase
     """
   
     # Add a dream to the in-memory database, if given. 
-    if 'dream' in request.args:
-        DREAMS.append(request.args['dream'])
+    if 'newsItem' in request.args:
+        DREAMS.append(request.args['newsItem'])
     
     # Return the list of remembered dreams. 
     return jsonify(DREAMS)
