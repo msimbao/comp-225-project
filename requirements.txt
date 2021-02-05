@@ -1,2 +1,8 @@
 Flask
 gunicorn
+random
+socket
+re
+bs4
+urllib.request
+urllib.error
