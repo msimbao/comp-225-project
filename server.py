@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Documentation for Flask can be found here:
+https://flask.palletsprojects.com/en/1.1.x/quickstart/
+"""
+
 import os
 from flask import Flask, request, render_template, jsonify
 import test
@@ -17,8 +22,8 @@ app = Flask(__name__, static_folder='public', template_folder='views')
 # Set the app secret key from the secret environment variables.
 app.secret = os.environ.get('SECRET')
 
-# Dream database. Store dreams in memory for now. 
-DREAMS = ['Python. Python, everywhere.']
+# News database. Store news in memory for now. 
+NEWS = ['Yankees Aaron Judge: Changing offseason routine ','Yankees Luke Voit: Working through running program']
 
 
 @app.after_request
@@ -44,19 +49,19 @@ def rlol():
     return jsonify(test.lol())
   
 @app.route('/news', methods=['GET', 'POST'])
-def dreams():
+def news():
     """Simple API endpoint for news. 
      Transient and Only Exists as long as the server is running
      For this case, we wont be storing data here but could build our
      user authentication systems using firebase
     """
   
-    # Add a dream to the in-memory database, if given. 
+    # Add a news item to the in-memory database, if given. 
     if 'newsItem' in request.args:
-        DREAMS.append(request.args['newsItem'])
+        NEWS.append(request.args['newsItem'])
     
-    # Return the list of remembered dreams. 
-    return jsonify(DREAMS)
+    # Return the list of remembered News. 
+    return jsonify(NEWS)
 
 if __name__ == '__main__':
     app.run()
