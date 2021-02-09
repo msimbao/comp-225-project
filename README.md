@@ -1,4 +1,7 @@
-COMP 225 Project Test
+COMP 225 Project - tympdeja
 ======================================================
 
-This is a quick test for some features for our COMP 225 project
+This is The Repository for our Comp 225 Project 
+
+### Paper Mock Ups
+
