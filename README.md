@@ -29,16 +29,26 @@ COMP 225 Project - tympdeja
 ## Advanced Features
 
 ### Search bar
-*Keep the search bar but add features where u can have multiple teams
-*Settings Tab
-*Change the language that its in
+* Keep the search bar but add features where u can have multiple teams
+* Settings Tab
+* Change the language that its in
 
 ### Display
 * Shows a preview of the article
 * General feed
 * Individual team display
 
+### Important Links
+
+* Template Forest
+[Go to Real Cool Heading section](https://themeforest.net/category/site-templates/admin-templates)
+
+
 ### Paper Mock Ups
 ![Image 1](images/paper_mockups/1.jpg)
+![Image 2](images/paper_mockups/2.jpg)
+![Image 3](images/paper_mockups/3.jpg)
+![Image 4](images/paper_mockups/4.jpg)
+![Image 5](images/paper_mockups/5.jpg)
 
 
