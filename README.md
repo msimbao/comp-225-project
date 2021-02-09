@@ -51,4 +51,5 @@ COMP 225 Project - tympdeja
 ![Image 4](images/paper_mockups/4.jpg)
 ![Image 5](images/paper_mockups/5.jpg)
 
-
+### System
+![Image 1](images/system/1.jpg)
