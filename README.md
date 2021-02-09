@@ -41,7 +41,7 @@ COMP 225 Project - tympdeja
 ### Important Links
 
 * Template Forest
-[Go to Real Cool Heading section](https://themeforest.net/category/site-templates/admin-templates)
+[Link to Templates](https://themeforest.net/category/site-templates/admin-templates)
 
 
 ### Paper Mock Ups
