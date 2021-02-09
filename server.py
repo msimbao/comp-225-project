@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-    """
-    Main Server File for running the flask app.
+"""
+Main Server File for running the flask app.
 
-    @Title: server.py
-    @Author: Ty, Declan, Jack, Mphatso
-
-    """
+@Title: server.py
+@Author: Ty, Declan, Jack, Mphatso
+"""
 
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
