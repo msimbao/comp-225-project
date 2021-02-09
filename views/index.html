@@ -1,11 +1,12 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: http://mozilla.github.io/nunjucks/ -->
-<!-- jade: http://jade-lang.com/ -->
-<!-- haml: http://haml.info/tutorial.html -->
-<!-- hbs(handlebars): http://handlebarsjs.com/expressions.html -->
+<!-- 
+*
+* @Title: Index.html
+*
+* @Author: Ty, Declan, Jack, Mphatso 
+*
+* @Date: 2021-02-09
+*
+*-->
 
 <!DOCTYPE html>
 <html>
@@ -27,31 +28,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 <!-- Site CSS -->
-    <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="../public/style.css">
+  
+<!-- Css To Use During Development of Prototype. Transfer Everything to main css when ready -->
+    <link rel="stylesheet" href="../public/navigation.css">
+    <link rel="stylesheet" href="../public/search.css">
+    <link rel="stylesheet" href="../public/general.css">
 
 
     
   </head>
   
   <body>
-    <header>
-      <h1>
-        Yankees Team News
-      </h1>
-    </header>
-    <main>
-
-      <p>Add A News Item to the Database</p>
+    <div id="navbar">
+    <ul>
+      <h2 style="float:left" id="title">App Title</h2>
+      <li><a href="#Logout">Logout</a></li>
+      <li><a href="#contact">Your Teams</a></li>
+      <li><a href="#search">Search</a></li>
+      <li class="active"><a href="#general">General Feed</a></li>
+      
+     
+     
+    </ul>
+    </div>
+    
+    <div id="search" class="card">
+      <h2>General Search</h2>
+      <p>If You're Looking for a particular team, you can find the latest news and trending articles here.</p>
       
       <form>
-        <input type="text" maxlength="100" placeholder="Sports News For Your Team!">
-        <button type="submit">Submit</button>
+        <input id="searchBar" type="text" maxlength="100" placeholder="Sports News For Your Team!">
+        <button type="submit" class="button">Submit</button>
       </form>
       <section class="news">
         <ul id="news">
         </ul>
       </section>
-    </main>
+    </div>
 
 
 <!-- Site Scripts -->

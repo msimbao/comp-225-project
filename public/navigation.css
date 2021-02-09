@@ -1,0 +1,52 @@
+/**
+*
+* @Title: Navigation CSS
+*
+* @Author: Ty, Declan, Jack, Mphatso 
+*
+* @Date: 2021-02-09
+*
+*
+* @Brief: Any Css to Do with Navigation During Development
+*
+*/
+
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #ffd500;
+}
+
+#navbar li {
+  float: right;
+}
+
+#navbar li {
+  display: block;
+  color: #00296B;
+  text-align: center;
+  padding: 25px;
+  margin: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  transition:0.2s;
+  border-bottom:5px solid #ffd500;
+}
+
+#navbar a{
+    color:#00296B;
+}
+
+#navbar li:hover {
+  border-bottom:5px solid #00296B;
+}
+
+.active{
+    border-bottom:5px solid #00296B !important;
+}
+
+#title{
+    padding:10px;
+}

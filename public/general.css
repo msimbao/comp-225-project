@@ -1,0 +1,45 @@
+/**
+*
+* @Title: General Theme CSS
+*
+* @Author: Ty, Declan, Jack, Mphatso 
+*
+* @Date: 2021-02-09
+*
+*
+* @Brief: Css Containing Important General Themeing Guidlines for the App
+*
+*/
+
+#colorPalette{
+    color:#00296B;
+    color:#003F88;
+    color:#00509D;
+    color:#FDC500;
+    color:#ffd500;
+}
+
+.card {
+    border-radius:10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .button {
+    background-color: #00509D; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 20px 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+  }
