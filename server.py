@@ -108,7 +108,8 @@ def news():
         NEWS_IMAGE_URLS =accessAPI.getImageUrls(NEWS_ARTICLES)
         NEWS_TITLES=accessAPI.getTitles(NEWS_ARTICLES)
         NEWS_AUTHORS=accessAPI.getAuthors(NEWS_ARTICLES)
-        
+
+        #Put All Lists into a Dictionary 
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
           SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
