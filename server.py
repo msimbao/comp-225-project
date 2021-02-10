@@ -57,6 +57,7 @@ query = "Testing Query"
 NEWS_ARTICLES = ["Testing Articles"]
 NEWS_URLS = ["Testing Urls"]
 NEWS_TITLES = ["Testing Titles - If This Works, Server is functional"]
+SEARCH_RESULTS = []
 
 
 #//////////////////////////////////////////////////////////
@@ -64,6 +65,8 @@ NEWS_TITLES = ["Testing Titles - If This Works, Server is functional"]
 # Setup Flask functions and end routes
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
+
+
 
 
 @app.route('/')
@@ -91,20 +94,20 @@ def news():
         NEWS_URLS = accessAPI.getUrls(NEWS_ARTICLES)
         NEWS_TITLES.append(accessAPI.getTitles(NEWS_ARTICLES))
         # NEWS_TITLES.append(request.args['newsItem'])
-        
-#       for i in range(len(NEWS_ARTICLES)):
-#       js.append( { "title" : NEWS_TITLES[i]} )
+        for i in range(len(NEWS_ARTICLES)):
+          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i]} )
         
     
 #     # Return the list of remembered News. 
 #     return Response(json.dumps(js),  mimetype='application/json')
     
     # Return the list of remembered News. 
-    return jsonify({'title':NEWS_TITLES})
+    return jsonify(SEARCH_RESULTS)
 
+  
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
-# Start Flask Server
+# Run Server
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
 
