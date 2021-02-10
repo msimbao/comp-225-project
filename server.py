@@ -90,6 +90,7 @@ def news():
 
     # Add a news item to the in-memory database, if given. 
     if 'newsItem' in request.args:
+        # Initiailize / Empty Holder Variables
         query = ""
         NEWS_ARTICLES = []
         NEWS_URLS = []
