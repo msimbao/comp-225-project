@@ -81,11 +81,9 @@
 <script>window.jQuery || document.write('<script src="{{
   url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
     
-    <script type=text/javascript>
-  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-</script>
     
-    <script src="/public/client.js"></script>
+    <script src="/js/client.js"></script>
+    <script src="/js/tab.js"></script>
 
   </body>
 </html>
