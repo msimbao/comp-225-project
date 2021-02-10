@@ -1,12 +1,27 @@
 import newsGetter
+from GoogleNews import GoogleNews
+from PIL import Image
+import base64
+from newspaper import Article
+import pandas as pd
+from bingsearch import BingSearch
+from newspaper import article
 
 
-def main():
-    pirates = newsGetter.NewsGetter("Pittsburgh Pirates")
-    list = (pirates.getArticleInfo())
-    print(list[0])
+query = "pittsburgh pirates"
+search = BingSearch(query)
+list = search.getArticleList()
 
+# for i in list:
+#     article = Article(i["url"])
+#     try:
+#         article.download()
+#         article.parse()
+#         article.nlp()
+#
+#     except:
+#         pass
+#
+#     print(article.authors)
 
-if __name__ == '__main__':
-    main()
-
+print(len(list))

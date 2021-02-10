@@ -1,6 +1,7 @@
+from googleSearch import bingsearch
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """
 Main Server File for running the flask app.
 
@@ -101,20 +102,20 @@ def news():
         
         #Get Query
         query = request.args['newsItem']
+        news_search = bingsearch.BingSearch(query)
 
         #Update Holding Lists
-        NEWS_ARTICLES =accessAPI.getGeneralNews(query)
-        NEWS_URLS =accessAPI.getUrls(NEWS_ARTICLES)
-        NEWS_IMAGE_URLS =accessAPI.getImageUrls(NEWS_ARTICLES)
-        NEWS_TITLES=accessAPI.getTitles(NEWS_ARTICLES)
-        NEWS_AUTHORS=accessAPI.getAuthors(NEWS_ARTICLES)
+        NEWS_ARTICLES = news_search.getDescription()
+        NEWS_URLS = news_search.getUrls()
+        NEWS_IMAGE_URLS = news_search.getImages()
+        NEWS_TITLES = news_search.getTitles()
+        NEWS_AUTHORS = ""
 
         #Put All Lists into a Dictionary 
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
           SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
     else:
-
       SEARCH_RESULTS = [{ "title" : "Title Of an Article", "url": "#url", "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ffootball_05.jpeg?v=1612922073108","authors": "Author of Article"}]
  
 #     # Return the list of remembered News. 
