@@ -90,7 +90,7 @@ def news():
 
     # Add a news item to the in-memory database, if given. 
     if 'newsItem' in request.args:
-        # Initiailize / Empty Holder Variables
+        # Initiailize / Empty Data Holding Lists
         query = ""
         NEWS_ARTICLES = []
         NEWS_URLS = []
@@ -99,12 +99,16 @@ def news():
         NEWS_AUTHORS = []
         SEARCH_RESULTS = []
         
+        #Get Query
         query = request.args['newsItem']
+
+        #Update Holding Lists
         NEWS_ARTICLES =accessAPI.getGeneralNews(query)
         NEWS_URLS =accessAPI.getUrls(NEWS_ARTICLES)
         NEWS_IMAGE_URLS =accessAPI.getImageUrls(NEWS_ARTICLES)
         NEWS_TITLES=accessAPI.getTitles(NEWS_ARTICLES)
         NEWS_AUTHORS=accessAPI.getAuthors(NEWS_ARTICLES)
+        
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
           SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
