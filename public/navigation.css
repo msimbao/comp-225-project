@@ -10,43 +10,51 @@
 * @Brief: Any Css to Do with Navigation During Development
 *
 */
-
+#navbar {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+}
 #navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-    overflow: hidden;
-    background-color: #ffd500;
-  }
-  
-  #navbar li {
-    float: right;
-  }
-  
-  #navbar li {
-    display: block;
-    color: #00296B;
-    text-align: center;
-    padding: 25px;
-    margin: 10px;
-    padding-bottom: 10px;
-    text-decoration: none;
-    transition:0.2s;
-    border-bottom:5px solid #ffd500;
-  }
-  
-  #navbar a{
-      color:#00296B;
-  }
-  
-  #navbar li:hover {
-    border-bottom:5px solid #00296B;
-  }
-  
-  .active{
-      border-bottom:5px solid #00296B !important;
-  }
-  
-  #title{
-      padding:10px;
-  }
+  height:200px;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #ffd500;
+  border-radius:0px 0px 0px 100px;
+}
+
+#navbar li {
+  float: right;
+}
+
+#navbar li {
+  display: block;
+  color: #00296B;
+  text-align: center;
+  padding: 25px;
+  margin: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  transition:0.2s;
+  border-bottom:5px solid #ffd500;
+}
+
+#navbar a{
+    color:#4180b4;
+}
+
+#navbar li:hover {
+  border-bottom:5px solid #4180b4;
+}
+
+.active{
+    border-bottom:5px solid #003153 !important;
+}
+
+#title{
+    padding:10px;
+    padding-left:100px;
+}

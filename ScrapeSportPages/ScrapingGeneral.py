@@ -1,7 +1,13 @@
 def lol():
   print("hey")
-  
-lol()
+
+import os
+from flask import Flask, request, render_template, jsonify
+from bs4 import BeautifulSoup, SoupStrainer
+import re
+import urllib.request, urllib.error
+import random
+import socket  
 
 """
 Code From Jack's file
@@ -42,3 +48,5 @@ def main():
     baseurl = "https://www.mlb.com/"
     Mookie_or_Soto = "https://www.mlb.com/news/mookie-betts-or-juan-soto-for-best-right-fielder"
     print(getParagraphs(Mookie_or_Soto))
+
+main()

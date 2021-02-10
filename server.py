@@ -16,7 +16,8 @@ Main Server File for running the flask app.
 #//////////////////////////////////////////////////////////
 
 import os
-from flask import Flask, request, render_template, jsonify
+import json
+from flask import Flask, request, render_template, jsonify, Response
 from bs4 import BeautifulSoup, SoupStrainer
 import re
 import urllib.request, urllib.error
@@ -57,6 +58,7 @@ query = "Testing Query"
 NEWS_ARTICLES = ["Testing Articles"]
 NEWS_URLS = ["Testing Urls"]
 NEWS_TITLES = ["Testing Titles - If This Works, Server is functional"]
+
 SEARCH_RESULTS = []
 
 
@@ -85,23 +87,36 @@ def news():
      For this case, we wont be storing data here but could build our
      user authentication systems using firebase
     """
-   
+
     # Add a news item to the in-memory database, if given. 
     if 'newsItem' in request.args:
+        query = ""
+        NEWS_ARTICLES = []
+        NEWS_URLS = []
+        NEWS_IMAGE_URLS = []
+        NEWS_TITLES = []
+        NEWS_AUTHORS = []
+        SEARCH_RESULTS = []
         
         query = request.args['newsItem']
-        NEWS_ARTICLES = accessAPI.getGeneralNews(query)
-        NEWS_URLS = accessAPI.getUrls(NEWS_ARTICLES)
-        NEWS_TITLES.append(accessAPI.getTitles(NEWS_ARTICLES))
+        NEWS_ARTICLES =accessAPI.getGeneralNews(query)
+        NEWS_URLS =accessAPI.getUrls(NEWS_ARTICLES)
+        NEWS_IMAGE_URLS =accessAPI.getImageUrls(NEWS_ARTICLES)
+        NEWS_TITLES=accessAPI.getTitles(NEWS_ARTICLES)
+        NEWS_AUTHORS=accessAPI.getAuthors(NEWS_ARTICLES)
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
-          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i]} )
-        
-    
+          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
+    else:
+
+      SEARCH_RESULTS = [{ "title" : "Title Of an Article", "url": "#url", "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ffootball_05.jpeg?v=1612922073108","authors": "Author of Article"}]
+ 
 #     # Return the list of remembered News. 
 #     return Response(json.dumps(js),  mimetype='application/json')
-    
+    print('Search Resuls',SEARCH_RESULTS)
+    # print('News Title',NEWS_TITLES)
     # Return the list of remembered News. 
+    # return Response(json.dumps(SEARCH_RESULTS),  mimetype='application/json')
     return jsonify(SEARCH_RESULTS)
 
   

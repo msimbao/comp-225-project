@@ -19,12 +19,14 @@ body {
   height:100%;
   margin:0;
   padding:0;
-  background:#ffd500;
-  color:#00296B;
+  padding-top:100px;
+  background:#fff;
+  color:#003153;
 }
 
 a{
   text-decoration: none;
+  color:#003153;
 }
 
 .card {
@@ -35,4 +37,9 @@ a{
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#main{
+  position:absolute;
+  width:100%;
 }
