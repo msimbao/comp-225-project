@@ -43,3 +43,19 @@
     cursor: pointer;
     border-radius: 12px;
   }
+
+#news{
+  position:relative;
+  margin:auto;
+  width:80%;
+  list-style-type: none;
+}
+
+.newsItem{
+    position:relative;
+    margin:auto;
+    width:90%;
+    background:#fff;
+    padding:30px;
+    margin:10px;
+}

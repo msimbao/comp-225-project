@@ -5,13 +5,18 @@
 // add other scripts at the bottom of index.html
 
 $(function() {
+  getNews();
   console.log('hello world :o');
   
-  $.get('/news', function(news) {
-    news.forEach(function(newsItem) {
-      $('<li></li>').text(newsItem).appendTo('ul#news');
+  function getNews(){
+    $("ul#news").empty();
+      $.get('/news', function(news) {
+      news.title.forEach(function(newsItem) {
+      $('<li class="card newsItem"></li>').text(newsItem).appendTo('ul#news');
     });
   });
+  }
+
 
   $('form').submit(function(event) {
     event.preventDefault();
@@ -19,10 +24,12 @@ $(function() {
     $.post('/news?' + $.param({'newsItem': newsItem}), function() {
       
       //"POST /newsItem?newsItem=Hello HTTP/1.1" 
-      $('<li></li>').text(newsItem).appendTo('ul#news');
+      // $('<li></li>').text(newsItem).appendTo('ul#news');
       $('input').val('');
       $('input').focus();
     });
+    
+    getNews();
   });
 
 });

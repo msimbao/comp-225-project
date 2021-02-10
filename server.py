@@ -6,6 +6,7 @@ Main Server File for running the flask app.
 
 @Title: server.py
 @Author: Ty, Declan, Jack, Mphatso
+
 """
 
 #//////////////////////////////////////////////////////////
@@ -52,10 +53,10 @@ app.secret = os.environ.get('SECRET')
 #//////////////////////////////////////////////////////////
 
 # News database. Store news in memory for now. 
-query = "testing"
-NEWS_ARTICLES = []
-NEWS_URLS = []
-NEWS_TITLES = []
+query = "Testing Query"
+NEWS_ARTICLES = ["Testing Articles"]
+NEWS_URLS = ["Testing Urls"]
+NEWS_TITLES = ["Testing Titles - If This Works, Server is functional"]
 
 
 #//////////////////////////////////////////////////////////
@@ -63,18 +64,6 @@ NEWS_TITLES = []
 # Setup Flask functions and end routes
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
-
-@app.after_request
-def apply_kr_hello(response):
-    """Adds some headers to all responses."""
-  
-    # Made by Kenneth Reitz. 
-    if 'MADE_BY' in os.environ:
-        response.headers["X-Was-Here"] = os.environ.get('MADE_BY')
-    
-    # Powered by Flask. 
-    response.headers["X-Powered-By"] = os.environ.get('POWERED_BY')
-    return response
 
 
 @app.route('/')
@@ -93,17 +82,31 @@ def news():
      For this case, we wont be storing data here but could build our
      user authentication systems using firebase
     """
-  
+   
     # Add a news item to the in-memory database, if given. 
     if 'newsItem' in request.args:
+        
         query = request.args['newsItem']
         NEWS_ARTICLES = accessAPI.getGeneralNews(query)
         NEWS_URLS = accessAPI.getUrls(NEWS_ARTICLES)
-        NEWS_TITLES = accessAPI.getTitles(NEWS_ARTICLES)
+        NEWS_TITLES.append(accessAPI.getTitles(NEWS_ARTICLES))
         # NEWS_TITLES.append(request.args['newsItem'])
+        
+#       for i in range(len(NEWS_ARTICLES)):
+#       js.append( { "title" : NEWS_TITLES[i]} )
+        
+    
+#     # Return the list of remembered News. 
+#     return Response(json.dumps(js),  mimetype='application/json')
     
     # Return the list of remembered News. 
-    return jsonify(NEWS_TITLES)
+    return jsonify({'title':NEWS_TITLES})
+
+#//////////////////////////////////////////////////////////
+#//////////////////////////////////////////////////////////
+# Start Flask Server
+#//////////////////////////////////////////////////////////
+#//////////////////////////////////////////////////////////
 
 if __name__ == '__main__':
     app.run()
