@@ -1,4 +1,3 @@
-from googleSearch import bingsearch
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -25,6 +24,7 @@ import re
 import urllib.request, urllib.error
 import random
 import socket
+from googleSearch import bingsearch
 
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
@@ -109,18 +109,7 @@ def news():
         query = request.args['newsItem']
         news_search = bingsearch.BingSearch(query)
 
-        #Update Holding Lists
-        NEWS_ARTICLES = news_search.getDescription()
-        NEWS_URLS = news_search.getUrls()
-        NEWS_IMAGE_URLS = news_search.getImages()
-        NEWS_TITLES = news_search.getTitles()
-        NEWS_AUTHORS = ""
-
-        #Put All Lists into a Dictionary 
-        # NEWS_TITLES.append(request.args['newsItem'])
-        for i in range(len(NEWS_ARTICLES)):
-          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i]  #,"authors": NEWS_AUTHORS[i]
-            } )
+        SEARCH_RESULTS = news_search.getArticleList()
     else:
       SEARCH_RESULTS = [{ "title" : "Title Of an Article", "url": "#url", "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ffootball_05.jpeg?v=1612922073108","authors": "Author of Article"}]
  
