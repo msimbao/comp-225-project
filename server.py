@@ -30,7 +30,6 @@ import socket
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
 
-import test
 import accessAPI
 
 
@@ -58,6 +57,9 @@ query = "Testing Query"
 NEWS_ARTICLES = ["Testing Articles"]
 NEWS_URLS = ["Testing Urls"]
 NEWS_TITLES = ["Testing Titles - If This Works, Server is functional"]
+
+Test_description = "Bouye played in a mere seven games with the Broncos in 2020 while dealing with a shoulder issue before he was suspended for the remaining four contests (plus the first two of 2021) due to a violation of the league's policy on performance-enhancing drugs. He finished with 23 tackles and six passes defensed...."
+Test_image = "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpexels-david-morris-2190159.jpg?v=1612938092969"
 
 SEARCH_RESULTS = []
 
@@ -90,32 +92,28 @@ def news():
 
     # Add a news item to the in-memory database, if given. 
     if 'newsItem' in request.args:
-        # Initiailize / Empty Data Holding Lists
         query = ""
         NEWS_ARTICLES = []
         NEWS_URLS = []
         NEWS_IMAGE_URLS = []
+        NEWS_DESCRIPTIONS = []
         NEWS_TITLES = []
         NEWS_AUTHORS = []
         SEARCH_RESULTS = []
         
-        #Get Query
         query = request.args['newsItem']
-
-        #Update Holding Lists
         NEWS_ARTICLES =accessAPI.getGeneralNews(query)
         NEWS_URLS =accessAPI.getUrls(NEWS_ARTICLES)
         NEWS_IMAGE_URLS =accessAPI.getImageUrls(NEWS_ARTICLES)
         NEWS_TITLES=accessAPI.getTitles(NEWS_ARTICLES)
+        NEWS_DESCRIPTIONS = NEWS_TITLES #replace with actual //////////////////////////
         NEWS_AUTHORS=accessAPI.getAuthors(NEWS_ARTICLES)
-
-        #Put All Lists into a Dictionary 
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
-          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
+          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
     else:
 
-      SEARCH_RESULTS = [{ "title" : "Title Of an Article", "url": "#url", "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ffootball_05.jpeg?v=1612922073108","authors": "Author of Article"}]
+      SEARCH_RESULTS = [{ "title" : "Broncos release veteran cornerback A.J. Bouye after one season ","description":Test_description, "url": "#url", "image": Test_image,"authors": "Nick Shook"}]
  
 #     # Return the list of remembered News. 
 #     return Response(json.dumps(js),  mimetype='application/json')
@@ -126,11 +124,7 @@ def news():
     return jsonify(SEARCH_RESULTS)
 
   
-#//////////////////////////////////////////////////////////
-#//////////////////////////////////////////////////////////
-# Run Server
-#//////////////////////////////////////////////////////////
-#//////////////////////////////////////////////////////////
+#//////////////////////////////////////////////////////////////////////////
 
 if __name__ == '__main__':
     app.run()

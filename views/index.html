@@ -10,80 +10,316 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    
-    
-<!-- Site Title -->
-    <title>Comp 225 Project</title>
-    
-<!-- Site Description -->
-    <meta name="description" content="A cool thing made ">
-    
-<!-- Site Favicon -->
-    <link id="favicon" rel="icon" href="https://gomix.com/favicon-app.ico" type="image/x-icon">
-    
-<!-- Site Meta Data -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-<!-- Site CSS -->
-    <link rel="stylesheet" href="/public/style.css">
   
-<!-- Css To Use During Development of Prototype. Transfer Everything to main css when ready -->
-    <link rel="stylesheet" href="/public/navigation.css">
-    <link rel="stylesheet" href="/public/search.css">
-    <link rel="stylesheet" href="/public/general.css">
+  <!-------------------------------------------------------->
+  <!-- Head -->
+  <!-------------------------------------------------------->
+  
+  <head>
+    <!-- Site Title -->
+    <title>Comp 225 Project</title>
 
+    <!-- Site Description -->
+    <meta name="description" content="A cool thing made " />
 
-    
+    <!-- Site Favicon -->
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://gomix.com/favicon-app.ico"
+      type="image/x-icon"
+    />
+
+    <!-- Site Meta Data -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/public/style.css" />
   </head>
+
+  <!-------------------------------------------------------->
+  <!-- Main Body -->
+  <!-------------------------------------------------------->
   
   <body>
+    <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+NavBar
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+
     <div id="navbar">
-    <ul>
-<!--       <h2 style="float:left" id="title">App Title</h2> -->
-      <li><a href="#Logout">Logout</a></li>
-      <li><a href="#contact">Your Teams</a></li>
-      <li><a href="#feed">Feed</a></li>
-  <li class="active"><a href="#general">General Search</a></li>
-    </ul>
+      <ul>
+        <!--       <h2 style="float:left" id="title">App Title</h2> -->
+        <li class="tablinks" onclick="showLogin()">
+          <a href="#Logout">Logout</a>
+        </li>
+        <li class="tablinks" onclick="openTab(event, 'select')">
+          <a href="#select">Select Teams</a>
+        </li>
+        <li class="tablinks" onclick="openTab(event, 'feed')">
+          <a href="#feed">Feed</a>
+        </li>
+        <li class="tablinks" onclick="openTab(event, 'general')">
+          <a href="#general">General Search</a>
+        </li>
+      </ul>
     </div>
 
-    
-    <div id="main">
-    <div id="search" class="card">
-      <h2>General Search</h2>
-      <p>If You're Looking for a particular team, you can find the latest news and trending articles here.</p>
-      
-      <form>
-        <input id="searchBar" type="text" maxlength="100" placeholder="Sports News For Your Team!">
-        <button type="submit" class="button">Submit</button>
-      </form>
+    <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+Login Form
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
 
+    <div id="login">
+      <img
+        height="100%"
+        src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpexels-pixabay-257970(2).jpg?v=1612938093260"
+      />
+      <div id="loginForm">
+        <h2 style="font-variant: small-caps;">Team News</h2>
+        <input id="email" type="text" placeholder="Email Address..." />
+        <input id="password" type="password" placeholder="Password..." />
+        <button id="submitLogin" class="button" type="submit" value="Login" onclick="hideLogin()">Submit</button>
+      </div>
     </div>
-          <section class="news">
-        <ul id="news">
-        </ul>
-      </section>
+
+    <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+General Search Tab
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+<div id="maincontent">
+  
+
+    <div id="general" class="tabcontent">
+      <div class="card tabDescription">
+        <h2>General Search</h2>
+        <p>
+          If You're Looking for general information, you can find the latest
+          news and trending articles here.
+        </p>
+
+        <form>
+          <input
+            id="searchBar"
+            type="text"
+            maxlength="100"
+            placeholder="Search For Anything Sports Related..."
+          />
+          <button type="submit" class="button" style="-webkit-transform: rotate(-45deg); 
+               -moz-transform: rotate(-45deg); 
+                 -o-transform: rotate(-45deg);
+                    transform: rotate(-45deg);">&#9906</button>
+        </form>
+      </div>
+      <div>
+        <ul id="news" class="news"></ul>
+      </div>
+    </div>
+
+    <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+Main Feed Tab
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+
+    <div id="feed" class="tabcontent">
+      <div class="card tabDescription">
+        <h2>Your Feed</h2>
+        <p>
+          All the latest articles about the teams you care about right in the palm of your hands.
+        </p>
+      </div>
+        <div>
+        <ul id="newsFeed" class="news">
+           <a href="#feed">
+             <li class="card newsItem">
+               <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
+               <div class="articleWords">
+                 <h4>Buccaneers Will Celebrate Super Bowl LV Win on the Water</h4>
+                 <p>The Tampa Bay Buccaneers will celebrate their latest Lombardi trophy as only they can with a socially distant boat parade around the bay on Wednesday, February 10. The event will begin starting at 1 p.m. ET....</p>
+                 <h6>Carmen Vitali</h6>
+               </div>
+             </li>
+          </a>
+          
+            <a href="#feed">
+             <li class="card newsItem">
+               <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
+               <div class="articleWords">
+                 <h4> Blue Jays to report to Spring Training Feb. 18 </h4>
+                 <p>The first sign of baseball season is finally here: pitchers and catchers. MLB announced the start dates of workouts for 2021 Spring Training presented by Camping World on Tuesday, with the first pitchers and catchers workouts and first full-squad workouts for every team. Teams will report to Spring Training next....</p>
+                 <h6>David Adler</h6>
+               </div>
+             </li>
+          </a>
+          
+                   <a href="#feed">
+             <li class="card newsItem">
+               <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
+               <div class="articleWords">
+                 <h4>Titans Fan, and Valued Mentor, Brandon Galloway Named NFL Fan of the Year </h4>
+                 <p>"When they told me, I was at a loss for words," Galloway said. "It is just an amazing honor, and it puts a positive spotlight on our city and on our fan base, despite everything Nashville has been through...."</p>
+                 <h6>Jim Wyatt</h6>
+               </div>
+             </li>
+          </a>
+          </ul>
+      </div>
+    </div>
+
+    <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+Select Tab
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+
+    <div id="select" class="tabcontent">
+      <div id="selectDescription" class="card tabDescription">
+        <h2>Select Teams</h2>
+        <p>
+          Pick your top favorite teams to follow from one of the Four Major Leagues.
+        </p>
+      </div>
       
+  <!-- Leagues Card Holder -->
+    <div id="leagues" class="cardholder">
+      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmajor-league-baseball-1-logo-png-transparent.png?v=1612974304407" class="leagueIcon"></div>
+      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974" class="leagueIcon"></div>
+      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169" class="leagueIcon"></div>
+      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788" class="leagueIcon"></div>
+    </div>
+  
+  <!-- Confereces Card Holders -->
+    <div id="conferences" class="cardholder" >
+      <div class="back card" onclick="showLeagues()">&#9668; Back</div>
+      <div class="conference">
+        <div class="region card" ><h4>AL East</h4></div>
+        <div class="region card"><h4>AL North</h4></div>
+        <div class="region card"><h4>AL West</h4></div>
+        <div class="region card"><h4>AL South</h4></div>
       </div>
 
+      <div class="conference">
+        <div class="region card"><h4>NL East</h4></div>
+        <div class="region card"><h4>NL North</h4></div>
+        <div class="region card"><h4>NL West</h4></div>
+        <div class="region card" onclick="hideConferences()"><h4>NL South</h4></div>
+      </div>
+    </div>
+      
+  <!--  Teams Card Holders -->
+    <div id="teams" class="cardholder">
+      <div class="back card" onclick="showConferences()">&#9668; Back</div>
+      <div id="selectNewTeams">
+        <div class="team card">
+          <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
+          <div>
+            <h4>
+            Tampa Bay Buccaneers 
+            </h4>
+            <p>
+              <b>Record:</b> 54 - 108 | <b>Standings:</b> 5th
+            </p>
+          </div>
+        </div>
+        
+        <div class="team card">
+                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmiami-dolphins-logo-transparent.png?v=1612980785030">
+          <div>
+            <h4>
+            Miami Dolphins
+            </h4>
+            <p>
+              <b>Record:</b> 84 - 74 | <b>Standings:</b> 3rd
+            </p>
+          </div>
+        </div>
+        
+        <div class="team card">
+                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpittsburgh-steelers-logo-transparent.png?v=1612980789057">
+          <div>
+            <h4>
+            Pittsburgh Steelers
+            </h4>
+            <p>
+              <b>Record:</b> 54 - 108 | <b>Standings:</b> 5th
+            </p>
+          </div>
+        </div>
+        
+        <div class="team card">
+                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fseattle-seahawks-logo-transparent.png?v=1612980796723">
+          <div>
+            <h4>
+            Seattle Sea Hawks 
+            </h4>
+            <p>
+              <b>Record:</b> 96 - 66 | <b>Standings:</b> 2nd
+            </p>
+          </div>
+        </div>
+        
+                <div class="team card">
+                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
+          <div>
+            <h4>
+            Tennessee Titans
+            </h4>
+            <p>
+              <b>Record:</b> 67 - 95 | <b>Standings:</b> 4th
+            </p>
+          </div>
+        </div>
 
-<!-- Site Scripts -->
-<!-- Your web-app is https, so your scripts need to be too -->
-<!--     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+      </div>
+      
+      <div id="selectOldTeams">
+          <div class="card">Following</div>
+          <div class="card">
+            <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fwashington-redskins-logo.png?v=1612980811243">
+            <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
+            <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Foakland-raiders-logo-transparent.png?v=1612996306190">
+          </div>
+
+      </div>
+
+            
+    </div>
+
+    </div>
+    
+
+    <div id="logout" class="tabcontent"></div>
+  
+  </div>
+
+  <!-------------------------------------------------------->
+  <!-- Site Scripts-->
+  <!-------------------------------------------------------->
+    
+    <!--  Web-app is https, so scripts need to be too -->
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
-     -->
-    
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{
-  url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
     
     
-    <script src="/js/client.js"></script>
-    <script src="/js/tab.js"></script>
 
+    <script src="/public/client.js"></script>
+    <script src="/public/tabController.js"></script>
   </body>
 </html>
