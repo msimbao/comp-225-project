@@ -115,7 +115,8 @@ def news():
         #Put All Lists into a Dictionary 
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
-          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
+          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i]  #,"authors": NEWS_AUTHORS[i]
+            } )
     else:
       SEARCH_RESULTS = [{ "title" : "Title Of an Article", "url": "#url", "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ffootball_05.jpeg?v=1612922073108","authors": "Author of Article"}]
  
