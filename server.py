@@ -19,6 +19,7 @@ Main Server File for running the flask app.
 import os
 import json
 from flask import Flask, request, render_template, jsonify, Response
+from flask_cors import CORS
 from bs4 import BeautifulSoup, SoupStrainer
 import re
 import urllib.request, urllib.error
@@ -42,6 +43,9 @@ import accessAPI
 
 # Support for gomix's 'front-end' and 'back-end' UI.
 app = Flask(__name__, static_folder='public', template_folder='views')
+
+# Enable CORS
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Set the app secret key from the secret environment variables.
 app.secret = os.environ.get('SECRET')
