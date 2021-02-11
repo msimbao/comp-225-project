@@ -110,10 +110,10 @@ def news():
         NEWS_AUTHORS=accessAPI.getAuthors(NEWS_ARTICLES)
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
-          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"authors": NEWS_AUTHORS[i]} )
+          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i],"source": NEWS_AUTHORS[i]} )
     else:
 
-      SEARCH_RESULTS = [{ "title" : "Broncos release veteran cornerback A.J. Bouye after one season ","description":Test_description, "url": "#url", "image": Test_image,"authors": "Nick Shook"}]
+      SEARCH_RESULTS = [{ "title" : "Broncos release veteran cornerback A.J. Bouye after one season ","description":Test_description, "url": "#url", "image": Test_image,"source": "Nick Shook"}]
  
 #     # Return the list of remembered News. 
 #     return Response(json.dumps(js),  mimetype='application/json')
