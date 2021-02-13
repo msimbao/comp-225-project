@@ -13,6 +13,7 @@
     const txtEmail = document.getElementById("email");
     const txtPassword = document.getElementById("password");
     const btnLogin = document.getElementById("submitLogin");
+    // TODO: Once the buttons are added, add element IDs to the two lines below
     const btnSignUp = document.getElementById();
     const btnLogout = document.getElementById();
 
