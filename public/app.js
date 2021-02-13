@@ -1,3 +1,13 @@
+/**
+ *
+ *  @Title app.js
+ *
+ *  @Brief The login, logout, and signup functions using firebase
+ *
+ *  @Author Ty, Declan, Jack, Mphatso
+ *
+ */
+
 (function () {
 
     //Initialize Firebase
