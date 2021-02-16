@@ -84,6 +84,7 @@ def homepage():
     """Displays the homepage."""
     return render_template('index.html')
 
+#General Test Route
 @app.route('/lol')
 def rlol():
     return jsonify(test.lol())
