@@ -69,7 +69,7 @@ a {
 .cardholder {
   position: relative;
   margin: auto;
-  margin-top: 20px;
+  margin-top:5px;
   width: 80%;
   height: 350px;
   transition: 0.1s;
@@ -97,9 +97,11 @@ a {
   display: inline-block;
   font-size: 28px;
   margin: 4px 2px;
+  margin-left:5px;
   cursor: pointer;
   border-radius: 5px;
   transition: 0.1s;
+  
 }
 
 .tabDescription {
@@ -109,6 +111,7 @@ a {
   background: #f9c74f;
   padding: 20px 50px 20px 50px;
   border-left: 20px solid black;
+
 }
 
 #title {
@@ -118,8 +121,8 @@ a {
 
 .back {
   position: absolute;
-  left: 20px;
-  top: -15%;
+  left: 0px;
+  top: -45px;
   padding: 10px;
   font-variant: small-caps;
   background: #f9c74f;
@@ -188,9 +191,8 @@ input {
   width: 60%;
   font-size: 16px;
   padding: 12px 20px 12px 20px;
-  border: none;
-  border-bottom: 5px solid #ddd;
-  margin: 10px;
+  border: 2px solid black;
+  margin: 5px;
   position: relative;
   border-radius: 0px;
   transition: 0.1s;
@@ -199,7 +201,7 @@ input {
 input:focus,
 input:hover {
   border: none;
-  border-bottom: 5px solid black;
+  border: 2px solid #eee;
 }
 
 .news {
@@ -240,6 +242,11 @@ input:hover {
   filter: grayscale(100%) contrast(100%);
 }
 
+.newsItem:hover img{
+  -webkit-filter: none;
+  filter: none;
+}
+
 .articleWords {
   position: absolute;
   padding: 20px 50px 10px 50px;
@@ -247,9 +254,10 @@ input:hover {
   left: 200px;
 }
 
-#searchBar {
+.search {
   border: 2px solid black;
 }
+
 
 /*//////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -281,37 +289,39 @@ input:hover {
   z-index: 10;
 }
 
-#conferences {
-  display: none;
-  position: absolute;
-  top: 30%;
-  transform: translateY(-50%) translateX(-50%);
-  left: 50%;
-  background-color: #4180b4;
-  background-image: radial-gradient(#003153 1px, #4180b4 1px);
-  background-size: 20px 20px;
-  z-index: 5;
-}
 
 /*
 * League Icons Css ///////////////////////////////////////////////
 */
 
+#leagues{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 5px;
+}
+
 .league {
   position: relative;
-  height: 70%;
+  height: 100%;
   background: white;
-  width: 23%;
-  margin-left: 1%;
+  width: 100%;
   float: left;
-  border-bottom: 5px solid black;
+  border-bottom: 20px solid black;
+}
+
+.league:nth-child(4) {
+ width:101%;
 }
 
 .league:hover {
   background: #003153;
   color: white;
-  border-left: 10px solid #003153;
+  border-top: 20px solid #003153;
+  border-bottom: 20px solid #003153;
+  
 }
+
+
 
 .leagueIcon {
   position: absolute;
@@ -325,28 +335,44 @@ input:hover {
 * Conference Css ///////////////////////////////////////////////
 */
 
+
+#conferences {
+  display: none;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+  background-color: #4180b4;
+  background-image: radial-gradient(#003153 1px, #4180b4 1px);
+  background-size: 20px 20px;
+  z-index: 5;
+}
+
 .conference {
   position: relative;
   height: 100%;
   background: none;
   width: 46%;
-  margin-left: 2%;
+  margin-right:15px;
   float: left;
 }
 
 .region {
   position: relative;
-  background: white;
-  width: 80%;
-  margin-bottom: 2%;
-  padding: 30px;
+  background: #fff;
+  width: 100%;
+  margin-bottom:5px;
+  padding:20px 0px 20px 0px;
   font-variant: small-caps;
   text-align: center;
-  border-right: 5px #000 solid;
+  border-bottom: 20px #000 solid;
+    
+  background-image: radial-gradient(#4180b4 1px, #fff 1px);
+  background-size: 40px 40px;
 }
 
 .region:hover {
-  border-left: 20px solid black;
+  border-left: 10px solid black;
   background: black;
   color: white;
 }
@@ -368,17 +394,19 @@ input:hover {
   position: relative;
   background: white;
   margin: auto;
-  width: 90%;
+  width: 100%;
   height: 100px;
-  margin-bottom: 2%;
-  padding: 25px;
+  margin-bottom: 5px;
+  padding: 25px 0px 25px 0px;
   font-variant: small-caps;
   border-bottom: 20px solid black;
 }
 
 .team:hover {
-  background: #00509D;
+  background: #003153;
   color: white;
+  border-top: 10px solid #003153;
+  border-bottom:20px solid #003153;
 }
 
 .team img {
@@ -392,22 +420,22 @@ input:hover {
 .team div {
   position: absolute;
   padding: 10px 50px 20px 50px;
-  top: 10px;
   left: 270px;
 }
 
 #selectNewTeams {
   width: 80%;
   height: 140%;
-  padding: 10px;
+  padding: 0px;
   float: left;
 }
 
 #selectOldTeams {
   width: 15%;
-  height: 160%;
-  padding-top: 10px;
+  height: 100%;
   float: left;
+  background:white;
+  margin-left: 5px;
   text-align: center;
   font-variant: small-caps;
 }
@@ -420,7 +448,7 @@ input:hover {
   background: white;
   width: 100%;
   text-align: center;
-  margin-top: 2%;
+  margin-bottom:5px;
   padding: 20px 0px 20px 0px;
 }
 
@@ -467,17 +495,21 @@ input:hover {
   transform: translateY(-50%);
   width: 300px;
   right: 5%;
+  background:#f9c74f;
+  border-left:20px solid black;
+  padding:30px;
 }
 
 #submitLogin {
-  width: 80%;
-  background: #4180b4;
+  margin-left:5px;
+  width: 75%;
+  background: #000;
   color: white;
   font-size: 16px;
   border-radius: 0px;
 }
 
 #submitLogin:hover {
-  color: white;
-  background: #003153;
+  color: black;
+  background: #fff;
 }
