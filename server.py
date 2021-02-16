@@ -45,7 +45,8 @@ import accessAPI
 app = Flask(__name__, static_folder='public', template_folder='views')
 
 # Enable CORS
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
+
 
 # Set the app secret key from the secret environment variables.
 app.secret = os.environ.get('SECRET')
@@ -119,10 +120,9 @@ def news():
         #Put All Lists into a Dictionary 
         # NEWS_TITLES.append(request.args['newsItem'])
         for i in range(len(NEWS_ARTICLES)):
-          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i]  #,"authors": NEWS_AUTHORS[i]
-            } )
+          SEARCH_RESULTS.append( { "title" : NEWS_TITLES[i],'description':NEWS_DESCRIPTIONS[i], "url": NEWS_URLS[i], "image": NEWS_IMAGE_URLS[i], "source":"ESPN"} )
     else:
-      SEARCH_RESULTS = [{ "title" : "Title Of an Article", "url": "#url", "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ffootball_05.jpeg?v=1612922073108","authors": "Author of Article"}]
+      SEARCH_RESULTS = [{ "title" : "Broncos release veteran cornerback A.J. Bouye after one season ","description":Test_description, "url": "#url", "image": Test_image,"source": "ESPN"}]
  
 #     # Return the list of remembered News. 
 #     return Response(json.dumps(js),  mimetype='application/json')

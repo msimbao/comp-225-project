@@ -107,7 +107,7 @@ function showConferences(){
  *  @brief get test news article for general search page
  */
 function getNews(){
-  $.get('/news', function(news) {
+  $.get('http://127.0.0.1:5000//news', function(news) {
     // console.log(news)
   news.forEach(function(newsItem) {
     console.log(newsItem['title'])
@@ -129,7 +129,7 @@ $('form').submit(function(event) {
 $("ul#news").empty();
 event.preventDefault();
 newsItem = $('input').val();
-$.post('/news?' + $.param({'newsItem': newsItem}), function(news) {
+$.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function(news) {
   
   news.forEach(function(newsItem) {
     console.log(newsItem['title'])
