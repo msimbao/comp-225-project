@@ -10,7 +10,9 @@
 
  /**
   * ///////////////////////////////////////////////////////////
+  * ///////////////////////////////////////////////////////////
   * Set Important Variables
+  * ///////////////////////////////////////////////////////////
   * ///////////////////////////////////////////////////////////
   */
 
@@ -97,17 +99,19 @@ function showConferences(){
 
  /**
   * ///////////////////////////////////////////////////////////
+  * ///////////////////////////////////////////////////////////
   * Functions to Access Server
+  * ///////////////////////////////////////////////////////////
   * ///////////////////////////////////////////////////////////
   */
 
 /**
- *  @name getNews
+ *  @name getTestNews
  * 
  *  @brief get test news article for general search page
  */
 function getNews(){
-  $.get('http://127.0.0.1:5000//news', function(news) {
+  $.get('http://127.0.0.1:5000/news', function(news) {
     // console.log(news)
   news.forEach(function(newsItem) {
     console.log(newsItem['title'])
@@ -118,17 +122,18 @@ function getNews(){
 }
 
 // Call get News on App start to test the response
-getNews()
+// getNews()
 
 /**
- *  @name getNews
+ *  @name getGeneralNews
  * 
- *  @brief get news articles for the search page when queried
+ *  @brief get news articles for the search page when queried and submit button pressed
  */
 $('form').submit(function(event) {
 $("ul#news").empty();
 event.preventDefault();
-newsItem = $('input').val();
+newsItem = $('#searchBar').val();
+console.log(newsItem);
 $.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function(news) {
   
   news.forEach(function(newsItem) {
@@ -137,8 +142,8 @@ $.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function
   });
   //"POST /newsItem?newsItem=Hello HTTP/1.1" 
   // $('<li></li>').text(newsItem).appendTo('ul#news');
-  $('input').val('');
-  $('input').focus();
+  $('#searchBar').val('');
+  $('#searchBar').focus();
 });
 
 });

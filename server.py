@@ -34,7 +34,6 @@ from googleSearch import bingsearch
 
 import accessAPI
 
-
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
 # Setup Flask 
@@ -69,15 +68,11 @@ Test_image = "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpexe
 
 SEARCH_RESULTS = []
 
-
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
 # Setup Flask functions and end routes
 #//////////////////////////////////////////////////////////
 #//////////////////////////////////////////////////////////
-
-
-
 
 @app.route('/')
 def homepage():
@@ -85,9 +80,9 @@ def homepage():
     return render_template('index.html')
 
 #General Test Route
-@app.route('/lol')
-def rlol():
-    return jsonify(test.lol())
+# @app.route('/lol')
+# def rlol():
+#     return jsonify(test.lol())
   
 @app.route('/news', methods=['GET', 'POST'])
 def news():
@@ -100,31 +95,19 @@ def news():
     # Add a news item to the in-memory database, if given. 
     if 'newsItem' in request.args:
         query = ""
-        NEWS_ARTICLES = []
-        NEWS_URLS = []
-        NEWS_IMAGE_URLS = []
-        NEWS_DESCRIPTIONS = []
-        NEWS_TITLES = []
-        NEWS_AUTHORS = []
         SEARCH_RESULTS = []
         
         query = request.args['newsItem']
+        print(query)
         news_search = bingsearch.BingSearch(query)
 
         SEARCH_RESULTS = news_search.getArticleList()
     else:
-      SEARCH_RESULTS = [{ "title" : "Broncos release veteran cornerback A.J. Bouye after one season ","description":Test_description, "url": "#url", "image": Test_image,"source": "ESPN"}]
- 
-#     # Return the list of remembered News. 
-#     return Response(json.dumps(js),  mimetype='application/json')
-    print('Search Resuls',SEARCH_RESULTS)
-    # print('News Title',NEWS_TITLES)
-    # Return the list of remembered News. 
-    # return Response(json.dumps(SEARCH_RESULTS),  mimetype='application/json')
-    return jsonify(SEARCH_RESULTS)
+        SEARCH_RESULTS = [{ "title" : "Broncos release veteran cornerback A.J. Bouye after one season ","description":Test_description, "url": "#url", "image": Test_image,"source": "ESPN"}]
 
-  
-#//////////////////////////////////////////////////////////////////////////
+    # print('Search Resuls',SEARCH_RESULTS)
+
+    return jsonify(SEARCH_RESULTS)
 
 if __name__ == '__main__':
     app.run()
