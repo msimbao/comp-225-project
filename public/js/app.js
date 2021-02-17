@@ -46,7 +46,7 @@ console.log("hello");
         const email = singupEmail.value;
         const pass = signupPassword.value;
         const auth = firebase.auth();
-        if (auth.fetchProvidersForEmail(email).length === 0) {
+        if (auth.fetchSignInMethodsForEmail(email).length === 0) {
             //Sign in
             auth.createUserWithEmailAndPassword(email, pass);
             promise.catch(e => console.log(e.message));
