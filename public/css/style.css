@@ -18,8 +18,8 @@ body {
   margin: 0;
   padding: 0;
   color: #003153;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-x: scroll;
+  overflow-y: scroll;
   background-color: #4180b4;
   background-image: radial-gradient(#003153 1px, #4180b4 1px);
   background-size: 20px 20px;
@@ -32,7 +32,7 @@ a {
 }
 
 #maincontent {
-  display: none;
+  display: block;
 }
 
 .pointerItem{
@@ -469,7 +469,6 @@ input:hover {
 
 #login {
   position: absolute;
-  top:2.5%;
   z-index: 1000;
   height: 95%;
   width: 97.5%;
@@ -477,7 +476,6 @@ input:hover {
   background-image: radial-gradient(#4180b4 1px, #fff 1px);
   background-size: 40px 40px;
   transition: 0.7s;
-
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);

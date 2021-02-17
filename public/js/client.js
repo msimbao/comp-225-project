@@ -55,8 +55,9 @@ function hideSignUp(){
   *  @brief Function to hide the Login window when the user inserts valid login credentials
   */
 function hideLogin(){
-  login.style.bottom="100%";
-  maincontent.style.display="block"
+  console.log("Login Bypassed");
+  login.style.top="-200%";
+  maincontent.style.display="block";
 }
 
  /**
@@ -65,7 +66,7 @@ function hideLogin(){
   *  @brief Function to show the Login window when the user inserts logs out
   */
 function showLogin(){
-  login.style.bottom="0%";
+  login.style.top="50%";
    maincontent.style.display="none"
 }
 
