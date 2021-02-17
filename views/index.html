@@ -55,7 +55,7 @@ NavBar
     <div id="navbar">
       <ul>
         <!--       <h2 style="float:left" id="title">App Title</h2> -->
-        <li class="tablinks" onclick="showLogin()">
+        <li class="tablinks" id="submitLogout">
           <a href="#Logout">Logout</a>
         </li>
         <li class="tablinks" onclick="openTab(event, 'select')">
@@ -84,10 +84,13 @@ Login Form
         src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpexels-pixabay-257970(2).jpg?v=1612938093260"
       />
       <div id="loginForm">
+        <form>
         <h2 style="font-variant: small-caps;">Team News</h2>
         <input id="email" type="text" placeholder="Email Address..." />
         <input id="password" type="password" placeholder="Password..." />
-        <button id="submitLogin" class="button" type="submit" value="Login" onclick="hideLogin()">Submit</button>
+        <button id="submitLogin" class="button" type="submit">LOGIN</button>
+        </form>
+        <p>Or <a>create an account</a></p>
       </div>
     </div>
 
@@ -312,14 +315,24 @@ Select Tab
   <!-- Site Scripts-->
   <!-------------------------------------------------------->
     
-    <!--  Web-app is https, so scripts need to be too -->
-        <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
-    
-    
 
-    <script src="../public/client.js"></script>
-    <script src="../public/tabController.js"></script>
+  <!--  JQuery -->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="crossorigin="anonymous"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+
+  <!--  Firebase Login Script -->
+  <script src="../public/app.js"></script>
+
+  <!--  Main Script for Grabbing Data From Server -->
+  <script src="../public/client.js"></script>
+    
+  <!--  Main Script for Grabbing Data From Server -->
+  <script src="../public/client.js"></script>
+
+
   </body>
 </html>

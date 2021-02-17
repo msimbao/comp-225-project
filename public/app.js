@@ -8,7 +8,7 @@
  *
  */
 
-(function () {
+console.log("hello");
 
     //Initialize Firebase
     const config = {
@@ -24,8 +24,8 @@
     const txtPassword = document.getElementById("password");
     const btnLogin = document.getElementById("submitLogin");
     // TODO: Once the buttons are added, add element IDs to the two lines below
-    const btnSignUp = document.getElementById();
-    const btnLogout = document.getElementById();
+    const btnSignUp = document.getElementById("submitLogout");
+    const btnLogout = document.getElementById("submitLogout");
 
     //Add login event
     btnLogin.addEventListener("click", e => {
@@ -67,4 +67,3 @@
         }
     })
 
-});
