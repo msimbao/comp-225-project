@@ -80,6 +80,11 @@ The following modules are needed. These are all python3 modules so make sure you
   ```sh
   pip install urllib3
   ```
+
+* newsapi
+  ```sh
+  pip install newsapi-python
+  ```
   
 ### Running
 
