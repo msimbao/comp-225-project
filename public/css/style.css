@@ -15,15 +15,13 @@ body {
   font-family: helvetica, arial, sans-serif;
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
   color: #003153;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: scroll;
-  background-color: #4180b4;
-  background-image: radial-gradient(#003153 1px, #4180b4 1px);
-  background-size: 20px 20px;
   transition: 0.5s;
+
 }
 
 a {
@@ -41,7 +39,7 @@ a {
 
 /*//////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-# General Site Styling
+# General Site Palette and Patterns
 ////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////*/
 
@@ -49,10 +47,50 @@ a {
   color: #00296B;
   color: #003F88;
   color: #00509D;
-  color: #FDC500;
+  color: #f18701;
   color: #f9c74f;
   color: #333;
 }
+
+.yellowCrossingBackground{
+  background-color:#f9c74f;
+  background:
+  radial-gradient(black 0.1px, transparent 0.1px),
+  radial-gradient(black 0.1px, transparent 0.1px),
+  linear-gradient(#f9c74f 4px, transparent 0),
+  linear-gradient(45deg, transparent 74px, transparent 75px, #f18701 75px, #f18701 76px, transparent 77px, transparent 109px),
+  linear-gradient(-45deg, transparent 75px, transparent 76px, #f18701 76px, #f18701 77px, transparent 78px, transparent 109px),
+  #f9c74f;
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
+
+.blueCrossingBackground{
+  background-color:#003F88;
+  background:
+  radial-gradient(black 0.1px, transparent 0.1px),
+  radial-gradient(black 0.1px, transparent 0.1px),
+  linear-gradient(#003F88 4px, transparent 0),
+  linear-gradient(45deg, transparent 74px, transparent 75px, #4180b4 75px, #4180b4 76px, transparent 77px, transparent 109px),
+  linear-gradient(-45deg, transparent 75px, transparent 76px, #4180b4 76px, #4180b4 77px, transparent 78px, transparent 109px),
+  #003F88;
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
+
+.whiteSpottedBackground{
+  background: #fff;
+  background-image: radial-gradient(#4180b4 1px, #fff 1px);
+  background-size: 40px 40px;
+}
+
+.blueSpottedBackground{
+  background-color: #4180b4;
+  background-image: radial-gradient(#003153 1px, #4180b4 1px);
+  background-size: 20px 20px;
+}
+
+
 
 /*//////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -85,6 +123,16 @@ a {
 ////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////*/
 
+.tabDescription {
+  position: relative;
+  margin: auto;
+  width: 900px;
+  background-color: #f9c74f;
+padding: 20px 50px 20px 50px;
+  border-left: 20px solid black;
+
+}
+
 .tabcontent {
   position: relative;
   display: none;
@@ -105,18 +153,8 @@ a {
   cursor: pointer;
   border-radius: 5px;
   transition: 0.1s;
-  
 }
 
-.tabDescription {
-  position: relative;
-  margin: auto;
-  width: 900px;
-  background: #f9c74f;
-  padding: 20px 50px 20px 50px;
-  border-left: 20px solid black;
-
-}
 
 #title {
   padding: 10px;
@@ -140,11 +178,6 @@ a {
 ////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////*/
 
-#navbar {
-  top: 0;
-  left: 0;
-  right: 0;
-}
 #navbar ul {
   height: 100px;
   list-style-type: none;
@@ -472,9 +505,6 @@ input:hover {
   z-index: 1000;
   height: 95%;
   width: 97.5%;
-  background: #fff;
-  background-image: radial-gradient(#4180b4 1px, #fff 1px);
-  background-size: 40px 40px;
   transition: 0.7s;
   top: 50%;
   left: 50%;
@@ -495,29 +525,51 @@ input:hover {
   z-index:10;
   left: 0;
   top: 0;
-  transition:0.3s;
-  background:#f9c74f;
+  transition:0.5s;
+  border-left:50px black solid;
 }
 
+.loginCover div {
+  width:80%;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+}
+
+.loginCover div h1{
+  font-size:350%;
+  font-variant: small-caps;
+
+}
+
+.loginCover div h6{
+  font-size:100%;
+  font-variant: small-caps;
+}
+
+.loginCover div p{
+  font-size:90%;
+  width:70%;
+}
+
+.loginCover div p span{
+  position:relative;
+}
 
 .loginForm {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  right: 25%;
+  transform: translateY(-50%) translateX(25%);
   width: 300px;
-  right: 10%;
-  padding:30px;
-  text-align:center;
+  text-align:left;
 }
 
 .loginForm:nth-child(2) {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  left: 10%;
-  padding:30px;
-  text-align:center;
+  left: 15%;
+  transform: translateY(-50%) translateX(-20%);
 }
 
 .loginForm input{
@@ -541,4 +593,21 @@ input:hover {
 .introButton:hover {
   color: black;
   background: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For Mobile: */
+  .loginCover{display:none;}
+  #login{width:100%;
+    height:100%;}
+
+  .loginForm{text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+  .loginForm:nth-child(1){
+    left:30%;
+    transform: translateY(-50%) translateX(-30%);
+  }
 }

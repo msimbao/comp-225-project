@@ -44,14 +44,30 @@
   * 
   *  @brief Function to hide the Login panel and show the sign up panel
   */
+ $(document).ready(function(){
+ $('#login').children().eq(1).fadeOut();
+ })
+
 function showSignUp(){
+  $('#login').children().eq(2).fadeOut();
+  $('#login').children().eq(1).fadeIn();
   loginCover.style.left="50%"
-  loginCover.style.background="#003F88"
+  loginCover.style.color="#f9c74f"
+  // loginCover.style.background="#003F88"
+  $('.loginCover').removeClass("yellowCrossingBackground");
+  $('.loginCover').addClass("blueCrossingBackground");
+
+
 }
 
 function hideSignUp(){
+  $('#login').children().eq(2).fadeIn();
+  $('#login').children().eq(1).fadeOut();
   loginCover.style.left="0%"
-  loginCover.style.background="#f9c74f"
+  loginCover.style.color="#003F88"
+  // loginCover.style.backgroundColor="#f9c74f"
+  $('.loginCover').addClass("yellowCrossingBackground");
+  $('.loginCover').removeClass("blueCrossingBackground");
 }
 
  /**

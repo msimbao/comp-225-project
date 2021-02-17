@@ -43,7 +43,7 @@
   <!-- Main Body -->
   <!-------------------------------------------------------->
   
-  <body>
+  <body class="blueSpottedBackground">
     <!-- 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -55,17 +55,17 @@ NavBar
     <div id="navbar">
       <ul>
         <!--       <h2 style="float:left" id="title">App Title</h2> -->
-        <li class="tablinks" id="submitLogout">
+        <li class="tablinks" id="submitLogout" onclick="showLogin()">
           <a href="#Logout">Logout</a>
         </li>
         <li class="tablinks" onclick="openTab(event, 'select')">
           <a href="#select">Select Teams</a>
+          <li class="tablinks" onclick="openTab(event, 'general')">
+            <a href="#general">General Search</a>
+          </li>
         </li>
         <li class="tablinks" onclick="openTab(event, 'feed')">
           <a href="#feed">Feed</a>
-        </li>
-        <li class="tablinks" onclick="openTab(event, 'general')">
-          <a href="#general">General Search</a>
         </li>
       </ul>
     </div>
@@ -78,9 +78,16 @@ Login Form
 ///////////////////////////////////////////////////////////////////////
 -->
 
-    <div id="login">
-      <div class="loginCover">
-
+    <div id="login" class="whiteSpottedBackground">
+      <div class="loginCover yellowCrossingBackground">
+        <div>
+          <h6>Tympdeja</h6>
+          <h1>Your Favorite Sports News Right At Your Fingertips</h1>
+          <p>Tmpdeja is a super minimalist news platform. We bring latest sports news content for different sports together while letting you focus only on latest articles about the teams you love. We cut through the clutter, remove social media drama, have zero ads and distractions. Sign in to start reading about matters most for you.  </p>
+          <p>
+            <span id="loginCoverArrow" style='font-size:50px;'>&#8595;</span>
+          </p>
+        </div>
       </div>
 
       <div class="loginForm">
@@ -110,6 +117,65 @@ Login Form
 
     </div>
 
+
+  <div id="maincontent">
+
+
+
+        <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+Main Feed Tab
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+
+<div id="feed" class="tabcontent">
+  <div class="card tabDescription">
+    <h2>Your Feed</h2>
+    <p>
+      All the latest articles about the teams you care about right in the palm of your hands.
+    </p>
+  </div>
+    <div>
+    <ul id="newsFeed" class="news">
+       <a href="#feed">
+         <li class="card newsItem">
+           <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
+           <div class="articleWords">
+             <h4>Buccaneers Will Celebrate Super Bowl LV Win on the Water</h4>
+             <p>The Tampa Bay Buccaneers will celebrate their latest Lombardi trophy as only they can with a socially distant boat parade around the bay on Wednesday, February 10. The event will begin starting at 1 p.m. ET....</p>
+             <h6>Carmen Vitali</h6>
+           </div>
+         </li>
+      </a>
+      
+        <a href="#feed">
+         <li class="card newsItem">
+           <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
+           <div class="articleWords">
+             <h4> Blue Jays to report to Spring Training Feb. 18 </h4>
+             <p>The first sign of baseball season is finally here: pitchers and catchers. MLB announced the start dates of workouts for 2021 Spring Training presented by Camping World on Tuesday, with the first pitchers and catchers workouts and first full-squad workouts for every team. Teams will report to Spring Training next....</p>
+             <h6>David Adler</h6>
+           </div>
+         </li>
+      </a>
+      
+               <a href="#feed">
+         <li class="card newsItem">
+           <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
+           <div class="articleWords">
+             <h4>Titans Fan, and Valued Mentor, Brandon Galloway Named NFL Fan of the Year </h4>
+             <p>"When they told me, I was at a loss for words," Galloway said. "It is just an amazing honor, and it puts a positive spotlight on our city and on our fan base, despite everything Nashville has been through...."</p>
+             <h6>Jim Wyatt</h6>
+           </div>
+         </li>
+      </a>
+      </ul>
+  </div>
+</div>
+
+
     <!-- 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -118,7 +184,8 @@ General Search Tab
 ///////////////////////////////////////////////////////////////////////
 -->
 
-  <div id="maincontent">
+
+
     <div id="general" class="tabcontent">
       <div class="card tabDescription">
         <h2>General Search</h2>
@@ -152,58 +219,7 @@ General Search Tab
 
     </div>
 
-    <!-- 
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-Main Feed Tab
-////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
--->
 
-    <div id="feed" class="tabcontent">
-      <div class="card tabDescription">
-        <h2>Your Feed</h2>
-        <p>
-          All the latest articles about the teams you care about right in the palm of your hands.
-        </p>
-      </div>
-        <div>
-        <ul id="newsFeed" class="news">
-           <a href="#feed">
-             <li class="card newsItem">
-               <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
-               <div class="articleWords">
-                 <h4>Buccaneers Will Celebrate Super Bowl LV Win on the Water</h4>
-                 <p>The Tampa Bay Buccaneers will celebrate their latest Lombardi trophy as only they can with a socially distant boat parade around the bay on Wednesday, February 10. The event will begin starting at 1 p.m. ET....</p>
-                 <h6>Carmen Vitali</h6>
-               </div>
-             </li>
-          </a>
-          
-            <a href="#feed">
-             <li class="card newsItem">
-               <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
-               <div class="articleWords">
-                 <h4> Blue Jays to report to Spring Training Feb. 18 </h4>
-                 <p>The first sign of baseball season is finally here: pitchers and catchers. MLB announced the start dates of workouts for 2021 Spring Training presented by Camping World on Tuesday, with the first pitchers and catchers workouts and first full-squad workouts for every team. Teams will report to Spring Training next....</p>
-                 <h6>David Adler</h6>
-               </div>
-             </li>
-          </a>
-          
-                   <a href="#feed">
-             <li class="card newsItem">
-               <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
-               <div class="articleWords">
-                 <h4>Titans Fan, and Valued Mentor, Brandon Galloway Named NFL Fan of the Year </h4>
-                 <p>"When they told me, I was at a loss for words," Galloway said. "It is just an amazing honor, and it puts a positive spotlight on our city and on our fan base, despite everything Nashville has been through...."</p>
-                 <h6>Jim Wyatt</h6>
-               </div>
-             </li>
-          </a>
-          </ul>
-      </div>
-    </div>
 
     <!-- 
 ////////////////////////////////////////////////////////////////////////
@@ -342,8 +358,7 @@ Select Tab
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
   <!--  JQuery -->
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="crossorigin="anonymous"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
