@@ -20,11 +20,14 @@ console.log("hello");
     firebase.initializeApp(config);
 
     //Get elements
-    const txtEmail = document.getElementById("email");
-    const txtPassword = document.getElementById("password");
+    const txtEmail = document.getElementById("loginEmail");
+    const txtPassword = document.getElementById("loginPassword");
+
+    const singupEmail = document.getElementById("signupEmail");
+    const signupPassword = document.getElementById("signupPassword");
+
     const btnLogin = document.getElementById("submitLogin");
-    // TODO: Once the buttons are added, add element IDs to the two lines below
-    const btnSignUp = document.getElementById("submitLogout");
+    const btnSignUp = document.getElementById("submitSignUp");
     const btnLogout = document.getElementById("submitLogout");
 
     //Add login event
@@ -40,8 +43,8 @@ console.log("hello");
 
     //Add signup event
     btnSignUp.addEventListener("click", e => {
-        const email = txtEmail.value;
-        const pass = txtPassword.value;
+        const email = singupEmail.value;
+        const pass = signupPassword.value;
         const auth = firebase.auth();
         if (auth.fetchProvidersForEmail(email).length === 0) {
             //Sign in

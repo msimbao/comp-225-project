@@ -36,7 +36,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Site CSS -->
-    <link rel="stylesheet" href="../public/style.css" />
+    <link rel="stylesheet" href="../public/css/style.css" />
   </head>
 
   <!-------------------------------------------------------->
@@ -79,19 +79,33 @@ Login Form
 -->
 
     <div id="login">
-      <img
-        height="100%"
-        src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpexels-pixabay-257970(2).jpg?v=1612938093260"
-      />
-      <div id="loginForm">
-        <form>
-        <h2 style="font-variant: small-caps;">Team News</h2>
-        <input id="email" type="text" placeholder="Email Address..." />
-        <input id="password" type="password" placeholder="Password..." />
-        <button id="submitLogin" class="button" type="submit">LOGIN</button>
-        </form>
-        <p>Or <a>create an account</a></p>
+      <div class="loginCover">
+
       </div>
+
+      <div class="loginForm">
+        <form>
+        <h2 style="font-variant: small-caps;">Create Account</h2>
+        <p>Register With Your Email Account</p>
+        <input id="signupEmail" type="text" placeholder="Email Address..." />
+        <input id="signupPassword" type="password" placeholder="Password..." />
+        <button id="submitSignUp" class="button introButton" type="submit">SIGN UP</button>
+        </form>
+        <p>Or <u class="pointerItem" onclick="hideSignUp()">Login Into Your Account</u></p>
+      </div>
+
+      <div class="loginForm">
+        <form>
+        <h2 style="font-variant: small-caps;">Sign In</h2>
+        <p>Sign In With Your Email Account</p>
+        <input id="loginEmail" type="text" placeholder="Email Address..." />
+        <input id="loginPassword" type="password" placeholder="Password..." />
+        <button id="submitLogin" class="button introButton" type="submit">LOGIN</button>
+        </form>
+        <p>Or <u class="pointerItem" onclick="showSignUp()">Create an Account</u></p>
+      </div>
+
+
     </div>
 
     <!-- 
@@ -112,7 +126,7 @@ General Search Tab
           news and trending articles here.
         </p>
 
-        <form>
+        <form id="generalSearchForm">
           <input
             id="searchBar"
             type="text"
@@ -325,13 +339,13 @@ Select Tab
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
 
   <!--  Firebase Login Script -->
-  <script src="../public/app.js"></script>
+  <script src="../public/js/app.js"></script>
 
   <!--  Main Script for Grabbing Data From Server -->
-  <script src="../public/client.js"></script>
+  <script src="../public/js/client.js"></script>
     
   <!--  Main Script for Grabbing Data From Server -->
-  <script src="../public/client.js"></script>
+  <script src="../public/js/client.js"></script>
 
 
   </body>

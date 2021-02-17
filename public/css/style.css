@@ -19,11 +19,11 @@ body {
   padding: 0;
   color: #003153;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   background-color: #4180b4;
   background-image: radial-gradient(#003153 1px, #4180b4 1px);
   background-size: 20px 20px;
-  transistion: 0.5s;
+  transition: 0.5s;
 }
 
 a {
@@ -33,6 +33,10 @@ a {
 
 #maincontent {
   display: none;
+}
+
+.pointerItem{
+  cursor:pointer;
 }
 
 /*//////////////////////////////////////////////////////////////
@@ -188,7 +192,7 @@ a {
 
 input {
   background: none;
-  width: 60%;
+  width: 80%;
   font-size: 16px;
   padding: 12px 20px 12px 20px;
   border: 2px solid black;
@@ -465,51 +469,78 @@ input:hover {
 
 #login {
   position: absolute;
+  top:2.5%;
   z-index: 1000;
-  bottom: 0%;
-  height: 100%;
-  width: 100%;
+  height: 95%;
+  width: 97.5%;
   background: #fff;
   background-image: radial-gradient(#4180b4 1px, #fff 1px);
   background-size: 40px 40px;
-  padding: 5px;
   transition: 0.7s;
+
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  overflow:hidden;
 }
 
 #login h2 {
   margin-left: 10px;
 }
 
-#login img {
+.loginCover {
   position: absolute;
-  left: -200px;
+  width:50%;
+  height:100%;
+  z-index:10;
+  left: 0;
   top: 0;
-  -webkit-filter: grayscale(100%) contrast(200%);
-  filter: grayscale(100%) contrast(200%);
-  opacity: 1;
+  transition:0.3s;
+  background:#f9c74f;
 }
 
-#loginForm {
+
+.loginForm {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 300px;
-  right: 5%;
-  background:#f9c74f;
-  border-left:20px solid black;
+  right: 10%;
   padding:30px;
+  text-align:center;
 }
 
-#submitLogin {
-  margin-left:5px;
-  width: 75%;
+.loginForm:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  left: 10%;
+  padding:30px;
+  text-align:center;
+}
+
+.loginForm input{
+  background:#eee;
+  border:none;
+  margin-bottom:10px;
+}
+
+.loginForm input:hover{
+  background:#bbb;
+}
+
+.introButton {
+  width:60%;
   background: #000;
   color: white;
   font-size: 16px;
   border-radius: 0px;
 }
 
-#submitLogin:hover {
+.introButton:hover {
   color: black;
   background: #fff;
 }

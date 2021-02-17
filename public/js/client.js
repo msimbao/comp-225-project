@@ -18,6 +18,7 @@
 
 // Variables For Controlling Login Panel
  var login = document.getElementById("login")
+ var loginCover = document.getElementsByClassName("loginCover")[0]
  var maincontent = document.getElementById("maincontent")
    
 // Variables For Controlling Team Selection
@@ -32,6 +33,21 @@
   * Animate UI Functions
   * ///////////////////////////////////////////////////////////
   */
+
+/**
+  *  @name showSignUp
+  * 
+  *  @brief Function to hide the Login panel and show the sign up panel
+  */
+function showSignUp(){
+  loginCover.style.left="50%"
+  loginCover.style.background="#003F88"
+}
+
+function hideSignUp(){
+  loginCover.style.left="0%"
+  loginCover.style.background="#f9c74f"
+}
 
  /**
   *  @name hideLogin
@@ -129,7 +145,7 @@ function getNews(){
  * 
  *  @brief get news articles for the search page when queried and submit button pressed
  */
-$('form').submit(function(event) {
+$('#generalSearchForm').submit(function(event) {
 $("ul#news").empty();
 event.preventDefault();
 newsItem = $('#searchBar').val();
