@@ -16,6 +16,10 @@
   * ///////////////////////////////////////////////////////////
   */
 
+// Variables For Controlling Menu
+var navbar = document.getElementById('navbar')
+var menuButton = document.getElementById('menuButton')
+
 // Variables For Controlling Login Panel
  var login = document.getElementById("login")
  var loginCover = document.getElementsByClassName("loginCover")[0]
@@ -136,6 +140,28 @@ function showConferences(){
 
 
  /**
+  *  @name showMenu
+  * 
+  *  @brief Function to show the website Menu
+  */
+
+ var state=0;
+ function toggleMenu(){
+  if (state == 0){
+    menuButton.style.color="#fff"
+    menuButton.style.transform="rotate(-45deg)"
+    navbar.style.bottom="0%"
+    state = 1;
+  }
+  else{
+    menuButton.style.color="#000"
+    menuButton.style.transform="rotate(0deg)"
+    navbar.style.bottom="100%"
+    state = 0;
+  }
+}
+
+ /**
   * ///////////////////////////////////////////////////////////
   * ///////////////////////////////////////////////////////////
   * Functions to Access Server
@@ -152,7 +178,7 @@ function getNews(){
   $.get('http://127.0.0.1:5000/news', function(news) {
     // console.log(news)
   news.forEach(function(newsItem) {
-    console.log(newsItem['title'])
+    // console.log(newsItem['title'])
   // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
     $('<a href="'+newsItem.url+'"><li class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></li></a>').appendTo('ul#news');
 });
@@ -161,6 +187,37 @@ function getNews(){
 
 // Call get News on App start to test the response
 getNews()
+
+/**
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+* Filter Search
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+*/
+
+function filterSearch() {
+  console.log("Searching");
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("filterSearch");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("newsFeed");
+  tr = table.getElementsByClassName("articleWords");
+
+ for (i = 0; i < tr.length; i++) {
+  td = tr[i];
+    if (td) {
+      te = td.getElementsByTagName("h4")[0];
+      txtValue = td.textContent || td.innerText;
+      console.log(txtValue);
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 
 /**
   * ///////////////////////////////////////////////////////////
@@ -255,6 +312,29 @@ var app = new Vue({
         $('#searchBar').val('');
         $('#searchBar').focus();
         })
+    },
+        filterSearch: function () {
+          console.log("Searching");
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("filterSearch");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("newsFeed");
+          tr = table.getElementsByClassName("articleWords");
+        
+         for (i = 0; i < tr.length; i++) {
+          td = tr[i];
+            if (td) {
+              te = td.getElementsByTagName("h4")[0];
+              txtValue = td.textContent || td.innerText;
+              console.log(txtValue);
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].parentNode.parentNode.style.display = "";
+              } else {
+                tr[i].parentNode.parentNode.style.display = "none";
+              }
+            }       
+          }
     }
   }
 })
+

@@ -44,31 +44,6 @@
   <!-------------------------------------------------------->
   
   <body class="blueSpottedBackground">
-    <!-- 
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-NavBar
-////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
--->
-
-    <div id="navbar">
-      <ul>
-        <!--       <h2 style="float:left" id="title">App Title</h2> -->
-        <li class="tablinks" id="submitLogout" onclick="showLogin()">
-          <a href="#Logout">Logout</a>
-        </li>
-        <li class="tablinks" onclick="openTab(event, 'select')">
-          <a href="#select">Select Teams</a>
-          <li class="tablinks" onclick="openTab(event, 'general')">
-            <a href="#general">General Search</a>
-          </li>
-        </li>
-        <li class="tablinks" onclick="openTab(event, 'feed')">
-          <a href="#feed">Feed</a>
-        </li>
-      </ul>
-    </div>
 
     <!-- 
 ////////////////////////////////////////////////////////////////////////
@@ -117,10 +92,10 @@ Login Form
 
     </div>
 
+    <!-- Begging of Main Content -->
 
   <div id="maincontent">
-
-
+    <div id="vue">
 
         <!-- 
 ////////////////////////////////////////////////////////////////////////
@@ -136,39 +111,49 @@ Main Feed Tab
     <p>
       All the latest articles about the teams you care about right in the palm of your hands.
     </p>
+
+    <form v-on:keyup="filterSearch">
+      <input
+        id="filterSearch"
+        type="text"
+        maxlength="100"
+        placeholder="Filter Through Your Feed..."
+      />
+    </form>
+
   </div>
     <div>
     <ul id="newsFeed" class="news">
        <a href="#feed">
          <li class="card newsItem">
-           <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
+           <img class="storyImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
            <div class="articleWords">
              <h4>Buccaneers Will Celebrate Super Bowl LV Win on the Water</h4>
              <p>The Tampa Bay Buccaneers will celebrate their latest Lombardi trophy as only they can with a socially distant boat parade around the bay on Wednesday, February 10. The event will begin starting at 1 p.m. ET....</p>
-             <h6>Carmen Vitali</h6>
+             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
            </div>
          </li>
       </a>
       
         <a href="#feed">
          <li class="card newsItem">
-           <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
+           <img class="storyImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
            <div class="articleWords">
              <h4> Blue Jays to report to Spring Training Feb. 18 </h4>
              <p>The first sign of baseball season is finally here: pitchers and catchers. MLB announced the start dates of workouts for 2021 Spring Training presented by Camping World on Tuesday, with the first pitchers and catchers workouts and first full-squad workouts for every team. Teams will report to Spring Training next....</p>
-             <h6>David Adler</h6>
-           </div>
+             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
+            </div>
          </li>
       </a>
       
                <a href="#feed">
          <li class="card newsItem">
-           <img width="200px" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
+           <img class="storyImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
            <div class="articleWords">
              <h4>Titans Fan, and Valued Mentor, Brandon Galloway Named NFL Fan of the Year </h4>
              <p>"When they told me, I was at a loss for words," Galloway said. "It is just an amazing honor, and it puts a positive spotlight on our city and on our fan base, despite everything Nashville has been through...."</p>
-             <h6>Jim Wyatt</h6>
-           </div>
+             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
+            </div>
          </li>
       </a>
       </ul>
@@ -201,10 +186,7 @@ General Search Tab
             maxlength="100"
             placeholder="Search For Anything Sports Related..."
           />
-          <button type="submit" class="button" style="-webkit-transform: rotate(-45deg);
-               -moz-transform: rotate(-45deg); 
-                 -o-transform: rotate(-45deg);
-                    transform: rotate(-45deg);">&#9906</button>
+
         </form>
       </div>
 
@@ -347,7 +329,37 @@ Select Tab
 
     <div id="logout" class="tabcontent"></div>
   </div>
+  </div>
   
+      <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+NavBar
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+
+<div id="navbar" onclick="toggleMenu()">
+  <ul>
+    <li class="tablinks" onclick="openTab(event, 'feed')">
+      <a href="#feed">Feed</a>
+    </li>
+    <li class="tablinks" onclick="openTab(event, 'select')">
+      <a href="#select"> Teams</a>
+    </li>
+      <li class="tablinks" onclick="openTab(event, 'general')">
+        <a href="#general">Search</a>
+      </li>
+    
+    <li class="tablinks" id="submitLogout" onclick="showLogin()">
+      <a href="#Logout">Logout</a>
+    </li>
+  </ul>
+</div>
+
+<p id="menuButton" onclick="toggleMenu()">
+  &#10010
+</p>
 
   <!-------------------------------------------------------->
   <!-- Site Scripts-->
