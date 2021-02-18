@@ -13,10 +13,10 @@ from scraper import *
 def _set_nba_data(url):
     tables = get_tables(url)
     list = []
-    for conference in tables:
-        for idx in range(len(conference) - 1):
-            team_dict = {"team": conference[0][idx + 1],
-                         "record": conference[1][idx + 1] + "-" + conference[2][idx + 1]}
+    for i in tables:
+        for idx in range(len(i) - 1):
+            team_dict = {"team": i[0][idx + 1],
+                         "record": i[1][idx + 1] + "-" + i[2][idx + 1]}
             list.append(team_dict)
 
     dict = {"Eastern Conference": list[0:15],

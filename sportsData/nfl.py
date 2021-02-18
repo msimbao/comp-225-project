@@ -11,6 +11,7 @@ from scraper import *
 
 
 def _set_nfl_data(url):
+    """"""
     afc_table = get_tables(url)[0]
     nfc_table = get_tables(url)[1]
 

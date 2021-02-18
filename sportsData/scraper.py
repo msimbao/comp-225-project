@@ -21,7 +21,7 @@ def get_tables(url):
             soup (BeautifulSoup): BeautifulSoup object of hockey reference standings page for 2021
 
         Return:
-            dataset (DataFrame): data frame of 2021 nhl team standings"""
+            dataset (DataFrame): data frame of 2021 nhl team stats"""
     soup = _get_soup(url)
     datasets = []
     tables = soup.find_all('table')

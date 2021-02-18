@@ -34,4 +34,3 @@ def _set_divisions(year):
 def get_mlb_data(year=2020):
     return _set_divisions(year)
 
-print(get_mlb_data())
