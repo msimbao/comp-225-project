@@ -1,11 +1,4 @@
-import newsGetter
-from GoogleNews import GoogleNews
-from PIL import Image
-import base64
-from newspaper import Article
-import pandas as pd
 from bingsearch import BingSearch
-from newspaper import article
 
 
 query = "pittsburgh pirates"
