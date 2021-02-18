@@ -16,6 +16,10 @@
   * ///////////////////////////////////////////////////////////
   */
 
+// Variables For Controlling Menu
+var navbar = document.getElementById('navbar')
+var menuButton = document.getElementById('menuButton')
+
 // Variables For Controlling Login Panel
  var login = document.getElementById("login")
  var loginCover = document.getElementsByClassName("loginCover")[0]
@@ -26,6 +30,11 @@
  var leagues = document.getElementById("leagues")
  var conferences = document.getElementById("conferences")
  var selectDescription = document.getElementById("selectDescription")
+
+ // Variables For Tab Controller
+ var i, tabcontent, tablinks;
+ tabcontent = document.getElementsByClassName("tabcontent");
+ tablinks = document.getElementsByClassName("tablinks");
 
 
   /**
@@ -39,14 +48,30 @@
   * 
   *  @brief Function to hide the Login panel and show the sign up panel
   */
+ $(document).ready(function(){
+ $('#login').children().eq(1).fadeOut();
+ })
+
 function showSignUp(){
+  $('#login').children().eq(2).fadeOut();
+  $('#login').children().eq(1).fadeIn();
   loginCover.style.left="50%"
-  loginCover.style.background="#003F88"
+  loginCover.style.color="#f9c74f"
+  // loginCover.style.background="#003F88"
+  $('.loginCover').removeClass("yellowCrossingBackground");
+  $('.loginCover').addClass("blueCrossingBackground");
+
+
 }
 
 function hideSignUp(){
+  $('#login').children().eq(2).fadeIn();
+  $('#login').children().eq(1).fadeOut();
   loginCover.style.left="0%"
-  loginCover.style.background="#f9c74f"
+  loginCover.style.color="#003F88"
+  // loginCover.style.backgroundColor="#f9c74f"
+  $('.loginCover').addClass("yellowCrossingBackground");
+  $('.loginCover').removeClass("blueCrossingBackground");
 }
 
  /**
@@ -115,6 +140,28 @@ function showConferences(){
 
 
  /**
+  *  @name showMenu
+  * 
+  *  @brief Function to show the website Menu
+  */
+
+ var state=0;
+ function toggleMenu(){
+  if (state == 0){
+    menuButton.style.color="#fff"
+    menuButton.style.transform="rotate(-45deg)"
+    navbar.style.bottom="0%"
+    state = 1;
+  }
+  else{
+    menuButton.style.color="#000"
+    menuButton.style.transform="rotate(0deg)"
+    navbar.style.bottom="100%"
+    state = 0;
+  }
+}
+
+ /**
   * ///////////////////////////////////////////////////////////
   * ///////////////////////////////////////////////////////////
   * Functions to Access Server
@@ -131,7 +178,7 @@ function getNews(){
   $.get('http://127.0.0.1:5000/news', function(news) {
     // console.log(news)
   news.forEach(function(newsItem) {
-    console.log(newsItem['title'])
+    // console.log(newsItem['title'])
   // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
     $('<a href="'+newsItem.url+'"><li class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></li></a>').appendTo('ul#news');
 });
@@ -139,28 +186,155 @@ function getNews(){
 }
 
 // Call get News on App start to test the response
-// getNews()
+getNews()
 
 /**
- *  @name getGeneralNews
- * 
- *  @brief get news articles for the search page when queried and submit button pressed
- */
-$('#generalSearchForm').submit(function(event) {
-$("ul#news").empty();
-event.preventDefault();
-newsItem = $('#searchBar').val();
-console.log(newsItem);
-$.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function(news) {
-  
-  news.forEach(function(newsItem) {
-    console.log(newsItem['title'])
-    $('<a href="'+newsItem.url+'"><li class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></li></a>').appendTo('ul#news');
-  });
-  //"POST /newsItem?newsItem=Hello HTTP/1.1" 
-  // $('<li></li>').text(newsItem).appendTo('ul#news');
-  $('#searchBar').val('');
-  $('#searchBar').focus();
-});
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+* Filter Search
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+*/
 
-});
+function filterSearch() {
+  console.log("Searching");
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("filterSearch");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("newsFeed");
+  tr = table.getElementsByClassName("articleWords");
+
+ for (i = 0; i < tr.length; i++) {
+  td = tr[i];
+    if (td) {
+      te = td.getElementsByTagName("h4")[0];
+      txtValue = td.textContent || td.innerText;
+      console.log(txtValue);
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+/**
+  * ///////////////////////////////////////////////////////////
+  * Functions for Tabs
+  * ///////////////////////////////////////////////////////////
+  */
+
+  /**
+   * @name openTab
+   * @@description function to open one tab and close another based on button presses
+   * @param {event} evt on click event handler
+   * @param {string} tabName id string of the tab to be turned on
+   */
+  function openTab(evt, tabName) {
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+  
+   /**
+    * ///////////////////////////////////////////////////////////
+    * Set Starting Conditions
+    * ///////////////////////////////////////////////////////////
+    */
+  
+  tabcontent[0].style.display = "block";
+  tablinks[3].className += " active";
+
+ /**
+  * ///////////////////////////////////////////////////////////
+  * ///////////////////////////////////////////////////////////
+  * Vue JS Stuff
+  * ///////////////////////////////////////////////////////////
+  * ///////////////////////////////////////////////////////////
+  */
+
+
+  /**
+  * ///////////////////////////////////////////////////////////
+  * ///////////////////////////////////////////////////////////
+  * Set Vue Components
+  * ///////////////////////////////////////////////////////////
+  * ///////////////////////////////////////////////////////////
+  */
+
+Vue.component('news-item', {
+  props: ['news'],
+  template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p></div></li></a>'
+})
+
+//<a href={{news.url}}><li class="card newsItem"><img src={{news.image}}><div class="articleWords"><h4>'{{news.title}}</h4><p>'{{news.description}}...'</p></div></li></a>
+
+/**
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+* Begin Vue App and Define UI Methods
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+*/
+
+var app = new Vue({
+  el: '#maincontent',
+  data: {
+    generalNews:[]
+  },
+  methods: {
+      talk: function () {
+          console.log("Request Sent")
+      },
+      toggleSignUp: function (state) {
+        if(state == "showSignup"){
+          loginCover.style.left="50%"
+          loginCover.style.background="#003F88"
+        }
+        if(state == "showSignin"){
+          loginCover.style.left="0%"
+          loginCover.style.background="#f9c74f"
+        }
+      },
+      generalSearch: function (event) {
+        $("ul#news").empty();
+        event.preventDefault();
+        newsItem = $('#searchBar').val();
+        $.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function(news) {
+        app.generalNews = news;
+        $('#searchBar').val('');
+        $('#searchBar').focus();
+        })
+    },
+        filterSearch: function () {
+          console.log("Searching");
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("filterSearch");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("newsFeed");
+          tr = table.getElementsByClassName("articleWords");
+        
+         for (i = 0; i < tr.length; i++) {
+          td = tr[i];
+            if (td) {
+              te = td.getElementsByTagName("h4")[0];
+              txtValue = td.textContent || td.innerText;
+              console.log(txtValue);
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].parentNode.parentNode.style.display = "";
+              } else {
+                tr[i].parentNode.parentNode.style.display = "none";
+              }
+            }       
+          }
+    }
+  }
+})
+
