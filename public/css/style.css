@@ -192,11 +192,12 @@ padding: 20px 50px 20px 50px;
   z-index:500px;
   transition:0.3s;
   background:#003F88;
+  
 }
 
 #navbar ul {
   position:absolute;
-  height: 100px;
+  height: 200px;
   list-style-type: none;
   margin: 0;
   padding: 0px 30px 30px 30px;
@@ -205,13 +206,14 @@ padding: 20px 50px 20px 50px;
   left: 50%;
   transform: translateX(-50%);
   font-size:700%;
+  text-align: left;
+  border-left:30px solid #00296B;
   /* font-variant: small-caps; */
 }
 
 #navbar li a {
   display: block;
   color: #00296B;
-  text-align: center;
   margin: 5px;
   text-decoration: none;
   transition: 0.1s;
@@ -234,6 +236,13 @@ padding: 20px 50px 20px 50px;
   cursor:pointer;
   color:#000;
   transition:0.3s;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For Mobile: */
+  #navbar ul {
+    font-size:150%;
+  }
 }
 
 /*//////////////////////////////////////////////////////////////
@@ -327,11 +336,6 @@ input:hover {
   float:right;
 }
 
-#newsFeed .newsItem:hover {
-  background: #003153;
-  color: white;
-  border-left: 30px solid #003153;
-}
 
 /*//////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -629,5 +633,9 @@ input:hover {
   .loginForm:nth-child(1){
     left:30%;
     transform: translateY(-50%) translateX(-30%);
+  }
+  .loginForm:nth-child(2){
+    left:25%;
+    transform: translateY(-50%) translateX(-20%);
   }
 }
