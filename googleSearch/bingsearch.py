@@ -4,8 +4,8 @@ import requests
 
 class BingSearch:
     def __init__(self, query):
-        self.articleList = self.__setUp(query)
-        self.__filteredList = self.__filterArticles(self.articleList)
+        __articleList = self.__setUp(query)
+        self.__filteredList = self.__filterArticles(__articleList)
 
     def __setUp(self, query):
         subscription_key = "a18adff624cb4da7a6c9c52a2fc2f28a"
@@ -28,6 +28,7 @@ class BingSearch:
                 newDict["url"] = i["url"]
                 newDict["image"] = i["image"]["thumbnail"]["contentUrl"]
                 newDict["description"] = i["description"]
+                newDict["author"] = i["provider"][0]["name"]
                 list.append(newDict)
             except:
                 pass
@@ -54,3 +55,14 @@ class BingSearch:
 
     def getDescription(self):
         return self.__getObject("description")
+
+    def getAuthor(self):
+        return self.__getObject("author")
+
+
+if __name__ == '__main__':
+    search = "Pittsburgh Penguins"
+    bing_search = BingSearch(search)
+    list = bing_search.getArticleList()
+    print(bing_search.getAuthor())
+
