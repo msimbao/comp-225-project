@@ -95,7 +95,6 @@ a {
   background-color: #fff;
   padding: 20px 50px 20px 50px;
   border:1px solid black;
-  /* border-left: 20px solid black; */
   /* transform: translateX(-20px); */
 }
 
@@ -163,13 +162,14 @@ a {
   font-weight:bold;
   padding:20px;
   border-radius:5px;
-  border:1px solid black;
 }
 
 
 #navbar li a:hover {
   color:#000;
+  border:1px solid black;
   border-right:20px solid black;
+  border-left:20px solid black;
 }
 
 #navbar ul .active a {
@@ -298,8 +298,7 @@ button:hover{
   background: #fff;
   margin-bottom: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-
-  /* border-right: 20px solid black; */
+  transition:0.1s;
   overflow: hidden;
   transform: translateX(-20px);
 }
@@ -307,7 +306,7 @@ button:hover{
 .newsItem:hover {
   background: #003153;
   color: white;
-  border-right: 30px solid #003153;
+  width:81%;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
