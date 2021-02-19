@@ -75,8 +75,9 @@ var app = new Vue({
         $('#searchBar').focus();
         })
     },
-        filterSearch: function () {
+        filterSearch: function (event) {
           // console.log("Searching");
+          event.preventDefault();
           var input, filter, table, tr, td, i, txtValue;
           input = document.getElementById("filterSearch");
           filter = input.value.toUpperCase();
