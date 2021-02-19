@@ -56,6 +56,7 @@ Test_title_1 = "Broncos release veteran cornerback A.J. Bouye after one season "
 Test_description_1 = "Bouye played in a mere seven games with the Broncos in 2020 while dealing with a shoulder issue before he was suspended for the remaining four contests (plus the first two of 2021) due to a violation of the league's policy on performance-enhancing drugs. He finished with 23 tackles and six passes defensed...."
 Test_image_1 = "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpexels-david-morris-2190159.jpg?v=1612938092969"
 
+
 Test_title_2 = "Steph Still Making History "
 Test_description_2 = "In 2015-16, Stephen Curry posted the best offensive box plus/minus in NBA history. He was so dominant that he was able to rest for the entirety of the fourth quarter in 19 of his 79 games, and the Golden State Warriors won a league-record 73 regular-season games...."
 Test_image_2 = "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpexels-alexandro-david-2868705.jpg?v=1612938092593"

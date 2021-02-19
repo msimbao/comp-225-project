@@ -17,7 +17,7 @@
   
   <head>
     <!-- Site Title -->
-    <title>Comp 225 Project</title>
+    <title>Tympdeja</title>
 
     <!-- Site Description -->
     <meta name="description" content="A cool thing made " />
@@ -35,17 +35,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Page Pilling CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" />
+  
     <!-- Site CSS -->
     <link rel="stylesheet" href="../public/css/style.css" />
+
   </head>
 
   <!-------------------------------------------------------->
   <!-- Main Body -->
   <!-------------------------------------------------------->
   
-  <body class="blueSpottedBackground">
+  <body >
 
-    <!-- 
+    <div id="load">
+      <div class="loader"></div>
+    </div>
+<!-- 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 Login Form
@@ -53,8 +60,8 @@ Login Form
 ///////////////////////////////////////////////////////////////////////
 -->
 
-    <div id="login" class="whiteSpottedBackground">
-      <div class="loginCover yellowCrossingBackground">
+    <div id="login">
+      <div class="loginCover">
         <div>
           <h6>Tympdeja</h6>
           <h1>Your Favorite Sports News Right At Your Fingertips</h1>
@@ -78,7 +85,7 @@ Login Form
 
       <div class="loginForm">
         <form>
-        <h2 style="font-variant: small-caps;">Sign In</h2>
+        <h2 style="font-variant: small-caps;">Sign In To Tympdeja</h2>
         <p>Sign In With Your Email Account</p>
         <input id="loginEmail" type="text" placeholder="Email Address..." />
         <input id="loginPassword" type="password" placeholder="Password..." />
@@ -358,7 +365,7 @@ NavBar
 </div>
 
 <p id="menuButton" onclick="toggleMenu()">
-  &#9636
+  &#10095
 </p>
 
   <!-------------------------------------------------------->
@@ -371,6 +378,10 @@ NavBar
 
   <!--  JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!--  Pagepilling Javascript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>

@@ -11,6 +11,18 @@
 *
 */
 
+/*//////////////////////////////////////////////////////////////
+
+   _____ _ _          _____  _____ _____ 
+  / ____(_) |        / ____|/ ____/ ____|
+ | (___  _| |_ ___  | |    | (___| (___  
+  \___ \| | __/ _ \ | |     \___ \\___ \ 
+  ____) | | ||  __/ | |____ ____) |___) |
+ |_____/|_|\__\___|  \_____|_____/_____/ 
+                                         
+                                         
+//////////////////////////////////////////////////////////////*/
+
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 body {
@@ -20,10 +32,11 @@ body {
   margin:0;
   padding:0;
   color: #003153;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow:hidden;
   transition: 0.5s;
   padding-top:5%;
+  background:#f3f3f3;
+  
   
 }
 
@@ -42,11 +55,7 @@ a {
   cursor:pointer;
 }
 
-/*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# General Site Palette and Patterns
-////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////*/
+
 
 #colorPalette {
   color: #00296B;
@@ -57,56 +66,24 @@ a {
   color: #333;
 }
 
-.yellowCrossingBackground{
-  background-color:#f9c74f;
-  background:
-  radial-gradient(black 0.1px, transparent 0.1px),
-  radial-gradient(black 0.1px, transparent 0.1px),
-  linear-gradient(#f9c74f 4px, transparent 0),
-  linear-gradient(45deg, transparent 74px, transparent 75px, #f18701 75px, #f18701 76px, transparent 77px, transparent 109px),
-  linear-gradient(-45deg, transparent 75px, transparent 76px, #f18701 76px, #f18701 77px, transparent 78px, transparent 109px),
-  #f9c74f;
-  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
-  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
-}
-
-.blueCrossingBackground{
-  background-color:#003F88;
-  background:
-  radial-gradient(black 0.1px, transparent 0.1px),
-  radial-gradient(black 0.1px, transparent 0.1px),
-  linear-gradient(#003F88 4px, transparent 0),
-  linear-gradient(45deg, transparent 74px, transparent 75px, #4180b4 75px, #4180b4 76px, transparent 77px, transparent 109px),
-  linear-gradient(-45deg, transparent 75px, transparent 76px, #4180b4 76px, #4180b4 77px, transparent 78px, transparent 109px),
-  #003F88;
-  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
-  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
-}
-
-.whiteSpottedBackground{
-  background: #fff;
-  background-image: radial-gradient(#4180b4 1px, #fff 1px);
-  background-size: 40px 40px;
-}
-
-.blueSpottedBackground{
-  background-color: #4180b4;
-  background-image: radial-gradient(#003153 1px, #4180b4 1px);
-  background-size: 20px 20px;
-}
 
 
 
 /*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# General Card Styling
-////////////////////////////////////////////////////////////////
+
+   _____              _ 
+  / ____|            | |
+ | |     __ _ _ __ __| |
+ | |    / _` | '__/ _` |
+ | |___| (_| | | | (_| |
+  \_____\__,_|_|  \__,_|
+                                             
+
 //////////////////////////////////////////////////////////////*/
 
 .card {
   border-radius: 0px;
   transition: 0.1s;
-  width: 40%;
 }
 
 .card:not(.tabDescription) {
@@ -123,42 +100,37 @@ a {
 }
 
 /*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# Other Repeating Large Element Styling
-////////////////////////////////////////////////////////////////
+   _____           _   _                  
+  / ____|         | | (_)                 
+ | (___   ___  ___| |_ _  ___  _ __  ___  
+  \___ \ / _ \/ __| __| |/ _ \| '_ \/ __| 
+  ____) |  __/ (__| |_| | (_) | | | \__ \ 
+ |_____/ \___|\___|\__|_|\___/|_| |_|___/ 
+                                                                                 
+
 //////////////////////////////////////////////////////////////*/
 
 .tabDescription {
+  color:#1d3557;
   position: relative;
   margin: auto;
-  width: 900px;
-  background-color: #f9c74f;
-padding: 20px 50px 20px 50px;
+  width: 70%;
+  background-color: #fff;
+  padding: 20px 50px 20px 50px;
   border-left: 20px solid black;
-
+  /* transform: translateX(-20px); */
 }
 
 .tabcontent {
   position: relative;
   display: none;
   width: 100%;
+  height: 100%;
+  overflow-x:hidden;
+  overflow-y:scroll;
 }
 
-.button {
-  background-color: #f9c74f;
-  border: none;
-  color: black;
-  padding: 12px 10px 12px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 28px;
-  margin: 4px 2px;
-  margin-left:5px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.1s;
-}
+
 
 
 #title {
@@ -178,9 +150,18 @@ padding: 20px 50px 20px 50px;
 }
 
 /*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# Navigation Styling
-////////////////////////////////////////////////////////////////
+# Mobile Adjustments
+//////////////////////////////////////////////////////////////*/
+
+/*//////////////////////////////////////////////////////////////
+  __  __                  
+ |  \/  |                 
+ | \  / | ___ _ __  _   _ 
+ | |\/| |/ _ \ '_ \| | | |
+ | |  | |  __/ | | | |_| |
+ |_|  |_|\___|_| |_|\__,_|
+                          
+                          
 //////////////////////////////////////////////////////////////*/
 
 #navbar{
@@ -192,7 +173,7 @@ padding: 20px 50px 20px 50px;
   z-index:500px;
   transition:0.3s;
   background:#003F88;
-  
+  opacity:0.9;
 }
 
 #navbar ul {
@@ -205,18 +186,18 @@ padding: 20px 50px 20px 50px;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  font-size:700%;
-  text-align: left;
-  border-left:30px solid #00296B;
-  /* font-variant: small-caps; */
+  font-size:200%;
+  text-align: center;
+  opacity:1;
+  font-variant: small-caps;
 }
 
 #navbar li a {
   display: block;
-  color: #00296B;
-  margin: 5px;
+  color: #000;
+  margin: 5%;
   text-decoration: none;
-  transition: 0.1s;
+  transition: 0.2s;
 }
 
 
@@ -230,25 +211,38 @@ padding: 20px 50px 20px 50px;
 
 #menuButton{
   position:absolute;
-  top:10%;
-  right:15%;
+  top:5%;
+  right:5%;
   font-size: 300%;
   cursor:pointer;
   color:#000;
   transition:0.3s;
 }
 
+/*//////////////////////////////////////////////////////////////
+# Mobile Adjustments
+//////////////////////////////////////////////////////////////*/
+
 @media only screen and (max-width: 768px) {
   /* For Mobile: */
   #navbar ul {
     font-size:150%;
   }
+
+  #menuButton{
+    top:.1%;
+  }
 }
 
 /*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# General Search Tab Styling
-////////////////////////////////////////////////////////////////
+  ______                       
+ |  ____|                      
+ | |__ ___  _ __ _ __ ___  ___ 
+ |  __/ _ \| '__| '_ ` _ \/ __|
+ | | | (_) | |  | | | | | \__ \
+ |_|  \___/|_|  |_| |_| |_|___/
+                               
+                               
 //////////////////////////////////////////////////////////////*/
 
 input {
@@ -256,10 +250,10 @@ input {
   width: 80%;
   font-size: 16px;
   padding: 12px 20px 12px 20px;
-  border: 2px solid black;
+  border: 2px solid #777;
+  border-radius:5px;
   margin: 5px;
   position: relative;
-  border-radius: 0px;
   transition: 0.1s;
 }
 
@@ -269,10 +263,40 @@ input:hover {
   border: 2px solid #eee;
 }
 
+button {
+  background-color: #00509D;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 10px 12px 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.1s;
+}
+
+button:hover{
+  background-color: #333;
+}
+
+
+/*//////////////////////////////////////////////////////////////
+
+  _   _                   
+ | \ | |                  
+ |  \| | _____      _____ 
+ | . ` |/ _ \ \ /\ / / __|
+ | |\  |  __/\ V  V /\__ \
+ |_| \_|\___| \_/\_/ |___/
+                          
+                          
+//////////////////////////////////////////////////////////////*/
+
+
+
 .news {
   position: relative;
   margin: auto;
-  width: 80%;
   list-style-type: none;
   margin-top: 5px;
 }
@@ -280,55 +304,30 @@ input:hover {
 .newsItem {
   position: relative;
   margin: auto;
-  padding-bottom: 0px;
-  width: 1000px;
+  width:80%;
   height: 250px;
+  border-radius:10px;
   background: #fff;
   margin-bottom: 5px;
   border-right: 20px solid black;
-  overflow-y: hidden;
+  overflow: hidden;
   transform: translateX(-20px);
-  background-image: radial-gradient(#4180b4 1px, #fff 1px);
-  background-size: 40px 40px;
 }
 
 .newsItem:hover {
   background: #003153;
   color: white;
   border-right: 30px solid #003153;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .newsItem img:not(.teamImage) {
-  /*   border-radius:3px; */
   width: 210px;
   margin: 0px;
   padding: 0px;
-  -webkit-filter: grayscale(100%) contrast(100%);
-  filter: grayscale(100%) contrast(100%);
+
 }
 
-.newsItem:hover img{
-  -webkit-filter: none;
-  filter: none;
-}
-
-.articleWords {
-  position: absolute;
-  padding: 20px 50px 10px 50px;
-  top: 20px;
-  left: 200px;
-}
-
-.search {
-  border: 2px solid black;
-}
-
-
-/*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# Feed Tab Styling
-////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////*/
 
 .teamImage {
   height:50px !important;
@@ -336,11 +335,72 @@ input:hover {
   float:right;
 }
 
+.articleWords {
+  position: absolute;
+  padding: 20px 50px 10px 50px;
+  left: 200px;
+  bottom: 10px;
+}
 
 /*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# Select Team Tab Styling
-////////////////////////////////////////////////////////////////
+# Mobile Adjustments
+//////////////////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 768px) {
+.newsItem{
+  width:100%;
+  height:500px;
+  border-right:none;
+  transform: translateX(-20px);
+  border-bottom:20px black solid;
+}
+
+.newsItem img:not(.teamImage) {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.articleWords {
+  position: absolute;
+  padding-top:0px;
+  bottom: 40px;
+  left: 0px;
+  background:white;
+  width:100%;
+  height:100px;
+}
+
+.articleWords p{
+  display:none;
+}
+
+.articleWords h4{
+  position:absolute;
+  left:100px;
+  width:40%;
+  border-left:1px solid black;
+  padding-left:30px;
+}
+
+.teamImage {
+  position:absolute;
+  left:20px;
+  height:50px !important;
+  padding-top:20px;
+}
+
+}
+/*//////////////////////////////////////////////////////////////
+
+  _______                     _____ _      _             
+ |__   __|                   |  __ (_)    | |            
+    | | ___  __ _ _ __ ___   | |__) |  ___| | _____ _ __ 
+    | |/ _ \/ _` | '_ ` _ \  |  ___/ |/ __| |/ / _ \ '__|
+    | |  __/ (_| | | | | | | | |   | | (__|   <  __/ |   
+    |_|\___|\__,_|_| |_| |_| |_|   |_|\___|_|\_\___|_|   
+                                                                                                               
+
 //////////////////////////////////////////////////////////////*/
 
 #selectDescription,
@@ -519,23 +579,29 @@ input:hover {
 }
 
 /*//////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-# Logout Tab / Login Styling
-////////////////////////////////////////////////////////////////
+  _                 _                  _____ _                         
+ | |               (_)          _     / ____(_)                        
+ | |     ___   __ _ _ _ __    _| |_  | (___  _  __ _ _ __  _   _ _ __  
+ | |    / _ \ / _` | | '_ \  |_   _|  \___ \| |/ _` | '_ \| | | | '_ \ 
+ | |___| (_) | (_| | | | | |   |_|    ____) | | (_| | | | | |_| | |_) |
+ |______\___/ \__, |_|_| |_|         |_____/|_|\__, |_| |_|\__,_| .__/ 
+               __/ |                            __/ |           | |    
+              |___/                            |___/            |_|    
+
 //////////////////////////////////////////////////////////////*/
 
 #login {
   position: absolute;
-  z-index: 1000;
-  height: 95%;
-  width: 97.5%;
-  transition: 0.7s;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  transition: 1.5s;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   overflow:hidden;
-  background:url('https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FSports.png?v=1613610741849');
+  background:white;
 }
 
 #login h2 {
@@ -551,6 +617,7 @@ input:hover {
   top: 0;
   transition:0.5s;
   border-left:50px black solid;
+  display:none;
 }
 
 .loginCover div {
@@ -559,13 +626,11 @@ input:hover {
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-
 }
 
 .loginCover div h1{
   font-size:350%;
   font-variant: small-caps;
-
 }
 
 .loginCover div h6{
@@ -585,39 +650,13 @@ input:hover {
 .loginForm {
   position: absolute;
   top: 50%;
-  right: 25%;
-  transform: translateY(-50%) translateX(25%);
+  right: 50%;
+  transform: translateY(-50%) translateX(50%);
   width: 300px;
-  text-align:left;
+  text-align:center;
 }
 
-.loginForm:nth-child(2) {
-  left: 15%;
-  transform: translateY(-50%) translateX(-20%);
-}
 
-.loginForm input{
-  background:#eee;
-  border:none;
-  margin-bottom:10px;
-}
-
-.loginForm input:hover{
-  background:#bbb;
-}
-
-.introButton {
-  width:60%;
-  background: #000;
-  color: white;
-  font-size: 16px;
-  border-radius: 0px;
-}
-
-.introButton:hover {
-  color: black;
-  background: #fff;
-}
 
 @media only screen and (max-width: 768px) {
   /* For Mobile: */
@@ -629,13 +668,145 @@ input:hover {
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+}
+}
+
+/*////////////////////////////////////////////////////////////////////////
+
+  _                     _ _                _____                          
+ | |                   | (_)              / ____|                         
+ | |     ___   __ _  __| |_ _ __   __ _  | (___   ___ _ __ ___  ___ _ __  
+ | |    / _ \ / _` |/ _` | | '_ \ / _` |  \___ \ / __| '__/ _ \/ _ \ '_ \ 
+ | |___| (_) | (_| | (_| | | | | | (_| |  ____) | (__| | |  __/  __/ | | |
+ |______\___/ \__,_|\__,_|_|_| |_|\__, | |_____/ \___|_|  \___|\___|_| |_|
+                                   __/ |                                  
+                                  |___/                                   
+
+/////////////////////////////////////////////////////////////////////////*/
+
+#load {
+  background: #00509D;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: disappear 5.8s forwards;
+  animation: disappear 5.8s forwards;
+  z-index:9000;         /* AHHHHHHHH Its over 9000! */
+  opacity:1;
+  -webkit-opacity: 1;
+  display:block;
+  text-align:center;
+}
+
+/* Safari */
+@-webkit-keyframes disappear {
+  0% {
+    -webkit-opacity: 1;
+    height: 100%;
+    bottom: 0;
+    z-index: 9000;
+    display:block;
   }
-  .loginForm:nth-child(1){
-    left:30%;
-    transform: translateY(-50%) translateX(-30%);
+  50% {
+    -webkit-opacity: 1;
+    height: 100%;
+    bottom: 0;
+    z-index: 9000;
+    display:block;
   }
-  .loginForm:nth-child(2){
-    left:25%;
-    transform: translateY(-50%) translateX(-20%);
+  90% {
+    -webkit-opacity: 1;
+    height: 100%;
+    bottom: -199%;
+    z-index: 9000;
+    display:block;
+  }
+  99.999% {
+    -webkit-opacity: 1;
+    height: 100%;
+    bottom: -200%;
+    z-index: 9000;
+    display:none;
+  }
+  100% {
+    -webkit-opacity: 0;
+    height: 100%;
+    bottom: -200%;
+    z-index: -10;
+    display: none;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    height: 100%;
+    bottom: 0;
+    z-index: 9000;
+    display:block;
+  }
+  50% {
+    -webkit-opacity: 1;
+    height: 100%;
+    bottom: 0;
+    z-index: 9000;
+    display:block;
+  }
+  90% {
+    opacity: 1;
+    height: 100%;
+    bottom: -199%;
+    z-index: 9000;
+    display:block;
+  }
+  99.999% {
+    opacity: 1;
+    height: 100%;
+    bottom: -200%;
+    z-index: 9000;
+    display:block;
+  }
+  100% {
+    opacity: 0;
+    height: 100%;
+    bottom: -200%;
+    z-index: -10;
+    display: none;
+  }
+}
+
+/* Code From w3schools */
+
+.loader {
+  position:absolute;
+  top: 45%;
+  left: 45%;
+  transform: translateY(-50%) translateX(-50%);
+  border: 5px solid #fff;
+  border-radius: 50%;
+  border-top: 5px solid #00509D;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .loader {
+    left:35%;
   }
 }

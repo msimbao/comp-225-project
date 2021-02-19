@@ -8,6 +8,98 @@
  * 
  */
 
+/**
+  * ///////////////////////////////////////////////////////////
+  * 
+ __      __            _____      _               
+ \ \    / /           / ____|    | |              
+  \ \  / /   _  ___  | (___   ___| |_ _   _ _ __  
+   \ \/ / | | |/ _ \  \___ \ / _ \ __| | | | '_ \ 
+    \  /| |_| |  __/  ____) |  __/ |_| |_| | |_) |
+     \/  \__,_|\___| |_____/ \___|\__|\__,_| .__/ 
+                                           | |    
+                                           |_|    
+
+  * ///////////////////////////////////////////////////////////
+  */
+
+  /**
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+* Components
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+*/
+
+ Vue.component('news-item', {
+  props: ['news'],
+  template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></li></a>'
+})
+
+//<a href={{news.url}}><li class="card newsItem"><img src={{news.image}}><div class="articleWords"><h4>'{{news.title}}</h4><p>'{{news.description}}...'</p></div></li></a>
+
+/**
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+* Begin Vue App and Define UI Methods
+* ///////////////////////////////////////////////////////////
+* ///////////////////////////////////////////////////////////
+*/
+
+var app = new Vue({
+  el: '#maincontent',
+  data: {
+    generalNews:[]
+  },
+  methods: {
+      talk: function () {
+          console.log("Request Sent")
+      },
+      toggleSignUp: function (state) {
+        if(state == "showSignup"){
+          loginCover.style.left="50%"
+          loginCover.style.background="#003F88"
+        }
+        if(state == "showSignin"){
+          loginCover.style.left="0%"
+          loginCover.style.background="#f9c74f"
+        }
+      },
+      generalSearch: function (event) {
+        $("ul#news").empty();
+        event.preventDefault();
+        newsItem = $('#searchBar').val();
+        $.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function(news) {
+        app.generalNews = news;
+        $('#searchBar').val('');
+        $('#searchBar').focus();
+        })
+    },
+        filterSearch: function () {
+          console.log("Searching");
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("filterSearch");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("newsFeed");
+          tr = table.getElementsByClassName("articleWords");
+        
+         for (i = 0; i < tr.length; i++) {
+          td = tr[i];
+            if (td) {
+              te = td.getElementsByTagName("h4")[0];
+              txtValue = td.textContent || td.innerText;
+              console.log(txtValue);
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].parentNode.parentNode.style.display = "";
+              } else {
+                tr[i].parentNode.parentNode.style.display = "none";
+              }
+            }       
+          }
+    }
+  }
+})
+
  /**
   * ///////////////////////////////////////////////////////////
   * ///////////////////////////////////////////////////////////
@@ -149,7 +241,7 @@ function showConferences(){
  function toggleMenu(){
   if (state == 0){
     menuButton.style.color="#fff"
-    menuButton.style.transform="rotate(-45deg)"
+    menuButton.style.transform="rotate(90deg)"
     navbar.style.bottom="0%"
     state = 1;
   }
@@ -261,80 +353,5 @@ function filterSearch() {
   */
 
 
-  /**
-  * ///////////////////////////////////////////////////////////
-  * ///////////////////////////////////////////////////////////
-  * Set Vue Components
-  * ///////////////////////////////////////////////////////////
-  * ///////////////////////////////////////////////////////////
-  */
-
-Vue.component('news-item', {
-  props: ['news'],
-  template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p></div></li></a>'
-})
-
-//<a href={{news.url}}><li class="card newsItem"><img src={{news.image}}><div class="articleWords"><h4>'{{news.title}}</h4><p>'{{news.description}}...'</p></div></li></a>
-
-/**
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-* Begin Vue App and Define UI Methods
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-*/
-
-var app = new Vue({
-  el: '#maincontent',
-  data: {
-    generalNews:[]
-  },
-  methods: {
-      talk: function () {
-          console.log("Request Sent")
-      },
-      toggleSignUp: function (state) {
-        if(state == "showSignup"){
-          loginCover.style.left="50%"
-          loginCover.style.background="#003F88"
-        }
-        if(state == "showSignin"){
-          loginCover.style.left="0%"
-          loginCover.style.background="#f9c74f"
-        }
-      },
-      generalSearch: function (event) {
-        $("ul#news").empty();
-        event.preventDefault();
-        newsItem = $('#searchBar').val();
-        $.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function(news) {
-        app.generalNews = news;
-        $('#searchBar').val('');
-        $('#searchBar').focus();
-        })
-    },
-        filterSearch: function () {
-          console.log("Searching");
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("filterSearch");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("newsFeed");
-          tr = table.getElementsByClassName("articleWords");
-        
-         for (i = 0; i < tr.length; i++) {
-          td = tr[i];
-            if (td) {
-              te = td.getElementsByTagName("h4")[0];
-              txtValue = td.textContent || td.innerText;
-              console.log(txtValue);
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].parentNode.parentNode.style.display = "";
-              } else {
-                tr[i].parentNode.parentNode.style.display = "none";
-              }
-            }       
-          }
-    }
-  }
-})
+  
 
