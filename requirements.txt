@@ -1,9 +1,14 @@
-Flask
+Flask~=1.1.2
 gunicorn
 random
 socket
 re
-bs4
+bs4~=0.0.1
 urllib.request
 urllib.error
-requests
+requests~=2.25.1
+beautifulsoup4~=4.9.3
+pybaseball~=2.1.1
+pandas~=1.2.1
+GoogleNews~=1.5.3
+Pillow~=8.1.0
