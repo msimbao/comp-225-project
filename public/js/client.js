@@ -123,7 +123,7 @@ $(document).ready(function() {
         verticalCentered: true,
         sectionsColor: ['#f3f3f3','#f3f3f3','#f3f3f3'],
         anchors: ['feed','select','general'],
-        scrollingSpeed: 700,
+        scrollingSpeed: 100,
         easing: 'linear',
         loopBottom: false,
         loopTop: false,
