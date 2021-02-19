@@ -129,7 +129,7 @@ $(document).ready(function() {
         loopTop: false,
         css3: true,
         navigation: false,
-       	normalScrollElements: null,
+       	normalScrollElements: '#feed, #select, #general',
         normalScrollElementTouchThreshold: 5,
         touchSensitivity: 5,
         keyboardScrolling: true,
@@ -226,7 +226,7 @@ function showLogin(){
  var state=0;
  function toggleMenu(){
   if (state == 0){
-    menuButton.style.color="#000"
+    menuButton.style.color="#fff"
     menuButton.style.transform="rotate(90deg)"
     navbar.style.bottom="0%"
     state = 1;

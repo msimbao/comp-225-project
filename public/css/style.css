@@ -95,7 +95,7 @@ a {
   background-color: #fff;
   padding: 20px 50px 20px 50px;
   border:1px solid black;
-  border-left: 20px solid black;
+  /* border-left: 20px solid black; */
   /* transform: translateX(-20px); */
 }
 
@@ -181,11 +181,11 @@ a {
 #menuButton{
   position:fixed;
   top:5%;
-  right:2%;
+  right:3%;
   font-size: 300%;
   cursor:pointer;
   color:#000;
-  transition:0.3s;
+  transition:1s;
   z-index:150;
 }
 
@@ -236,11 +236,15 @@ input {
   width: 80%;
   font-size: 16px;
   padding: 12px 20px 12px 20px;
-  border: 2px solid #777;
+  border: 2px solid #000;
   border-radius:5px;
   margin: 5px;
   position: relative;
   transition: 0.1s;
+}
+
+#filterSearch, #searchBar {
+  border-radius: 0px;
 }
 
 input:focus,
@@ -250,7 +254,7 @@ input:hover {
 }
 
 button {
-  background-color: #00509D;
+  background-color: #000;
   border: none;
   border-radius: 5px;
   color: white;
@@ -262,7 +266,7 @@ button {
 }
 
 button:hover{
-  background-color: #333;
+  background-color: #777;
 }
 
 
@@ -295,7 +299,7 @@ button:hover{
   margin-bottom: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
-  border-right: 20px solid black;
+  /* border-right: 20px solid black; */
   overflow: hidden;
   transform: translateX(-20px);
 }
