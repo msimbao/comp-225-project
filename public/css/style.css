@@ -32,23 +32,13 @@ body {
   margin:0;
   padding:0;
   color: #003153;
-  overflow:hidden;
   transition: 0.5s;
-  padding-top:5%;
   background:#f3f3f3;
-  
-  
 }
 
 a {
   text-decoration: none;
   color: #003153;
-}
-
-#maincontent {
-  position:relative;
-  display: block;
-  z-index:0;
 }
 
 .pointerItem{
@@ -66,7 +56,9 @@ a {
   color: #333;
 }
 
-
+.pp-section{
+  padding:50px;
+}
 
 
 /*//////////////////////////////////////////////////////////////
@@ -81,22 +73,8 @@ a {
 
 //////////////////////////////////////////////////////////////*/
 
-.card {
-  border-radius: 0px;
-  transition: 0.1s;
-}
-
 .card:not(.tabDescription) {
   cursor: pointer;
-}
-
-.cardholder {
-  position: relative;
-  margin: auto;
-  margin-top:5px;
-  width: 80%;
-  height: 350px;
-  transition: 0.1s;
 }
 
 /*//////////////////////////////////////////////////////////////
@@ -112,26 +90,14 @@ a {
 
 .tabDescription {
   color:#1d3557;
-  position: relative;
   margin: auto;
   width: 70%;
   background-color: #fff;
   padding: 20px 50px 20px 50px;
+  border:1px solid black;
   border-left: 20px solid black;
   /* transform: translateX(-20px); */
 }
-
-.tabcontent {
-  position: relative;
-  display: none;
-  width: 100%;
-  height: 100%;
-  overflow-x:hidden;
-  overflow-y:scroll;
-}
-
-
-
 
 #title {
   padding: 10px;
@@ -149,9 +115,7 @@ a {
   width: 100px;
 }
 
-/*//////////////////////////////////////////////////////////////
-# Mobile Adjustments
-//////////////////////////////////////////////////////////////*/
+/*Mobile Adjustments*/
 
 /*//////////////////////////////////////////////////////////////
   __  __                  
@@ -160,25 +124,23 @@ a {
  | |\/| |/ _ \ '_ \| | | |
  | |  | |  __/ | | | |_| |
  |_|  |_|\___|_| |_|\__,_|
-                          
-                          
+                                                
 //////////////////////////////////////////////////////////////*/
 
 #navbar{
-  position: absolute;
+  position: fixed;
   bottom:100%;
   left:0%;
   height:100%;
   width:100%;
-  z-index:500px;
+  z-index:100;
   transition:0.3s;
-  background:#003F88;
-  opacity:0.9;
+  background:#fff;
+  opacity:1;
 }
 
 #navbar ul {
   position:absolute;
-  height: 200px;
   list-style-type: none;
   margin: 0;
   padding: 0px 30px 30px 30px;
@@ -186,7 +148,7 @@ a {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  font-size:200%;
+  font-size:450%;
   text-align: center;
   opacity:1;
   font-variant: small-caps;
@@ -194,43 +156,67 @@ a {
 
 #navbar li a {
   display: block;
-  color: #000;
-  margin: 5%;
+  color: #777;
+  margin: 3% 0 3% 0;
   text-decoration: none;
   transition: 0.2s;
+  font-weight:bold;
+  padding:20px;
+  border-radius:5px;
+  border:1px solid black;
 }
 
 
 #navbar li a:hover {
-  color:#fff;
+  color:#000;
+  border-right:20px solid black;
 }
 
-.active a {
-  color:white;
+#navbar ul .active a {
+  color:#000;
+  border:1px solid black;
+  border-right:20px solid black !important;
 }
 
 #menuButton{
-  position:absolute;
+  position:fixed;
   top:5%;
-  right:5%;
+  right:2%;
   font-size: 300%;
   cursor:pointer;
   color:#000;
   transition:0.3s;
+  z-index:150;
 }
 
-/*//////////////////////////////////////////////////////////////
-# Mobile Adjustments
-//////////////////////////////////////////////////////////////*/
+/* Mobile Adjustments */
 
 @media only screen and (max-width: 768px) {
   /* For Mobile: */
   #navbar ul {
-    font-size:150%;
+    padding: 0px 0px 0px 10px;
+    font-size:250%;
+    text-align: center;
+  }
+
+  #navbar ul li a{
+    padding:20px;
+    border-radius:5px;
+    border:1px solid black;
+    color:black;
+    margin: 10% 0 10% 0;
+  }
+
+  #navbar ul .active a {
+    color:#000;
+    border:1px solid black;
+    border-right:20px solid black !important;
   }
 
   #menuButton{
+    position:absolute;
     top:.1%;
+    right:10%;
   }
 }
 
@@ -295,20 +281,20 @@ button:hover{
 
 
 .news {
-  position: relative;
   margin: auto;
   list-style-type: none;
   margin-top: 5px;
 }
 
 .newsItem {
-  position: relative;
   margin: auto;
   width:80%;
   height: 250px;
   border-radius:10px;
   background: #fff;
   margin-bottom: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
   border-right: 20px solid black;
   overflow: hidden;
   transform: translateX(-20px);
@@ -325,7 +311,7 @@ button:hover{
   width: 210px;
   margin: 0px;
   padding: 0px;
-
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 
@@ -403,180 +389,17 @@ button:hover{
 
 //////////////////////////////////////////////////////////////*/
 
-#selectDescription,
-#conferences,
-#leagues {
-  left: 0;
-  z-index: 10;
-}
-
 
 /*
 * League Icons Css ///////////////////////////////////////////////
 */
 
 #leagues{
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-column-gap: 5px;
-}
-
-.league {
-  position: relative;
-  height: 100%;
-  background: white;
-  width: 100%;
-  float: left;
-  border-bottom: 20px solid black;
-}
-
-.league:nth-child(4) {
- width:101%;
-}
-
-.league:hover {
-  background: #003153;
-  color: white;
-  border-top: 20px solid #003153;
-  border-bottom: 20px solid #003153;
-  
+ 
 }
 
 
 
-.leagueIcon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  height: 200px;
-  left: 50%;
-}
-
-/*
-* Conference Css ///////////////////////////////////////////////
-*/
-
-
-#conferences {
-  display: none;
-  position: absolute;
-  top: 40%;
-  transform: translateY(-50%) translateX(-50%);
-  left: 50%;
-  background-color: #4180b4;
-  background-image: radial-gradient(#003153 1px, #4180b4 1px);
-  background-size: 20px 20px;
-  z-index: 5;
-}
-
-.conference {
-  position: relative;
-  height: 100%;
-  background: none;
-  width: 46%;
-  margin-right:15px;
-  float: left;
-}
-
-.region {
-  position: relative;
-  background: #fff;
-  width: 100%;
-  margin-bottom:5px;
-  padding:20px 0px 20px 0px;
-  font-variant: small-caps;
-  text-align: center;
-  border-bottom: 20px #000 solid;
-    
-  background-image: radial-gradient(#4180b4 1px, #fff 1px);
-  background-size: 40px 40px;
-}
-
-.region:hover {
-  border-left: 10px solid black;
-  background: black;
-  color: white;
-}
-
-/*
-* Teams Css ///////////////////////////////////////////////
-*/
-
-#teams {
-  position: absolute;
-  top: 40%;
-  transform: translateY(-50%) translateX(-50%);
-  left: 50%;
-  display: none;
-  z-index: 1;
-}
-
-.team {
-  position: relative;
-  background: white;
-  margin: auto;
-  width: 100%;
-  height: 100px;
-  margin-bottom: 5px;
-  padding: 25px 0px 25px 0px;
-  font-variant: small-caps;
-  border-bottom: 20px solid black;
-}
-
-.team:hover {
-  background: #003153;
-  color: white;
-  border-top: 10px solid #003153;
-  border-bottom:20px solid #003153;
-}
-
-.team img {
-  width: 90px;
-  position: absolute;
-  left: 150px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.team div {
-  position: absolute;
-  padding: 10px 50px 20px 50px;
-  left: 270px;
-}
-
-#selectNewTeams {
-  width: 80%;
-  height: 140%;
-  padding: 0px;
-  float: left;
-}
-
-#selectOldTeams {
-  width: 15%;
-  height: 100%;
-  float: left;
-  background:white;
-  margin-left: 5px;
-  text-align: center;
-  font-variant: small-caps;
-}
-
-#selectOldTeams img {
-  width: 100px;
-}
-
-#selectOldTeams div {
-  background: white;
-  width: 100%;
-  text-align: center;
-  margin-bottom:5px;
-  padding: 20px 0px 20px 0px;
-}
-
-#selectOldTeams div:nth-child(1) {
-  border-bottom: 5px #000 solid;
-  background: #f9c74f;
-}
 
 /*//////////////////////////////////////////////////////////////
   _                 _                  _____ _                         
@@ -592,7 +415,7 @@ button:hover{
 
 #login {
   position: absolute;
-  z-index: 100;
+  z-index: 200;
   height: 100%;
   width: 100%;
   transition: 1.5s;
@@ -600,7 +423,6 @@ button:hover{
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  overflow:hidden;
   background:white;
 }
 
@@ -644,7 +466,6 @@ button:hover{
 }
 
 .loginCover div p span{
-  position:relative;
 }
 
 .loginForm {
@@ -692,7 +513,7 @@ button:hover{
   height: 100%;
   -webkit-animation: disappear 5.8s forwards;
   animation: disappear 5.8s forwards;
-  z-index:9000;         /* AHHHHHHHH Its over 9000! */
+  z-index:300;         /* AHHHHHHHH Its not over 9000! */
   opacity:1;
   -webkit-opacity: 1;
   display:block;
@@ -705,28 +526,28 @@ button:hover{
     -webkit-opacity: 1;
     height: 100%;
     bottom: 0;
-    z-index: 9000;
+    z-index: 300;
     display:block;
   }
   50% {
     -webkit-opacity: 1;
     height: 100%;
     bottom: 0;
-    z-index: 9000;
+    z-index: 300;
     display:block;
   }
   90% {
     -webkit-opacity: 1;
     height: 100%;
     bottom: -199%;
-    z-index: 9000;
+    z-index: 300;
     display:block;
   }
   99.999% {
     -webkit-opacity: 1;
     height: 100%;
     bottom: -200%;
-    z-index: 9000;
+    z-index: 300;
     display:none;
   }
   100% {
@@ -743,28 +564,28 @@ button:hover{
     opacity: 1;
     height: 100%;
     bottom: 0;
-    z-index: 9000;
+    z-index: 300;
     display:block;
   }
   50% {
     -webkit-opacity: 1;
     height: 100%;
     bottom: 0;
-    z-index: 9000;
+    z-index: 300;
     display:block;
   }
   90% {
     opacity: 1;
     height: 100%;
     bottom: -199%;
-    z-index: 9000;
+    z-index: 300;
     display:block;
   }
   99.999% {
     opacity: 1;
     height: 100%;
     bottom: -200%;
-    z-index: 9000;
+    z-index: 300;
     display:block;
   }
   100% {

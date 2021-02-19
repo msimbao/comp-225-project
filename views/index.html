@@ -36,7 +36,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Page Pilling CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" />
+    <link rel="stylesheet" href="../public/css/jquery.pagepiling.css" />
   
     <!-- Site CSS -->
     <link rel="stylesheet" href="../public/css/style.css" />
@@ -112,7 +112,7 @@ Main Feed Tab
 ///////////////////////////////////////////////////////////////////////
 -->
 
-<div id="feed" class="tabcontent">
+<div id="feed" class="section pp-scrollable">
   <div class="card tabDescription">
     <h2>Your Feed</h2>
     <p>
@@ -168,47 +168,6 @@ Main Feed Tab
 </div>
 
 
-    <!-- 
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-General Search Tab
-////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
--->
-
-
-
-    <div id="general" class="tabcontent">
-      <div class="card tabDescription">
-        <h2>General Search</h2>
-        <p>
-          If You're Looking for general information, you can find the latest
-          news and trending articles here.
-        </p>
-
-        <form id="generalSearchForm" v-on:submit="generalSearch">
-          <input
-            id="searchBar"
-            type="text"
-            maxlength="100"
-            placeholder="Search For Anything Sports Related..."
-          />
-
-        </form>
-      </div>
-
-        <ul id="news" class="news">
-
-              <news-item
-                v-for="item in generalNews"
-                v-bind:news="item"
-              ></news-item>
-
-        </ul>
-
-    </div>
-
-
 
     <!-- 
 ////////////////////////////////////////////////////////////////////////
@@ -218,7 +177,7 @@ Select Tab
 ///////////////////////////////////////////////////////////////////////
 -->
 
-    <div id="select" class="tabcontent">
+    <div id="select" class="section pp-scrollable">
       <div id="selectDescription" class="card tabDescription">
         <h2>Select Teams</h2>
         <p>
@@ -227,114 +186,64 @@ Select Tab
       </div>
       
   <!-- Leagues Card Holder -->
-    <div id="leagues" class="cardholder">
-      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmajor-league-baseball-1-logo-png-transparent.png?v=1612974304407" class="leagueIcon"></div>
-      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974" class="leagueIcon"></div>
-      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169" class="leagueIcon"></div>
-      <div class="league card" onclick="hideLeagues()"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788" class="leagueIcon"></div>
-    </div>
-  
-  <!-- Confereces Card Holders -->
-    <div id="conferences" class="cardholder" >
-      <div class="back card" onclick="showLeagues()">&#9668; Back</div>
-      <div class="conference">
-        <div class="region card" ><h4>AL East</h4></div>
-        <div class="region card"><h4>AL North</h4></div>
-        <div class="region card"><h4>AL West</h4></div>
-        <div class="region card"><h4>AL South</h4></div>
-      </div>
-
-      <div class="conference">
-        <div class="region card"><h4>NL East</h4></div>
-        <div class="region card"><h4>NL North</h4></div>
-        <div class="region card"><h4>NL West</h4></div>
-        <div class="region card" onclick="hideConferences()"><h4>NL South</h4></div>
-      </div>
-    </div>
-      
-  <!--  Teams Card Holders -->
-    <div id="teams" class="cardholder">
-      <div class="back card" onclick="showConferences()">&#9668; Back</div>
-      <div id="selectNewTeams">
-        <div class="team card">
-          <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
-          <div>
-            <h4>
-            Tampa Bay Buccaneers 
-            </h4>
-            <p>
-              <b>Record:</b> 54 - 108 | <b>Standings:</b> 5th
-            </p>
-          </div>
-        </div>
-        
-        <div class="team card">
-                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmiami-dolphins-logo-transparent.png?v=1612980785030">
-          <div>
-            <h4>
-            Miami Dolphins
-            </h4>
-            <p>
-              <b>Record:</b> 84 - 74 | <b>Standings:</b> 3rd
-            </p>
-          </div>
-        </div>
-        
-        <div class="team card">
-                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fpittsburgh-steelers-logo-transparent.png?v=1612980789057">
-          <div>
-            <h4>
-            Pittsburgh Steelers
-            </h4>
-            <p>
-              <b>Record:</b> 54 - 108 | <b>Standings:</b> 5th
-            </p>
-          </div>
-        </div>
-        
-        <div class="team card">
-                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fseattle-seahawks-logo-transparent.png?v=1612980796723">
-          <div>
-            <h4>
-            Seattle Sea Hawks 
-            </h4>
-            <p>
-              <b>Record:</b> 96 - 66 | <b>Standings:</b> 2nd
-            </p>
-          </div>
-        </div>
-        
-                <div class="team card">
-                  <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
-          <div>
-            <h4>
-            Tennessee Titans
-            </h4>
-            <p>
-              <b>Record:</b> 67 - 95 | <b>Standings:</b> 4th
-            </p>
-          </div>
-        </div>
-
-      </div>
-      
-      <div id="selectOldTeams">
-          <div class="card">Following</div>
-          <div class="card">
-            <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fwashington-redskins-logo.png?v=1612980811243">
-            <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
-            <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Foakland-raiders-logo-transparent.png?v=1612996306190">
-          </div>
-
-      </div>
-
-            
-    </div>
-
+    <!-- <div id="leagues">
+      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmajor-league-baseball-1-logo-png-transparent.png?v=1612974304407" class="leagueIcon"></div>
+      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974" class="leagueIcon"></div>
+      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169" class="leagueIcon"></div>
+      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788" class="leagueIcon"></div>
+    </div> -->
     </div>
     
 
-    <div id="logout" class="tabcontent"></div>
+
+  <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+General Search Tab
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+
+
+
+<div id="general" class="section pp-scrollable">
+  <div class="card tabDescription">
+    <h2>General Search</h2>
+    <p>
+      If You're Looking for general information, you can find the latest
+      news and trending articles here.
+    </p>
+
+    <form id="generalSearchForm" v-on:submit="generalSearch">
+      <input
+        id="searchBar"
+        type="text"
+        maxlength="100"
+        placeholder="Search For Anything Sports Related..."
+      />
+
+    </form>
+  </div>
+
+    <ul id="news" class="news">
+
+          <news-item
+            v-for="item in generalNews"
+            v-bind:news="item"
+          ></news-item>
+
+    </ul>
+
+</div>
+
+      <!-- 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+End Main
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+-->
+
   </div>
   </div>
   
@@ -347,19 +256,19 @@ NavBar
 -->
 
 <div id="navbar" onclick="toggleMenu()">
-  <ul>
-    <li class="tablinks" onclick="openTab(event, 'feed')">
+  <ul id="myMenu">
+    <li data-menuanchor="feed" class="active">
       <a href="#feed">Feed</a>
     </li>
-    <li class="tablinks" onclick="openTab(event, 'select')">
+    <li data-menuanchor="select">
       <a href="#select"> Teams</a>
     </li>
-      <li class="tablinks" onclick="openTab(event, 'general')">
+      <li data-menuanchor="general">
         <a href="#general">Search</a>
       </li>
     
-    <li class="tablinks" id="submitLogout" onclick="showLogin()">
-      <a href="#Logout">Logout</a>
+    <li id="submitLogout" onclick="showLogin()">
+      <a href="#login">Logout</a>
     </li>
   </ul>
 </div>
@@ -372,6 +281,13 @@ NavBar
   <!-- Site Scripts-->
   <!-------------------------------------------------------->
     
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+
+  <!--  Firebase Login Script -->
+  <script src="../public/js/app.js"></script>
 
   <!-- Add Vue Js -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -380,15 +296,7 @@ NavBar
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!--  Pagepilling Javascript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
-
-  <!--  Firebase Login Script -->
-  <script src="../public/js/app.js"></script>
+  <script type="text/javascript" src="../public/js/jquery.pagepiling.min.js"></script>
 
   <!--  Main Script for Grabbing Data From Server -->
   <script src="../public/js/client.js"></script>

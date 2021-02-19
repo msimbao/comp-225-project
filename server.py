@@ -94,7 +94,7 @@ def news():
         print(query)
         news_search = bingsearch.BingSearch(query)
 
-        SEARCH_RESULTS = news_search.getArticleList()
+        SEARCH_RESULTS = news_search.get_article_list()
     else:
         SEARCH_RESULTS = [
                             { "title" : Test_title_1 ,"description":Test_description_1, "url": "#url", "image": Test_image_1},

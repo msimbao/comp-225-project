@@ -47,7 +47,7 @@
 */
 
 var app = new Vue({
-  el: '#maincontent',
+  el: '#vue',
   data: {
     generalNews:[]
   },
@@ -76,7 +76,7 @@ var app = new Vue({
         })
     },
         filterSearch: function () {
-          console.log("Searching");
+          // console.log("Searching");
           var input, filter, table, tr, td, i, txtValue;
           input = document.getElementById("filterSearch");
           filter = input.value.toUpperCase();
@@ -88,7 +88,7 @@ var app = new Vue({
             if (td) {
               te = td.getElementsByTagName("h4")[0];
               txtValue = td.textContent || td.innerText;
-              console.log(txtValue);
+              // console.log(txtValue);
               if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 tr[i].parentNode.parentNode.style.display = "";
               } else {
@@ -99,6 +99,49 @@ var app = new Vue({
     }
   }
 })
+
+/*////////////////////////////////////////////////////////////////
+
+
+
+  _____                 _____ _ _ _ _             
+ |  __ \               |  __ (_) | (_)            
+ | |__) |_ _  __ _  ___| |__) || | |_ _ __   __ _ 
+ |  ___/ _` |/ _` |/ _ \  ___/ | | | | '_ \ / _` |
+ | |  | (_| | (_| |  __/ |   | | | | | | | | (_| |
+ |_|   \__,_|\__, |\___|_|   |_|_|_|_|_| |_|\__, |
+              __/ |                          __/ |
+             |___/                          |___/ 
+
+
+///////////////////////////////////////////////////////////////////*/
+
+$(document).ready(function() {
+	$('#maincontent').pagepiling({
+	    menu: '#myMenu',
+        direction: 'vertical',
+        verticalCentered: true,
+        sectionsColor: ['#f3f3f3','#f3f3f3','#f3f3f3'],
+        anchors: ['feed','select','general'],
+        scrollingSpeed: 700,
+        easing: 'linear',
+        loopBottom: false,
+        loopTop: false,
+        css3: true,
+        navigation: false,
+       	normalScrollElements: null,
+        normalScrollElementTouchThreshold: 5,
+        touchSensitivity: 5,
+        keyboardScrolling: true,
+        sectionSelector: '.section',
+        animateAnchor: false,
+
+		//events
+		onLeave: function(index, nextIndex, direction){},
+		afterLoad: function(anchorLink, index){},
+		afterRender: function(){},
+	});
+});
 
  /**
   * ///////////////////////////////////////////////////////////
@@ -115,18 +158,6 @@ var menuButton = document.getElementById('menuButton')
 // Variables For Controlling Login Panel
  var login = document.getElementById("login")
  var loginCover = document.getElementsByClassName("loginCover")[0]
- var maincontent = document.getElementById("maincontent")
-   
-// Variables For Controlling Team Selection
- var teams = document.getElementById("teams")
- var leagues = document.getElementById("leagues")
- var conferences = document.getElementById("conferences")
- var selectDescription = document.getElementById("selectDescription")
-
- // Variables For Tab Controller
- var i, tabcontent, tablinks;
- tabcontent = document.getElementsByClassName("tabcontent");
- tablinks = document.getElementsByClassName("tablinks");
 
 
   /**
@@ -152,7 +183,6 @@ function showSignUp(){
   // loginCover.style.background="#003F88"
   $('.loginCover').removeClass("yellowCrossingBackground");
   $('.loginCover').addClass("blueCrossingBackground");
-
 
 }
 
@@ -188,50 +218,6 @@ function showLogin(){
 }
 
  /**
-  *  @name hideLeagues
-  * 
-  *  @brief Function to hide the leagues panel and show the region panel
-  */
-function hideLeagues(){
-  selectDescription.style.left="100%";
-  leagues.style.left="100%";
-  $(conferences).fadeIn();
-}
-
- /**
-  *  @name hideLeagues
-  * 
-  *  @brief Function to hide the region panel and show the conferences panel
-  */
-function showLeagues(){
-  selectDescription.style.left="0%";
-  leagues.style.left="0%";
-  $(conferences).fadeOut();
-}
-
- /**
-  *  @name hideConferences
-  * 
-  *  @brief Function to hide the conferences panel and show the teams panel
-  */
-function hideConferences(){
-  conferences.style.left="200%";
-  $(teams).fadeIn();
-}
-
-
- /**
-  *  @name hideConferences
-  * 
-  *  @brief Function to hide the conferences panel and show the teams panels
-  */
-function showConferences(){
-  conferences.style.left="50%";
-  $(teams).fadeOut();
-}
-
-
- /**
   *  @name showMenu
   * 
   *  @brief Function to show the website Menu
@@ -240,7 +226,7 @@ function showConferences(){
  var state=0;
  function toggleMenu(){
   if (state == 0){
-    menuButton.style.color="#fff"
+    menuButton.style.color="#000"
     menuButton.style.transform="rotate(90deg)"
     navbar.style.bottom="0%"
     state = 1;
@@ -279,79 +265,3 @@ function getNews(){
 
 // Call get News on App start to test the response
 getNews()
-
-/**
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-* Filter Search
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-*/
-
-function filterSearch() {
-  console.log("Searching");
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("filterSearch");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("newsFeed");
-  tr = table.getElementsByClassName("articleWords");
-
- for (i = 0; i < tr.length; i++) {
-  td = tr[i];
-    if (td) {
-      te = td.getElementsByTagName("h4")[0];
-      txtValue = td.textContent || td.innerText;
-      console.log(txtValue);
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-
-/**
-  * ///////////////////////////////////////////////////////////
-  * Functions for Tabs
-  * ///////////////////////////////////////////////////////////
-  */
-
-  /**
-   * @name openTab
-   * @@description function to open one tab and close another based on button presses
-   * @param {event} evt on click event handler
-   * @param {string} tabName id string of the tab to be turned on
-   */
-  function openTab(evt, tabName) {
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-  
-  
-   /**
-    * ///////////////////////////////////////////////////////////
-    * Set Starting Conditions
-    * ///////////////////////////////////////////////////////////
-    */
-  
-  tabcontent[0].style.display = "block";
-  tablinks[3].className += " active";
-
- /**
-  * ///////////////////////////////////////////////////////////
-  * ///////////////////////////////////////////////////////////
-  * Vue JS Stuff
-  * ///////////////////////////////////////////////////////////
-  * ///////////////////////////////////////////////////////////
-  */
-
-
-  
-
