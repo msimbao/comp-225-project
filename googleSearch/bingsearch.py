@@ -27,10 +27,10 @@ class BingSearch:
             newDict = {}
             try:
 
-                newDict["title"] = self.__clean_title(i["name"])
+                newDict["title"] = self.__clean_text(i["name"])
                 newDict["url"] = i["url"]
                 newDict["image"] = i["image"]["thumbnail"]["contentUrl"]
-                newDict["description"] = i["description"]
+                newDict["description"] = self.__clean_text(i["description"])
                 newDict["author"] = i["provider"][0]["name"]
                 list.append(newDict)
             except:
@@ -38,10 +38,10 @@ class BingSearch:
 
         return list
 
-    def __clean_title(self, title):
-        title = self.__clean_html(title)
-        title = self.__clean_xml(title)
-        return title
+    def __clean_text(self, text):
+        text = self.__clean_html(text)
+        text = self.__clean_xml(text)
+        return text
 
     def __clean_html(self, string):
         cleanr = re.compile('<.*?>')
