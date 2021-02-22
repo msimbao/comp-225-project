@@ -61,8 +61,23 @@ console.log("hello");
         ev.preventDefault();
         auth.signOut().then(() => {
             //console.log("User signed out") this was just for testing
+            //TODO: Whatever happens when a user is logged out
         });
     });
 
+    //sign in
+    btnLogin.addEventListener("click", ev => {
+       ev.preventDefault();
+
+       //get user info
+        const email = txtEmail.value;
+        const password = txtPassword.value;
+
+        //log in user
+        auth.signInWithEmailAndPassword(email, password).then(cred => {
+            console.log(cred.user)
+            //TODO: Move to user's feed
+        });
+    });
 
 
