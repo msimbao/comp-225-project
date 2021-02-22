@@ -15,7 +15,11 @@ console.log("hello");
         apiKey: "AIzaSyDM0YYvGQFSc9qy6jh2hpxZy_87B8eNc3o",
         authDomain: "webapp-43db3.firebaseapp.com",
         databaseURL: "https://webapp-43db3-default-rtdb.firebaseio.com",
+        projectId: "webapp-43db3",
         storageBucket: "webapp-43db3.appspot.com",
+        messagingSenderId: "967819702334",
+        appId: "1:967819702334:web:516489547c9f45733a616f",
+        measurementId: "G-B4T0X396WR"
     };
     firebase.initializeApp(config);
 
@@ -37,7 +41,7 @@ console.log("hello");
         const pass = txtPassword.value;
         const auth = firebase.auth();
         //Sign in
-        auth.signInWithEmailAndPassword(email, pass);
+        const promise = auth.signInWithEmailAndPassword(email, pass);
         promise.catch(e => console.log(e.message));
     });
 
@@ -46,13 +50,8 @@ console.log("hello");
         const email = singupEmail.value;
         const pass = signupPassword.value;
         const auth = firebase.auth();
-        if (auth.fetchSignInMethodsForEmail(email).length === 0) {
-            //Sign in
-            auth.createUserWithEmailAndPassword(email, pass);
-            promise.catch(e => console.log(e.message));
-        } else {
-            console.log("invalid email")
-        }
+        const promise = auth.createUserWithEmailAndPassword(email, pass);
+        promise.catch(e => console.log(e.message));
     });
 
     btnLogout.addEventListener("click", e => {
