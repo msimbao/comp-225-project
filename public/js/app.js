@@ -23,49 +23,46 @@ console.log("hello");
     };
     firebase.initializeApp(config);
 
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    //update firestore settings
+    db.settings({ timestampsInSnapshots: true});
+
+
     //Get elements
     const txtEmail = document.getElementById("loginEmail");
     const txtPassword = document.getElementById("loginPassword");
 
-    const singupEmail = document.getElementById("signupEmail");
+    const signupEmail = document.getElementById("signupEmail");
     const signupPassword = document.getElementById("signupPassword");
 
     const btnLogin = document.getElementById("submitLogin");
     const btnSignUp = document.getElementById("submitSignUp");
     const btnLogout = document.getElementById("submitLogout");
 
-    //Add login event
-    btnLogin.addEventListener("click", e => {
-        //Get email and password
-        const email = txtEmail.value;
-        const pass = txtPassword.value;
-        const auth = firebase.auth();
-        //Sign in
-        const promise = auth.signInWithEmailAndPassword(email, pass);
-        promise.catch(e => console.log(e.message));
+    //sign up
+    btnSignUp.addEventListener("click", ev => {
+        ev.preventDefault();
+
+        //get user info
+        const email = signupEmail.value;
+        const password = signupPassword.value;
+
+        //sign up user
+        auth.createUserWithEmailAndPassword(email, password).then(cred => {
+            //console.log(cred.user) this was just for testing
+            //TODO: Move from sign up page to the select teams page/gen feed page and reset the sign up form
+        });
     });
 
-    //Add signup event
-    btnSignUp.addEventListener("click", e => {
-        const email = singupEmail.value;
-        const pass = signupPassword.value;
-        const auth = firebase.auth();
-        const promise = auth.createUserWithEmailAndPassword(email, pass);
-        promise.catch(e => console.log(e.message));
+    //log out
+    btnLogout.addEventListener("click", ev => {
+        ev.preventDefault();
+        auth.signOut().then(() => {
+            //console.log("User signed out") this was just for testing
+        });
     });
 
-    btnLogout.addEventListener("click", e => {
-        firebase.auth().signOut();
-    });
 
-    //Add realtime listener
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if(firebaseUser) {
-            console.log(firebaseUser);
-            btnLogout.classList.remove("hide");
-        } else {
-            console.log("Not logged in");
-            btnLogout.classList.add("hide");
-        }
-    })
 
