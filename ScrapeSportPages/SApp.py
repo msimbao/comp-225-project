@@ -1,7 +1,10 @@
 import pyrebase
 from pathlib import Path
+import os
+import json
+from datetime import date
 
-config = {
+CONFIG = {
     "apiKey": "AIzaSyDM0YYvGQFSc9qy6jh2hpxZy_87B8eNc3o",
     "authDomain": "webapp-43db3.firebaseapp.com",
     "databaseURL": "https://webapp-43db3-default-rtdb.firebaseio.com",
@@ -12,7 +15,7 @@ config = {
     "measurementId": "G-DP1Q3X9X1K"
 }
 
-firebase = pyrebase.initialize_app(config)
+firebase = pyrebase.initialize_app(CONFIG)
 storage = firebase.storage()
 
 """
@@ -21,9 +24,19 @@ sports news website could be uploaded to the firebase storage. Run the buildLeag
 unning this method.
 """
 
+
 # TODO: Make more directories for different categories and teams.
 
 def upLoadNewJsonToFireBaseStorage():
+    # Initialize firebase
+    firebase = pyrebase.initialize_app(CONFIG)
+    storage = firebase.storage()
+
+    # Grab time of today
+    today = date.today()
+    month = today.strftime("%m")
+    day = today.strftime("%d")
+    year = today.strftime("%y")
 
     path_on_cloud = "newsJson"
     path_local = "../newsJson"
@@ -36,7 +49,7 @@ def upLoadNewJsonToFireBaseStorage():
         storage.child(path_on_cloud + filename).put(path_local + filename)
 
     fileName = "jsonFileNames.json"
-    os.makedirs(os.path.dirname(path_local + fileName), exist_ok = True)
+    os.makedirs(os.path.dirname(path_local + fileName), exist_ok=True)
     with open(path_local + fileName, "w") as f:
         json.dump(filenames, f)
 
