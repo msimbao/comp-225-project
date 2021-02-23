@@ -43,16 +43,16 @@ def upLoadNewJsonToFireBaseStorage():
     directory = os.fsencode(path_local)
     filenames = []
 
-    for file in os.listdir(directory):
-        filename = os.fsdecode(file)
-        filenames.append(filename)
-        storage.child(path_on_cloud + filename).put(path_local + filename)
+    # for file in os.listdir(directory):
+    #     filename = os.fsdecode(file)
+    #     filenames.append(filename)
+    storage.child(path_on_cloud).put(path_local)
 
-    fileName = "jsonFileNames.json"
-    os.makedirs(os.path.dirname(path_local + fileName), exist_ok=True)
-    with open(path_local + fileName, "w") as f:
-        json.dump(filenames, f)
+    # fileName = "jsonFileNames.json"
+    # os.makedirs(os.path.dirname(path_local + fileName), exist_ok=True)
+    # with open(path_local + fileName, "w") as f:
+    #     json.dump(filenames, f)
 
-    storage.child(path_on_cloud + fileName).put(path_local + fileName)
+    # storage.child(path_on_cloud + fileName).put(path_local + fileName)
 
     return 0
