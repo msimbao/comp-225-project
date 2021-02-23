@@ -56,3 +56,6 @@ def upLoadNewJsonToFireBaseStorage():
     # storage.child(path_on_cloud + fileName).put(path_local + fileName)
 
     return 0
+
+if __name__ == '__main__':
+    upLoadNewJsonToFireBaseStorage()
