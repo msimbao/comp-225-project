@@ -20,7 +20,7 @@ storage = firebase.storage()
 
 """
 This method should be run on the server for daily/ half day basis so that local json files that each stores info about a
-sports news website could be uploaded to the firebase storage. Run the buildLeagueNews() function in StoreWebToFireBase.py before r-
+sports news website could be uploaded to the firebase storage. Run the buildLeagueNews() function in NewsToJson.py before r-
 unning this method.
 """
 
