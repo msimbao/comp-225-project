@@ -1,8 +1,5 @@
 import pyrebase
-from pathlib import Path
 import os
-import json
-from datetime import date
 
 CONFIG = {
     "apiKey": "AIzaSyDM0YYvGQFSc9qy6jh2hpxZy_87B8eNc3o",
@@ -15,47 +12,48 @@ CONFIG = {
     "measurementId": "G-DP1Q3X9X1K"
 }
 
-firebase = pyrebase.initialize_app(CONFIG)
-storage = firebase.storage()
-
-"""
-This method should be run on the server for daily/ half day basis so that local json files that each stores info about a
-sports news website could be uploaded to the firebase storage. Run the buildLeagueNews() function in NewsToJson.py before r-
-unning this method.
-"""
-
-
-# TODO: Make more directories for different categories and teams.
 
 def upLoadNewJsonToFireBaseStorage():
+    """
+    This method should be run on the server for daily/ half day basis so that local json files that each stores info
+    about a sports news website could be uploaded to the firebase storage. Run the buildLeagueNews() function in
+    NewsToJson.py before r- unning this method.
+    """
     # Initialize firebase
     firebase = pyrebase.initialize_app(CONFIG)
     storage = firebase.storage()
 
-    # Grab time of today
-    today = date.today()
-    month = today.strftime("%m")
-    day = today.strftime("%d")
-    year = today.strftime("%y")
+    paths_local = exploreNewsJson()
+    paths_on_cloud = []
 
-    path_on_cloud = "newsJson"
-    path_local = "../newsJson"
-    directory = os.fsencode(path_local)
-    filenames = []
+    for directory in paths_local:
+        paths_on_cloud.append(directory.replace("../newsJson", "newsJson"))
 
-    # for file in os.listdir(directory):
-    #     filename = os.fsdecode(file)
-    #     filenames.append(filename)
-    storage.child(path_on_cloud).put(path_local)
-
-    # fileName = "jsonFileNames.json"
-    # os.makedirs(os.path.dirname(path_local + fileName), exist_ok=True)
-    # with open(path_local + fileName, "w") as f:
-    #     json.dump(filenames, f)
-
-    # storage.child(path_on_cloud + fileName).put(path_local + fileName)
-
+    for i in range(0, len(paths_local)):
+        storage.child(paths_on_cloud[i]).put(paths_local[i])
     return 0
 
+
+def exploreNewsJson():
+    directory = "../newsJson"
+
+    newsJsonList = []
+
+    for subdir, dirs, files in os.walk(directory):
+        for file in files:
+            directory = os.path.join(subdir, file)
+            newsJsonList.append(directory.replace("\\", "/"))
+
+    return newsJsonList
+
+
 if __name__ == '__main__':
-    upLoadNewJsonToFireBaseStorage()
+    # TODO: Install package pyrebase using command pip install pyrebase. P.S.: If error occurred during installation,
+    #  try pip install --upgrade setuptools, it might need you to download Visual C++ 14 from the link given first.
+    firebase = pyrebase.initialize_app(CONFIG)
+    storage = firebase.storage()
+    storage.child("images/test.jpg").put("../image/paper_mockups/1.jpg")
+    # TODO: Go to firebase project, open console, go to Storage under Build. Check in the file tab if test.jpg exists
+    #  in the directory images. If this works, uncomment the call below and run it. P.S.: It took me around 10 min to
+    #  create all the .json files, so it might a while to upload to firebase.
+    #upLoadNewJsonToFireBaseStorage()
