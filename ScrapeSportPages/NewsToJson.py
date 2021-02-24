@@ -139,23 +139,68 @@ NFCWEST = ["NFCWEST",
            "San Francisco 49ers",
            "Seattle Seahawks"]
 
+ECATLANTIC = ["ECATLANTIC",
+              "Boston Bruins",
+              "Buffalo Sabres",
+              "Detroit Red Wings",
+              "Florida Panthers",
+              "Montreal Canadiens",
+              "Ottawa Senators",
+              "Tampa Bay Lightning",
+              'Toronto Maple Leafs']
+
+ECMETROPOLOTAN = ["ECMETROPOLOTAN",
+                  "Carolina Hurricanes",
+                  "Columbus Blue Jackets",
+                  "New Jersey Devils",
+                  "New York Islanders",
+                  "New York Rangers",
+                  "Philadelphia Flyers",
+                  "Pittsburgh Penguins",
+                  "Washington Capitals"]
+
+WCCENTRAL = ["WCCENTRAL",
+             "Chicago Blackhawks",
+             "Colorado Avalanche",
+             "Dallas Stars",
+             "Minnesota Wild",
+             "Nashville Predators",
+             "St.Louis Blues",
+             "Winnipeg Jets"]
+
+WCPACIFICNHL = ["WCPACIFIC",
+                "Anaheim Ducks",
+                "Arizona Coyotes",
+                "Calgary Flames",
+                "Edmonton Oilers",
+                "Los Angeles Kings",
+                "San Jose Sharks",
+                "Vancouver Canucks",
+                "Vegas Golden Knights"]
+
 NL = [NLE, NLC, NLW]
 
 AL = [ALE, ALC, ALW]
 
 MLBQUERYLIST = ["MLB", NL, AL]
 
-EC = [ECATLANTA, ECCENTRAL, ECSOUTHEAST]
+ECNBA = [ECATLANTA, ECCENTRAL, ECSOUTHEAST]
 
-WC = [WCNORTHEAST, WCPACIFIC, WCSOUTHWEST]
+WCNBA = [WCNORTHEAST, WCPACIFIC, WCSOUTHWEST]
 
-NBAQUERYLIST = ["NBA", EC, WC]
+NBAQUERYLIST = ["NBA", ECNBA, WCNBA]
 
 AFC = [AFCEAST, AFCNORTH, AFCSOUTH, AFCWEST]
 
 NFC = [NFCEAST, NFCNORTH, NFCSOUTH, NFCWEST]
 
 NFLQUERYLIST = ["NFL", AFC, NFC]
+
+ECNHL = [ECATLANTIC, ECMETROPOLOTAN]
+
+WCNHL = [WCPACIFICNHL, WCCENTRAL]
+
+NHLQUERYLIST = ["NHL", ECNHL, WCNHL]
 
 
 def createNewNews(query):
@@ -277,11 +322,11 @@ def buildNBANews():
     # Build NBA json folder for each day's news
     jsonDumpNewsItems("NBA", "NBA", "NBA League News")
 
-    for divisions in EC:
+    for divisions in ECNBA:
         for i in range(1, len(divisions)):
             jsonDumpNewsItems(divisions[i], "NBA", "EC", divisions[0])
 
-    for divisions in WC:
+    for divisions in WCNBA:
         for i in range(1, len(divisions)):
             jsonDumpNewsItems(divisions[i], "NBA", "WC", divisions[0])
 
@@ -317,13 +362,28 @@ def buildNFLNews():
 
     return 0
 
+def buildNHLNews():
+    # Build NHL json folder for each day's news
+    jsonDumpNewsItems("NHL", "NHL", "NHL League News")
+
+    for divisions in ECNHL:
+        for i in range(1, len(divisions)):
+            jsonDumpNewsItems(divisions[i], "NHL", "EC", divisions[0])
+
+    for divisions in WCNHL:
+        for i in range(1, len(divisions)):
+            jsonDumpNewsItems(divisions[i], "NHL", "WC", divisions[0])
+
+    return 0
+
 
 def buildNews():
-    makeDirectoryToday()
-
-    buildNBANews()
-    buildMLBNews()
-    buildNFLNews()
+    # makeDirectoryToday()
+    #
+    # buildNBANews()
+    # buildMLBNews()
+    # buildNFLNews()
+    buildNHLNews()
 
     return 0
 
