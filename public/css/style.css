@@ -57,7 +57,7 @@ a {
 }
 
 .pp-section{
-  padding:50px;
+  padding:50px 0px 50px 0px;
 }
 
 
@@ -96,11 +96,6 @@ a {
   padding: 20px 50px 20px 50px;
   border:1px solid black;
   /* transform: translateX(-20px); */
-}
-
-#title {
-  padding: 10px;
-  padding-left: 100px;
 }
 
 .back {
@@ -179,7 +174,7 @@ a {
 }
 
 #menuButton{
-  position:fixed;
+  position:absolute;
   top:5%;
   right:3%;
   font-size: 300%;
@@ -294,10 +289,10 @@ button:hover{
   margin: auto;
   width:80%;
   height: 250px;
-  border-radius:10px;
+  border-radius:0px;
   background: #fff;
   margin-bottom: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border:1px solid black;
   transition:0.05s;
   overflow: hidden;
   transform: translateX(-20px);
@@ -306,6 +301,7 @@ button:hover{
 .newsItem:hover {
   background: #003153;
   color: white;
+  border:1px solid white;
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
 }
 
@@ -336,9 +332,8 @@ button:hover{
 
 @media only screen and (max-width: 768px) {
 .newsItem{
-  width:100%;
+  width:95%;
   height:500px;
-  border-right:none;
   transform: translateX(-20px);
   border-bottom:20px black solid;
 }
@@ -351,12 +346,14 @@ button:hover{
 
 .articleWords {
   position: absolute;
-  padding-top:0px;
-  bottom: 40px;
+  padding:0px;
+  bottom: 0px;
   left: 0px;
   background:white;
   width:100%;
-  height:100px;
+  /* height:100px; */
+  display:grid;
+  grid-template-columns: auto auto auto;
 }
 
 .articleWords p{
@@ -364,18 +361,20 @@ button:hover{
 }
 
 .articleWords h4{
-  position:absolute;
-  left:100px;
-  width:40%;
-  border-left:1px solid black;
-  padding-left:30px;
+  /* position:absolute;
+  left:100px; */
+  width:70%;
+  padding-left:10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .teamImage {
-  position:absolute;
-  left:20px;
+  /* position:absolute;
+  left:20px; */
   height:50px !important;
   padding-top:20px;
+  padding-right:10px
 }
 
 }

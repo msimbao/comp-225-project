@@ -36,6 +36,10 @@
   template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></li></a>'
 })
 
+Vue.component('team-selector', {
+  props: ['selectors'],
+  template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></li></a>'
+})
 //<a href={{news.url}}><li class="card newsItem"><img src={{news.image}}><div class="articleWords"><h4>'{{news.title}}</h4><p>'{{news.description}}...'</p></div></li></a>
 
 /**
@@ -228,13 +232,11 @@ function showLogin(){
  function toggleMenu(){
   if (state == 0){
     menuButton.style.color="#fff"
-    menuButton.style.transform="rotate(90deg)"
     navbar.style.bottom="0%"
     state = 1;
   }
   else{
     menuButton.style.color="#000"
-    menuButton.style.transform="rotate(0deg)"
     navbar.style.bottom="100%"
     state = 0;
   }
