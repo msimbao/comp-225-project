@@ -2,7 +2,9 @@ import json
 from datetime import date
 import os
 from googleSearch.bingsearch import BingSearch
+import time
 
+# NBA division lists
 ECATLANTA = ["ECATLANTA",
              "Boston Celtics",
              "Brooklin Nets",
@@ -45,6 +47,7 @@ WCSOUTHWEST = ["WCSOUTHWEST",
                "New Orleans Pelicans",
                "San Antonio Spurs"]
 
+# MLB Division List
 NLE = ["NLE",
        "Atlanta Braves",
        "Miami Marlins",
@@ -87,6 +90,55 @@ ALW = ["ALW",
        "Seattle Mariners",
        "Texas Rangers"]
 
+# NFL Division List
+AFCEAST = ["AFCEAST",
+           "Buffalo Bills",
+           "Miami Dolphins",
+           "New England Patriots",
+           "New York Jets"]
+
+AFCNORTH = ["AFCNORTH",
+            "Baltimore Ravens",
+            "Cincinnati Bengals",
+            "Cleveland Browns",
+            "Pittsburgh Steelers"]
+
+AFCSOUTH = ["AFCSOUTH",
+            "Houston Texans",
+            "Indianapolis Colts",
+            "Jacksonville Jaguars",
+            "Tennessee Titans"]
+
+AFCWEST = ["AFCWEST",
+           "Denver Broncos",
+           "Kansas City Chiefs",
+           "Oakland Raiders",
+           "Los Angeles Chargers"]
+
+NFCEAST = ["NFCEAST",
+           "Dallas Cowboys",
+           "New York Giants",
+           "Philadelphia Eagles",
+           "Washington Redskins"]
+
+NFCNORTH = ["NFCNORTH",
+            "Chicago Bears",
+            "Detroit Lions",
+            "Green Bay Packers",
+            "Minnesota Vikings"]
+
+NFCSOUTH = ["NFCSOUTH",
+            "Atlanta Falcons",
+            "Carolina Panthers",
+            "New Orleans Saints",
+            "Tampa Bay Buccaneers"]
+
+NFCWEST = ["NFCWEST",
+           "Arizona Cardinals",
+           "Los Angeles Rams",
+           "San Francisco 49ers",
+           "Seattle Seahawks"]
+
 NL = [NLE, NLC, NLW]
 
 AL = [ALE, ALC, ALW]
@@ -98,6 +150,12 @@ EC = [ECATLANTA, ECCENTRAL, ECSOUTHEAST]
 WC = [WCNORTHEAST, WCPACIFIC, WCSOUTHWEST]
 
 NBAQUERYLIST = ["NBA", EC, WC]
+
+AFC = [AFCEAST, AFCNORTH, AFCSOUTH, AFCWEST]
+
+NFC = [NFCEAST, NFCNORTH, NFCSOUTH, NFCWEST]
+
+NFLQUERYLIST = ["NFL", AFC, NFC]
 
 
 def createNewNews(query):
@@ -245,13 +303,27 @@ def buildMLBNews():
     return 0
 
 
+def buildNFLNews():
+    # Build NFL json folder for each day's news
+    jsonDumpNewsItems("NFL", "NFL", "NFL League News")
+
+    for divisions in AFC:
+        for i in range(1, len(divisions)):
+            jsonDumpNewsItems(divisions[i], "NFL", "AFC", divisions[0])
+
+    for divisions in NFC:
+        for i in range(1, len(divisions)):
+            jsonDumpNewsItems(divisions[i], "NFL", "NFC", divisions[0])
+
+    return 0
+
+
 def buildNews():
     makeDirectoryToday()
 
     buildNBANews()
     buildMLBNews()
-    # # Build MLB json folder for each day's news
-    # jsonDumpNewsItems("NFL")
+    buildNFLNews()
 
     return 0
 
@@ -263,4 +335,6 @@ def jsonToDict(fileName):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     buildNews()
+    print("--- %s seconds ---" % (time.time() - start_time))
