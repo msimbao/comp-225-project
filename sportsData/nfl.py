@@ -11,7 +11,6 @@ from scraper import *
 
 
 def _set_nfl_data(url):
-    """"""
     afc_table = get_tables(url)[0]
     nfc_table = get_tables(url)[1]
 
@@ -24,9 +23,10 @@ def _set_nfl_data(url):
 def _get_conference_dict(table, conference):
     list = []
     for i in range(len(table)):
-        team_dict = {"title": table[0][i],
+        team_name = table[0][i]
+        team_dict = {"title": team_name,
                      "record": str(table[1][i]) + "-" + str(table[2][i]),
-                    "image":"",
+                    "image": get_team_logo(team_name),
                     "children":""}
         list.append(team_dict)
 
@@ -41,3 +41,5 @@ def _get_conference_dict(table, conference):
 def get_nfl_data(year=2020):
     url = "https://www.pro-football-reference.com/years/{}/".format(year)
     return _set_nfl_data(url)
+
+print(get_nfl_data())

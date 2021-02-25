@@ -106,5 +106,6 @@ def news():
 
     return jsonify(SEARCH_RESULTS)
 
+
 if __name__ == '__main__':
     app.run()
