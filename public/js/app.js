@@ -8,7 +8,6 @@
  *
  */
 
-console.log("hello");
 
     //Initialize Firebase
     const config = {

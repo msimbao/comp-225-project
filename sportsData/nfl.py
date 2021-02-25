@@ -24,8 +24,10 @@ def _set_nfl_data(url):
 def _get_conference_dict(table, conference):
     list = []
     for i in range(len(table)):
-        team_dict = {"team": table[0][i],
-                     "record": str(table[1][i]) + "-" + str(table[2][i])}
+        team_dict = {"title": table[0][i],
+                     "record": str(table[1][i]) + "-" + str(table[2][i]),
+                    "image":"",
+                    "children":""}
         list.append(team_dict)
 
     league_dict = {"{} East".format(conference): list[2:6],
