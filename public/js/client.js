@@ -1,11 +1,11 @@
 /**
- * 
+ *
  *  @Title client.js
- * 
+ *
  *  @Brief JavaScript For holding functions that handle the client
- * 
+ *
  *  @Author Ty, Declan, Jack, Mphatso
- * 
+ *
  */
 
 /**
@@ -20,87 +20,113 @@
   * //////////////////////////////////////
   */
 
-  /* Feed Component */
+/* Feed Component */
 
- Vue.component('feed-item', {
-  props: ['feed'],
-  template: '<a :href="feed.url"><div class="card newsItem"><img :src="feed.image"><div class="articleWords"><h4>{{feed.title}}</h4><p>"{{feed.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></div></a>'
-})
+Vue.component("feed-item", {
+  props: ["feed"],
+  template:
+    '<a :href="feed.url"><div class="card newsItem"><img :src="feed.image"><div class="articleWords"><h4>{{feed.title}}</h4><p>"{{feed.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></div></a>',
+});
 
-  /* General News Component */
+/* General News Component */
 
-  Vue.component('news-item', {
-    props: ['news'],
-    template: '<a :href="news.url"><div class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p></div></div></a>'
-  })
+Vue.component("news-item", {
+  props: ["news"],
+  template:
+    '<a :href="news.url"><div class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p></div></div></a>',
+});
 
-  /* Team Selection Component */
+/* Team Selection Component */
 
-Vue.component('team-option', {
-  props: ['option'],
+Vue.component("team-option", {
+  props: ["option"],
   methods: {
     teamOption: function (option) {
-      $.post('http://127.0.0.1:5000/conferences?' + $.param({'option': option}), function(option_data) {
-      console.log(option_data)
-      app.teamOptions = option_data;
-      })
-    }
+      $.post(
+        "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
+        function (option_data) {
+          console.log(option_data);
+          app.teamOptions = option_data;
+        }
+      );
+    },
   },
-  template: '<div v-on:click="teamOption(option.title)" ><h4>{{option.title}}</h4><img :src="option.image"></div>'
-})
+  template:
+    '<div v-on:click="teamOption(option.title)" ><h4>{{option.title}}</h4><img :src="option.image"></div>',
+});
 
-  /* Initialize */
+/* Initialize */
 
 var app = new Vue({
-  el: '#vue',
+  el: "#vue",
   data: {
-    generalNews:[],
-    teamOptions: []
+    generalNews: [],
+    teamOptions: [],
   },
   methods: {
-      talk: function () {
-          console.log("Request Sent")
-      },
-
-      generalSearch: function (event) {
-        $("ul#news").empty();
-        event.preventDefault();
-        newsItem = $('#searchBar').val();
-        $.post('http://127.0.0.1:5000/news?' + $.param({'newsItem': newsItem}), function(news) {
-        app.generalNews = news;
-        $('#searchBar').val('');
-        $('#searchBar').focus();
-        })
+    /**
+     * @name talk
+     * @brief Function to test if vue is handling requests
+     */
+    talk: function () {
+      console.log("Request Sent");
     },
-        filterSearch: function (event) {
-          // console.log("Searching");
-          event.preventDefault();
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("filterSearch");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("newsFeed");
-          tr = table.getElementsByClassName("articleWords");
-        
-         for (i = 0; i < tr.length; i++) {
-          td = tr[i];
-            if (td) {
-              te = td.getElementsByTagName("h4")[0];
-              txtValue = td.textContent || td.innerText;
-              // console.log(txtValue);
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].parentNode.parentNode.style.display = "";
-              } else {
-                tr[i].parentNode.parentNode.style.display = "none";
-              }
-            }       
-          }
-    }
-  }
-})
+    /**
+     * @name generalSearch
+     * @brief Function to search for news data. Right now it talks to server but will hopefully 
+     *        grab directly from database
+     */
+    generalSearch: function (event) {
+      $("ul#news").empty();
+      event.preventDefault();
+      newsItem = $("#searchBar").val();
+      $.post(
+        "http://127.0.0.1:5000/news?" + $.param({ newsItem: newsItem }),
+        function (news) {
+          app.generalNews = news;
+          $("#searchBar").val("");
+          $("#searchBar").focus();
+        }
+      );
+    },
 
-$.post('http://127.0.0.1:5000/conferences?' + $.param({'option': "begin"}), function(option_data) {
-app.teamOptions = option_data;
-})
+    /**
+    * @name filterSearch
+    * @brief Function to filter through feed content quickly. Not used right now
+    * @copyright https://www.w3schools.com/
+    */
+    filterSearch: function (event) {
+      // console.log("Searching");
+      event.preventDefault();
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("filterSearch");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("newsFeed");
+      tr = table.getElementsByClassName("articleWords");
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i];
+        if (td) {
+          te = td.getElementsByTagName("h4")[0];
+          txtValue = td.textContent || td.innerText;
+          // console.log(txtValue);
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].parentNode.parentNode.style.display = "";
+          } else {
+            tr[i].parentNode.parentNode.style.display = "none";
+          }
+        }
+      }
+    },
+  },
+});
+
+$.post(
+  "http://127.0.0.1:5000/conferences?" + $.param({ option: "begin" }),
+  function (option_data) {
+    app.teamOptions = option_data;
+  }
+);
 
 /*////////////////////////////////////////////////////////////////
 
@@ -118,33 +144,33 @@ app.teamOptions = option_data;
 
 ///////////////////////////////////////////////////////////////////*/
 
-  /* Initialize */
+/* Initialize */
 
-$(document).ready(function() {
-	$('#maincontent').pagepiling({
-	    menu: '#myMenu',
-        direction: 'vertical',
-        verticalCentered: true,
-        sectionsColor: ['#f3f3f3','#f3f3f3','#f3f3f3'],
-        anchors: ['feed','select','general'],
-        scrollingSpeed: 100,
-        easing: 'linear',
-        loopBottom: false,
-        loopTop: false,
-        css3: true,
-        navigation: false,
-       	normalScrollElements: '#feed, #select, #general',
-        normalScrollElementTouchThreshold: 5,
-        touchSensitivity: 5,
-        keyboardScrolling: true,
-        sectionSelector: '.section',
-        animateAnchor: false,
+$(document).ready(function () {
+  $("#maincontent").pagepiling({
+    menu: "#myMenu",
+    direction: "vertical",
+    verticalCentered: true,
+    sectionsColor: ["#f3f3f3", "#f3f3f3", "#f3f3f3"],
+    anchors: ["feed", "select", "general"],
+    scrollingSpeed: 100,
+    easing: "linear",
+    loopBottom: false,
+    loopTop: false,
+    css3: true,
+    navigation: false,
+    normalScrollElements: "#feed, #select, #general",
+    normalScrollElementTouchThreshold: 5,
+    touchSensitivity: 5,
+    keyboardScrolling: true,
+    sectionSelector: ".section",
+    animateAnchor: false,
 
-		//events
-		onLeave: function(index, nextIndex, direction){},
-		afterLoad: function(anchorLink, index){},
-		afterRender: function(){},
-	});
+    //events
+    onLeave: function (index, nextIndex, direction) {},
+    afterLoad: function (anchorLink, index) {},
+    afterRender: function () {},
+  });
 });
 
 /*//////////////////////////////////////////////////////////////
@@ -160,73 +186,64 @@ $(document).ready(function() {
 //////////////////////////////////////////////////////////////*/
 
 // Variables For Controlling Menu and Signup
-var login = document.getElementById("login")
-var navbar = document.getElementById('navbar')
-var menuButton = document.getElementById('menuButton')
- 
+var login = document.getElementById("login");
+var navbar = document.getElementById("navbar");
+var menuButton = document.getElementById("menuButton");
 
-  /**
-  *  @name toggleSignUp
-  * 
-  *  @brief Function to hide or show signup section
-  */
+/**
+ *  @name toggleSignUp
+ *  @brief Function to hide or show signup section
+ */
 
- $(document).ready(function(){
-  $('#login').children().eq(1).fadeOut();
-  })
- 
-  function toggleSignUp(state){
-    if (state == "showSignUp"){
-      $('#login').children().eq(2).fadeOut();
-      $('#login').children().eq(1).fadeIn();
-    }
-    else{
-      $('#login').children().eq(2).fadeIn();
-      $('#login').children().eq(1).fadeOut();
-    }
+$(document).ready(function () {
+  $("#login").children().eq(1).fadeOut();
+});
 
-  }
-
- /**
-  *  @name toggleLogin
-  * 
-  *  @brief Function to hide or show Login panel
-  */
-
-function toggleLogin(state){
-  if (state == "hideLogin"){
-    console.log("Login Bypassed");
-    login.style.top="-200%";
-    maincontent.style.display="block";
-  }
-  else{
-    login.style.top="50%";
-    maincontent.style.display="none"
+function toggleSignUp(state) {
+  if (state == "showSignUp") {
+    $("#login").children().eq(2).fadeOut();
+    $("#login").children().eq(1).fadeIn();
+  } else {
+    $("#login").children().eq(2).fadeIn();
+    $("#login").children().eq(1).fadeOut();
   }
 }
 
+/**
+ *  @name toggleLogin
+ *  @brief Function to hide or show Login panel
+ */
 
- /**
-  *  @name toggleMenu
-  * 
-  *  @brief Function to toggle the website Menu
-  */
-
- var menu=0;
- function toggleMenu(){
-  if (menu == 0){
-    menuButton.style.color="#fff"
-    navbar.style.bottom="0%"
-    menu = 1;
+function toggleLogin(state) {
+  if (state == "hideLogin") {
+    console.log("Login Bypassed");
+    login.style.top = "-200%";
+    maincontent.style.display = "block";
+  } else {
+    login.style.top = "50%";
+    maincontent.style.display = "none";
   }
-  else{
-    menuButton.style.color="#000"
-    navbar.style.bottom="100%"
+}
+
+/**
+ *  @name toggleMenu
+ *  @brief Function to toggle the website Menu
+ */
+
+var menu = 0;
+function toggleMenu() {
+  if (menu == 0) {
+    menuButton.style.color = "#fff";
+    navbar.style.bottom = "0%";
+    menu = 1;
+  } else {
+    menuButton.style.color = "#000";
+    navbar.style.bottom = "100%";
     menu = 0;
   }
 }
 
- /**
+/**
   * ///////////////////////////////////////////////////////////
 
   _____       _ _     _______        _       
@@ -242,19 +259,30 @@ function toggleLogin(state){
 
 /**
  *  @name getTestNews
- * 
- *  @brief get test news article for general search page and display it 
+ *  @brief get test news article for general search page and display it
  */
-function getNews(){
-  $.get('http://127.0.0.1:5000/news', function(news) {
+function getNews() {
+  $.get("http://127.0.0.1:5000/news", function (news) {
     // console.log(news)
-  news.forEach(function(newsItem) {
-    // console.log(newsItem['title'])
-  // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
-    $('<a href="'+newsItem.url+'"><div class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></div></a>').appendTo('ul#news');
-});
-});
+    news.forEach(function (newsItem) {
+      // console.log(newsItem['title'])
+      // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
+      $(
+        '<a href="' +
+          newsItem.url +
+          '"><div class="card newsItem"><img src="' +
+          newsItem.image +
+          '"><div class="articleWords"><h4>' +
+          newsItem.title +
+          "</h4><p>" +
+          newsItem.description +
+          "</p><h6>" +
+          newsItem.authors +
+          "</h6></div></div></a>"
+      ).appendTo("ul#news");
+    });
+  });
 }
 
 // Call get News on App start to test the response
-getNews()
+getNews();
