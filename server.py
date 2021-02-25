@@ -47,19 +47,21 @@ def homepage():
     """Displays the homepage."""
     return render_template('index.html')
 
-#General Test Route
-# @app.route('/lol')
-# def rlol():
-#     return jsonify(test.lol())
+
+#============================================================================
+# Needs to be replaced
 
 f = open("sportsData/leagues.txt", "r")
 OPTION_DATA =  json.loads(f.read())
 f.close()
 
+#============================================================================
+
 @app.route('/conferences', methods=['GET', 'POST'])
 def option_data():
 
-    # TODO: Replace this json read with the working output from sportDictionaries
+    # TODO: Replace this json read with the working output from sportDictionaries.
+    # has to be made so that OPTION_DATA is also not a global variable
     # TODO: Also we need images for the team logos. Preferably urls. Example given 
     # for the top level league logos. We can also just leave logos out. They need to be 
     # added as keys to the respective league data
