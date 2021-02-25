@@ -23,37 +23,27 @@
   * ///////////////////////////////////////////////////////////
   */
 
-  /**
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-* Components
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-*/
+  /* News Components */
 
  Vue.component('news-item', {
   props: ['news'],
-  template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></li></a>'
+  template: '<a :href="news.url"><div class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></div></a>'
 })
 
-Vue.component('team-selector', {
-  props: ['selectors'],
-  template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></li></a>'
-})
-//<a href={{news.url}}><li class="card newsItem"><img src={{news.image}}><div class="articleWords"><h4>'{{news.title}}</h4><p>'{{news.description}}...'</p></div></li></a>
+  /* Team Selection Components */
 
-/**
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-* Begin Vue App and Define UI Methods
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-*/
+Vue.component('selector-option', {
+  props: ['options'],
+  template: '<div><h4>{{option.title}}</h4><img :src="option.image"></div>'
+})
+
+  /* Initialize */
 
 var app = new Vue({
   el: '#vue',
   data: {
-    generalNews:[]
+    generalNews:[],
+    selectorOptions: [],
   },
   methods: {
       talk: function () {
@@ -121,6 +111,8 @@ var app = new Vue({
 
 ///////////////////////////////////////////////////////////////////*/
 
+  /* Initialize */
+
 $(document).ready(function() {
 	$('#maincontent').pagepiling({
 	    menu: '#myMenu',
@@ -171,81 +163,68 @@ var menuButton = document.getElementById('menuButton')
   * ///////////////////////////////////////////////////////////
   */
 
-/**
-  *  @name showSignUp
+  /**
+  *  @name toggleSignUp
   * 
-  *  @brief Function to hide the Login panel and show the sign up panel
+  *  @brief Function to hide or show signup section
   */
+
  $(document).ready(function(){
- $('#login').children().eq(1).fadeOut();
- })
-
-function showSignUp(){
-  $('#login').children().eq(2).fadeOut();
-  $('#login').children().eq(1).fadeIn();
-  loginCover.style.left="50%"
-  loginCover.style.color="#f9c74f"
-  // loginCover.style.background="#003F88"
-  $('.loginCover').removeClass("yellowCrossingBackground");
-  $('.loginCover').addClass("blueCrossingBackground");
-
-}
-
-function hideSignUp(){
-  $('#login').children().eq(2).fadeIn();
   $('#login').children().eq(1).fadeOut();
-  loginCover.style.left="0%"
-  loginCover.style.color="#003F88"
-  // loginCover.style.backgroundColor="#f9c74f"
-  $('.loginCover').addClass("yellowCrossingBackground");
-  $('.loginCover').removeClass("blueCrossingBackground");
+  })
+ 
+ function showSignUp(){
+   $('#login').children().eq(2).fadeOut();
+   $('#login').children().eq(1).fadeIn();
+ }
+ 
+ function hideSignUp(){
+   $('#login').children().eq(2).fadeIn();
+   $('#login').children().eq(1).fadeOut();
+ }
+
+ /**
+  *  @name toggleLogin
+  * 
+  *  @brief Function to hide or show Login panel
+  */
+
+function toggleLogin(state){
+  if (state == "hideLogin"){
+    console.log("Login Bypassed");
+    login.style.top="-200%";
+    maincontent.style.display="block";
+  }
+  if (state == "showLogin"){
+    login.style.top="50%";
+    maincontent.style.display="none"
+  }
 }
 
  /**
-  *  @name hideLogin
+  *  @name toggleMenu
   * 
-  *  @brief Function to hide the Login window when the user inserts valid login credentials
-  */
-function hideLogin(){
-  console.log("Login Bypassed");
-  login.style.top="-200%";
-  maincontent.style.display="block";
-}
-
- /**
-  *  @name showLogin
-  * 
-  *  @brief Function to show the Login window when the user inserts logs out
-  */
-function showLogin(){
-  login.style.top="50%";
-   maincontent.style.display="none"
-}
-
- /**
-  *  @name showMenu
-  * 
-  *  @brief Function to show the website Menu
+  *  @brief Function to toggle the website Menu
   */
 
- var state=0;
+ var menu=0;
  function toggleMenu(){
-  if (state == 0){
+  if (menu == 0){
     menuButton.style.color="#fff"
     navbar.style.bottom="0%"
-    state = 1;
+    menu = 1;
   }
   else{
     menuButton.style.color="#000"
     navbar.style.bottom="100%"
-    state = 0;
+    menu = 0;
   }
 }
 
  /**
   * ///////////////////////////////////////////////////////////
   * ///////////////////////////////////////////////////////////
-  * Functions to Access Server
+  * Functions to Test Vue Components
   * ///////////////////////////////////////////////////////////
   * ///////////////////////////////////////////////////////////
   */
@@ -253,7 +232,7 @@ function showLogin(){
 /**
  *  @name getTestNews
  * 
- *  @brief get test news article for general search page
+ *  @brief get test news article for general search page and display it 
  */
 function getNews(){
   $.get('http://127.0.0.1:5000/news', function(news) {
@@ -261,7 +240,7 @@ function getNews(){
   news.forEach(function(newsItem) {
     // console.log(newsItem['title'])
   // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
-    $('<a href="'+newsItem.url+'"><li class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></li></a>').appendTo('ul#news');
+    $('<a href="'+newsItem.url+'"><div class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></div></a>').appendTo('ul#news');
 });
 });
 }

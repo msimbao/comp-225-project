@@ -92,7 +92,7 @@ Login Form
         <button id="submitLogin" class="button introButton" type="submit">LOGIN</button>
         </form>
         <p>Or <u class="pointerItem" onclick="showSignUp()">Create an Account</u></p>
-        <p>Or <u class="pointerItem" onclick="hideLogin()">Bypass Login as Admin</u></p>
+        <p>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></p>
 
       </div>
 
@@ -116,7 +116,7 @@ Main Feed Tab
   <div class="card tabDescription">
     <h2>Your Feed</h2>
     <p>
-      All the latest articles about the teams you care about right in the palm of your hands.
+      All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Select' section.
     </p>
 
       <!-- <input
@@ -128,42 +128,40 @@ Main Feed Tab
       /> -->
 
   </div>
-    <div>
-    <ul id="newsFeed" class="news">
+    <div id="newsFeed" class="tabContent">
        <a href="#feed">
-         <li class="card newsItem">
+         <div class="card newsItem">
            <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.17.57%20PM.png?v=1613614685196">
            <div class="articleWords">
              <h4>Buccaneers Will Celebrate Super Bowl LV Win on the Water</h4>
              <p>The Tampa Bay Buccaneers will celebrate their latest Lombardi trophy as only they can with a socially distant boat parade around the bay on Wednesday, February 10. The event will begin starting at 1 p.m. ET....</p>
              <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
            </div>
-         </li>
+         </div>
       </a>
       
         <a href="#feed">
-         <li class="card newsItem">
+         <div class="card newsItem">
            <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.18.27%20PM.png?v=1613614711362">
            <div class="articleWords">
              <h4> Blue Jays to report to Spring Training Feb. 18 </h4>
              <p>The first sign of baseball season is finally here: pitchers and catchers. MLB announced the start dates of workouts for 2021 Spring Training presented by Camping World on Tuesday, with the first pitchers and catchers workouts and first full-squad workouts for every team. Teams will report to Spring Training next....</p>
              <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
             </div>
-         </li>
+         </div>
       </a>
       
                <a href="#feed">
-         <li class="card newsItem">
+         <div class="card newsItem">
            <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.19.06%20PM.png?v=1613614749856">
            <div class="articleWords">
              <h4>Titans Fan, and Valued Mentor, Brandon Galloway Named NFL Fan of the Year </h4>
              <p>"When they told me, I was at a loss for words," Galloway said. "It is just an amazing honor, and it puts a positive spotlight on our city and on our fan base, despite everything Nashville has been through...."</p>
              <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
             </div>
-         </li>
+          </div>
       </a>
-      </ul>
-  </div>
+    </div>
 </div>
 
 
@@ -180,17 +178,26 @@ Select Tab
       <div id="selectDescription" class="card tabDescription">
         <h2>Select Teams</h2>
         <p>
-          Pick your top favorite teams to follow from one of the Four Major Leagues.
+          Pick your top favorite teams to follow from one of the Four Major Leagus or remove teams you already follow.
         </p>
       </div>
+
+      <div class="tabContent selectGrid">
+        <div>
+          <h4>
+            Major League Baseball - MLB
+          </h4>
+          <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmajor-league-baseball-1-logo-png-transparent.png?v=1612974304407">
+        </div>
+        <div>
+          <h4>
+            National Football League - NFL
+          </h4>
+          <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">
+        </div>
+      </div>
       
-  <!-- Leagues Card Holder -->
-    <!-- <div id="leagues">
-      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmajor-league-baseball-1-logo-png-transparent.png?v=1612974304407" class="leagueIcon"></div>
-      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974" class="leagueIcon"></div>
-      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169" class="leagueIcon"></div>
-      <div class="league card"><img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788" class="leagueIcon"></div>
-    </div> -->
+
     </div>
     
 
@@ -224,14 +231,14 @@ General Search Tab
     </form>
   </div>
 
-    <ul id="news" class="news">
+    <div id="news" class="tabContent">
 
           <news-item
             v-for="item in generalNews"
             v-bind:news="item"
           ></news-item>
 
-    </ul>
+    </div>
 
 </div>
 
@@ -266,7 +273,7 @@ NavBar
         <a href="#general">Search</a>
       </li>
     
-    <li id="submitLogout" onclick="showLogin()">
+    <li id="submitLogout" onclick="toggleLogin('showLogin')">
       <a href="#login">Logout</a>
     </li>
   </ul>
