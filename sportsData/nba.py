@@ -15,10 +15,11 @@ def _set_nba_data(url):
     list = []
     for i in tables:
         for idx in range(len(i) - 1):
-            team_dict = {"title": i[0][idx + 1],
+            team_name = i[0][idx + 1]
+            team_dict = {"title": team_name,
                          "record": i[1][idx + 1] + "-" + i[2][idx + 1],
-                         "image": "",
-                         "children": ""}
+                         "image": get_team_logo(team_name),
+                         "children":""}
             list.append(team_dict)
 
     dict = {"Eastern Conference": list[0:15],
@@ -30,6 +31,3 @@ def get_nba_data(year=2021):
     url = "https://www.basketball-reference.com/leagues/NBA_{}_standings.html".format(
         year)
     return _set_nba_data(url)
-
-
-print(get_nba_data()["Eastern Conference"])

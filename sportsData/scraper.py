@@ -5,7 +5,8 @@ Holds functions for scraping team data
 @Author: Ty, Declan, Jack, Mphatso
 
 """
-
+import json
+import re
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
@@ -66,3 +67,13 @@ def _get_team_name(bs4_element):
     end = s.find("</a>")
     team_name = s[start:end]
     return team_name
+
+
+def get_team_logo(team_name):
+    if team_name != "[":
+        team_name = team_name.replace(" ", "+")
+        url = "https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t={}".format(team_name)
+        response = requests.get(url)
+        response.raise_for_status()
+        search_results = json.dumps(response.json(), indent=4)
+        return json.loads(search_results)["teams"][0]['strTeamBadge']
