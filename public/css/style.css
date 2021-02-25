@@ -6,7 +6,6 @@
 *
 * @Date: 2021-02-09
 *
-*
 * @Brief: Final Main File where we will put the rest of the css
 *
 */
@@ -45,37 +44,46 @@ a {
   cursor:pointer;
 }
 
-
-
 #colorPalette {
-  color: #00296B;
-  color: #003F88;
-  color: #00509D;
-  color: #f18701;
-  color: #f9c74f;
+  color: #003153;
+  color: #000;
+  color: #777;
+  color: #fff;
+  color: #f3f3f3;
   color: #333;
 }
 
+/*////////////////////////////////////////////////////////////////
+
+  _____                 _____ _ _ _ _             
+ |  __ \               |  __ (_) | (_)            
+ | |__) |_ _  __ _  ___| |__) || | |_ _ __   __ _ 
+ |  ___/ _` |/ _` |/ _ \  ___/ | | | | '_ \ / _` |
+ | |  | (_| | (_| |  __/ |   | | | | | | | | (_| |
+ |_|   \__,_|\__, |\___|_|   |_|_|_|_|_| |_|\__, |
+              __/ |                          __/ |
+             |___/                          |___/ 
+
+///////////////////////////////////////////////////////////////////*/
+
 .pp-section{
-  padding:50px;
+  padding:50px 0px 50px 0px;
+  display:grid;
+  grid-template-columns: auto;
+  grid-gap: 5px;
 }
 
-
-/*//////////////////////////////////////////////////////////////
-
-   _____              _ 
-  / ____|            | |
- | |     __ _ _ __ __| |
- | |    / _` | '__/ _` |
- | |___| (_| | | | (_| |
-  \_____\__,_|_|  \__,_|
-                                             
-
-//////////////////////////////////////////////////////////////*/
-
-.card:not(.tabDescription) {
-  cursor: pointer;
+.pp-section > div{
+  width:80%;
 }
+
+  /* For Mobile: */
+  
+  @media only screen and (max-width: 768px) {
+
+
+  }
+
 
 /*//////////////////////////////////////////////////////////////
    _____           _   _                  
@@ -88,19 +96,30 @@ a {
 
 //////////////////////////////////////////////////////////////*/
 
+.card:not(.tabDescription) {
+  cursor: pointer;
+}
+
 .tabDescription {
   color:#1d3557;
   margin: auto;
-  width: 70%;
   background-color: #fff;
-  padding: 20px 50px 20px 50px;
+  padding: 30px 0px 30px 0px;
   border:1px solid black;
-  /* transform: translateX(-20px); */
 }
 
-#title {
-  padding: 10px;
-  padding-left: 100px;
+.tabDescription *{
+  margin-left:5%;
+}
+
+.tabContent {
+  list-style-type: none;
+  margin: auto;
+  display:grid;
+  grid-template-columns: auto;
+  grid-gap: 5px;
+  margin-top:0px;
+  
 }
 
 .back {
@@ -114,7 +133,11 @@ a {
   width: 100px;
 }
 
-/*Mobile Adjustments*/
+  /* For Mobile: */
+  
+  @media only screen and (max-width: 768px) {
+
+  }
 
 /*//////////////////////////////////////////////////////////////
   __  __                  
@@ -161,7 +184,7 @@ a {
   transition: 0.1s;
   font-weight:bold;
   padding:20px;
-  border-radius:5px;
+  border-radius:0px;
 }
 
 
@@ -179,9 +202,9 @@ a {
 }
 
 #menuButton{
-  position:fixed;
+  position:absolute;
   top:5%;
-  right:3%;
+  right:4%;
   font-size: 300%;
   cursor:pointer;
   color:#000;
@@ -189,10 +212,10 @@ a {
   z-index:150;
 }
 
-/* Mobile Adjustments */
-
-@media only screen and (max-width: 768px) {
   /* For Mobile: */
+  
+@media only screen and (max-width: 768px) {
+
   #navbar ul {
     padding: 0px 0px 0px 10px;
     font-size:250%;
@@ -269,7 +292,9 @@ button:hover{
   background-color: #777;
 }
 
-
+#searchBar{
+  margin-left:0px !important;
+}
 /*//////////////////////////////////////////////////////////////
 
   _   _                   
@@ -283,29 +308,20 @@ button:hover{
 //////////////////////////////////////////////////////////////*/
 
 
-
-.news {
-  margin: auto;
-  list-style-type: none;
-  margin-top: 5px;
-}
-
 .newsItem {
-  margin: auto;
-  width:80%;
   height: 250px;
-  border-radius:10px;
+  border-radius:0px;
   background: #fff;
-  margin-bottom: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border:1px solid black;
   transition:0.05s;
   overflow: hidden;
-  transform: translateX(-20px);
+  transform: translateX(0px);
 }
 
 .newsItem:hover {
   background: #003153;
   color: white;
+  border:1px solid white;
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
 }
 
@@ -330,16 +346,13 @@ button:hover{
   bottom: 10px;
 }
 
-/*//////////////////////////////////////////////////////////////
-# Mobile Adjustments
-//////////////////////////////////////////////////////////////*/
+/* For Mobile */
 
 @media only screen and (max-width: 768px) {
 .newsItem{
   width:100%;
   height:500px;
-  border-right:none;
-  transform: translateX(-20px);
+  transform: translateX(0px);
   border-bottom:20px black solid;
 }
 
@@ -351,12 +364,13 @@ button:hover{
 
 .articleWords {
   position: absolute;
-  padding-top:0px;
-  bottom: 40px;
+  padding:0px;
+  bottom: 0px;
   left: 0px;
   background:white;
   width:100%;
-  height:100px;
+  display:grid;
+  grid-template-columns: auto auto auto;
 }
 
 .articleWords p{
@@ -364,18 +378,20 @@ button:hover{
 }
 
 .articleWords h4{
-  position:absolute;
-  left:100px;
-  width:40%;
-  border-left:1px solid black;
-  padding-left:30px;
+  /* position:absolute;
+  left:100px; */
+  width:70%;
+  padding-left:10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .teamImage {
-  position:absolute;
-  left:20px;
+  /* position:absolute;
+  left:20px; */
   height:50px !important;
   padding-top:20px;
+  padding-right:10px
 }
 
 }
@@ -392,15 +408,57 @@ button:hover{
 //////////////////////////////////////////////////////////////*/
 
 
-/*
-* League Icons Css ///////////////////////////////////////////////
-*/
+.selectGrid{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 5px;
+}
 
-#leagues{
- 
+.selectGrid div{
+  height: 100px;
+  border:1px solid black;
+  padding:10px;
+  transition:0.1s;
+  vertical-align: center;
+}
+
+.selectGrid div:hover{
+  background:50px #003153;
+  color:white;
+}
+
+.selectGrid div h4{
+  float:left;
+  font-size:150%;
+  vertical-align: center;
+}
+
+.selectGrid div img{
+  height:80%;
+  float:right;
+  vertical-align: center;
 }
 
 
+/* For Mobile */
+
+@media only screen and (max-width: 768px) {
+  .selectGrid{
+    grid-template-columns: auto;
+  }
+
+  .selectGrid div h4{
+    float:left;
+    font-size:80%;
+    margin-top:15%;
+  }
+  
+  .selectGrid div img{
+    height:80%;
+    float:right;
+  }
+  
+}
 
 
 /*//////////////////////////////////////////////////////////////
@@ -480,9 +538,10 @@ button:hover{
 }
 
 
+  /* For Mobile: */
 
 @media only screen and (max-width: 768px) {
-  /* For Mobile: */
+
   .loginCover{display:none;}
   #login{width:100%;
     height:100%;}
@@ -508,7 +567,7 @@ button:hover{
 /////////////////////////////////////////////////////////////////////////*/
 
 #load {
-  background: #00509D;
+  background: #003153;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -608,7 +667,7 @@ button:hover{
   transform: translateY(-50%) translateX(-50%);
   border: 5px solid #fff;
   border-radius: 50%;
-  border-top: 5px solid #00509D;
+  border-top: 5px solid #003153;
   width: 100px;
   height: 100px;
   -webkit-animation: spin 2s linear infinite; /* Safari */

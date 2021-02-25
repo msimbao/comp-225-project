@@ -14,8 +14,10 @@ def _set_team_list(year):
     team_list = []
     for division in table:
         for ind in range(len(division)):
-            team_dict = {"team": division["Tm"][ind + 1],
-                         "record": division["W"][ind + 1] + "-" + division["L"][ind+1]}
+            team_dict = {"title": division["Tm"][ind + 1],
+                         "record": division["W"][ind + 1] + "-" + division["L"][ind+1],
+                         "image":"",
+                         "children":""}
             team_list.append(team_dict)
     return team_list
 

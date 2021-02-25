@@ -9,62 +9,59 @@
  */
 
 /**
-  * ///////////////////////////////////////////////////////////
-  * 
- __      __            _____      _               
- \ \    / /           / ____|    | |              
-  \ \  / /   _  ___  | (___   ___| |_ _   _ _ __  
-   \ \/ / | | |/ _ \  \___ \ / _ \ __| | | | '_ \ 
-    \  /| |_| |  __/  ____) |  __/ |_| |_| | |_) |
-     \/  \__,_|\___| |_____/ \___|\__|\__,_| .__/ 
-                                           | |    
-                                           |_|    
-
-  * ///////////////////////////////////////////////////////////
+  * //////////////////////////////////////
+ __      __         
+ \ \    / /         
+  \ \  / /   _  ___ 
+   \ \/ / | | |/ _ \
+    \  /| |_| |  __/
+     \/  \__,_|\___|
+                    
+  * //////////////////////////////////////
   */
 
-  /**
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-* Components
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-*/
+  /* Feed Component */
 
- Vue.component('news-item', {
-  props: ['news'],
-  template: '<a :href="news.url"><li class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></li></a>'
+ Vue.component('feed-item', {
+  props: ['feed'],
+  template: '<a :href="feed.url"><div class="card newsItem"><img :src="feed.image"><div class="articleWords"><h4>{{feed.title}}</h4><p>"{{feed.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></div></a>'
 })
 
-//<a href={{news.url}}><li class="card newsItem"><img src={{news.image}}><div class="articleWords"><h4>'{{news.title}}</h4><p>'{{news.description}}...'</p></div></li></a>
+  /* General News Component */
 
-/**
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-* Begin Vue App and Define UI Methods
-* ///////////////////////////////////////////////////////////
-* ///////////////////////////////////////////////////////////
-*/
+  Vue.component('news-item', {
+    props: ['news'],
+    template: '<a :href="news.url"><div class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p></div></div></a>'
+  })
+
+  /* Team Selection Component */
+
+Vue.component('team-option', {
+  props: ['option'],
+  methods: {
+    teamOption: function (option) {
+      $.post('http://127.0.0.1:5000/conferences?' + $.param({'option': option}), function(option_data) {
+      console.log(option_data)
+      app.teamOptions = option_data;
+      })
+    }
+  },
+  template: '<div v-on:click="teamOption(option.title)" ><h4>{{option.title}}</h4><img :src="option.image"></div>'
+})
+
+  /* Initialize */
 
 var app = new Vue({
   el: '#vue',
   data: {
-    generalNews:[]
+    generalNews:[],
+    teamOptions: []
   },
   methods: {
       talk: function () {
           console.log("Request Sent")
       },
-      toggleSignUp: function (state) {
-        if(state == "showSignup"){
-          loginCover.style.left="50%"
-          loginCover.style.background="#003F88"
-        }
-        if(state == "showSignin"){
-          loginCover.style.left="0%"
-          loginCover.style.background="#f9c74f"
-        }
-      },
+
       generalSearch: function (event) {
         $("ul#news").empty();
         event.preventDefault();
@@ -101,6 +98,10 @@ var app = new Vue({
   }
 })
 
+$.post('http://127.0.0.1:5000/conferences?' + $.param({'option': "begin"}), function(option_data) {
+app.teamOptions = option_data;
+})
+
 /*////////////////////////////////////////////////////////////////
 
 
@@ -116,6 +117,8 @@ var app = new Vue({
 
 
 ///////////////////////////////////////////////////////////////////*/
+
+  /* Initialize */
 
 $(document).ready(function() {
 	$('#maincontent').pagepiling({
@@ -144,114 +147,103 @@ $(document).ready(function() {
 	});
 });
 
- /**
-  * ///////////////////////////////////////////////////////////
-  * ///////////////////////////////////////////////////////////
-  * Set Important Variables
-  * ///////////////////////////////////////////////////////////
-  * ///////////////////////////////////////////////////////////
-  */
+/*//////////////////////////////////////////////////////////////
+  _                 _                  _____ _                         
+ | |               (_)          _     / ____(_)                        
+ | |     ___   __ _ _ _ __    _| |_  | (___  _  __ _ _ __  _   _ _ __  
+ | |    / _ \ / _` | | '_ \  |_   _|  \___ \| |/ _` | '_ \| | | | '_ \ 
+ | |___| (_) | (_| | | | | |   |_|    ____) | | (_| | | | | |_| | |_) |
+ |______\___/ \__, |_|_| |_|         |_____/|_|\__, |_| |_|\__,_| .__/ 
+               __/ |                            __/ |           | |    
+              |___/                            |___/            |_|    
 
-// Variables For Controlling Menu
+//////////////////////////////////////////////////////////////*/
+
+// Variables For Controlling Menu and Signup
+var login = document.getElementById("login")
 var navbar = document.getElementById('navbar')
 var menuButton = document.getElementById('menuButton')
-
-// Variables For Controlling Login Panel
- var login = document.getElementById("login")
- var loginCover = document.getElementsByClassName("loginCover")[0]
-
+ 
 
   /**
-  * ///////////////////////////////////////////////////////////
-  * Animate UI Functions
-  * ///////////////////////////////////////////////////////////
+  *  @name toggleSignUp
+  * 
+  *  @brief Function to hide or show signup section
   */
 
-/**
-  *  @name showSignUp
-  * 
-  *  @brief Function to hide the Login panel and show the sign up panel
-  */
  $(document).ready(function(){
- $('#login').children().eq(1).fadeOut();
- })
-
-function showSignUp(){
-  $('#login').children().eq(2).fadeOut();
-  $('#login').children().eq(1).fadeIn();
-  loginCover.style.left="50%"
-  loginCover.style.color="#f9c74f"
-  // loginCover.style.background="#003F88"
-  $('.loginCover').removeClass("yellowCrossingBackground");
-  $('.loginCover').addClass("blueCrossingBackground");
-
-}
-
-function hideSignUp(){
-  $('#login').children().eq(2).fadeIn();
   $('#login').children().eq(1).fadeOut();
-  loginCover.style.left="0%"
-  loginCover.style.color="#003F88"
-  // loginCover.style.backgroundColor="#f9c74f"
-  $('.loginCover').addClass("yellowCrossingBackground");
-  $('.loginCover').removeClass("blueCrossingBackground");
-}
+  })
+ 
+  function toggleSignUp(state){
+    if (state == "showSignUp"){
+      $('#login').children().eq(2).fadeOut();
+      $('#login').children().eq(1).fadeIn();
+    }
+    else{
+      $('#login').children().eq(2).fadeIn();
+      $('#login').children().eq(1).fadeOut();
+    }
+
+  }
 
  /**
-  *  @name hideLogin
+  *  @name toggleLogin
   * 
-  *  @brief Function to hide the Login window when the user inserts valid login credentials
+  *  @brief Function to hide or show Login panel
   */
-function hideLogin(){
-  console.log("Login Bypassed");
-  login.style.top="-200%";
-  maincontent.style.display="block";
+
+function toggleLogin(state){
+  if (state == "hideLogin"){
+    console.log("Login Bypassed");
+    login.style.top="-200%";
+    maincontent.style.display="block";
+  }
+  else{
+    login.style.top="50%";
+    maincontent.style.display="none"
+  }
 }
 
- /**
-  *  @name showLogin
-  * 
-  *  @brief Function to show the Login window when the user inserts logs out
-  */
-function showLogin(){
-  login.style.top="50%";
-   maincontent.style.display="none"
-}
 
  /**
-  *  @name showMenu
+  *  @name toggleMenu
   * 
-  *  @brief Function to show the website Menu
+  *  @brief Function to toggle the website Menu
   */
 
- var state=0;
+ var menu=0;
  function toggleMenu(){
-  if (state == 0){
+  if (menu == 0){
     menuButton.style.color="#fff"
-    menuButton.style.transform="rotate(90deg)"
     navbar.style.bottom="0%"
-    state = 1;
+    menu = 1;
   }
   else{
     menuButton.style.color="#000"
-    menuButton.style.transform="rotate(0deg)"
     navbar.style.bottom="100%"
-    state = 0;
+    menu = 0;
   }
 }
 
  /**
   * ///////////////////////////////////////////////////////////
-  * ///////////////////////////////////////////////////////////
-  * Functions to Access Server
-  * ///////////////////////////////////////////////////////////
+
+  _____       _ _     _______        _       
+ |_   _|     (_) |   |__   __|      | |      
+   | |  _ __  _| |_     | | ___  ___| |_ ___ 
+   | | | '_ \| | __|    | |/ _ \/ __| __/ __|
+  _| |_| | | | | |_     | |  __/\__ \ |_\__ \
+ |_____|_| |_|_|\__|    |_|\___||___/\__|___/
+                                             
+                                             
   * ///////////////////////////////////////////////////////////
   */
 
 /**
  *  @name getTestNews
  * 
- *  @brief get test news article for general search page
+ *  @brief get test news article for general search page and display it 
  */
 function getNews(){
   $.get('http://127.0.0.1:5000/news', function(news) {
@@ -259,7 +251,7 @@ function getNews(){
   news.forEach(function(newsItem) {
     // console.log(newsItem['title'])
   // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
-    $('<a href="'+newsItem.url+'"><li class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></li></a>').appendTo('ul#news');
+    $('<a href="'+newsItem.url+'"><div class="card newsItem"><img src="'+newsItem.image+'"><div class="articleWords"><h4>'+newsItem.title+'</h4><p>'+newsItem.description+'</p><h6>'+newsItem.authors+'</h6></div></div></a>').appendTo('ul#news');
 });
 });
 }

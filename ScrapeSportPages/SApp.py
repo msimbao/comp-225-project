@@ -1,5 +1,8 @@
 import pyrebase
 import os
+import time
+from datetime import date
+import json
 
 CONFIG = {
     "apiKey": "AIzaSyDM0YYvGQFSc9qy6jh2hpxZy_87B8eNc3o",
@@ -13,11 +16,11 @@ CONFIG = {
 }
 
 
-def upLoadNewJsonToFireBaseStorage():
+def upLoadNewsJsonToFireBaseStorage():
     """
     This method should be run on the server for daily/ half day basis so that local json files that each stores info
     about a sports news website could be uploaded to the firebase storage. Run the buildLeagueNews() function in
-    NewsToJson.py before r- unning this method.
+    NewsToJson.py before running this method.
     """
     # Initialize firebase
     firebase = pyrebase.initialize_app(CONFIG)
@@ -29,13 +32,59 @@ def upLoadNewJsonToFireBaseStorage():
     for directory in paths_local:
         paths_on_cloud.append(directory.replace("../newsJson", "newsJson"))
 
+    start_time = time.time()
+
     for i in range(0, len(paths_local)):
         storage.child(paths_on_cloud[i]).put(paths_local[i])
+
+    print(time.time() - start_time)
+
+    return 0
+
+
+def downLoadNewsJsonToLocal():
+    """
+    This method downloads all .json files of current day to local(server) storage.
+    """
+    # Initialize firebase
+    firebase = pyrebase.initialize_app(CONFIG)
+    storage = firebase.storage()
+
+    # Acquire the date of the current query
+    today = date.today()
+    month = today.strftime("%m")
+    day = today.strftime("%d")
+    year = today.strftime("%y")
+
+    newsListTodayDirectoryOnCloud = "newsJson" + "/" + month + "_" + day + "_" + year + "/" + "directoryList.json"
+    newsListTodayDirectoryLocal = "../newsJson" + "/" + month + "_" + day + "_" + year + "/" + "directoryList.json"
+
+    if not os.path.exists("../newsJson" + "/" + month + "_" + day + "_" + year):
+        os.makedirs("../newsJson" + "/" + month + "_" + day + "_" + year)
+
+    storage.child(newsListTodayDirectoryOnCloud).download(
+        newsListTodayDirectoryLocal)
+
+    newsListTodayDirectories = jsonToArray("../newsJson" + "/" + month + "_" + day + "_" + year + "/" + \
+                                           "directoryList.json")
+
+    for eachDirectory in newsListTodayDirectories:
+        path_on_cloud = eachDirectory.replace("../", "")
+        if not os.path.exists(eachDirectory):
+            os.makedirs(eachDirectory)
+        storage.child(path_on_cloud).download(eachDirectory)
+        
     return 0
 
 
 def exploreNewsJson():
     directory = "../newsJson"
+
+    # Acquire the date of the current query
+    today = date.today()
+    month = today.strftime("%m")
+    day = today.strftime("%d")
+    year = today.strftime("%y")
 
     newsJsonList = []
 
@@ -44,7 +93,20 @@ def exploreNewsJson():
             directory = os.path.join(subdir, file)
             newsJsonList.append(directory.replace("\\", "/"))
 
+    directoryListName = directory + "/" + month + "_" + day + "_" + year + "/" + "directoryList"
+
+    with open(directoryListName, "w") as f:
+        json.dump(newsJsonList, f)
+
+    newsJsonList.append(directoryListName.replace("\\", "/"))
+
     return newsJsonList
+
+
+def jsonToArray(fileName):
+    with open(fileName, "r+") as file:
+        directories = json.load(file)
+    return directories
 
 
 if __name__ == '__main__':
@@ -56,4 +118,4 @@ if __name__ == '__main__':
     # TODO: Go to firebase project, open console, go to Storage under Build. Check in the file tab if test.jpg exists
     #  in the directory images. If this works, uncomment the call below and run it. P.S.: It took me around 10 min to
     #  create all the .json files, so it might a while to upload to firebase.
-    #upLoadNewJsonToFireBaseStorage()
+    # upLoadNewsJsonToFireBaseStorage()

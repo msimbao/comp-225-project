@@ -26,8 +26,10 @@ def _set_nhl_data(url):
     list = []
 
     for i in range(len(table)):
-        dict = {"Team": table[0][i],
-                "Record": str(table[2][i]) + "-" + str(table[3][i]) + "-" + str(table[4][i])}
+        dict = {"title": table[0][i],
+                "record": str(table[2][i]) + "-" + str(table[3][i]) + "-" + str(table[4][i]),
+                "image":"",
+                "children":""}
         list.append(dict)
 
     team_dict = {"Central Division": list[2:10],

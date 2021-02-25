@@ -7,6 +7,8 @@ standings
 
 """
 
+
+
 from scraper import *
 
 
@@ -15,8 +17,10 @@ def _set_nba_data(url):
     list = []
     for i in tables:
         for idx in range(len(i) - 1):
-            team_dict = {"team": i[0][idx + 1],
-                         "record": i[1][idx + 1] + "-" + i[2][idx + 1]}
+            team_dict = {"title": i[0][idx + 1],
+                         "record": i[1][idx + 1] + "-" + i[2][idx + 1],
+                         "image":"",
+                         "children":""}
             list.append(team_dict)
 
     dict = {"Eastern Conference": list[0:15],
@@ -29,4 +33,4 @@ def get_nba_data(year=2021):
     return _set_nba_data(url)
 
 
-print(get_nba_data())
+print(get_nba_data()["Eastern Conference"])

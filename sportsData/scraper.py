@@ -1,3 +1,11 @@
+"""
+Holds functions for scraping team data
+
+@Title: nhl.py
+@Author: Ty, Declan, Jack, Mphatso
+
+"""
+
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
