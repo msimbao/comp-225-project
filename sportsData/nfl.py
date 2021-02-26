@@ -42,4 +42,4 @@ def get_nfl_data(year=2020):
     url = "https://www.pro-football-reference.com/years/{}/".format(year)
     return _set_nfl_data(url)
 
-print(get_nfl_data())
+# print(get_nfl_data())

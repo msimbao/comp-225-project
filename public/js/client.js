@@ -45,7 +45,7 @@ Vue.component("team-option", {
       $.post(
         "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
         function (option_data) {
-          console.log(option_data);
+          // console.log(option_data);
           app.teamOptions = option_data;
         }
       );

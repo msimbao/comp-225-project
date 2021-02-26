@@ -48,7 +48,7 @@ def setDictionaries():
 
     for i in nflDictionary:
         nflConferences.append(
-            {"title": i, "image": "", "children": nflData, "record": ""},
+            {"title": i, "image": "", "children": nflData[i], "record": ""},
         )
 
     nhlDictionary = list(nhl.get_nhl_data().keys())
@@ -56,7 +56,7 @@ def setDictionaries():
 
     for i in nhlDictionary:
         nhlConferences.append(
-            {"title": i, "image": "", "children": nhlData, "record": ""},
+            {"title": i, "image": "", "children": nhlData[i], "record": ""},
         )
 
 
@@ -86,17 +86,13 @@ def setLeagues():
     ]
 
 
-def outPutData():
-    # Function to output League and team data
-    setDictionaries()
-    setLeagues()
 
-    jprint(leagues)
-    y = json.dumps(leagues)
+setDictionaries()
+setLeagues()
 
-    f = open("leagues.txt", "w")
-    f.write(y)
-    f.close()
+jprint(leagues)
+y = json.dumps(leagues)
 
-
-outPutData()
+f = open("leagues.txt", "w")
+f.write(y)
+f.close()
