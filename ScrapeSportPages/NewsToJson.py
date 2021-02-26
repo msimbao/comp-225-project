@@ -378,11 +378,11 @@ def buildNHLNews():
 
 
 def buildNews():
-    # makeDirectoryToday()
-    #
-    # buildNBANews()
-    # buildMLBNews()
-    # buildNFLNews()
+    makeDirectoryToday()
+
+    buildNBANews()
+    buildMLBNews()
+    buildNFLNews()
     buildNHLNews()
 
     return 0
