@@ -73,7 +73,7 @@ def downLoadNewsJsonToLocal():
         if not os.path.exists(eachDirectory):
             os.makedirs(eachDirectory)
         storage.child(path_on_cloud).download(eachDirectory)
-        
+
     return 0
 
 
