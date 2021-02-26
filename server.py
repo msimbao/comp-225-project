@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
@@ -102,9 +101,10 @@ def news():
     # else:
     #     SEARCH_RESULTS = []
     # print('Search Resuls',SEARCH_RESULTS)
-    print(SEARCH_RESULTS)
+    # print(SEARCH_RESULTS)
 
     return jsonify(SEARCH_RESULTS)
+
 
 if __name__ == '__main__':
     app.run()

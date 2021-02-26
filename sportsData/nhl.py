@@ -9,6 +9,7 @@ of conferences
 @Author: Ty, Declan, Jack, Mphatso
 
 """
+import json
 
 from scraper import *
 
@@ -24,11 +25,11 @@ def _set_nhl_data(url):
 
     table = get_tables(url)[0]
     list = []
-
     for i in range(len(table)):
-        dict = {"title": table[0][i],
+        team_name = table[0][i]
+        dict = {"title": team_name,
                 "record": str(table[2][i]) + "-" + str(table[3][i]) + "-" + str(table[4][i]),
-                "image":"",
+                "image": get_team_logo(team_name),
                 "children":""}
         list.append(dict)
 
