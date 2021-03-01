@@ -40,6 +40,8 @@
     const btnSignUp = document.getElementById("submitSignUp");
     const btnLogout = document.getElementById("submitLogout");
 
+    var user = ""
+
     //sign up
     btnSignUp.addEventListener("click", ev => {
         ev.preventDefault();
@@ -52,6 +54,11 @@
         auth.createUserWithEmailAndPassword(email, password).then(cred => {
             //console.log(cred.user) this was just for testing
             //TODO: Move from sign up page to the select teams page/gen feed page and reset the sign up form
+            user = cred.user.uid;
+            return db.collection("users").doc(cred.user.uid).set({
+                teams: []
+            });
+        }).then(() => {
             welcomeScreen = document.getElementById("welcomeScreen");
             welcomeScreen.style.display = "grid";
         });
@@ -63,6 +70,7 @@
         auth.signOut().then(() => {
             //console.log("User signed out") this was just for testing
             //TODO: Whatever happens when a user is logged out
+            user = "";
             toggleLogin('showLogin');
         });
     });
@@ -78,8 +86,12 @@
         //log in user
         auth.signInWithEmailAndPassword(email, password).then(cred => {
             console.log(cred.user)
+            user = cred.user.uid;
             //TODO: Move to user's feed
         });
     });
+
+
+
 
 

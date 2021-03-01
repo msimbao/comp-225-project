@@ -45,7 +45,7 @@ Vue.component("team-option", {
       $.post(
         "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
         function (option_data) {
-          // console.log(option_data);
+          //console.log(option_data);
           app.teamOptions = option_data;
         }
       );
@@ -92,6 +92,16 @@ var app = new Vue({
       );
     },
 
+    // The code to update the teams array with the user's current teams and attach it to the individual
+    // user's doc in the users collection
+    /*
+    return db.collection("users").doc(user).update({
+      teams: "Use the user teams array";
+    }).then(() => {
+       //TODO: whatever needs to happen after the user has finished selecting teams
+    });
+
+     */
     /**
     * @name filterSearch
     * @brief Function to filter through feed content quickly. Not used right now
