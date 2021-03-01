@@ -52,6 +52,8 @@
         auth.createUserWithEmailAndPassword(email, password).then(cred => {
             //console.log(cred.user) this was just for testing
             //TODO: Move from sign up page to the select teams page/gen feed page and reset the sign up form
+            welcomeScreen = document.getElementById("welcomeScreen");
+            welcomeScreen.style.display = "grid";
         });
     });
 
@@ -61,6 +63,7 @@
         auth.signOut().then(() => {
             //console.log("User signed out") this was just for testing
             //TODO: Whatever happens when a user is logged out
+            toggleLogin('showLogin');
         });
     });
 

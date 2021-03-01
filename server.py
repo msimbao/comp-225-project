@@ -47,12 +47,18 @@ def homepage():
     return render_template('index.html')
 
 
-#============================================================================
-# Needs to be replaced
+OPTION_DATA = []
 
-f = open("sportsData/leagues.txt", "r")
-OPTION_DATA =  json.loads(f.read())
-f.close()
+@app.route('/resetTeams', methods=['GET', 'POST'])
+def resetTeams():
+    
+    global OPTION_DATA
+
+    f = open("sportsData/leagues.txt", "r")
+    OPTION_DATA =  json.loads(f.read())
+    f.close()
+
+    return jsonify(OPTION_DATA)
 
 #============================================================================
 
