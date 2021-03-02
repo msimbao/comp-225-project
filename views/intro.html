@@ -1,6 +1,6 @@
 <!-- 
 *
-* @Title: Index.html
+* @Title: index.html
 *
 * @Author: Ty, Declan, Jack, Mphatso 
 *
@@ -55,20 +55,19 @@
       </div>
     </div>
 
-<!-- 
-/*///////////////////////////////////////////////////////////////
-  _                 _                  _____ _                         
- | |               (_)          _     / ____(_)                        
- | |     ___   __ _ _ _ __    _| |_  | (___  _  __ _ _ __  _   _ _ __  
- | |    / _ \ / _` | | '_ \  |_   _|  \___ \| |/ _` | '_ \| | | | '_ \ 
- | |___| (_) | (_| | | | | |   |_|    ____) | | (_| | | | | |_| | |_) |
- |______\___/ \__, |_|_| |_|         |_____/|_|\__, |_| |_|\__,_| .__/ 
-               __/ |                            __/ |           | |    
-              |___/                            |___/            |_|    
+<div>
+<div id="first" class="section instoSection">
 
-///////////////////////////////////////////////////////////////////
--->
-<div id="welcomeScreen">
+  <div>
+  </div>
+
+  <div>
+  </div>
+
+  <div>
+    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
+  </div>
+
   <div>
 
     <h2> App Shortcut</h2>
@@ -85,276 +84,10 @@
     </button>
 
   </div>
-  <div>
-    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
-  </div>
+
   
 </div>
-
-    <div id="login">
-      <div class="loginCover">
-        <div>
-          <h6>Tympdeja</h6>
-          <h1>Your Favorite Sports News Right At Your Fingertips</h1>
-          <p>Tmpdeja is a super minimalist news platform. We bring latest sports news content for different sports together while letting you focus only on latest articles about the teams you love. We cut through the clutter, remove social media drama, have zero ads and distractions. Sign in to start reading about matters most for you.  </p>
-          <p>
-            <span id="loginCoverArrow" style='font-size:50px;'>&#8595;</span>
-          </p>
-        </div>
-      </div>
-
-     
-
-      <div class="loginForm">
-        <form>
-        <h2 style="font-variant: small-caps;">Create Account</h2>
-        <p>Register With Your Email Account</p>
-        <input id="signupEmail" type="text" placeholder="Email Address..." />
-        <input id="signupPassword" type="password" placeholder="Password..." />
-        <button id="submitSignUp" class="button introButton" type="submit">SIGN UP</button>
-        </form>
-        <p>Or <u class="pointerItem" onclick="toggleSignUp('hideSignup')">Login Into Your Account</u></p>
-      </div>
-
-      <div class="loginForm">
-        <form>
-        <h2 style="font-variant: small-caps;">Sign In To Tympdeja</h2>
-        <p>Sign In With Your Email Account</p>
-        <input id="loginEmail" type="text" placeholder="Email Address..." />
-        <input id="loginPassword" type="password" placeholder="Password..." />
-        <button id="submitLogin" class="button introButton" type="submit">LOGIN</button>
-        </form>
-        <p>Or <u class="pointerItem" onclick="toggleSignUp('showSignUp')">Create an Account</u></p>
-        <p>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></p>
-
-      </div>
-
-
-    </div>
-
-    <!-- Begging of Main Content -->
-
-  <div id="maincontent">
-    <div id="vue">
-
-
- <!-- 
-////////////////////////////////////////////////////////////////////////
-
-  _   _                   
- | \ | |                  
- |  \| | _____      _____ 
- | . ` |/ _ \ \ /\ / / __|
- | |\  |  __/\ V  V /\__ \
- |_| \_|\___| \_/\_/ |___/
-                          
-                              
-///////////////////////////////////////////////////////////////////////
--->
-
-<div id="feed" class="section pp-scrollable">
-  <div class="card tabDescription">
-
-    <p class="menuButton" onclick="toggleMenu()">&#9776</p>
-
-    <h2>Your Feed</h2>
-    <p>
-      All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Select' section.
-    </p>
-
-      <!-- <input
-        v-on:keyup="filterSearch"
-        id="filterSearch"
-        type="text"
-        maxlength="100"
-        placeholder="Filter Through Your Feed..."
-      /> -->
-
-  </div>
-    <div id="newsFeed" class="tabContent">
-       <a href="#feed">
-         <div class="card newsItem">
-           <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.17.57%20PM.png?v=1613614685196">
-           <div class="articleWords">
-             <h4>Buccaneers Will Celebrate Super Bowl LV Win on the Water</h4>
-             <p>The Tampa Bay Buccaneers will celebrate their latest Lombardi trophy as only they can with a socially distant boat parade around the bay on Wednesday, February 10. The event will begin starting at 1 p.m. ET....</p>
-             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
-           </div>
-         </div>
-      </a>
-      
-        <a href="#feed">
-         <div class="card newsItem">
-           <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.18.27%20PM.png?v=1613614711362">
-           <div class="articleWords">
-             <h4> Blue Jays to report to Spring Training Feb. 18 </h4>
-             <p>The first sign of baseball season is finally here: pitchers and catchers. MLB announced the start dates of workouts for 2021 Spring Training presented by Camping World on Tuesday, with the first pitchers and catchers workouts and first full-squad workouts for every team. Teams will report to Spring Training next....</p>
-             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
-            </div>
-         </div>
-      </a>
-      
-               <a href="#feed">
-         <div class="card newsItem">
-           <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.19.06%20PM.png?v=1613614749856">
-           <div class="articleWords">
-             <h4>Titans Fan, and Valued Mentor, Brandon Galloway Named NFL Fan of the Year </h4>
-             <p>"When they told me, I was at a loss for words," Galloway said. "It is just an amazing honor, and it puts a positive spotlight on our city and on our fan base, despite everything Nashville has been through...."</p>
-             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
-            </div>
-          </div>
-      </a>
-    </div>
 </div>
-
-
-
-    <!-- 
-////////////////////////////////////////////////////////////////////////
-  _______                     _____ _      _             
- |__   __|                   |  __ (_)    | |            
-    | | ___  __ _ _ __ ___   | |__) |  ___| | _____ _ __ 
-    | |/ _ \/ _` | '_ ` _ \  |  ___/ |/ __| |/ / _ \ '__|
-    | |  __/ (_| | | | | | | | |   | | (__|   <  __/ |   
-    |_|\___|\__,_|_| |_| |_| |_|   |_|\___|_|\_\___|_|   
-                                                                                                               
-///////////////////////////////////////////////////////////////////////
--->
-
-    <div id="select" class="section pp-scrollable">
-      <div id="selectDescription" class="card tabDescription">
-
-        <p class="menuButton" onclick="toggleMenu()">&#9776</p>
-
-        <h2>Select Teams</h2>
-        <p>
-          Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
-        </p>
-        <div>
-          <div id="resetTeams" v-on:click="resetTeams">&#8634;</div>
-          <button class="tablinks" onclick="openTab(event, 'addTeams')">Add Teams</button>
-          <button class="tablinks" onclick="openTab(event, 'removeTeams')">Remove teams</button>
-        </div>
-        
-      </div>
-
-      
-
-      <div class="tabContent selectGrid selectTabs" id="addTeams">
-
-        <team-option
-        v-for="item in teamOptions"
-        v-bind:option="item"
-      ></team-option>
-
-      </div>
-
-      <div class="tabContent selectGrid selectTabs" id="removeTeams">
-
-      </div>
-
-      
-    </div>
-    
-
-
-  <!-- 
-////////////////////////////////////////////////////////////////////////
-
-   _____                     _     
-  / ____|                   | |    
- | (___   ___  __ _ _ __ ___| |__  
-  \___ \ / _ \/ _` | '__/ __| '_ \ 
-  ____) |  __/ (_| | | | (__| | | |
- |_____/ \___|\__,_|_|  \___|_| |_|
-                                   
-                                   
-///////////////////////////////////////////////////////////////////////
--->
-
-
-
-<div id="general" class="section pp-scrollable">
-  <div class="card tabDescription">
-
-    <p class="menuButton" onclick="toggleMenu()">&#9776</p>
-
-    <h2>General Search</h2>
-    <p>
-      If You're Looking for general information, you can find the latest
-      news and trending articles here.
-    </p>
-
-    <form id="generalSearchForm" v-on:submit="generalSearch">
-      <input
-        id="searchBar"
-        type="text"
-        maxlength="100"
-        placeholder="Latest News..."
-      />
-
-    </form>
-  </div>
-
-    <div id="news" class="tabContent">
-
-          <news-item
-            v-for="item in generalNews"
-            v-bind:news="item"
-          ></news-item>
-
-    </div>
-
-</div>
-
- <!-- End of Main Content -->
-
-  </div>
-  </div>
-  
-<!--
-  /*//////////////////////////////////////////////////////////
-  __  __                  
- |  \/  |                 
- | \  / | ___ _ __  _   _ 
- | |\/| |/ _ \ '_ \| | | |
- | |  | |  __/ | | | |_| |
- |_|  |_|\___|_| |_|\__,_|
-                                                
-//////////////////////////////////////////////////////////////*
--->
-
-<div id="navbar" onclick="toggleMenu()">
-  <ul id="myMenu">
-    <li data-menuanchor="feed" class="active">
-      <a href="#feed">Feed</a>
-    </li>
-    <li data-menuanchor="select">
-      <a href="#select"> Teams</a>
-    </li>
-      <li data-menuanchor="general">
-        <a href="#general">Search</a>
-      </li>
-    
-    <li id="submitLogout">
-      <a href="#login">Logout</a>
-    </li>
-  </ul>
-</div>
-
-
-
-  <!-------------------------------------------------------->
-  <!-- Site Scripts-->
-  <!-------------------------------------------------------->
-    
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
-
-  <!-- Add Vue Js -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
   <!--  JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -362,11 +95,8 @@
   <!--  Pagepilling Javascript -->
   <script type="text/javascript" src="../public/js/jquery.pagepiling.min.js"></script>
 
-  <!--  Main Script for Grabbing Data From Server -->
-  <script src="../public/js/client.js"></script>
-
   <!--  Firebase Login Script -->
-  <script src="../public/js/app.js"></script>
+  <script src="../public/js/intro.js"></script>
 
   </body>
 </html>

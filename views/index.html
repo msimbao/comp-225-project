@@ -80,9 +80,11 @@
       <li>Tap the menu icon (3 dots in upper right-hand corner) and tap Add to homescreen.</li>
     </ul>
 
+    <a href="#select">
     <button onclick="hideWelcomeScreen()" data-menuanchor="select">
-      <a href="#select">Select Teams</a>
+      Select Teams
     </button>
+  </a>
 
   </div>
   <div>
@@ -159,7 +161,7 @@
 
     <h2>Your Feed</h2>
     <p>
-      All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Select' section.
+      All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Teams' section.
     </p>
 
       <!-- <input
@@ -231,14 +233,14 @@
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p>
         <div>
-          <div id="resetTeams" v-on:click="resetTeams">&#8634;</div>
+          
           <button class="tablinks" onclick="openTab(event, 'addTeams')">Add Teams</button>
           <button class="tablinks" onclick="openTab(event, 'removeTeams')">Remove teams</button>
         </div>
         
       </div>
 
-      
+      <div id="resetTeams" v-on:click="resetTeams">&#8634;</div>
 
       <div class="tabContent selectGrid selectTabs" id="addTeams">
 

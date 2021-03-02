@@ -440,25 +440,30 @@ button:hover {
 }
 
 .tablinks{
-  border:1px solid black;
   background:white;
   color:black;
   border-radius:0px;
   margin:5px;
 }
 
-.tablinks:hover{
-  background:#003153;
-  color:white;
-}
 
-#resetTeams{
+/* #resetTeams{
   padding:10px;
   background:white;
   border: 1px solid black;
   margin:5px 5% 5px 5px;
   width:10px;
   float:right;
+} */
+
+#resetTeams{
+  position:relative;
+  padding:10px 0px 10px 0px;
+  background:white;
+  border: 1px solid black;
+  width:80%;
+  text-align:center;
+  margin:auto;
 }
 
 #resetTeams:hover{
@@ -774,4 +779,31 @@ button:hover {
     top: 24px;
     height: 32px;
   }
+}
+
+/*////////////////////////////////////////////////////////////////////////
+
+  _____       _               _____                 
+ |_   _|     | |             |  __ \                
+   | |  _ __ | |_ _ __ ___   | |__) |_ _  __ _  ___ 
+   | | | '_ \| __| '__/ _ \  |  ___/ _` |/ _` |/ _ \
+  _| |_| | | | |_| | | (_) | | |  | (_| | (_| |  __/
+ |_____|_| |_|\__|_|  \___/  |_|   \__,_|\__, |\___|
+                                          __/ |     
+                                         |___/      
+
+/////////////////////////////////////////////////////////////////////////*/
+
+#first{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  transition: 0.5s;
+}
+
+#welcomeScreen div{
+  vertical-align: center;
+}
+
+.instoSection{
+
 }

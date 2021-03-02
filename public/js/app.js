@@ -59,6 +59,7 @@
                 teams: []
             });
         }).then(() => {
+            toggleLogin('hideLogin');
             welcomeScreen = document.getElementById("welcomeScreen");
             welcomeScreen.style.display = "grid";
         });
