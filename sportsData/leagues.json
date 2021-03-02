@@ -2,907 +2,882 @@
   {
     "title": "Major League Baseball - MLB",
     "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmlb.png?v=1614216154946",
-    "children": [
-      {
-        "title": "AL East",
-        "image": "",
-        "children": [
-          {
-            "title": "Tampa Bay Rays",
-            "record": "40-20",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/littyt1554031623.png",
-            "children": ""
-          },
-          {
-            "title": "New York Yankees",
-            "record": "33-27",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wqwwxx1423478766.png",
-            "children": ""
-          },
-          {
-            "title": "Toronto Blue Jays",
-            "record": "32-28",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/0v985i1554032049.png",
-            "children": ""
-          },
-          {
-            "title": "Baltimore Orioles",
-            "record": "25-35",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/ytywvu1431257088.png",
-            "children": ""
-          },
-          {
-            "title": "Boston Red Sox",
-            "record": "24-36",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/stpsus1425120215.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "AL Central",
-        "image": "",
-        "children": [
-          {
-            "title": "Minnesota Twins",
-            "record": "36-24",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/necd5v1521905719.png",
-            "children": ""
-          },
-          {
-            "title": "Chicago White Sox",
-            "record": "35-25",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/yyz5dh1554140884.png",
-            "children": ""
-          },
-          {
-            "title": "Cleveland Indians",
-            "record": "35-25",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/fp39hu1521904440.png",
-            "children": ""
-          },
-          {
-            "title": "Kansas City Royals",
-            "record": "26-34",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/ii3rz81554031260.png",
-            "children": ""
-          },
-          {
-            "title": "Detroit Tigers",
-            "record": "23-35",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/9dib6o1554032173.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "AL West",
-        "image": "",
-        "children": [
-          {
-            "title": "Oakland Athletics",
-            "record": "36-24",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wsxtyw1432577334.png",
-            "children": ""
-          },
-          {
-            "title": "Houston Astros",
-            "record": "29-31",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/miwigx1521893583.png",
-            "children": ""
-          },
-          {
-            "title": "Seattle Mariners",
-            "record": "27-33",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/39x9ph1521903933.png",
-            "children": ""
-          },
-          {
-            "title": "Los Angeles Angels",
-            "record": "26-34",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/vswsvx1432577476.png",
-            "children": ""
-          },
-          {
-            "title": "Texas Rangers",
-            "record": "22-38",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qt9qki1521893151.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "NL East",
-        "image": "",
-        "children": [
-          {
-            "title": "Atlanta Braves",
-            "record": "35-25",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xuwwut1431255795.png",
-            "children": ""
-          },
-          {
-            "title": "Miami Marlins",
-            "record": "31-29",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/0722fs1546001701.png",
-            "children": ""
-          },
-          {
-            "title": "Philadelphia Phillies",
-            "record": "28-32",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/kfq07g1554031454.png",
-            "children": ""
-          },
-          {
-            "title": "New York Mets",
-            "record": "26-34",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/rxqspq1431540337.png",
-            "children": ""
-          },
-          {
-            "title": "Washington Nationals",
-            "record": "26-34",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wpqrut1423694764.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "NL Central",
-        "image": "",
-        "children": [
-          {
-            "title": "Chicago Cubs",
-            "record": "34-26",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wxbe071521892391.png",
-            "children": ""
-          },
-          {
-            "title": "Cincinnati Reds",
-            "record": "31-29",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wspusr1431538832.png",
-            "children": ""
-          },
-          {
-            "title": "St. Louis Cardinals",
-            "record": "30-28",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/uvyvyr1424003273.png",
-            "children": ""
-          },
-          {
-            "title": "Milwaukee Brewers",
-            "record": "29-31",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/08kh2a1595775193.png",
-            "children": ""
-          },
-          {
-            "title": "Pittsburgh Pirates",
-            "record": "19-41",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/rtspvy1431538869.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "NL West",
-        "image": "",
-        "children": [
-          {
-            "title": "Los Angeles Dodgers",
-            "record": "43-17",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/cgbafw1521896341.png",
-            "children": ""
-          },
-          {
-            "title": "San Diego Padres",
-            "record": "37-23",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/t8sl9r1599183156.png",
-            "children": ""
-          },
-          {
-            "title": "San Francisco Giants",
-            "record": "29-31",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/mq81yb1521896622.png",
-            "children": ""
-          },
-          {
-            "title": "Colorado Rockies",
-            "record": "26-34",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wvbk1d1550584627.png",
-            "children": ""
-          },
-          {
-            "title": "Arizona Diamondbacks",
-            "record": "25-35",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/sutyqp1431251804.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      }
-    ],
+    "children": ""
+  },
+  {
+    "title": "AL East",
+    "image": "",
+    "children": "",
     "record": ""
+  },
+  {
+    "title": "Tampa Bay Rays",
+    "record": "40-20",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/littyt1554031623.png",
+    "children": ""
+  },
+  {
+    "title": "New York Yankees",
+    "record": "33-27",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wqwwxx1423478766.png",
+    "children": ""
+  },
+  {
+    "title": "Toronto Blue Jays",
+    "record": "32-28",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/0v985i1554032049.png",
+    "children": ""
+  },
+  {
+    "title": "Baltimore Orioles",
+    "record": "25-35",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/ytywvu1431257088.png",
+    "children": ""
+  },
+  {
+    "title": "Boston Red Sox",
+    "record": "24-36",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/stpsus1425120215.png",
+    "children": ""
+  },
+  {
+    "title": "AL Central",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Minnesota Twins",
+    "record": "36-24",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/necd5v1521905719.png",
+    "children": ""
+  },
+  {
+    "title": "Chicago White Sox",
+    "record": "35-25",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/yyz5dh1554140884.png",
+    "children": ""
+  },
+  {
+    "title": "Cleveland Indians",
+    "record": "35-25",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/fp39hu1521904440.png",
+    "children": ""
+  },
+  {
+    "title": "Kansas City Royals",
+    "record": "26-34",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/ii3rz81554031260.png",
+    "children": ""
+  },
+  {
+    "title": "Detroit Tigers",
+    "record": "23-35",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/9dib6o1554032173.png",
+    "children": ""
+  },
+  {
+    "title": "AL West",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Oakland Athletics",
+    "record": "36-24",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wsxtyw1432577334.png",
+    "children": ""
+  },
+  {
+    "title": "Houston Astros",
+    "record": "29-31",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/miwigx1521893583.png",
+    "children": ""
+  },
+  {
+    "title": "Seattle Mariners",
+    "record": "27-33",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/39x9ph1521903933.png",
+    "children": ""
+  },
+  {
+    "title": "Los Angeles Angels",
+    "record": "26-34",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/vswsvx1432577476.png",
+    "children": ""
+  },
+  {
+    "title": "Texas Rangers",
+    "record": "22-38",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qt9qki1521893151.png",
+    "children": ""
+  },
+  {
+    "title": "NL East",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Atlanta Braves",
+    "record": "35-25",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xuwwut1431255795.png",
+    "children": ""
+  },
+  {
+    "title": "Miami Marlins",
+    "record": "31-29",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/0722fs1546001701.png",
+    "children": ""
+  },
+  {
+    "title": "Philadelphia Phillies",
+    "record": "28-32",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/kfq07g1554031454.png",
+    "children": ""
+  },
+  {
+    "title": "New York Mets",
+    "record": "26-34",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/rxqspq1431540337.png",
+    "children": ""
+  },
+  {
+    "title": "Washington Nationals",
+    "record": "26-34",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wpqrut1423694764.png",
+    "children": ""
+  },
+  {
+    "title": "NL Central",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Chicago Cubs",
+    "record": "34-26",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wxbe071521892391.png",
+    "children": ""
+  },
+  {
+    "title": "Cincinnati Reds",
+    "record": "31-29",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wspusr1431538832.png",
+    "children": ""
+  },
+  {
+    "title": "St. Louis Cardinals",
+    "record": "30-28",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/uvyvyr1424003273.png",
+    "children": ""
+  },
+  {
+    "title": "Milwaukee Brewers",
+    "record": "29-31",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/08kh2a1595775193.png",
+    "children": ""
+  },
+  {
+    "title": "Pittsburgh Pirates",
+    "record": "19-41",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/rtspvy1431538869.png",
+    "children": ""
+  },
+  {
+    "title": "NL West",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Los Angeles Dodgers",
+    "record": "43-17",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/cgbafw1521896341.png",
+    "children": ""
+  },
+  {
+    "title": "San Diego Padres",
+    "record": "37-23",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/t8sl9r1599183156.png",
+    "children": ""
+  },
+  {
+    "title": "San Francisco Giants",
+    "record": "29-31",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/mq81yb1521896622.png",
+    "children": ""
+  },
+  {
+    "title": "Colorado Rockies",
+    "record": "26-34",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wvbk1d1550584627.png",
+    "children": ""
+  },
+  {
+    "title": "Arizona Diamondbacks",
+    "record": "25-35",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/sutyqp1431251804.png",
+    "children": ""
   },
   {
     "title": "National Basketball Association - NBA",
     "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974",
-    "children": [
-      {
-        "title": "Eastern Conference",
-        "image": "",
-        "children": [
-          {
-            "title": "Philadelphia 76ers",
-            "record": "21-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/71545f1518464849.png",
-            "children": ""
-          },
-          {
-            "title": "Brooklyn Nets",
-            "record": "21-12",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/h0dwny1600552068.png",
-            "children": ""
-          },
-          {
-            "title": "Milwaukee Bucks",
-            "record": "19-13",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qgyz6z1503742649.png",
-            "children": ""
-          },
-          {
-            "title": "Indiana Pacers",
-            "record": "15-15",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/v6jzgm1503741821.png",
-            "children": ""
-          },
-          {
-            "title": "Toronto Raptors",
-            "record": "16-17",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/gitpi61503743151.png",
-            "children": ""
-          },
-          {
-            "title": "Chicago Bulls",
-            "record": "15-16",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/yk7swg1547214677.png",
-            "children": ""
-          },
-          {
-            "title": "Charlotte Hornets",
-            "record": "15-16",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xqtvvp1422380623.png",
-            "children": ""
-          },
-          {
-            "title": "Boston Celtics",
-            "record": "15-17",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/051sjd1537102179.png",
-            "children": ""
-          },
-          {
-            "title": "New York Knicks",
-            "record": "15-17",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wyhpuf1511810435.png",
-            "children": ""
-          },
-          {
-            "title": "Miami Heat",
-            "record": "15-17",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/5v67x51547214763.png",
-            "children": ""
-          },
-          {
-            "title": "Atlanta Hawks",
-            "record": "14-18",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/c6oi9p1611859646.png",
-            "children": ""
-          },
-          {
-            "title": "Orlando Magic",
-            "record": "13-19",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/txuyrr1422492990.png",
-            "children": ""
-          },
-          {
-            "title": "Washington Wizards",
-            "record": "11-18",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/m2qhln1503743635.png",
-            "children": ""
-          },
-          {
-            "title": "Cleveland Cavaliers",
-            "record": "12-21",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/a2pp4c1503741152.png",
-            "children": ""
-          },
-          {
-            "title": "Detroit Pistons",
-            "record": "9-23",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/12612u1511101660.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "Western Conference",
-        "image": "",
-        "children": [
-          {
-            "title": "Utah Jazz",
-            "record": "26-6",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/9p1e5j1572041084.png",
-            "children": ""
-          },
-          {
-            "title": "Los Angeles Clippers",
-            "record": "23-10",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/jv7tf21545916958.png",
-            "children": ""
-          },
-          {
-            "title": "Los Angeles Lakers",
-            "record": "22-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/44ubym1511102073.png",
-            "children": ""
-          },
-          {
-            "title": "Phoenix Suns",
-            "record": "20-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qrtuxq1422919040.png",
-            "children": ""
-          },
-          {
-            "title": "Portland Trail Blazers",
-            "record": "18-13",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/mbtzin1520794112.png",
-            "children": ""
-          },
-          {
-            "title": "San Antonio Spurs",
-            "record": "16-12",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/obucan1611859537.png",
-            "children": ""
-          },
-          {
-            "title": "Denver Nuggets",
-            "record": "17-14",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/8o8j5k1546016274.png",
-            "children": ""
-          },
-          {
-            "title": "Golden State Warriors",
-            "record": "18-15",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/irobi61565197527.png",
-            "children": ""
-          },
-          {
-            "title": "Dallas Mavericks",
-            "record": "15-15",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/yqrxrs1420568796.png",
-            "children": ""
-          },
-          {
-            "title": "Memphis Grizzlies",
-            "record": "13-14",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/m64v461565196789.png",
-            "children": ""
-          },
-          {
-            "title": "New Orleans Pelicans",
-            "record": "14-17",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/f341s31523700397.png",
-            "children": ""
-          },
-          {
-            "title": "Oklahoma City Thunder",
-            "record": "13-19",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xpswpq1422575434.png",
-            "children": ""
-          },
-          {
-            "title": "Sacramento Kings",
-            "record": "12-19",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/5d3dpz1611859587.png",
-            "children": ""
-          },
-          {
-            "title": "Houston Rockets",
-            "record": "11-19",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/yezpho1597486052.png",
-            "children": ""
-          },
-          {
-            "title": "Minnesota Timberwolves",
-            "record": "7-26",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/b6a05s1503742837.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      }
-    ],
+    "children": "",
     "record": ""
+  },
+  {
+    "title": "Eastern Conference",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Philadelphia 76ers",
+    "record": "21-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/71545f1518464849.png",
+    "children": ""
+  },
+  {
+    "title": "Brooklyn Nets",
+    "record": "21-12",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/h0dwny1600552068.png",
+    "children": ""
+  },
+  {
+    "title": "Milwaukee Bucks",
+    "record": "19-13",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qgyz6z1503742649.png",
+    "children": ""
+  },
+  {
+    "title": "Indiana Pacers",
+    "record": "15-15",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/v6jzgm1503741821.png",
+    "children": ""
+  },
+  {
+    "title": "Toronto Raptors",
+    "record": "16-17",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/gitpi61503743151.png",
+    "children": ""
+  },
+  {
+    "title": "Chicago Bulls",
+    "record": "15-16",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/yk7swg1547214677.png",
+    "children": ""
+  },
+  {
+    "title": "Charlotte Hornets",
+    "record": "15-16",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xqtvvp1422380623.png",
+    "children": ""
+  },
+  {
+    "title": "Boston Celtics",
+    "record": "15-17",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/051sjd1537102179.png",
+    "children": ""
+  },
+  {
+    "title": "New York Knicks",
+    "record": "15-17",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wyhpuf1511810435.png",
+    "children": ""
+  },
+  {
+    "title": "Miami Heat",
+    "record": "15-17",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/5v67x51547214763.png",
+    "children": ""
+  },
+  {
+    "title": "Atlanta Hawks",
+    "record": "14-18",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/c6oi9p1611859646.png",
+    "children": ""
+  },
+  {
+    "title": "Orlando Magic",
+    "record": "13-19",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/txuyrr1422492990.png",
+    "children": ""
+  },
+  {
+    "title": "Washington Wizards",
+    "record": "11-18",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/m2qhln1503743635.png",
+    "children": ""
+  },
+  {
+    "title": "Cleveland Cavaliers",
+    "record": "12-21",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/a2pp4c1503741152.png",
+    "children": ""
+  },
+  {
+    "title": "Detroit Pistons",
+    "record": "9-23",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/12612u1511101660.png",
+    "children": ""
+  },
+  {
+    "title": "Western Conference",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Utah Jazz",
+    "record": "26-6",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/9p1e5j1572041084.png",
+    "children": ""
+  },
+  {
+    "title": "Los Angeles Clippers",
+    "record": "23-10",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/jv7tf21545916958.png",
+    "children": ""
+  },
+  {
+    "title": "Los Angeles Lakers",
+    "record": "22-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/44ubym1511102073.png",
+    "children": ""
+  },
+  {
+    "title": "Phoenix Suns",
+    "record": "20-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qrtuxq1422919040.png",
+    "children": ""
+  },
+  {
+    "title": "Portland Trail Blazers",
+    "record": "18-13",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/mbtzin1520794112.png",
+    "children": ""
+  },
+  {
+    "title": "San Antonio Spurs",
+    "record": "16-12",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/obucan1611859537.png",
+    "children": ""
+  },
+  {
+    "title": "Denver Nuggets",
+    "record": "17-14",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/8o8j5k1546016274.png",
+    "children": ""
+  },
+  {
+    "title": "Golden State Warriors",
+    "record": "18-15",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/irobi61565197527.png",
+    "children": ""
+  },
+  {
+    "title": "Dallas Mavericks",
+    "record": "15-15",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/yqrxrs1420568796.png",
+    "children": ""
+  },
+  {
+    "title": "Memphis Grizzlies",
+    "record": "13-14",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/m64v461565196789.png",
+    "children": ""
+  },
+  {
+    "title": "New Orleans Pelicans",
+    "record": "14-17",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/f341s31523700397.png",
+    "children": ""
+  },
+  {
+    "title": "Oklahoma City Thunder",
+    "record": "13-19",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xpswpq1422575434.png",
+    "children": ""
+  },
+  {
+    "title": "Sacramento Kings",
+    "record": "12-19",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/5d3dpz1611859587.png",
+    "children": ""
+  },
+  {
+    "title": "Houston Rockets",
+    "record": "11-19",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/yezpho1597486052.png",
+    "children": ""
+  },
+  {
+    "title": "Minnesota Timberwolves",
+    "record": "7-26",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/b6a05s1503742837.png",
+    "children": ""
   },
   {
     "title": "National Football League - NFL",
     "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169",
-    "children": [
-      {
-        "title": "AFC East",
-        "image": "",
-        "children": [
-          {
-            "title": "Buffalo Bills",
-            "record": "13-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/6pb37b1515849026.png",
-            "children": ""
-          },
-          {
-            "title": "Miami Dolphins",
-            "record": "10-6",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/trtusv1421435081.png",
-            "children": ""
-          },
-          {
-            "title": "New England Patriots",
-            "record": "7-9",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1421431860.png",
-            "children": ""
-          },
-          {
-            "title": "New York Jets",
-            "record": "2-14",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/hz92od1607953467.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "AFC North",
-        "image": "",
-        "children": [
-          {
-            "title": "Pittsburgh Steelers",
-            "record": "12-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/2975411515853129.png",
-            "children": ""
-          },
-          {
-            "title": "Baltimore Ravens",
-            "record": "11-5",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/einz3p1546172463.png",
-            "children": ""
-          },
-          {
-            "title": "Cleveland Browns",
-            "record": "11-5",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/squvxy1420942389.png",
-            "children": ""
-          },
-          {
-            "title": "Cincinnati Bengals",
-            "record": "4-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qqtwwv1420941670.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "AFC South",
-        "image": "",
-        "children": [
-          {
-            "title": "Tennessee Titans",
-            "record": "11-5",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/m48yia1515847376.png",
-            "children": ""
-          },
-          {
-            "title": "Indianapolis Colts",
-            "record": "11-5",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wqqvpx1421434058.png",
-            "children": ""
-          },
-          {
-            "title": "Houston Texans",
-            "record": "4-12",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wqyryy1421436627.png",
-            "children": ""
-          },
-          {
-            "title": "Jacksonville Jaguars",
-            "record": "1-15",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/0mrsd41546427902.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "AFC West",
-        "image": "",
-        "children": [
-          {
-            "title": "Kansas City Chiefs",
-            "record": "14-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/936t161515847222.png",
-            "children": ""
-          },
-          {
-            "title": "Las Vegas Raiders",
-            "record": "8-8",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xqusqy1421724291.png",
-            "children": ""
-          },
-          {
-            "title": "Los Angeles Chargers",
-            "record": "7-9",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wbhu3a1548320628.png",
-            "children": ""
-          },
-          {
-            "title": "Denver Broncos",
-            "record": "5-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/upsspx1421635647.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "NFC East",
-        "image": "",
-        "children": [
-          {
-            "title": "Washington Football Team",
-            "record": "7-9",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/1m3mzp1595609069.png",
-            "children": ""
-          },
-          {
-            "title": "New York Giants",
-            "record": "6-10",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/vxppup1423669459.png",
-            "children": ""
-          },
-          {
-            "title": "Dallas Cowboys",
-            "record": "6-10",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wrxssu1450018209.png",
-            "children": ""
-          },
-          {
-            "title": "Philadelphia Eagles",
-            "record": "4-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/pnpybf1515852421.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "NFC North",
-        "image": "",
-        "children": [
-          {
-            "title": "Green Bay Packers",
-            "record": "13-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/rqpwtr1421434717.png",
-            "children": ""
-          },
-          {
-            "title": "Chicago Bears",
-            "record": "8-8",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/uwtwtv1420941123.png",
-            "children": ""
-          },
-          {
-            "title": "Minnesota Vikings",
-            "record": "7-9",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qstqqr1421609163.png",
-            "children": ""
-          },
-          {
-            "title": "Detroit Lions",
-            "record": "5-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/lgsgkr1546168257.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "NFC South",
-        "image": "",
-        "children": [
-          {
-            "title": "New Orleans Saints",
-            "record": "12-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/nd46c71537821337.png",
-            "children": ""
-          },
-          {
-            "title": "Tampa Bay Buccaneers",
-            "record": "11-5",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/2dfpdl1537820969.png",
-            "children": ""
-          },
-          {
-            "title": "Carolina Panthers",
-            "record": "5-11",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xxyvvy1420940478.png",
-            "children": ""
-          },
-          {
-            "title": "Atlanta Falcons",
-            "record": "4-12",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/rrpvpr1420658174.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "NFC West",
-        "image": "",
-        "children": [
-          {
-            "title": "Seattle Seahawks",
-            "record": "12-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wwuqyr1421434817.png",
-            "children": ""
-          },
-          {
-            "title": "Los Angeles Rams",
-            "record": "10-6",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/8e8v4i1599764614.png",
-            "children": ""
-          },
-          {
-            "title": "Arizona Cardinals",
-            "record": "8-8",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xvuwtw1420646838.png",
-            "children": ""
-          },
-          {
-            "title": "San Francisco 49ers",
-            "record": "6-10",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/bqbtg61539537328.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      }
-    ],
+    "children": "",
     "record": ""
+  },
+  {
+    "title": "AFC East",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Buffalo Bills",
+    "record": "13-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/6pb37b1515849026.png",
+    "children": ""
+  },
+  {
+    "title": "Miami Dolphins",
+    "record": "10-6",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/trtusv1421435081.png",
+    "children": ""
+  },
+  {
+    "title": "New England Patriots",
+    "record": "7-9",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1421431860.png",
+    "children": ""
+  },
+  {
+    "title": "New York Jets",
+    "record": "2-14",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/hz92od1607953467.png",
+    "children": ""
+  },
+  {
+    "title": "AFC North",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Pittsburgh Steelers",
+    "record": "12-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/2975411515853129.png",
+    "children": ""
+  },
+  {
+    "title": "Baltimore Ravens",
+    "record": "11-5",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/einz3p1546172463.png",
+    "children": ""
+  },
+  {
+    "title": "Cleveland Browns",
+    "record": "11-5",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/squvxy1420942389.png",
+    "children": ""
+  },
+  {
+    "title": "Cincinnati Bengals",
+    "record": "4-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qqtwwv1420941670.png",
+    "children": ""
+  },
+  {
+    "title": "AFC South",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Tennessee Titans",
+    "record": "11-5",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/m48yia1515847376.png",
+    "children": ""
+  },
+  {
+    "title": "Indianapolis Colts",
+    "record": "11-5",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wqqvpx1421434058.png",
+    "children": ""
+  },
+  {
+    "title": "Houston Texans",
+    "record": "4-12",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wqyryy1421436627.png",
+    "children": ""
+  },
+  {
+    "title": "Jacksonville Jaguars",
+    "record": "1-15",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/0mrsd41546427902.png",
+    "children": ""
+  },
+  {
+    "title": "AFC West",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Kansas City Chiefs",
+    "record": "14-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/936t161515847222.png",
+    "children": ""
+  },
+  {
+    "title": "Las Vegas Raiders",
+    "record": "8-8",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xqusqy1421724291.png",
+    "children": ""
+  },
+  {
+    "title": "Los Angeles Chargers",
+    "record": "7-9",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wbhu3a1548320628.png",
+    "children": ""
+  },
+  {
+    "title": "Denver Broncos",
+    "record": "5-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/upsspx1421635647.png",
+    "children": ""
+  },
+  {
+    "title": "NFC East",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Washington Football Team",
+    "record": "7-9",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/1m3mzp1595609069.png",
+    "children": ""
+  },
+  {
+    "title": "New York Giants",
+    "record": "6-10",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/vxppup1423669459.png",
+    "children": ""
+  },
+  {
+    "title": "Dallas Cowboys",
+    "record": "6-10",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wrxssu1450018209.png",
+    "children": ""
+  },
+  {
+    "title": "Philadelphia Eagles",
+    "record": "4-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/pnpybf1515852421.png",
+    "children": ""
+  },
+  {
+    "title": "NFC North",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Green Bay Packers",
+    "record": "13-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/rqpwtr1421434717.png",
+    "children": ""
+  },
+  {
+    "title": "Chicago Bears",
+    "record": "8-8",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/uwtwtv1420941123.png",
+    "children": ""
+  },
+  {
+    "title": "Minnesota Vikings",
+    "record": "7-9",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qstqqr1421609163.png",
+    "children": ""
+  },
+  {
+    "title": "Detroit Lions",
+    "record": "5-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/lgsgkr1546168257.png",
+    "children": ""
+  },
+  {
+    "title": "NFC South",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "New Orleans Saints",
+    "record": "12-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/nd46c71537821337.png",
+    "children": ""
+  },
+  {
+    "title": "Tampa Bay Buccaneers",
+    "record": "11-5",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/2dfpdl1537820969.png",
+    "children": ""
+  },
+  {
+    "title": "Carolina Panthers",
+    "record": "5-11",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xxyvvy1420940478.png",
+    "children": ""
+  },
+  {
+    "title": "Atlanta Falcons",
+    "record": "4-12",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/rrpvpr1420658174.png",
+    "children": ""
+  },
+  {
+    "title": "NFC West",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Seattle Seahawks",
+    "record": "12-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wwuqyr1421434817.png",
+    "children": ""
+  },
+  {
+    "title": "Los Angeles Rams",
+    "record": "10-6",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/8e8v4i1599764614.png",
+    "children": ""
+  },
+  {
+    "title": "Arizona Cardinals",
+    "record": "8-8",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xvuwtw1420646838.png",
+    "children": ""
+  },
+  {
+    "title": "San Francisco 49ers",
+    "record": "6-10",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/bqbtg61539537328.png",
+    "children": ""
   },
   {
     "title": "National Hockey League - NHL",
     "image": "https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788",
-    "children": [
-      {
-        "title": "Central Division",
-        "image": "",
-        "children": [
-          {
-            "title": "Florida Panthers",
-            "record": "12-4-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/8qtaz11547158220.png",
-            "children": ""
-          },
-          {
-            "title": "Tampa Bay Lightning",
-            "record": "12-4-1",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/swysut1421791822.png",
-            "children": ""
-          },
-          {
-            "title": "Carolina Hurricanes",
-            "record": "12-5-1",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/v07m3x1547232585.png",
-            "children": ""
-          },
-          {
-            "title": "Chicago Blackhawks",
-            "record": "10-6-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/tuwyvr1422041801.png",
-            "children": ""
-          },
-          {
-            "title": "Columbus Blue Jackets",
-            "record": "8-7-5",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/ssytwt1421792535.png",
-            "children": ""
-          },
-          {
-            "title": "Dallas Stars",
-            "record": "6-4-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qrvywq1422042125.png",
-            "children": ""
-          },
-          {
-            "title": "Nashville Predators",
-            "record": "8-10-0",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/twqyvy1422052908.png",
-            "children": ""
-          },
-          {
-            "title": "Detroit Red Wings",
-            "record": "5-13-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/1c24ow1546544080.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "East Division",
-        "image": "",
-        "children": [
-          {
-            "title": "Boston Bruins",
-            "record": "11-3-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/vuspuq1421791546.png",
-            "children": ""
-          },
-          {
-            "title": "Washington Capitals",
-            "record": "9-5-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/u17iel1547157581.png",
-            "children": ""
-          },
-          {
-            "title": "Philadelphia Flyers",
-            "record": "9-4-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qxxppp1421794965.png",
-            "children": ""
-          },
-          {
-            "title": "Pittsburgh Penguins",
-            "record": "10-6-1",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/dsj3on1546192477.png",
-            "children": ""
-          },
-          {
-            "title": "New York Islanders",
-            "record": "9-6-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/kj8uh41546001378.png",
-            "children": ""
-          },
-          {
-            "title": "New York Rangers",
-            "record": "6-8-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/bez4251546192693.png",
-            "children": ""
-          },
-          {
-            "title": "New Jersey Devils",
-            "record": "6-6-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/ssppey1547160174.png",
-            "children": ""
-          },
-          {
-            "title": "Buffalo Sabres",
-            "record": "6-8-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qrutxx1426461247.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "North Division",
-        "image": "",
-        "children": [
-          {
-            "title": "Toronto Maple Leafs",
-            "record": "15-4-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/mxig4p1570129307.png",
-            "children": ""
-          },
-          {
-            "title": "Edmonton Oilers",
-            "record": "13-8-0",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/uxxsyw1421618428.png",
-            "children": ""
-          },
-          {
-            "title": "Winnipeg Jets",
-            "record": "11-6-1",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/bwn9hr1547233611.png",
-            "children": ""
-          },
-          {
-            "title": "Montreal Canadiens",
-            "record": "9-5-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/stpryx1421791753.png",
-            "children": ""
-          },
-          {
-            "title": "Calgary Flames",
-            "record": "9-9-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/yqptxx1421869532.png",
-            "children": ""
-          },
-          {
-            "title": "Vancouver Canucks",
-            "record": "8-13-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/xqxxpw1421875519.png",
-            "children": ""
-          },
-          {
-            "title": "Ottawa Senators",
-            "record": "6-14-1",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/qurpwu1421616521.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      },
-      {
-        "title": "West Division",
-        "image": "",
-        "children": [
-          {
-            "title": "Vegas Golden Knights",
-            "record": "11-4-1",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/9w7peh1507632324.png",
-            "children": ""
-          },
-          {
-            "title": "St. Louis Blues",
-            "record": "10-8-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/rsqtwx1422053715.png",
-            "children": ""
-          },
-          {
-            "title": "Los Angeles Kings",
-            "record": "9-6-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/uvwtvx1421535024.png",
-            "children": ""
-          },
-          {
-            "title": "Arizona Coyotes",
-            "record": "9-7-3",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wpxpsx1421868857.png",
-            "children": ""
-          },
-          {
-            "title": "Minnesota Wild",
-            "record": "10-6-0",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/swtsxs1422042685.png",
-            "children": ""
-          },
-          {
-            "title": "Colorado Avalanche",
-            "record": "9-6-1",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/wqutut1421173572.png",
-            "children": ""
-          },
-          {
-            "title": "San Jose Sharks",
-            "record": "7-8-2",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/yui7871546193006.png",
-            "children": ""
-          },
-          {
-            "title": "Anaheim Ducks",
-            "record": "6-10-4",
-            "image": "https://www.thesportsdb.com/images/media/team/badge/6g9t721547289240.png",
-            "children": ""
-          }
-        ],
-        "record": ""
-      }
-    ],
+    "children": "",
     "record": ""
+  },
+  {
+    "title": "Central Division",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Florida Panthers",
+    "record": "12-4-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/8qtaz11547158220.png",
+    "children": ""
+  },
+  {
+    "title": "Tampa Bay Lightning",
+    "record": "12-4-1",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/swysut1421791822.png",
+    "children": ""
+  },
+  {
+    "title": "Carolina Hurricanes",
+    "record": "12-5-1",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/v07m3x1547232585.png",
+    "children": ""
+  },
+  {
+    "title": "Chicago Blackhawks",
+    "record": "10-6-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/tuwyvr1422041801.png",
+    "children": ""
+  },
+  {
+    "title": "Columbus Blue Jackets",
+    "record": "8-7-5",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/ssytwt1421792535.png",
+    "children": ""
+  },
+  {
+    "title": "Dallas Stars",
+    "record": "6-4-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qrvywq1422042125.png",
+    "children": ""
+  },
+  {
+    "title": "Nashville Predators",
+    "record": "8-10-0",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/twqyvy1422052908.png",
+    "children": ""
+  },
+  {
+    "title": "Detroit Red Wings",
+    "record": "5-13-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/1c24ow1546544080.png",
+    "children": ""
+  },
+  {
+    "title": "East Division",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Boston Bruins",
+    "record": "11-3-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/vuspuq1421791546.png",
+    "children": ""
+  },
+  {
+    "title": "Washington Capitals",
+    "record": "9-5-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/u17iel1547157581.png",
+    "children": ""
+  },
+  {
+    "title": "Philadelphia Flyers",
+    "record": "9-4-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qxxppp1421794965.png",
+    "children": ""
+  },
+  {
+    "title": "Pittsburgh Penguins",
+    "record": "10-6-1",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/dsj3on1546192477.png",
+    "children": ""
+  },
+  {
+    "title": "New York Islanders",
+    "record": "9-6-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/kj8uh41546001378.png",
+    "children": ""
+  },
+  {
+    "title": "New York Rangers",
+    "record": "6-8-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/bez4251546192693.png",
+    "children": ""
+  },
+  {
+    "title": "New Jersey Devils",
+    "record": "6-6-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/ssppey1547160174.png",
+    "children": ""
+  },
+  {
+    "title": "Buffalo Sabres",
+    "record": "6-8-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qrutxx1426461247.png",
+    "children": ""
+  },
+  {
+    "title": "North Division",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Toronto Maple Leafs",
+    "record": "15-4-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/mxig4p1570129307.png",
+    "children": ""
+  },
+  {
+    "title": "Edmonton Oilers",
+    "record": "13-8-0",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/uxxsyw1421618428.png",
+    "children": ""
+  },
+  {
+    "title": "Winnipeg Jets",
+    "record": "11-6-1",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/bwn9hr1547233611.png",
+    "children": ""
+  },
+  {
+    "title": "Montreal Canadiens",
+    "record": "9-5-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/stpryx1421791753.png",
+    "children": ""
+  },
+  {
+    "title": "Calgary Flames",
+    "record": "9-9-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/yqptxx1421869532.png",
+    "children": ""
+  },
+  {
+    "title": "Vancouver Canucks",
+    "record": "8-13-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/xqxxpw1421875519.png",
+    "children": ""
+  },
+  {
+    "title": "Ottawa Senators",
+    "record": "6-14-1",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/qurpwu1421616521.png",
+    "children": ""
+  },
+  {
+    "title": "West Division",
+    "image": "",
+    "children": "",
+    "record": ""
+  },
+  {
+    "title": "Vegas Golden Knights",
+    "record": "11-4-1",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/9w7peh1507632324.png",
+    "children": ""
+  },
+  {
+    "title": "St. Louis Blues",
+    "record": "10-8-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/rsqtwx1422053715.png",
+    "children": ""
+  },
+  {
+    "title": "Los Angeles Kings",
+    "record": "9-6-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/uvwtvx1421535024.png",
+    "children": ""
+  },
+  {
+    "title": "Arizona Coyotes",
+    "record": "9-7-3",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wpxpsx1421868857.png",
+    "children": ""
+  },
+  {
+    "title": "Minnesota Wild",
+    "record": "10-6-0",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/swtsxs1422042685.png",
+    "children": ""
+  },
+  {
+    "title": "Colorado Avalanche",
+    "record": "9-6-1",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/wqutut1421173572.png",
+    "children": ""
+  },
+  {
+    "title": "San Jose Sharks",
+    "record": "7-8-2",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/yui7871546193006.png",
+    "children": ""
+  },
+  {
+    "title": "Anaheim Ducks",
+    "record": "6-10-4",
+    "image": "https://www.thesportsdb.com/images/media/team/badge/6g9t721547289240.png",
+    "children": ""
   }
 ]
