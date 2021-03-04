@@ -50,7 +50,9 @@
   <body >
 
     <div id="load">
-      <div class="loader"></div>
+      <div class="loader">
+        <div class="lds-facebook"><div></div><div></div><div></div></div>
+      </div>
     </div>
 
 <!-- 
@@ -66,6 +68,30 @@
 
 ///////////////////////////////////////////////////////////////////
 -->
+<div id="welcomeScreen">
+  <div>
+
+    <h2> App Shortcut</h2>
+    <p>Thank you for choosing Tympdeja for your sports news coverage</p>
+    <p>First, bookmark this page and on mobile, add an app shortcut to quickly get to your feed </p>
+    <ul>
+      <li>Launch “Chrome” app.</li>
+      <li>Open the website or web page you want to pin to your home screen.</li>
+      <li>Tap the menu icon (3 dots in upper right-hand corner) and tap Add to homescreen.</li>
+    </ul>
+
+    <a href="#select">
+    <button onclick="hideWelcomeScreen()" data-menuanchor="select">
+      Select Teams
+    </button>
+  </a>
+
+  </div>
+  <div>
+    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
+  </div>
+  
+</div>
 
     <div id="login">
       <div class="loginCover">
@@ -78,6 +104,8 @@
           </p>
         </div>
       </div>
+
+     
 
       <div class="loginForm">
         <form>
@@ -111,6 +139,7 @@
   <div id="maincontent">
     <div id="vue">
 
+
  <!-- 
 ////////////////////////////////////////////////////////////////////////
 
@@ -127,9 +156,12 @@
 
 <div id="feed" class="section pp-scrollable">
   <div class="card tabDescription">
+
+    <p class="menuButton" onclick="toggleMenu()">&#9776</p>
+
     <h2>Your Feed</h2>
     <p>
-      All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Select' section.
+      All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Teams' section.
     </p>
 
       <!-- <input
@@ -193,20 +225,34 @@
 
     <div id="select" class="section pp-scrollable">
       <div id="selectDescription" class="card tabDescription">
+
+        <p class="menuButton" onclick="toggleMenu()">&#9776</p>
+
         <h2>Select Teams</h2>
         <p>
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p>
+        <div>
+          <button class="tablinks" onclick="openTab(event, 'myTeams')">My teams</button>
+          <button class="tablinks" onclick="openTab(event, 'addTeams')">Add Teams</button>
+         
+        </div>
+        
       </div>
 
-      <div class="tabContent selectGrid">
+      <div id="resetTeams" v-on:click="resetTeams">&#9666; BACK</div>
 
-        <team-option
+      <div class="tabContent selectGrid selectTabs" id="myTeams">
+      </div>
+
+      <div class="tabContent selectGrid selectTabs" id="addTeams">
+      <team-option
         v-for="item in teamOptions"
         v-bind:option="item"
       ></team-option>
-
       </div>
+
+
       
     </div>
     
@@ -230,6 +276,9 @@
 
 <div id="general" class="section pp-scrollable">
   <div class="card tabDescription">
+
+    <p class="menuButton" onclick="toggleMenu()">&#9776</p>
+
     <h2>General Search</h2>
     <p>
       If You're Looking for general information, you can find the latest
@@ -287,15 +336,13 @@
         <a href="#general">Search</a>
       </li>
     
-    <li id="submitLogout" onclick="toggleLogin('showLogin')">
+    <li id="submitLogout">
       <a href="#login">Logout</a>
     </li>
   </ul>
 </div>
 
-<p id="menuButton" onclick="toggleMenu()">
-  &#9776
-</p>
+
 
   <!-------------------------------------------------------->
   <!-- Site Scripts-->
@@ -306,9 +353,6 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
 
-  <!--  Firebase Login Script -->
-  <script src="../public/js/app.js"></script>
-
   <!-- Add Vue Js -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
@@ -318,9 +362,11 @@
   <!--  Pagepilling Javascript -->
   <script type="text/javascript" src="../public/js/jquery.pagepiling.min.js"></script>
 
+  <!--  Firebase Login Script -->
+  <script src="../public/js/app.js"></script>
+
   <!--  Main Script for Grabbing Data From Server -->
   <script src="../public/js/client.js"></script>
-
 
   </body>
 </html>

@@ -40,6 +40,14 @@ a {
   color: #003153;
 }
 
+button a {
+  color:white;
+}
+
+button a:hover, button:hover a  {
+  color:black;
+}
+
 .pointerItem {
   cursor: pointer;
 }
@@ -69,6 +77,7 @@ a {
 .pp-section {
   padding: 50px 0px 50px 0px;
   display: grid;
+  vertical-align: top; /* new */
   grid-template-columns: auto;
   grid-gap: 5px;
 }
@@ -98,6 +107,7 @@ a {
 }
 
 .tabDescription {
+  position:relative;
   color: #1d3557;
   margin: auto;
   background-color: #fff;
@@ -186,7 +196,6 @@ a {
   color: #000;
   border: 1px solid black;
   border-right: 20px solid black;
-  border-left: 20px solid black;
 }
 
 #navbar ul .active a {
@@ -195,15 +204,16 @@ a {
   border-right: 20px solid black !important;
 }
 
-#menuButton {
-  position: absolute;
-  top: 5%;
-  right: 4%;
+.menuButton {
+  position:absolute;
+  top:0;
+  right:0;
+  margin:20px;
   font-size: 300%;
   cursor: pointer;
   color: #000;
   transition: 1s;
-  z-index: 150;
+  z-index: 50;
 }
 
 /* For Mobile: */
@@ -226,14 +236,11 @@ a {
   #navbar ul .active a {
     color: #000;
     border: 1px solid black;
+    border-bottom: 1px solid black !important;
     border-right: 20px solid black !important;
   }
 
-  #menuButton {
-    position: absolute;
-    top: 0.1%;
-    right: 10%;
-  }
+
 }
 
 /*//////////////////////////////////////////////////////////////
@@ -253,7 +260,7 @@ input {
   font-size: 16px;
   padding: 12px 20px 12px 20px;
   border: 2px solid #000;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   margin: 5px;
   position: relative;
   transition: 0.1s;
@@ -271,19 +278,20 @@ input:hover {
 }
 
 button {
-  background-color: #000;
-  border: none;
-  border-radius: 5px;
+  background-color: #003153;
+  border: 1px solid black;
+  border-radius: 0px;
   color: white;
   padding: 12px 10px 12px 10px;
   text-align: center;
   cursor: pointer;
-  border-radius: 5px;
   transition: 0.1s;
 }
 
 button:hover {
-  background-color: #777;
+  background-color: #ddd;
+  color:black;
+  border:1px solid black;
 }
 
 #searchBar {
@@ -309,12 +317,14 @@ button:hover {
   transition: 0.05s;
   overflow: hidden;
   transform: translateX(0px);
+  
 }
 
 .newsItem:hover {
   background: #003153;
   color: white;
   border: 1px solid white;
+  
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
 }
 
@@ -409,7 +419,7 @@ button:hover {
   border: 1px solid black;
   padding: 10px;
   transition: 0.1s;
-  vertical-align: center;
+  /* vertical-align: center; */
 }
 
 .selectGrid div:hover {
@@ -427,6 +437,38 @@ button:hover {
   height: 80%;
   float: right;
   vertical-align: center;
+}
+
+.tablinks{
+  background:white;
+  color:black;
+  border-radius:0px;
+  margin:5px;
+}
+
+
+/* #resetTeams{
+  padding:10px;
+  background:white;
+  border: 1px solid black;
+  margin:5px 5% 5px 5px;
+  width:10px;
+  float:right;
+} */
+
+#resetTeams {
+  position: relative;
+  padding: 10px 0px 10px 10px;
+  background: white;
+  border: 1px solid black;
+  float: left;
+  width: 5%;
+  margin-left: 10%;
+}
+
+#resetTeams:hover{
+  background:#003153;
+  color:white;
 }
 
 /* For Mobile */
@@ -512,8 +554,6 @@ button:hover {
   width: 70%;
 }
 
-.loginCover div p span {
-}
 
 .loginForm {
   position: absolute;
@@ -522,6 +562,37 @@ button:hover {
   transform: translateY(-50%) translateX(50%);
   width: 300px;
   text-align: center;
+}
+
+#welcomeScreen{
+  display:none;
+  position:absolute;
+  top:0%;
+  width:100%;
+  height:100%;
+  background:white;
+  z-index:51;
+  grid-template-columns: auto auto auto auto;
+  transition: 0.5s;
+}
+
+#welcomeScreen div:first-child(1){
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#welcomeScreen div{
+  vertical-align: center;
+  margin:auto;
+  width:80%;
+}
+
+#welcome div img{
+  width:60%;
+}
+
+#welcome button{
+  vertical-align:center;
 }
 
 /* For Mobile: */
@@ -540,6 +611,17 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+  }
+
+  #welcomeScreen{
+    grid-template-columns: auto;
+    padding:50px 10px 10px 10px;
+    font-size:15px;
+    overflow-y:scroll;
+  }
+
+  #welcomeScreen div{
+    width:80%;
   }
 }
 
@@ -652,39 +734,76 @@ button:hover {
 
 .loader {
   position: absolute;
-  top: 45%;
-  left: 45%;
+  top: 50%;
+  left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  border: 5px solid #fff;
-  border-radius: 50%;
-  border-top: 5px solid #003153;
-  width: 100px;
-  height: 100px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
+
 }
 
-/* Safari */
-@-webkit-keyframes spin {
+
+.lds-facebook {
+  display: inline-block;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
   0% {
-    -webkit-transform: rotate(0deg);
+    top: 8px;
+    height: 64px;
   }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+  50%, 100% {
+    top: 24px;
+    height: 32px;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .loader {
-    left: 35%;
-  }
+/*////////////////////////////////////////////////////////////////////////
+
+  _____       _               _____                 
+ |_   _|     | |             |  __ \                
+   | |  _ __ | |_ _ __ ___   | |__) |_ _  __ _  ___ 
+   | | | '_ \| __| '__/ _ \  |  ___/ _` |/ _` |/ _ \
+  _| |_| | | | |_| | | (_) | | |  | (_| | (_| |  __/
+ |_____|_| |_|\__|_|  \___/  |_|   \__,_|\__, |\___|
+                                          __/ |     
+                                         |___/      
+
+/////////////////////////////////////////////////////////////////////////*/
+
+#first{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  transition: 0.5s;
+}
+
+#welcomeScreen div{
+  vertical-align: center;
+}
+
+.instoSection{
+
 }
