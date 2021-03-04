@@ -67,7 +67,8 @@ def resetTeams():
 @app.route('/grabTeam', methods=['GET', 'POST'])
 def grabTeam():
     if 'teamId' in request.args:
-        teamId = request.args['option']
+        teamId = request.args['teamId']
+        print("this is the teamId:",teamId)
         TEAM = OPTION_DATA[str(teamId)]
     return jsonify(TEAM)
 

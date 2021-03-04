@@ -243,6 +243,10 @@
       <div id="resetTeams" v-on:click="resetTeams">&#9666; BACK</div>
 
       <div class="tabContent selectGrid selectTabs" id="myTeams">
+        <remove-item
+        v-for="item in userTeams"
+        v-bind:item="item"
+      ></remove-item>
       </div>
 
       <div class="tabContent selectGrid selectTabs" id="addTeams">
