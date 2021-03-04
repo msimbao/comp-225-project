@@ -517,7 +517,7 @@ def jsonToArray(fileName):
 
 
 # Utils for writing news as data directly into firebase
-def createNewsDataInFireBase(query, league="", division="", team=""):
+def createNewsDataInFireBase(query, league="", conference="", division="", team=""):
     # Acquire the date of the current query
     today = date.today()
     month = today.strftime("%m")
@@ -532,7 +532,7 @@ def createNewsDataInFireBase(query, league="", division="", team=""):
     firebase = pyrebase.initialize_app(CONFIG_TRIAL)
     db = firebase.database()
 
-    db.child(month + day + year + "news" + current_hour).child(league).child(division).child(team).set(news)
+    db.child(month + day + year + "news" + current_hour).child(league).child(conference).child(division).child(team).set(news)
 
     return
 
@@ -541,13 +541,13 @@ def uploadNBAData():
     # upload NBA news to Firebase
     createNewsDataInFireBase("NBA", "NBA", "General", "NBA League News")
 
-    for divisions in ECNBA:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "NBA", "EC", divisions[i])
+    for division in ECNBA:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "NBA", "EC", division[0], division[i])
 
-    for divisions in WCNBA:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "NBA", "WC", divisions[i])
+    for division in WCNBA:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "NBA", "WC", division[0], division[i])
 
     return
 
@@ -556,13 +556,13 @@ def uploadMLBData():
     # upload MLB news to Firebase
     createNewsDataInFireBase("MLB", "MLB", "General", "MLB League News")
 
-    for divisions in NL:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "MLB", "NL", divisions[i])
+    for division in NL:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "MLB", "NL", division[0], division[i])
 
-    for divisions in AL:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "MLB", "AL", divisions[i])
+    for division in AL:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "MLB", "AL", division[0], division[i])
 
     return
 
@@ -571,13 +571,13 @@ def uploadNFLData():
     # upload NFL news to Firebase
     createNewsDataInFireBase("NFL", "NFL", "General", "NFL League News")
 
-    for divisions in AFC:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "NFL", "AFC", divisions[i])
+    for division in AFC:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "NFL", "AFC", division[0], division[i])
 
-    for divisions in NFC:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "NFL", "NFC", divisions[i])
+    for division in NFC:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "NFL", "NFC", division[0], division[i])
 
     return
 
@@ -586,13 +586,13 @@ def uploadNHLData():
     # upload NHL news to Firebase
     createNewsDataInFireBase("NHL", "NHL", "General", "NHL League News")
 
-    for divisions in ECNHL:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "NHL", "EC", divisions[i])
+    for division in ECNHL:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "NHL", "EC", division[0], division[i])
 
-    for divisions in WCNHL:
-        for i in range(1, len(divisions) - 1):
-            createNewsDataInFireBase(divisions[i], "NHL", "WC", divisions[i])
+    for division in WCNHL:
+        for i in range(1, len(division) - 1):
+            createNewsDataInFireBase(division[i], "NHL", "WC", division[0], division[i])
 
     return
 
