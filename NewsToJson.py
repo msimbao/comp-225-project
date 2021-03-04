@@ -542,11 +542,11 @@ def uploadNBAData():
     createNewsDataInFireBase("NBA", "NBA", "General", "NBA League News")
 
     for division in ECNBA:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "NBA", "EC", division[0], division[i])
 
     for division in WCNBA:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "NBA", "WC", division[0], division[i])
 
     return
@@ -557,11 +557,11 @@ def uploadMLBData():
     createNewsDataInFireBase("MLB", "MLB", "General", "MLB League News")
 
     for division in NL:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "MLB", "NL", division[0], division[i])
 
     for division in AL:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "MLB", "AL", division[0], division[i])
 
     return
@@ -572,11 +572,11 @@ def uploadNFLData():
     createNewsDataInFireBase("NFL", "NFL", "General", "NFL League News")
 
     for division in AFC:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "NFL", "AFC", division[0], division[i])
 
     for division in NFC:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "NFL", "NFC", division[0], division[i])
 
     return
@@ -587,11 +587,11 @@ def uploadNHLData():
     createNewsDataInFireBase("NHL", "NHL", "General", "NHL League News")
 
     for division in ECNHL:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "NHL", "EC", division[0], division[i])
 
     for division in WCNHL:
-        for i in range(1, len(division) - 1):
+        for i in range(1, len(division)):
             createNewsDataInFireBase(division[i], "NHL", "WC", division[0], division[i])
 
     return
