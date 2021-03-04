@@ -310,7 +310,8 @@ button:hover {
 //////////////////////////////////////////////////////////////*/
 
 .newsItem {
-  height: 250px;
+  position:relative;
+  height: 150px;
   border-radius: 0px;
   background: #fff;
   border: 1px solid black;
@@ -328,11 +329,20 @@ button:hover {
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
 }
 
+.newsImageHolder{
+  position:absolute;
+  left:0px;
+  top:0px;
+  height:100%;
+  width:200px;
+  overflow:hidden;
+  text-align:center;
+}
+
 .newsItem img:not(.teamImage) {
-  width: 210px;
+  height: 100%;
   margin: 0px;
   padding: 0px;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .teamImage {
@@ -347,6 +357,7 @@ button:hover {
   left: 200px;
   bottom: 10px;
 }
+
 
 /* For Mobile */
 
