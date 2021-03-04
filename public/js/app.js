@@ -8,7 +8,6 @@
  *
  */
 
-
     //Initialize Firebase
     const config = {
         apiKey: "AIzaSyDM0YYvGQFSc9qy6jh2hpxZy_87B8eNc3o",
@@ -30,6 +29,9 @@
 
 
     //Get elements
+    const loginForm = document.getElementById("loginToAccount");
+    const signUpForm = document.getElementById("createAccount");
+
     const txtEmail = document.getElementById("loginEmail");
     const txtPassword = document.getElementById("loginPassword");
 
@@ -62,6 +64,7 @@
             toggleLogin('hideLogin');
             welcomeScreen = document.getElementById("welcomeScreen");
             welcomeScreen.style.display = "grid";
+            signUpForm.reset();
         });
     });
 
@@ -69,8 +72,6 @@
     btnLogout.addEventListener("click", ev => {
         ev.preventDefault();
         auth.signOut().then(() => {
-            //console.log("User signed out") this was just for testing
-            //TODO: Whatever happens when a user is logged out
             user = "";
             toggleLogin('showLogin');
         });
@@ -91,7 +92,7 @@
             toggleLogin('hideLogin');
             app.resetTeams();
             app.loadUserTeams();
-            //TODO: Move to user's feed
+            loginForm.reset();
         });
     });
 

@@ -67,7 +67,7 @@ Vue.component("team-option", {
     teamOption: function (option, record) {
       if (record == "") {
         $.post(
-          "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
+          "/conferences?" + $.param({ option: option }),
           (option_data) => {
             app.teamOptions = option_data;
 
@@ -217,7 +217,7 @@ var app = new Vue({
       event.preventDefault();
       newsItem = $("#searchBar").val();
       $.post(
-        "http://127.0.0.1:5000/news?" + $.param({ newsItem: newsItem, number:20 }),
+        "/news?" + $.param({ newsItem: newsItem, number:20 }),
         (news) => {
           this.generalNews = news;
           $("#searchBar").val("");
@@ -268,7 +268,7 @@ var app = new Vue({
       var logoUrl = this.userTeams[i].image
       this.feedNews = []
       $.post(
-        "http://127.0.0.1:5000/news?" + $.param({ newsItem: team, number:3 }),
+        "/news?" + $.param({ newsItem: team, number:3 }),
         (news) => {
           for (j = 0; j < news.length; j++) {
             news[j].teamLogo = logoUrl
@@ -305,7 +305,7 @@ var app = new Vue({
      */
     resetTeams: function () {
       $.post(
-        "http://127.0.0.1:5000/resetTeams?" + $.param({ option: "begin" }),
+        "/resetTeams?" + $.param({ option: "begin" }),
         (resetTeams) => {
           this.teamOptions = resetTeams;
         }
@@ -342,7 +342,7 @@ var app = new Vue({
           for (i = 0; i < docTeams.length; i++) {
             teamId = docTeams[i];
             $.post(
-              "http://127.0.0.1:5000/grabTeam?" + $.param({ teamId: teamId }),
+              "/grabTeam?" + $.param({ teamId: teamId }),
               (grabbedTeam) => {
                 this.userTeams.push(grabbedTeam);
               }
@@ -532,47 +532,3 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "grid";
   evt.currentTarget.className += " active";
 }
-
-/**
-    * ///////////////////////////////////////////////////////////
-
-    _____       _ _     _______        _       
-  |_   _|     (_) |   |__   __|      | |      
-    | |  _ __  _| |_     | | ___  ___| |_ ___ 
-    | | | '_ \| | __|    | |/ _ \/ __| __/ __|
-    _| |_| | | | | |_     | |  __/\__ \ |_\__ \
-  |_____|_| |_|_|\__|    |_|\___||___/\__|___/
-                                              
-                                              
-    * ///////////////////////////////////////////////////////////
-    */
-
-/**
- *  @name getTestNews
- *  @brief get test news article for general search page and display it
- */
-function getNews() {
-  $.get("http://127.0.0.1:5000/news", function (news) {
-    // console.log(news)
-    news.forEach(function (newsItem) {
-      // console.log(newsItem['title'])
-      // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
-      $(
-        '<a href="' +
-          newsItem.url +
-          '"><div class="card newsItem"><img src="' +
-          newsItem.image +
-          '"><div class="articleWords"><h4>' +
-          newsItem.title +
-          "</h4><p>" +
-          newsItem.description +
-          "</p><h6>" +
-          newsItem.authors +
-          "</h6></div></div></a>"
-      ).appendTo("ul#news");
-    });
-  });
-}
-
-// Call get News on App start to test the response
-getNews();
