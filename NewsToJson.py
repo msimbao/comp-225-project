@@ -250,12 +250,16 @@ def createNewNews(query):
             'Url': url,
             'Image': image,
             'Description': description,
-            'Author': author
+            'Author': author,
+            'League': "",
+            'Division': "",
+            'Team': ""
         }
 
     return newsDataBaseForm
 
 
+# Utils for saving news as .json file and then upload to firebase
 def newsToJson(newsDict, fileName, directoryName):
     """This function takes a dictionary and make it into a .json file. (I chose .json instead of .txt because .json file
     could be directly read back into dictionary which I think is easier for server.py to read in.)
@@ -295,7 +299,7 @@ def makeDirectoryToday():
 
 
 def jsonDumpNewsItems(query, league_directory="", division_directory="", optional_directory=""):
-    """Reformats a search result from BingSearch and turns each news Article item into a .json file in formatted
+    """Reformat a search result from BingSearch and turns each news Article item into a .json file in formatted
     directories.
 
         Parameters
@@ -391,7 +395,7 @@ def buildNHLNews():
     return 0
 
 
-def buildNews():
+def buildLocalNews():
     makeDirectoryToday()
 
     buildNBANews()
@@ -501,8 +505,98 @@ def jsonToArray(fileName):
     return directories
 
 
-if __name__ == '__main__':
-    buildNews()
+# Utils for writing news as data directly into firebase
+def createNewsDataInFireBase(query, league="", division="", team=""):
+    # Acquire the date of the current query
+    today = date.today()
+    month = today.strftime("%m")
+    day = today.strftime("%d")
+    year = today.strftime("%y")
+
+    # Add League, Division, Team attributes for categorizing use
+    news = createNewNews(query)
+    news['League'] = league
+    news['Division'] = division
+    news['Team'] = team
+
+    # Initialize firebase
     firebase = pyrebase.initialize_app(CONFIG)
-    storage = firebase.storage()
-    upLoadNewsJsonToFireBaseStorage()
+    db = firebase.database()
+
+    db.child(month + day + year + "news").push(news)
+
+    return 0
+
+
+def uploadNBAData():
+    # upload NBA news to Firebase
+    createNewsDataInFireBase("NBA", "NBA", "", "NBA League News")
+
+    for divisions in ECNBA:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "NBA", "EC", divisions[0])
+
+    for divisions in WCNBA:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "NBA", "WC", divisions[0])
+
+    return 0
+
+
+def uploadMLBData():
+    # upload MLB news to Firebase
+    createNewsDataInFireBase("MLB", "MLB", "", "MLB League News")
+
+    for divisions in NL:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "MLB", "NL", divisions[0])
+
+    for divisions in AL:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "MLB", "AL", divisions[0])
+
+    return 0
+
+
+def uploadNFLData():
+    # upload NFL news to Firebase
+    jsonDumpNewsItems("NFL", "NFL", "", "NFL League News")
+
+    for divisions in AFC:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "NFL", "AFC", divisions[0])
+
+    for divisions in NFC:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "NFL", "NFC", divisions[0])
+
+    return 0
+
+
+def uploadNHLData():
+    # upload NHL news to Firebase
+    createNewsDataInFireBase("NHL", "NHL", "", "NHL League News")
+
+    for divisions in ECNHL:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "NHL", "EC", divisions[0])
+
+    for divisions in WCNHL:
+        for i in range(1, len(divisions)):
+            createNewsDataInFireBase(divisions[i], "NHL", "WC", divisions[0])
+
+    return 0
+
+
+def uploadNews():
+    # Upload news for all four leagues to firebase
+    uploadNBAData()
+    uploadMLBData()
+    uploadNHLData()
+    uploadNFLData()
+
+    return 0
+
+
+if __name__ == '__main__':
+    uploadNews()
