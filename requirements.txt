@@ -1,7 +1,7 @@
 crontab
 Flask~=1.1.2
 flask_cors
-random
+
 socket
 re
 bs4~=0.0.1
