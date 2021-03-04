@@ -25,16 +25,16 @@
 Vue.component("feed-item", {
   props: ["feed"],
   template:
-    '<a :href="feed.url">'+
-      '<div class="card newsItem">'+
-        '<img :src="feed.image">'+
-        '<div class="articleWords">'+
-          '<h4>{{feed.title}}</h4>'+
-          '<p>"{{feed.description}}..."</p>'+
-          '<img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">'+
-        '</div>'+
-      '</div>'+
-    '</a>',
+    '<a :href="feed.url">' +
+    '<div class="card newsItem">' +
+    '<img :src="feed.image">' +
+    '<div class="articleWords">' +
+    "<h4>{{feed.title}}</h4>" +
+    '<p>"{{feed.description}}..."</p>' +
+    '<img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">' +
+    "</div>" +
+    "</div>" +
+    "</a>",
 });
 
 /* General News Component */
@@ -42,15 +42,15 @@ Vue.component("feed-item", {
 Vue.component("news-item", {
   props: ["news"],
   template:
-    '<a :href="news.url">'+
-      '<div class="card newsItem">'+
-        '<img :src="news.image">'+
-        '<div class="articleWords">'+
-          '<h4>{{news.title}}</h4>'+
-          '<p>"{{news.description}}..."</p>'+
-        '</div>'+
-      '</div>'+
-    '</a>',
+    '<a :href="news.url">' +
+    '<div class="card newsItem">' +
+    '<img :src="news.image">' +
+    '<div class="articleWords">' +
+    "<h4>{{news.title}}</h4>" +
+    '<p>"{{news.description}}..."</p>' +
+    "</div>" +
+    "</div>" +
+    "</a>",
 });
 
 /* Team Selection Component */
@@ -58,13 +58,13 @@ Vue.component("news-item", {
 Vue.component("team-option", {
   props: ["option"],
   methods: {
-        /**
+    /**
      * @name teamOptions
      * @brief Function to get current teams, leagues or conferences from a dictionary and populate a display grid or firebase with selected user teams
      * @param option the current team, league or conference selected
      */
-    teamOption: function (option,record) {
-      if (record == ""){
+    teamOption: function (option, record) {
+      if (record == "") {
         $.post(
           "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
           function (option_data) {
@@ -72,46 +72,43 @@ Vue.component("team-option", {
             app.teamOptions = option_data;
           }
         );
-      }
-
-      else {
+      } else {
         //Insert Data to user teams
-        var docTeams = []
+        var docTeams = [];
         var docRef = db.collection("users").doc(user);
 
         docRef.get().then((doc) => {
           if (doc.exists) {
-              console.log("Document data:", doc.data().teams);
-              docTeams = doc.data().teams
-              console.log("After Concat:",docTeams)
-              if (!docTeams.includes(option)){
-                docTeams.push(option)
-                console.log("After Push:",docTeams)
-              }
-            
-              return db.collection("users").doc(user).update({
+            console.log("Document data:", doc.data().teams);
+            docTeams = doc.data().teams;
+            console.log("After Concat:", docTeams);
+            if (!docTeams.includes(option)) {
+              docTeams.push(option);
+              console.log("After Push:", docTeams);
+            }
+
+            return db
+              .collection("users")
+              .doc(user)
+              .update({
                 teams: docTeams,
-              }).then(() => {
-                 console.log("User Teams Updated")
+              })
+              .then(() => {
+                console.log("User Teams Updated");
               });
-
           } else {
-              // doc.data() will be undefined in this case
-              console.log("No such document!");
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
           }
-        }
-        )
-
-
+        });
       }
-
     },
   },
   template:
-    '<div v-on:click="teamOption(option.id,option.record)" >'+
-      '<h4>{{option.title}}</h4>'+
-      '<img :src="option.image">'+
-    '</div>',
+    '<div v-on:click="teamOption(option.id,option.record)" >' +
+    "<h4>{{option.title}}</h4>" +
+    '<img :src="option.image">' +
+    "</div>",
 });
 
 /* Team Remove Component */
@@ -119,10 +116,10 @@ Vue.component("team-option", {
 Vue.component("remove-item", {
   props: ["item"],
   template:
-    '<div v-on:click="teamOption(item.id,item.record)" >'+
-      '<h4>{{item.title}}</h4>'+
-      '<img :src="item.image">'+
-    '</div>',
+    '<div v-on:click="teamOption(item.id,item.record)" >' +
+    "<h4>{{item.title}}</h4>" +
+    '<img :src="item.image">' +
+    "</div>",
 });
 
 /* Initialize */
@@ -133,7 +130,7 @@ var app = new Vue({
     generalNews: [],
     teamOptions: [],
     feedNews: [],
-    userTeams: []
+    userTeams: [],
   },
   methods: {
     /**
@@ -145,7 +142,7 @@ var app = new Vue({
     },
     /**
      * @name generalSearch
-     * @brief Function to search for news data. Right now it talks to server but will hopefully 
+     * @brief Function to search for news data. Right now it talks to server but will hopefully
      *        grab directly from database
      */
     generalSearch: function (event) {
@@ -162,14 +159,13 @@ var app = new Vue({
       );
     },
 
-
     /**
-    * @name filterSearch
-    * @brief Function to filter through feed content quickly. Not used right now
-    * @param {event} event event for when the input of a search bar is changed
-    * 
-    * @copyright https://www.w3schools.com/
-    */
+     * @name filterSearch
+     * @brief Function to filter through feed content quickly. Not used right now
+     * @param {event} event event for when the input of a search bar is changed
+     *
+     * @copyright https://www.w3schools.com/
+     */
     filterSearch: function (event) {
       // console.log("Searching");
       event.preventDefault();
@@ -197,11 +193,11 @@ var app = new Vue({
      * @name resetTeams
      * @brief Function to clear the teamOptions array
      */
-    resetTeams: function() {
+    resetTeams: function () {
       $.post(
         "http://127.0.0.1:5000/resetTeams?" + $.param({ option: "begin" }),
-        function (newTeamData) {
-          app.teamOptions = newTeamData;
+        (resetTeams) => {
+          this.teamOptions = resetTeams;
         }
       );
     },
@@ -210,70 +206,61 @@ var app = new Vue({
      * @brief Function to toggle the reset button
      * @param state on/off state of button
      */
-    toggleResetButton: function(state) {
-      resetTeams = document.getElementById("resetTeams")
-      if (state="0"){
-        resetTeams.style.display="none";
-        console.log('remove');
+    toggleResetButton: function (state) {
+      resetTeams = document.getElementById("resetTeams");
+      if ((state = "0")) {
+        resetTeams.style.display = "none";
+        console.log("remove");
+      } else if ((state = "1")) {
+        console.log("reset");
+        resetTeams.style.display = "block";
       }
-      else if(state="1"){
-        console.log('reset');
-        resetTeams.style.display="block";
-      }
-    }
+    },
+    /**
+     * @name loadUserTeams
+     * @brief Function to load user selected team on login
+     */
+    loadUserTeams: function () {
+      var myTeamsDoc = db.collection("users").doc(user);
+      myTeamsDoc.get().then((doc) => {
+        if (doc.exists) {
+          console.log("Document data:", doc.data().teams);
+          docTeams = doc.data().teams;
+          console.log("After Concat:", docTeams);
+
+          for (i = 0; i < docTeams.length; i++) {
+            teamId = docTeams[i];
+            $.post(
+              "http://127.0.0.1:5000/grabTeam?" + $.param({ teamId: teamId }),
+              function (grabbedTeam) {
+                app.userTeams.push(grabbedTeam);
+              }
+            );
+          }
+
+          return db
+            .collection("users")
+            .doc(user)
+            .update({
+              teams: docTeams,
+            })
+            .then(() => {
+              console.log("User Teams Loaded");
+            });
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      });
+    },
   },
   created: function () {
-
-      this.resetTeams()
-      
-  }
-
+    this.resetTeams();
+    // console.log(this);
+  },
 });
-
-
-function loadUserTeams() {
-
-
-var myTeamsDoc = db.collection("users").doc(user);
-myTeamsDoc.get().then((doc) => {
-  if (doc.exists) {
-      console.log("Document data:", doc.data().teams);
-      docTeams = doc.data().teams
-      console.log("After Concat:",docTeams)
-
-      for (i = 0; i < docTeams.length; i++) {
-        teamId = docTeams[i];
-        $.post(
-          "http://127.0.0.1:5000/grabTeam?" + $.param({ teamId: teamId }),
-          function (grabbedTeam) {
-            app.userTeams.push(grabbedTeam)
-          }
-        );
-      }
-
-    
-      return db.collection("users").doc(user).update({
-        teams: docTeams,
-      }).then(() => {
-         console.log("User Teams Loaded")
-      });
-
-  } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-  }
-});
-
-}
-
-
-
-
-
 
 /*////////////////////////////////////////////////////////////////
-
-
 
   _____                 _____ _ _ _ _             
  |  __ \               |  __ (_) | (_)            
@@ -283,7 +270,6 @@ myTeamsDoc.get().then((doc) => {
  |_|   \__,_|\__, |\___|_|   |_|_|_|_|_| |_|\__, |
               __/ |                          __/ |
              |___/                          |___/ 
-
 
 ///////////////////////////////////////////////////////////////////*/
 
@@ -386,15 +372,15 @@ function toggleMenu() {
 }
 
 /**
-* @name hideWelcomeScreen
-* @brief Function to hide welcomeScreen
-*/
-function hideWelcomeScreen(){
+ * @name hideWelcomeScreen
+ * @brief Function to hide welcomeScreen
+ */
+function hideWelcomeScreen() {
   welcomeScreen = document.getElementById("welcomeScreen");
   welcomeScreen.style.top = "-200%";
 }
 
-  /**
+/**
     * ///////////////////////////////////////////////////////////
 
   _______    _        _____            _             _ _           
@@ -408,35 +394,31 @@ function hideWelcomeScreen(){
     * ///////////////////////////////////////////////////////////
     */
 
+/**
+ * @name openTab switches tabs based on buttons in a list
+ * @param {event} evt the tab onclick event
+ * @param {string} tabName id of the tab
+ *
+ * @copyright https://www.w3schools.com (w3schools)
+ */
 
-   /**
-    * @name openTab switches tabs based on buttons in a list
-    * @param {event} evt the tab onclick event 
-    * @param {string} tabName id of the tab
-    * 
-    * @copyright https://www.w3schools.com (w3schools)
-    */
+var i, tabcontent, tablinks;
+tabcontent = document.getElementsByClassName("selectTabs");
+tablinks = document.getElementsByClassName("tablinks");
 
-   var i, tabcontent, tablinks;
-   tabcontent = document.getElementsByClassName("selectTabs");
-   tablinks = document.getElementsByClassName("tablinks");
+function openTab(evt, tabName) {
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "grid";
+  evt.currentTarget.className += " active";
+}
 
-   
-   function openTab(evt, tabName) {
-     for (i = 0; i < tabcontent.length; i++) {
-       tabcontent[i].style.display = "none";
-     }
-     for (i = 0; i < tablinks.length; i++) {
-       tablinks[i].className = tablinks[i].className.replace(" active", "");
-     }
-     document.getElementById(tabName).style.display = "grid";
-     evt.currentTarget.className += " active";
-   }
-   
-   tabcontent[0].style.display = "grid";
-   tablinks[0].className += " active";
 
-  /**
+/**
     * ///////////////////////////////////////////////////////////
 
     _____       _ _     _______        _       
