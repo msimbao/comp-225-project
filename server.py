@@ -47,18 +47,20 @@ def homepage():
     return render_template('index.html')
 
 
-OPTION_DATA = []
+OPTION_DATA = {}
+OPTION_LIST = []
 
 @app.route('/resetTeams', methods=['GET', 'POST'])
 def resetTeams():
     
     global OPTION_DATA
 
-    f = open("sportsData/leagues.txt", "r")
+    f = open("sportsData/teamData.json", "r")
     OPTION_DATA =  json.loads(f.read())
+    OPTION_LIST = [OPTION_DATA['0'],OPTION_DATA['37'],OPTION_DATA['70'],OPTION_DATA['111']]
     f.close()
 
-    return jsonify(OPTION_DATA)
+    return jsonify(OPTION_LIST)
 
 #============================================================================
 
@@ -72,18 +74,18 @@ def option_data():
     # added as keys to the respective league data
 
     global OPTION_DATA
+    global OPTION_LIST
 
     #============================================================================
 
     if 'option' in request.args:
         option = request.args['option']
-        for i in OPTION_DATA:
-            print(i)
-            if i['title'] == option:
-                OPTION_DATA = i['children']
+        OPTION_LIST = []
+        for i in OPTION_DATA[option]["children"]:
+            OPTION_LIST.append(OPTION_DATA[str(i)])
 
     # print(OPTION_DATA)
-    return jsonify(OPTION_DATA)
+    return jsonify(OPTION_LIST)
 
 @app.route('/news', methods=['GET', 'POST'])
 def news():

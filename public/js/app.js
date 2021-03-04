@@ -88,6 +88,7 @@
         auth.signInWithEmailAndPassword(email, password).then(cred => {
             console.log(cred.user)
             user = cred.user.uid;
+            toggleLogin('hideLogin');
             //TODO: Move to user's feed
         });
     });

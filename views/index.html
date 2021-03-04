@@ -233,27 +233,25 @@
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p>
         <div>
-          
+          <button class="tablinks" onclick="openTab(event, 'myTeams')">My teams</button>
           <button class="tablinks" onclick="openTab(event, 'addTeams')">Add Teams</button>
-          <button class="tablinks" onclick="openTab(event, 'removeTeams')">Remove teams</button>
+         
         </div>
         
       </div>
 
-      <div id="resetTeams" v-on:click="resetTeams">&#8634;</div>
+      <div id="resetTeams" v-on:click="resetTeams">&#9666; BACK</div>
+
+      <div class="tabContent selectGrid selectTabs" id="myTeams">
+      </div>
 
       <div class="tabContent selectGrid selectTabs" id="addTeams">
-
-        <team-option
+      <team-option
         v-for="item in teamOptions"
         v-bind:option="item"
       ></team-option>
-
       </div>
 
-      <div class="tabContent selectGrid selectTabs" id="removeTeams">
-
-      </div>
 
       
     </div>

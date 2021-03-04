@@ -25,7 +25,16 @@
 Vue.component("feed-item", {
   props: ["feed"],
   template:
-    '<a :href="feed.url"><div class="card newsItem"><img :src="feed.image"><div class="articleWords"><h4>{{feed.title}}</h4><p>"{{feed.description}}..."</p><img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"></div></div></a>',
+    '<a :href="feed.url">'+
+      '<div class="card newsItem">'+
+        '<img :src="feed.image">'+
+        '<div class="articleWords">'+
+          '<h4>{{feed.title}}</h4>'+
+          '<p>"{{feed.description}}..."</p>'+
+          '<img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">'+
+        '</div>'+
+      '</div>'+
+    '</a>',
 });
 
 /* General News Component */
@@ -33,7 +42,15 @@ Vue.component("feed-item", {
 Vue.component("news-item", {
   props: ["news"],
   template:
-    '<a :href="news.url"><div class="card newsItem"><img :src="news.image"><div class="articleWords"><h4>{{news.title}}</h4><p>"{{news.description}}..."</p></div></div></a>',
+    '<a :href="news.url">'+
+      '<div class="card newsItem">'+
+        '<img :src="news.image">'+
+        '<div class="articleWords">'+
+          '<h4>{{news.title}}</h4>'+
+          '<p>"{{news.description}}..."</p>'+
+        '</div>'+
+      '</div>'+
+    '</a>',
 });
 
 /* Team Selection Component */
@@ -41,6 +58,11 @@ Vue.component("news-item", {
 Vue.component("team-option", {
   props: ["option"],
   methods: {
+        /**
+     * @name teamOptions
+     * @brief Function to get current teams, leagues or conferences from a dictionary and populate a display grid
+     * @param option the current team, league or conference selected
+     */
     teamOption: function (option) {
       $.post(
         "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
@@ -52,7 +74,10 @@ Vue.component("team-option", {
     },
   },
   template:
-    '<div v-on:click="teamOption(option.title)" ><h4>{{option.title}}</h4><img :src="option.image"></div>',
+    '<div v-on:click="teamOption(option.id)" >'+
+      '<h4>{{option.title}}</h4>'+
+      '<img :src="option.image">'+
+    '</div>',
 });
 
 /* Initialize */
@@ -132,6 +157,10 @@ var app = new Vue({
         }
       }
     },
+    /**
+     * @name resetTeams
+     * @brief Function to clear the teamOptions array
+     */
     resetTeams: function() {
       $.post(
         "http://127.0.0.1:5000/resetTeams?" + $.param({ option: "begin" }),
@@ -140,6 +169,11 @@ var app = new Vue({
         }
       );
     },
+    /**
+     * @name toggleResetButton
+     * @brief Function to toggle the reset button
+     * @param state on/off state of button
+     */
     toggleResetButton: function(state) {
       resetTeams = document.getElementById("resetTeams")
       if (state="0"){
@@ -161,6 +195,10 @@ $.post(
   }
 );
 
+/**
+* @name hideWelcomeScreen
+* @brief Function to hide welcomeScreen
+*/
 function hideWelcomeScreen(){
   welcomeScreen = document.getElementById("welcomeScreen");
   welcomeScreen.style.top = "-200%";

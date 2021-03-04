@@ -456,14 +456,14 @@ button:hover {
   float:right;
 } */
 
-#resetTeams{
-  position:relative;
-  padding:10px 0px 10px 0px;
-  background:white;
+#resetTeams {
+  position: relative;
+  padding: 10px 0px 10px 10px;
+  background: white;
   border: 1px solid black;
-  width:80%;
-  text-align:center;
-  margin:auto;
+  float: left;
+  width: 5%;
+  margin-left: 10%;
 }
 
 #resetTeams:hover{
