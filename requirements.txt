@@ -1,7 +1,6 @@
 crontab
 Flask~=1.1.2
 flask_cors
-re
 bs4~=0.0.1
 urllib.request
 urllib.error
