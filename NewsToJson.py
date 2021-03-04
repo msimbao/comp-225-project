@@ -17,6 +17,16 @@ CONFIG = {
     "measurementId": "G-DP1Q3X9X1K"
 }
 
+CONFIG_TRIAL = {
+    "apiKey": "AIzaSyAyM1CSoIk-_WOdjWzOK7m5ejrxiL3HdzU",
+    "authDomain": "triallol.firebaseapp.com",
+    "projectId": "triallol",
+    "storageBucket": "triallol.appspot.com",
+    "messagingSenderId": "13272382995",
+    "appId": "1:13272382995:web:649cc8f49bafbacb4b09e6",
+    "measurementId": "G-KM5V331ED3"
+}
+
 # NBA division lists
 ECATLANTA = ["ECATLANTA",
              "Boston Celtics",
@@ -250,10 +260,7 @@ def createNewNews(query):
             'Url': url,
             'Image': image,
             'Description': description,
-            'Author': author,
-            'League': "",
-            'Division': "",
-            'Team': ""
+            'Author': author
         }
 
     return newsDataBaseForm
@@ -278,7 +285,7 @@ def newsToJson(newsDict, fileName, directoryName):
     with open(filename, "w") as f:
         json.dump(newsDict, f)
 
-    return 0
+    return
 
 
 def makeDirectoryToday():
@@ -295,7 +302,7 @@ def makeDirectoryToday():
     if not os.path.exists(directoryToday):
         os.makedirs(directoryToday)
 
-    return 0
+    return
 
 
 def jsonDumpNewsItems(query, league_directory="", division_directory="", optional_directory=""):
@@ -332,7 +339,7 @@ def jsonDumpNewsItems(query, league_directory="", division_directory="", optiona
     for i in range(1, len(News)):
         newsToJson(News["newsItem" + str(i)], "newsItem" + str(i), newsPath + "/")
 
-    return 0
+    return
 
 
 def buildNBANews():
@@ -347,7 +354,7 @@ def buildNBANews():
         for i in range(1, len(divisions)):
             jsonDumpNewsItems(divisions[i], "NBA", "WC", divisions[0])
 
-    return 0
+    return
 
 
 def buildMLBNews():
@@ -362,7 +369,7 @@ def buildMLBNews():
         for i in range(1, len(divisions)):
             jsonDumpNewsItems(divisions[i], "MLB", "AL", divisions[0])
 
-    return 0
+    return
 
 
 def buildNFLNews():
@@ -377,7 +384,7 @@ def buildNFLNews():
         for i in range(1, len(divisions)):
             jsonDumpNewsItems(divisions[i], "NFL", "NFC", divisions[0])
 
-    return 0
+    return
 
 
 def buildNHLNews():
@@ -392,7 +399,7 @@ def buildNHLNews():
         for i in range(1, len(divisions)):
             jsonDumpNewsItems(divisions[i], "NHL", "WC", divisions[0])
 
-    return 0
+    return
 
 
 def buildLocalNews():
@@ -403,7 +410,7 @@ def buildLocalNews():
     buildNFLNews()
     buildNHLNews()
 
-    return 0
+    return
 
 
 def jsonToDict(fileName):
@@ -435,7 +442,7 @@ def upLoadNewsJsonToFireBaseStorage():
 
     print(time.time() - start_time)
 
-    return 0
+    return
 
 
 def downLoadNewsJsonToLocal():
@@ -470,7 +477,7 @@ def downLoadNewsJsonToLocal():
             os.makedirs(eachDirectory)
         storage.child(path_on_cloud).download(eachDirectory)
 
-    return 0
+    return
 
 
 def exploreNewsJson():
@@ -513,24 +520,20 @@ def createNewsDataInFireBase(query, league="", division="", team=""):
     day = today.strftime("%d")
     year = today.strftime("%y")
 
-    # Add League, Division, Team attributes for categorizing use
     news = createNewNews(query)
-    news['League'] = league
-    news['Division'] = division
-    news['Team'] = team
 
     # Initialize firebase
-    firebase = pyrebase.initialize_app(CONFIG)
+    firebase = pyrebase.initialize_app(CONFIG_TRIAL)
     db = firebase.database()
 
-    db.child(month + day + year + "news").push(news)
+    db.child(month + day + year + "news").child(league).child(division).child(team).push(news)
 
-    return 0
+    return
 
 
 def uploadNBAData():
     # upload NBA news to Firebase
-    createNewsDataInFireBase("NBA", "NBA", "", "NBA League News")
+    createNewsDataInFireBase("NBA", "NBA", "General", "NBA League News")
 
     for divisions in ECNBA:
         for i in range(1, len(divisions)):
@@ -540,12 +543,12 @@ def uploadNBAData():
         for i in range(1, len(divisions)):
             createNewsDataInFireBase(divisions[i], "NBA", "WC", divisions[0])
 
-    return 0
+    return
 
 
 def uploadMLBData():
     # upload MLB news to Firebase
-    createNewsDataInFireBase("MLB", "MLB", "", "MLB League News")
+    createNewsDataInFireBase("MLB", "MLB", "General", "MLB League News")
 
     for divisions in NL:
         for i in range(1, len(divisions)):
@@ -555,12 +558,12 @@ def uploadMLBData():
         for i in range(1, len(divisions)):
             createNewsDataInFireBase(divisions[i], "MLB", "AL", divisions[0])
 
-    return 0
+    return
 
 
 def uploadNFLData():
     # upload NFL news to Firebase
-    jsonDumpNewsItems("NFL", "NFL", "", "NFL League News")
+    createNewsDataInFireBase("NFL", "NFL", "General", "NFL League News")
 
     for divisions in AFC:
         for i in range(1, len(divisions)):
@@ -570,12 +573,12 @@ def uploadNFLData():
         for i in range(1, len(divisions)):
             createNewsDataInFireBase(divisions[i], "NFL", "NFC", divisions[0])
 
-    return 0
+    return
 
 
 def uploadNHLData():
     # upload NHL news to Firebase
-    createNewsDataInFireBase("NHL", "NHL", "", "NHL League News")
+    createNewsDataInFireBase("NHL", "NHL", "General", "NHL League News")
 
     for divisions in ECNHL:
         for i in range(1, len(divisions)):
@@ -585,17 +588,18 @@ def uploadNHLData():
         for i in range(1, len(divisions)):
             createNewsDataInFireBase(divisions[i], "NHL", "WC", divisions[0])
 
-    return 0
+    return
 
 
 def uploadNews():
+
     # Upload news for all four leagues to firebase
     uploadNBAData()
     uploadMLBData()
     uploadNHLData()
     uploadNFLData()
 
-    return 0
+    return
 
 
 if __name__ == '__main__':
