@@ -603,4 +603,6 @@ def uploadNews():
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     uploadNews()
+    print(time.time() - start_time)
