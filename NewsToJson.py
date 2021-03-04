@@ -1,5 +1,5 @@
 import json
-from datetime import date
+from datetime import date, datetime
 import pyrebase
 import os
 from googleSearch.bingsearch import BingSearch
@@ -520,6 +520,8 @@ def createNewsDataInFireBase(query, league="", division="", team=""):
     month = today.strftime("%m")
     day = today.strftime("%d")
     year = today.strftime("%y")
+    now = datetime.now()
+    current_hour = now.strftime("%H")
 
     news = createNewNews(query)
 
@@ -527,7 +529,7 @@ def createNewsDataInFireBase(query, league="", division="", team=""):
     firebase = pyrebase.initialize_app(CONFIG_TRIAL)
     db = firebase.database()
 
-    db.child(month + day + year + "news").child(league).child(division).child(team).set(news)
+    db.child(month + day + year + "news" + current_hour).child(league).child(division).child(team).set(news)
 
     return
 
