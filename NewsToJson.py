@@ -1,5 +1,6 @@
 import json
 from datetime import date, datetime
+from pytz import timezone
 import pyrebase
 import os
 from googleSearch.bingsearch import BingSearch
@@ -520,7 +521,7 @@ def createNewsDataInFireBase(query, league="", division="", team=""):
     month = today.strftime("%m")
     day = today.strftime("%d")
     year = today.strftime("%y")
-    now = datetime.now()
+    now = datetime.now(timezone('America/Chicago'))
     current_hour = now.strftime("%H")
 
     news = createNewNews(query)
