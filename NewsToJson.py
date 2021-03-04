@@ -20,6 +20,7 @@ CONFIG = {
 CONFIG_TRIAL = {
     "apiKey": "AIzaSyAyM1CSoIk-_WOdjWzOK7m5ejrxiL3HdzU",
     "authDomain": "triallol.firebaseapp.com",
+    "databaseURL": "https://triallol-default-rtdb.firebaseio.com",
     "projectId": "triallol",
     "storageBucket": "triallol.appspot.com",
     "messagingSenderId": "13272382995",
@@ -592,7 +593,6 @@ def uploadNHLData():
 
 
 def uploadNews():
-
     # Upload news for all four leagues to firebase
     uploadNBAData()
     uploadMLBData()
