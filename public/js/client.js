@@ -63,18 +63,52 @@ Vue.component("team-option", {
      * @brief Function to get current teams, leagues or conferences from a dictionary and populate a display grid
      * @param option the current team, league or conference selected
      */
-    teamOption: function (option) {
-      $.post(
-        "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
-        function (option_data) {
-          //console.log(option_data);
-          app.teamOptions = option_data;
+    teamOption: function (option,record) {
+      if (record == ""){
+        $.post(
+          "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
+          function (option_data) {
+            //console.log(option_data);
+            app.teamOptions = option_data;
+          }
+        );
+      }
+
+      else {
+        //Insert Data to user teams
+        var docTeams = []
+        var docRef = db.collection("users").doc(user);
+
+        docRef.get().then((doc) => {
+          if (doc.exists) {
+              console.log("Document data:", doc.data().teams);
+              docTeams = doc.data().teams
+              console.log("After Concat:",docTeams)
+              if (!docTeams.includes(option)){
+                docTeams.push(option)
+                console.log("After Push:",docTeams)
+              }
+            
+              return db.collection("users").doc(user).update({
+                teams: docTeams,
+              }).then(() => {
+                 console.log("User Teams Updated")
+              });
+
+          } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
         }
-      );
+        )
+
+
+      }
+
     },
   },
   template:
-    '<div v-on:click="teamOption(option.id)" >'+
+    '<div v-on:click="teamOption(option.id,option.record)" >'+
       '<h4>{{option.title}}</h4>'+
       '<img :src="option.image">'+
     '</div>',
