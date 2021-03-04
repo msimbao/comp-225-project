@@ -2,8 +2,6 @@ crontab
 Flask~=1.1.2
 flask_cors
 bs4~=0.0.1
-urllib.request
-urllib.error
 requests~=2.25.1
 beautifulsoup4~=4.9.3
 pybaseball~=2.1.1
