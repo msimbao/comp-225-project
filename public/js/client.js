@@ -60,7 +60,7 @@ Vue.component("team-option", {
   methods: {
         /**
      * @name teamOptions
-     * @brief Function to get current teams, leagues or conferences from a dictionary and populate a display grid
+     * @brief Function to get current teams, leagues or conferences from a dictionary and populate a display grid or firebase with selected user teams
      * @param option the current team, league or conference selected
      */
     teamOption: function (option,record) {
@@ -114,6 +114,17 @@ Vue.component("team-option", {
     '</div>',
 });
 
+/* Team Remove Component */
+
+Vue.component("remove-item", {
+  props: ["item"],
+  template:
+    '<div v-on:click="teamOption(item.id,item.record)" >'+
+      '<h4>{{item.title}}</h4>'+
+      '<img :src="item.image">'+
+    '</div>',
+});
+
 /* Initialize */
 
 var app = new Vue({
@@ -151,16 +162,7 @@ var app = new Vue({
       );
     },
 
-    // The code to update the teams array with the user's current teams and attach it to the individual
-    // user's doc in the users collection
-    /*
-    return db.collection("users").doc(user).update({
-      teams: "Use the user teams array";
-    }).then(() => {
-       //TODO: whatever needs to happen after the user has finished selecting teams
-    });
 
-     */
     /**
     * @name filterSearch
     * @brief Function to filter through feed content quickly. Not used right now
@@ -198,8 +200,8 @@ var app = new Vue({
     resetTeams: function() {
       $.post(
         "http://127.0.0.1:5000/resetTeams?" + $.param({ option: "begin" }),
-        function (resetTeams) {
-          app.teamOptions = resetTeams;
+        function (newTeamData) {
+          app.teamOptions = newTeamData;
         }
       );
     },
@@ -220,23 +222,54 @@ var app = new Vue({
       }
     }
   },
+  created: function () {
+
+      this.resetTeams()
+      
+  }
+
 });
 
-$.post(
-  "http://127.0.0.1:5000/resetTeams?" + $.param({ option: "begin" }),
-  function (resetTeams) {
-    app.teamOptions = resetTeams;
-  }
-);
 
-/**
-* @name hideWelcomeScreen
-* @brief Function to hide welcomeScreen
-*/
-function hideWelcomeScreen(){
-  welcomeScreen = document.getElementById("welcomeScreen");
-  welcomeScreen.style.top = "-200%";
+function loadUserTeams() {
+
+
+var myTeamsDoc = db.collection("users").doc(user);
+myTeamsDoc.get().then((doc) => {
+  if (doc.exists) {
+      console.log("Document data:", doc.data().teams);
+      docTeams = doc.data().teams
+      console.log("After Concat:",docTeams)
+
+      for (i = 0; i < docTeams.length; i++) {
+        teamId = docTeams[i];
+        $.post(
+          "http://127.0.0.1:5000/grabTeam?" + $.param({ teamId: teamId }),
+          function (grabbedTeam) {
+            app.userTeams.push(grabbedTeam)
+          }
+        );
+      }
+
+    
+      return db.collection("users").doc(user).update({
+        teams: docTeams,
+      }).then(() => {
+         console.log("User Teams Loaded")
+      });
+
+  } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+  }
+});
+
 }
+
+
+
+
+
 
 /*////////////////////////////////////////////////////////////////
 
@@ -350,6 +383,15 @@ function toggleMenu() {
     navbar.style.bottom = "100%";
     menu = 0;
   }
+}
+
+/**
+* @name hideWelcomeScreen
+* @brief Function to hide welcomeScreen
+*/
+function hideWelcomeScreen(){
+  welcomeScreen = document.getElementById("welcomeScreen");
+  welcomeScreen.style.top = "-200%";
 }
 
   /**

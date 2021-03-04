@@ -89,6 +89,7 @@
             console.log(cred.user)
             user = cred.user.uid;
             toggleLogin('hideLogin');
+            loadUserTeams();
             //TODO: Move to user's feed
         });
     });

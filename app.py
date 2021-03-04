@@ -64,6 +64,14 @@ def resetTeams():
 
 #============================================================================
 
+@app.route('/grabTeam', methods=['GET', 'POST'])
+def grabTeam():
+    if 'teamId' in request.args:
+        teamId = request.args['option']
+        TEAM = OPTION_DATA[str(teamId)]
+    return jsonify(TEAM)
+
+
 @app.route('/conferences', methods=['GET', 'POST'])
 def option_data():
 
