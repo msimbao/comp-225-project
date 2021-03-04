@@ -368,6 +368,7 @@ var app = new Vue({
   },
   created: function () {
     this.setTabs();
+    this.toggleResetButton('off')
     // console.log(this);
   },
 });
