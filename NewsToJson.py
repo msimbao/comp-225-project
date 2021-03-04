@@ -85,7 +85,7 @@ NLC = ["NLC",
        "Cincinnati Reds",
        "Milwaukee Brewers",
        "Pittsburgh Pirates",
-       "St. Louis Cardinals"]
+       "St Louis Cardinals"]
 
 NLW = ["NLW",
        "Arizona Diamondbacks",
@@ -252,10 +252,12 @@ def createNewNews(query):
     authors = bing_search.get_author()
 
     for i in range(0, len(titles) - 1):
-        title = titles[i].replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace("$", "").replace(".", "").replace("#", "")
+        title = titles[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace("$",
+        # "").replace(".", "").replace("#", "") 
         url = urls[i]
         image = images[i]
-        description = descriptions[i].replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace("$", "").replace(".", "").replace("#", "")
+        description = descriptions[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace(
+        # "$", "").replace(".", "").replace("#", "")
         author = authors[i]
         newsDataBaseForm['newsItem' + str(i + 1)] = {
             'Title': title,
