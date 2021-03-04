@@ -318,7 +318,8 @@ button:hover {
   transition: 0.05s;
   overflow: hidden;
   transform: translateX(0px);
-  
+  display:grid;
+  grid-template-columns: auto auto auto;
 }
 
 .newsItem:hover {
@@ -330,9 +331,6 @@ button:hover {
 }
 
 .newsImageHolder{
-  position:absolute;
-  left:0px;
-  top:0px;
   height:100%;
   width:200px;
   overflow:hidden;
@@ -356,6 +354,11 @@ button:hover {
   padding: 20px 50px 10px 50px;
   left: 200px;
   bottom: 10px;
+}
+
+.articleWords {
+  grid-column-start: 2;
+  grid-column-end: 4;
 }
 
 
