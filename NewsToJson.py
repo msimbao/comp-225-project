@@ -540,11 +540,11 @@ def uploadNBAData():
 
     for divisions in ECNBA:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "NBA", "EC", divisions[0])
+            createNewsDataInFireBase(divisions[i], "NBA", "EC", divisions[i])
 
     for divisions in WCNBA:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "NBA", "WC", divisions[0])
+            createNewsDataInFireBase(divisions[i], "NBA", "WC", divisions[i])
 
     return
 
@@ -555,11 +555,11 @@ def uploadMLBData():
 
     for divisions in NL:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "MLB", "NL", divisions[0])
+            createNewsDataInFireBase(divisions[i], "MLB", "NL", divisions[i])
 
     for divisions in AL:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "MLB", "AL", divisions[0])
+            createNewsDataInFireBase(divisions[i], "MLB", "AL", divisions[i])
 
     return
 
@@ -570,11 +570,11 @@ def uploadNFLData():
 
     for divisions in AFC:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "NFL", "AFC", divisions[0])
+            createNewsDataInFireBase(divisions[i], "NFL", "AFC", divisions[i])
 
     for divisions in NFC:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "NFL", "NFC", divisions[0])
+            createNewsDataInFireBase(divisions[i], "NFL", "NFC", divisions[i])
 
     return
 
@@ -585,11 +585,11 @@ def uploadNHLData():
 
     for divisions in ECNHL:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "NHL", "EC", divisions[0])
+            createNewsDataInFireBase(divisions[i], "NHL", "EC", divisions[i])
 
     for divisions in WCNHL:
         for i in range(1, len(divisions)):
-            createNewsDataInFireBase(divisions[i], "NHL", "WC", divisions[0])
+            createNewsDataInFireBase(divisions[i], "NHL", "WC", divisions[i])
 
     return
 
