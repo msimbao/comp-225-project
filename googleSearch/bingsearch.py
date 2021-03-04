@@ -55,7 +55,7 @@ class BingSearch:
     #     search_results = json.dumps(response.json(), indent=4)
     #     return json.loads(search_results)["teams"][0]['strTeamBadge']
 
-    def get_article_list(self, n=200):
+    def get_article_list(self, n=50):
         if n > len(self.__filteredList):
             return self.__filteredList
         else:
