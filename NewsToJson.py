@@ -253,7 +253,7 @@ def createNewNews(query):
 
     for i in range(0, len(titles) - 1):
         title = titles[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace("$",
-        # "").replace(".", "").replace("#", "") 
+        # "").replace(".", "").replace("#", "")
         url = urls[i]
         image = images[i]
         description = descriptions[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace(
