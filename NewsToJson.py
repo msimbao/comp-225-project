@@ -190,7 +190,7 @@ WCCENTRAL = ["WCCENTRAL",
              "Dallas Stars",
              "Minnesota Wild",
              "Nashville Predators",
-             "St.Louis Blues",
+             "St Louis Blues",
              "Winnipeg Jets"]
 
 WCPACIFICNHL = ["WCPACIFIC",
