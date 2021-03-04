@@ -526,7 +526,7 @@ def createNewsDataInFireBase(query, league="", division="", team=""):
     firebase = pyrebase.initialize_app(CONFIG_TRIAL)
     db = firebase.database()
 
-    db.child(month + day + year + "news").child(league).child(division).child(team).push(news)
+    db.child(month + day + year + "news").child(league).child(division).child(team).set(news)
 
     return
 
