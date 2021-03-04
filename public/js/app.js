@@ -90,6 +90,7 @@
             user = cred.user.uid;
             toggleLogin('hideLogin');
             app.resetTeams();
+            app.loadUserTeams();
             //TODO: Move to user's feed
         });
     });

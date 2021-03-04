@@ -31,7 +31,7 @@ Vue.component("feed-item", {
     '<div class="articleWords">' +
     "<h4>{{feed.title}}</h4>" +
     '<p>"{{feed.description}}..."</p>' +
-    '<img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">' +
+    '<img class="teamImage" :src="feed.teamLogo">' +
     "</div>" +
     "</div>" +
     "</a>",
@@ -129,10 +129,11 @@ Vue.component("team-option", {
           }
         });
       }
+      app.toggleResetButton('on');
     },
   },
   template:
-    '<div v-on:click="teamOption(option.id,option.record)" >' +
+    '<div v-on:click="teamOption(option.id,option.record);" >' +
     "<h4>{{option.title}}</h4>" +
     '<img :src="option.image">' +
     "</div>",
@@ -216,7 +217,7 @@ var app = new Vue({
       event.preventDefault();
       newsItem = $("#searchBar").val();
       $.post(
-        "http://127.0.0.1:5000/news?" + $.param({ newsItem: newsItem }),
+        "http://127.0.0.1:5000/news?" + $.param({ newsItem: newsItem, number:20 }),
         (news) => {
           this.generalNews = news;
           $("#searchBar").val("");
@@ -224,6 +225,7 @@ var app = new Vue({
         }
       );
     },
+    
 
     /**
      * @name filterSearch
@@ -254,6 +256,27 @@ var app = new Vue({
           }
         }
       }
+    },
+    /**
+     * @name populateFeed
+     * @brief Function to populate user feed with team data
+     */
+    populateFeed: function () {
+      console.log("Populating Feed")
+      for (i = 0; i < this.userTeams.length; i++) {
+      var team = this.userTeams[i].title
+      var logoUrl = this.userTeams[i].image
+      this.feedNews = []
+      $.post(
+        "http://127.0.0.1:5000/news?" + $.param({ newsItem: team, number:3 }),
+        (news) => {
+          for (j = 0; j < news.length; j++) {
+            news[j].teamLogo = logoUrl
+            this.feedNews.push(news[j]);
+          }
+        }
+      );
+    }
     },
     setTabs: function () {
       tabcontent = document.getElementsByClassName("selectTabs");
@@ -295,10 +318,10 @@ var app = new Vue({
      */
     toggleResetButton: function (state) {
       resetTeams = document.getElementById("resetTeams");
-      if ((state = "0")) {
+      if ((state == "off")) {
         resetTeams.style.display = "none";
         console.log("remove");
-      } else if ((state = "1")) {
+      } else if ((state == "on")) {
         console.log("reset");
         resetTeams.style.display = "block";
       }
@@ -334,6 +357,7 @@ var app = new Vue({
             })
             .then(() => {
               console.log("User Teams Loaded");
+              this.populateFeed();
             });
         } else {
           // doc.data() will be undefined in this case
