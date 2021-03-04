@@ -408,6 +408,10 @@ button:hover {
 
 //////////////////////////////////////////////////////////////*/
 
+.selectGrid div, #resetTeams{
+  cursor: pointer;
+}
+
 .selectGrid {
   display: grid;
   grid-template-columns: auto auto;
@@ -431,7 +435,10 @@ button:hover {
   float: left;
   font-size: 150%;
   vertical-align: center;
+  margin-right:10px;
+  margin-left:10px;
 }
+
 
 .selectGrid div img {
   height: 80%;
@@ -480,7 +487,7 @@ button:hover {
 
   .selectGrid div h4 {
     float: left;
-    font-size: 80%;
+    font-size: 100%;
     margin-top: 15%;
   }
 

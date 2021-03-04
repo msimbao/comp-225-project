@@ -62,14 +62,33 @@ Vue.component("team-option", {
      * @name teamOptions
      * @brief Function to get current teams, leagues or conferences from a dictionary and populate a display grid or firebase with selected user teams
      * @param option the current team, league or conference selected
+     * @param record the record of the selection
      */
     teamOption: function (option, record) {
       if (record == "") {
         $.post(
           "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
-          function (option_data) {
-            //console.log(option_data);
+          (option_data) => {
             app.teamOptions = option_data;
+
+            var docTeams = [];
+            var docRef = db.collection("users").doc(user);
+            docRef.get().then((doc) => {
+              if (doc.exists) {
+                docTeams = doc.data().teams; 
+                for (i = 0; i < app.teamOptions.length; i++) {
+                  console.log("checking")
+                  if (docTeams.includes(app.teamOptions[i].id) ){
+                      console.log("removing item")
+                      console.log("option: ",option,"\n index: ",i,"\n teamId:", app.teamOptions[i].id)
+                      app.teamOptions.splice(i, 1);
+                    }
+                  }
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
+            });
           }
         );
       } else {
@@ -79,12 +98,20 @@ Vue.component("team-option", {
 
         docRef.get().then((doc) => {
           if (doc.exists) {
-            console.log("Document data:", doc.data().teams);
+            // console.log("Document data:", doc.data().teams);
             docTeams = doc.data().teams;
-            console.log("After Concat:", docTeams);
+            // console.log("After Concat:", docTeams);
             if (!docTeams.includes(option)) {
+              
+              for (i = 0; i < app.teamOptions.length; i++) {
+                if (option == app.teamOptions[i].id){
+                  // console.log("option: ",option,"\n index: ",i,"\n teamId:", app.teamOptions[i].id)
+                  app.teamOptions.splice(i, 1);
+                }
+              }
+
               docTeams.push(option);
-              console.log("After Push:", docTeams);
+              // console.log("After Push:", docTeams);
             }
 
             return db
@@ -115,8 +142,47 @@ Vue.component("team-option", {
 
 Vue.component("remove-item", {
   props: ["item"],
+  methods: {
+    /**
+     * @name removeItem
+     * @brief Function to remove a selected team from a user's preferences
+     * @param option the current team selected
+     */
+    removeItem: function (option) {
+      //Insert Data to user teams
+      var docTeams = [];
+      var docRef = db.collection("users").doc(user);
+
+      docRef.get().then((doc) => {
+        if (doc.exists) {
+          docTeams = doc.data().teams;
+          if (docTeams.includes(option)) {
+            var index = docTeams.indexOf(option);
+            // console.log("Splice started for:", option);
+            docTeams.splice(index, 1);
+            // console.log("After Deletion:", docTeams);
+            app.loadUserTeams();
+          }
+
+          return db
+            .collection("users")
+            .doc(user)
+            .update({
+              teams: docTeams,
+            })
+            .then(() => {
+              console.log("Team Deleted From User Data");
+            });
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      });
+    },
+  },
   template:
-    '<div v-on:click="teamOption(item.id,item.record)" >' +
+    "<div>" +
+    '<h4 v-on:click="removeItem(item.id)">&#x2716;</h4>' +
     "<h4>{{item.title}}</h4>" +
     '<img :src="item.image">' +
     "</div>",
@@ -151,8 +217,8 @@ var app = new Vue({
       newsItem = $("#searchBar").val();
       $.post(
         "http://127.0.0.1:5000/news?" + $.param({ newsItem: newsItem }),
-        function (news) {
-          app.generalNews = news;
+        (news) => {
+          this.generalNews = news;
           $("#searchBar").val("");
           $("#searchBar").focus();
         }
@@ -189,6 +255,27 @@ var app = new Vue({
         }
       }
     },
+    setTabs: function () {
+      tabcontent = document.getElementsByClassName("selectTabs");
+
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+    },
+    openTab: function (tabName, event) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("selectTabs");
+      tablinks = document.getElementsByClassName("tablinks");
+
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "grid";
+      event.currentTarget.className += " active";
+    },
     /**
      * @name resetTeams
      * @brief Function to clear the teamOptions array
@@ -224,16 +311,17 @@ var app = new Vue({
       var myTeamsDoc = db.collection("users").doc(user);
       myTeamsDoc.get().then((doc) => {
         if (doc.exists) {
-          console.log("Document data:", doc.data().teams);
+          // console.log("Document data:", doc.data().teams);
           docTeams = doc.data().teams;
-          console.log("After Concat:", docTeams);
+          // console.log("After Concat:", docTeams);
+          this.userTeams = [];
 
           for (i = 0; i < docTeams.length; i++) {
             teamId = docTeams[i];
             $.post(
               "http://127.0.0.1:5000/grabTeam?" + $.param({ teamId: teamId }),
-              function (grabbedTeam) {
-                app.userTeams.push(grabbedTeam);
+              (grabbedTeam) => {
+                this.userTeams.push(grabbedTeam);
               }
             );
           }
@@ -255,7 +343,7 @@ var app = new Vue({
     },
   },
   created: function () {
-    this.resetTeams();
+    this.setTabs();
     // console.log(this);
   },
 });
@@ -346,7 +434,7 @@ function toggleSignUp(state) {
 
 function toggleLogin(state) {
   if (state == "hideLogin") {
-    console.log("Login Bypassed");
+    // console.log("Login Bypassed");
     login.style.top = "-200%";
     maincontent.style.display = "block";
   } else {
@@ -406,6 +494,10 @@ var i, tabcontent, tablinks;
 tabcontent = document.getElementsByClassName("selectTabs");
 tablinks = document.getElementsByClassName("tablinks");
 
+for (i = 0; i < tabcontent.length; i++) {
+  tabcontent[i].style.display = "none";
+}
+
 function openTab(evt, tabName) {
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -416,7 +508,6 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "grid";
   evt.currentTarget.className += " active";
 }
-
 
 /**
     * ///////////////////////////////////////////////////////////
