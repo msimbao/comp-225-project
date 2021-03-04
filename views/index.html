@@ -210,9 +210,8 @@
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p>
         <div>
-          <button class="tablinks" v-on:click="openTab('myTeams',$event);  loadUserTeams();  toggleResetButton('off')">My teams</button>
-          <button class="tablinks" v-on:click="openTab('addTeams',$event); toggleResetButton('off')">Add Teams</button>
-         
+          <button class="tablinks" v-on:click="openTab('myTeams',$event);  loadUserTeams();">My teams</button>
+          <button class="tablinks" v-on:click="openTab('addTeams',$event);">Add Teams</button>
         </div>
         
       </div>
