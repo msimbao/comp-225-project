@@ -77,10 +77,10 @@ Vue.component("team-option", {
               if (doc.exists) {
                 docTeams = doc.data().teams; 
                 for (i = 0; i < app.teamOptions.length; i++) {
-                  console.log("checking")
+                  // console.log("checking")
                   if (docTeams.includes(app.teamOptions[i].id) ){
-                      console.log("removing item")
-                      console.log("option: ",option,"\n index: ",i,"\n teamId:", app.teamOptions[i].id)
+                      // console.log("removing item")
+                      // console.log("option: ",option,"\n index: ",i,"\n teamId:", app.teamOptions[i].id)
                       app.teamOptions.splice(i, 1);
                     }
                   }
