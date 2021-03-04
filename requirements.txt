@@ -9,3 +9,4 @@ pybaseball~=2.1.1
 GoogleNews~=1.5.3
 Pillow~=8.1.0
 pyrebase
+pytz
