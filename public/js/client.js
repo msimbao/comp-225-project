@@ -268,10 +268,10 @@ var app = new Vue({
      */
     populateFeed: function () {
       console.log("Populating Feed")
+      this.feedNews = []
       for (i = 0; i < this.userTeams.length; i++) {
       var team = this.userTeams[i].title
       var logoUrl = this.userTeams[i].image
-      this.feedNews = []
       $.post(
         "/news?" + $.param({ newsItem: team, number:3 }),
         (news) => {
