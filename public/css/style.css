@@ -311,15 +311,13 @@ button:hover {
 
 .newsItem {
   position:relative;
-  height: 150px;
+  height: 210px;
   border-radius: 0px;
   background: #fff;
   border: 1px solid black;
   transition: 0.05s;
   overflow: hidden;
   transform: translateX(0px);
-  display:grid;
-  grid-template-columns: auto auto auto;
 }
 
 .newsItem:hover {
@@ -338,9 +336,12 @@ button:hover {
 }
 
 .newsItem img:not(.teamImage) {
+  position:absolute;
   height: 100%;
   margin: 0px;
   padding: 0px;
+  left: 50%;
+  transform:translateX(-50%);
 }
 
 .teamImage {

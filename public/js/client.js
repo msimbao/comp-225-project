@@ -29,7 +29,7 @@ Vue.component("feed-item", {
     '<div class="card newsItem">' +
     '<div class="newsImageHolder">' +
     '<img :src="feed.image">' +
-    '</div'+
+    '</div>'+
     '<div class="articleWords">' +
     "<h4>{{feed.title}}</h4>" +
     '<p>"{{feed.description}}..."</p>' +
@@ -52,7 +52,7 @@ Vue.component("news-item", {
     '<div class="articleWords">' +
     "<h4>{{news.title}}</h4>" +
     '<p>"{{news.description}}..."</p>' +
-    '<img class="teamImage" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Ffavicon-16x16.png?v=1614900977492">' +
+    '<div class="teamImage"></div>' +
     "</div>" +
     "</div>" +
     "</a>",
