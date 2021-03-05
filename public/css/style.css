@@ -329,8 +329,10 @@ button:hover {
 }
 
 .newsImageHolder{
+  position:relative;
   height:100%;
   width:200px;
+  border:2px solid black;
   overflow:hidden;
   text-align:center;
 }
@@ -448,7 +450,7 @@ button:hover {
 
 .selectGrid div h4 {
   float: left;
-  font-size: 150%;
+  font-size: 120%;
   vertical-align: center;
   margin-right:10px;
   margin-left:10px;
