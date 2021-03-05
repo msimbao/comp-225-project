@@ -332,7 +332,6 @@ button:hover {
   position:relative;
   height:100%;
   width:200px;
-  border:2px solid black;
   overflow:hidden;
   text-align:center;
 }
@@ -375,10 +374,12 @@ button:hover {
     border-bottom: 20px black solid;
   }
 
-  .newsItem img:not(.teamImage) {
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
+  .newsImageHolder{
+    position:relative;
+    height:100%;
+    width:100%;
+    overflow:hidden;
+    text-align:center;
   }
 
   .articleWords {
@@ -409,7 +410,7 @@ button:hover {
     /* position:absolute;
   left:20px; */
     height: 50px !important;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-right: 10px;
   }
 }
