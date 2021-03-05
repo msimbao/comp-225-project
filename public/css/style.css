@@ -226,11 +226,11 @@ button a:hover, button:hover a  {
   }
 
   #navbar ul li a {
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
     border: 1px solid black;
     color: black;
-    margin: 10% 0 10% 0;
+    margin: 8% 0 8% 0;
   }
 
   #navbar ul .active a {
@@ -310,29 +310,38 @@ button:hover {
 //////////////////////////////////////////////////////////////*/
 
 .newsItem {
-  height: 250px;
+  position:relative;
+  height: 210px;
   border-radius: 0px;
   background: #fff;
   border: 1px solid black;
   transition: 0.05s;
   overflow: hidden;
   transform: translateX(0px);
-  
 }
 
 .newsItem:hover {
   background: #003153;
   color: white;
   border: 1px solid white;
-  
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
 }
 
+.newsImageHolder{
+  position:relative;
+  height:100%;
+  width:200px;
+  overflow:hidden;
+  text-align:center;
+}
+
 .newsItem img:not(.teamImage) {
-  width: 210px;
+  position:absolute;
+  height: 100%;
   margin: 0px;
   padding: 0px;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  left: 50%;
+  transform:translateX(-50%);
 }
 
 .teamImage {
@@ -348,20 +357,34 @@ button:hover {
   bottom: 10px;
 }
 
+.articleWords {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+
 /* For Mobile */
 
 @media only screen and (max-width: 768px) {
   .newsItem {
     width: 100%;
-    height: 500px;
+    height: 300px;
     transform: translateX(0px);
     border-bottom: 20px black solid;
   }
 
-  .newsItem img:not(.teamImage) {
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
+  .newsItem:hover {
+    background: #fff;
+    color:#003153;
+    border-bottom: 20px black solid;
+  }
+
+  .newsImageHolder{
+    position:relative;
+    height:100%;
+    width:100%;
+    overflow:hidden;
+    text-align:center;
   }
 
   .articleWords {
@@ -386,13 +409,14 @@ button:hover {
     padding-left: 10px;
     grid-column-start: 1;
     grid-column-end: 3;
+    font-size:70%;
   }
 
   .teamImage {
     /* position:absolute;
   left:20px; */
     height: 50px !important;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-right: 10px;
   }
 }
@@ -433,7 +457,7 @@ button:hover {
 
 .selectGrid div h4 {
   float: left;
-  font-size: 150%;
+  font-size: 120%;
   vertical-align: center;
   margin-right:10px;
   margin-left:10px;
@@ -464,6 +488,7 @@ button:hover {
 } */
 
 #resetTeams {
+  display:none;
   position: relative;
   padding: 10px 0px 10px 10px;
   background: white;
@@ -813,4 +838,33 @@ button:hover {
 
 .instoSection{
 
+}
+
+/*
+Material Icons
+*/
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }

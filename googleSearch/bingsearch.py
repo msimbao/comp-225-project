@@ -86,6 +86,6 @@ class BingSearch:
 if __name__ == '__main__':
     search = "Pittsburgh Pirates"
     bing_search = BingSearch(search)
-    articles = bing_search.get_article_list()
+    articles = bing_search.get_article_list(n=10)
     print(articles)
     print(len(articles))

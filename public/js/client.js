@@ -27,11 +27,13 @@ Vue.component("feed-item", {
   template:
     '<a :href="feed.url">' +
     '<div class="card newsItem">' +
+    '<div class="newsImageHolder">' +
     '<img :src="feed.image">' +
+    '</div>'+
     '<div class="articleWords">' +
     "<h4>{{feed.title}}</h4>" +
     '<p>"{{feed.description}}..."</p>' +
-    '<img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">' +
+    '<img class="teamImage" :src="feed.teamLogo">' +
     "</div>" +
     "</div>" +
     "</a>",
@@ -44,10 +46,13 @@ Vue.component("news-item", {
   template:
     '<a :href="news.url">' +
     '<div class="card newsItem">' +
+    '<div class="newsImageHolder">' +
     '<img :src="news.image">' +
+    '</div>'+
     '<div class="articleWords">' +
     "<h4>{{news.title}}</h4>" +
     '<p>"{{news.description}}..."</p>' +
+    '<div class="teamImage"></div>' +
     "</div>" +
     "</div>" +
     "</a>",
@@ -67,7 +72,7 @@ Vue.component("team-option", {
     teamOption: function (option, record) {
       if (record == "") {
         $.post(
-          "http://127.0.0.1:5000/conferences?" + $.param({ option: option }),
+          "/conferences?" + $.param({ option: option }),
           (option_data) => {
             app.teamOptions = option_data;
 
@@ -129,10 +134,11 @@ Vue.component("team-option", {
           }
         });
       }
+      app.toggleResetButton('on');
     },
   },
   template:
-    '<div v-on:click="teamOption(option.id,option.record)" >' +
+    '<div v-on:click="teamOption(option.id,option.record);" >' +
     "<h4>{{option.title}}</h4>" +
     '<img :src="option.image">' +
     "</div>",
@@ -216,7 +222,7 @@ var app = new Vue({
       event.preventDefault();
       newsItem = $("#searchBar").val();
       $.post(
-        "http://127.0.0.1:5000/news?" + $.param({ newsItem: newsItem }),
+        "/news?" + $.param({ newsItem: newsItem, number:20 }),
         (news) => {
           this.generalNews = news;
           $("#searchBar").val("");
@@ -224,6 +230,7 @@ var app = new Vue({
         }
       );
     },
+    
 
     /**
      * @name filterSearch
@@ -255,6 +262,27 @@ var app = new Vue({
         }
       }
     },
+    /**
+     * @name populateFeed
+     * @brief Function to populate user feed with team data
+     */
+    populateFeed: function () {
+      console.log("Populating Feed")
+      for (i = 0; i < this.userTeams.length; i++) {
+      var team = this.userTeams[i].title
+      var logoUrl = this.userTeams[i].image
+      this.feedNews = []
+      $.post(
+        "/news?" + $.param({ newsItem: team, number:3 }),
+        (news) => {
+          for (j = 0; j < news.length; j++) {
+            news[j].teamLogo = logoUrl
+            this.feedNews.push(news[j]);
+          }
+        }
+      );
+    }
+    },
     setTabs: function () {
       tabcontent = document.getElementsByClassName("selectTabs");
 
@@ -282,7 +310,7 @@ var app = new Vue({
      */
     resetTeams: function () {
       $.post(
-        "http://127.0.0.1:5000/resetTeams?" + $.param({ option: "begin" }),
+        "/resetTeams?" + $.param({ option: "begin" }),
         (resetTeams) => {
           this.teamOptions = resetTeams;
         }
@@ -295,10 +323,10 @@ var app = new Vue({
      */
     toggleResetButton: function (state) {
       resetTeams = document.getElementById("resetTeams");
-      if ((state = "0")) {
+      if ((state == "off")) {
         resetTeams.style.display = "none";
         console.log("remove");
-      } else if ((state = "1")) {
+      } else if ((state == "on")) {
         console.log("reset");
         resetTeams.style.display = "block";
       }
@@ -319,7 +347,7 @@ var app = new Vue({
           for (i = 0; i < docTeams.length; i++) {
             teamId = docTeams[i];
             $.post(
-              "http://127.0.0.1:5000/grabTeam?" + $.param({ teamId: teamId }),
+              "/grabTeam?" + $.param({ teamId: teamId }),
               (grabbedTeam) => {
                 this.userTeams.push(grabbedTeam);
               }
@@ -334,6 +362,7 @@ var app = new Vue({
             })
             .then(() => {
               console.log("User Teams Loaded");
+              this.populateFeed();
             });
         } else {
           // doc.data() will be undefined in this case
@@ -344,6 +373,7 @@ var app = new Vue({
   },
   created: function () {
     this.setTabs();
+    this.toggleResetButton('off')
     // console.log(this);
   },
 });
@@ -508,47 +538,3 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "grid";
   evt.currentTarget.className += " active";
 }
-
-/**
-    * ///////////////////////////////////////////////////////////
-
-    _____       _ _     _______        _       
-  |_   _|     (_) |   |__   __|      | |      
-    | |  _ __  _| |_     | | ___  ___| |_ ___ 
-    | | | '_ \| | __|    | |/ _ \/ __| __/ __|
-    _| |_| | | | | |_     | |  __/\__ \ |_\__ \
-  |_____|_| |_|_|\__|    |_|\___||___/\__|___/
-                                              
-                                              
-    * ///////////////////////////////////////////////////////////
-    */
-
-/**
- *  @name getTestNews
- *  @brief get test news article for general search page and display it
- */
-function getNews() {
-  $.get("http://127.0.0.1:5000/news", function (news) {
-    // console.log(news)
-    news.forEach(function (newsItem) {
-      // console.log(newsItem['title'])
-      // $('<li class="card newsItem"></li>').text(newsItem.title).appendTo('ul#news');
-      $(
-        '<a href="' +
-          newsItem.url +
-          '"><div class="card newsItem"><img src="' +
-          newsItem.image +
-          '"><div class="articleWords"><h4>' +
-          newsItem.title +
-          "</h4><p>" +
-          newsItem.description +
-          "</p><h6>" +
-          newsItem.authors +
-          "</h6></div></div></a>"
-      ).appendTo("ul#news");
-    });
-  });
-}
-
-// Call get News on App start to test the response
-getNews();

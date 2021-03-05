@@ -68,7 +68,7 @@ def resetTeams():
 def grabTeam():
     if 'teamId' in request.args:
         teamId = request.args['teamId']
-        print("this is the teamId:",teamId)
+        # print("this is the teamId:",teamId)
         TEAM = OPTION_DATA[str(teamId)]
     return jsonify(TEAM)
 
@@ -111,10 +111,11 @@ def news():
         SEARCH_RESULTS = []
         
         query = request.args['newsItem']
+        number = request.args['number']
         print(query)
         news_search = bingsearch.BingSearch(query)
 
-        SEARCH_RESULTS = news_search.get_article_list()
+        SEARCH_RESULTS = news_search.get_article_list(n=int(number))
     # else:
     #     SEARCH_RESULTS = []
     # print('Search Resuls',SEARCH_RESULTS)

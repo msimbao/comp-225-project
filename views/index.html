@@ -20,13 +20,13 @@
     <title>Tympdeja</title>
 
     <!-- Site Description -->
-    <meta name="description" content="A cool thing made " />
+    <meta name="description" content="Your Clean and Minimal Sports News Feed" />
 
     <!-- Site Favicon -->
     <link
       id="favicon"
       rel="icon"
-      href="https://gomix.com/favicon-app.ico"
+      href="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fandroid-chrome-512x512.png?v=1614898106513"
       type="image/x-icon"
     />
 
@@ -37,6 +37,9 @@
 
     <!-- Page Pilling CSS -->
     <link rel="stylesheet" href="../public/css/jquery.pagepiling.css" />
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
   
     <!-- Site CSS -->
     <link rel="stylesheet" href="../public/css/style.css" />
@@ -108,7 +111,7 @@
      
 
       <div class="loginForm">
-        <form>
+        <form id="createAccount">
         <h2 style="font-variant: small-caps;">Create Account</h2>
         <p>Register With Your Email Account</p>
         <input id="signupEmail" type="text" placeholder="Email Address..." />
@@ -119,7 +122,7 @@
       </div>
 
       <div class="loginForm">
-        <form>
+        <form id="loginToAccount">
         <h2 style="font-variant: small-caps;">Sign In To Tympdeja</h2>
         <p>Sign In With Your Email Account</p>
         <input id="loginEmail" type="text" placeholder="Email Address..." />
@@ -174,38 +177,12 @@
 
   </div>
     <div id="newsFeed" class="tabContent">
-       <a href="#feed">
-         <div class="card newsItem">
-           <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.17.57%20PM.png?v=1613614685196">
-           <div class="articleWords">
-             <h4>Buccaneers Will Celebrate Super Bowl LV Win on the Water</h4>
-             <p>The Tampa Bay Buccaneers will celebrate their latest Lombardi trophy as only they can with a socially distant boat parade around the bay on Wednesday, February 10. The event will begin starting at 1 p.m. ET....</p>
-             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftampa-bay-buccaneers-logo-transparent.png?v=1612980806812">
-           </div>
-         </div>
-      </a>
-      
-        <a href="#feed">
-         <div class="card newsItem">
-           <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.18.27%20PM.png?v=1613614711362">
-           <div class="articleWords">
-             <h4> Blue Jays to report to Spring Training Feb. 18 </h4>
-             <p>The first sign of baseball season is finally here: pitchers and catchers. MLB announced the start dates of workouts for 2021 Spring Training presented by Camping World on Tuesday, with the first pitchers and catchers workouts and first full-squad workouts for every team. Teams will report to Spring Training next....</p>
-             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftoronto-blue-jays-logo-new.png?v=1612996272903">
-            </div>
-         </div>
-      </a>
-      
-               <a href="#feed">
-         <div class="card newsItem">
-           <img class="storyImage" src="https://cdn.glitch.com/5f589760-87c9-41e5-b4e7-2aa57cd0a816%2FScreen%20Shot%202021-02-17%20at%208.19.06%20PM.png?v=1613614749856">
-           <div class="articleWords">
-             <h4>Titans Fan, and Valued Mentor, Brandon Galloway Named NFL Fan of the Year </h4>
-             <p>"When they told me, I was at a loss for words," Galloway said. "It is just an amazing honor, and it puts a positive spotlight on our city and on our fan base, despite everything Nashville has been through...."</p>
-             <img class="teamImage" src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Ftennessee-titans-logo-transparent.png?v=1612980819110">
-            </div>
-          </div>
-      </a>
+
+      <feed-item
+      v-for="item in feedNews"
+      v-bind:feed="item"
+    ></feed-item>
+
     </div>
 </div>
 
@@ -233,14 +210,13 @@
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p>
         <div>
-          <button class="tablinks" v-on:click="openTab('myTeams',$event);loadUserTeams()">My teams</button>
-          <button class="tablinks" v-on:click="openTab('addTeams',$event)">Add Teams</button>
-         
+          <button class="tablinks" v-on:click="openTab('myTeams',$event);  loadUserTeams();">My teams</button>
+          <button class="tablinks" v-on:click="openTab('addTeams',$event);">Add Teams</button>
         </div>
         
       </div>
 
-      <div id="resetTeams" v-on:click="resetTeams">&#9666; BACK</div>
+      <div id="resetTeams" v-on:click="resetTeams(); toggleResetButton('off')">&#9666; BACK</div>
 
       <div class="tabContent selectGrid selectTabs" id="myTeams">
         <remove-item
