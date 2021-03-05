@@ -31,7 +31,7 @@ class BingSearch:
 
     def __filter_articles(self, articleList, query):
         list = []
-        print(len(articleList))
+        # print(len(articleList))
         for i in articleList:
             newDict = {}
 
