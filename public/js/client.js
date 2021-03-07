@@ -226,9 +226,9 @@ var app = new Vue({
       event.preventDefault();
       newsItem = $("#searchBar").val();
       $.post(
-        "/news?" + $.param({ newsItem: newsItem, number:20 }),
-        (news) => {
-          this.generalNews = news;
+        "/news?" + $.param({ newsItem: newsItem, number:20, logo:"" }),
+        (data) => {
+          this.generalNews = data.news;
           $("#searchBar").val("");
           $("#searchBar").focus();
         }
@@ -274,20 +274,18 @@ var app = new Vue({
       console.log("Populating Feed")
       this.feedNews = []
       for (i = 0; i < this.userTeams.length; i++) {
-      var logoUrl, team
+      var logo, team
       team = this.userTeams[i].title
-      logoUrl = this.userTeams[i].image
-      console.log(logoUrl)
+      logo = this.userTeams[i].image
       $.post(
-        "/news?" + $.param({ newsItem: team, number:3 }),
-        (news) => {
-          for (j = 0; j < news.length; j++) {
-            console.log(logoUrl)
-            news[j].teamLogo = logoUrl
-            this.feedNews.push(news[j]);
+        "/news?" + $.param({ newsItem: team, number:3, logo: logo }),
+        (data) => {
+          for (j = 0; j < data.news.length; j++) {
+            data.news[j].teamLogo = data.logoUrl
+            this.feedNews.push(data.news[j]);
           }
         }
-      );
+      )
     }
     },
     /**
@@ -424,7 +422,7 @@ $(document).ready(function () {
     css3: true,
     navigation: false,
     // normalScrollElements: "#feed, #select, #general",
-    normalScrollElementTouchThreshold: 50,
+    normalScrollElementTouchThreshold: 1000,
     touchSensitivity: 5,
     keyboardScrolling: true,
     sectionSelector: ".section",
@@ -499,3 +497,26 @@ function hideWelcomeScreen() {
   welcomeScreen = document.getElementById("welcomeScreen");
   welcomeScreen.style.top = "-200%";
 }
+
+
+
+$( document ).ready(function() {      
+  var is_mobile = false;
+
+  if( $('#navbar').css('top')=='2%') {
+      is_mobile = true;       
+  }
+
+  if (is_mobile == true) {
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-20%";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+  }
+});

@@ -114,6 +114,7 @@ def news():
         
         query = request.args['newsItem']
         number = request.args['number']
+        logo = request.args['logo']
         print(query)
         news_search = bingsearch.BingSearch(query)
 
@@ -123,7 +124,7 @@ def news():
     # print('Search Resuls',SEARCH_RESULTS)
     # print(SEARCH_RESULTS)
 
-    return jsonify(SEARCH_RESULTS)
+    return jsonify( {'news':SEARCH_RESULTS,'logoUrl':logo} )
 
 
 if __name__ == '__main__':

@@ -126,7 +126,7 @@
         Note that many App functionalities will not be available with this option 
         -->
         
-        <h2>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></h2>
+        <!-- <h2>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></h2> -->
 
       </div>
 
@@ -170,13 +170,13 @@
           <h6>Search</h6>
         </a>
       </li>
-      <li id="darkMode">
+      <!-- <li id="darkMode">
         <a href="#darkMode">
           <i class="fas fa-moon"></i>
           <h6>Dark mode</h6>
         </a>
-      </li>
-    <li id="submitLogout">
+      </li> -->
+    <li id="submitLogout" onclick="toggleLogin('hideLogin');">
       <a href="#login">
         <i class="fas fa-door-open"></i>
         <h6>Logout</h6>
@@ -314,7 +314,7 @@
         id="searchBar"
         type="text"
         maxlength="100"
-        placeholder="Latest News..."
+        placeholder="Insert A Sports Topic then Press Enter...."
       />
 
     </form>
