@@ -26,9 +26,6 @@ import urllib.request, urllib.error
 from googleSearch import bingsearch
 # from sportsData import sportDictionaries
 
-
-
-
 # Setup Flask 
 # Support for gomix's 'front-end' and 'back-end' UI.
 app = Flask(__name__, static_folder='public', template_folder='views')
@@ -45,6 +42,11 @@ app.secret = os.environ.get('SECRET')
 def homepage():
     """Displays the homepage."""
     return render_template('index.html')
+
+@app.route('/intro')
+def appPage():
+    """Displays the Intro Page"""
+    return render_template('intro.html')
 
 
 OPTION_DATA = {}

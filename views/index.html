@@ -35,12 +35,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
     <!-- Page Pilling CSS -->
     <link rel="stylesheet" href="../public/css/jquery.pagepiling.css" />
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-  
     <!-- Site CSS -->
     <link rel="stylesheet" href="../public/css/style.css" />
 
@@ -51,6 +51,8 @@
   <!-------------------------------------------------------->
   
   <body >
+
+   
 
     <div id="load">
       <div class="loader">
@@ -97,18 +99,6 @@
 </div>
 
     <div id="login">
-      <div class="loginCover">
-        <div>
-          <h6>Tympdeja</h6>
-          <h1>Your Favorite Sports News Right At Your Fingertips</h1>
-          <p>Tmpdeja is a super minimalist news platform. We bring latest sports news content for different sports together while letting you focus only on latest articles about the teams you love. We cut through the clutter, remove social media drama, have zero ads and distractions. Sign in to start reading about matters most for you.  </p>
-          <p>
-            <span id="loginCoverArrow" style='font-size:50px;'>&#8595;</span>
-          </p>
-        </div>
-      </div>
-
-     
 
       <div class="loginForm">
         <form id="createAccount">
@@ -123,14 +113,20 @@
 
       <div class="loginForm">
         <form id="loginToAccount">
-        <h2 style="font-variant: small-caps;">Sign In To Tympdeja</h2>
-        <p>Sign In With Your Email Account</p>
+        <h2 style="font-variant: small-caps;">Tympdeja</h2>
+        <h2>Sign In With Your Email Account</h2>
         <input id="loginEmail" type="text" placeholder="Email Address..." />
         <input id="loginPassword" type="password" placeholder="Password..." />
         <button id="submitLogin" class="button introButton" type="submit">LOGIN</button>
         </form>
-        <p>Or <u class="pointerItem" onclick="toggleSignUp('showSignUp')">Create an Account</u></p>
-        <p>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></p>
+        <h2>Or <u class="pointerItem" onclick="toggleSignUp('showSignUp')">Create an Account</u></h2>
+
+        <!-- 
+        Uncomment this to provide Option to Bypass Login as Admin.
+        Note that many App functionalities will not be available with this option 
+        -->
+        
+        <h2>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></h2>
 
       </div>
 
@@ -142,6 +138,52 @@
   <div id="maincontent">
     <div id="vue">
 
+<!--
+  /*//////////////////////////////////////////////////////////
+  __  __                  
+ |  \/  |                 
+ | \  / | ___ _ __  _   _ 
+ | |\/| |/ _ \ '_ \| | | |
+ | |  | |  __/ | | | |_| |
+ |_|  |_|\___|_| |_|\__,_|
+                                                
+//////////////////////////////////////////////////////////////*
+-->
+
+<div id="navbar">
+  <div id="myMenu">
+    <li data-menuanchor="feed" class="active">
+      <a href="#feed">
+        <i class="fas fa-home"></i>
+        <h6>Feed</h6>
+      </a>
+    </li>
+    <li data-menuanchor="select">
+      <a href="#select">
+        <i class="fas fa-football-ball"></i>
+        <h6>Teams</h6>
+      </a>
+    </li>
+      <li data-menuanchor="general">
+        <a href="#general">
+          <i class="fas fa-search"></i>
+          <h6>Search</h6>
+        </a>
+      </li>
+      <li id="darkMode">
+        <a href="#darkMode">
+          <i class="fas fa-moon"></i>
+          <h6>Dark mode</h6>
+        </a>
+      </li>
+    <li id="submitLogout">
+      <a href="#login">
+        <i class="fas fa-door-open"></i>
+        <h6>Logout</h6>
+      </a>
+    </li>
+  </div>
+</div>
 
  <!-- 
 ////////////////////////////////////////////////////////////////////////
@@ -158,14 +200,13 @@
 -->
 
 <div id="feed" class="section pp-scrollable">
-  <div class="card tabDescription">
+  <div class="tabDescription">
 
-    <p class="menuButton" onclick="toggleMenu()">&#9776</p>
+    <h1>Home Feed</h1>
 
-    <h2>Your Feed</h2>
-    <p>
+    <!-- <p>
       All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Teams' section.
-    </p>
+    </p> -->
 
       <!-- <input
         v-on:keyup="filterSearch"
@@ -178,10 +219,14 @@
   </div>
     <div id="newsFeed" class="tabContent">
 
+      <transition-group name="list" tag="div">
       <feed-item
       v-for="item in feedNews"
       v-bind:feed="item"
+      v-bind:key="item.title"
+  
     ></feed-item>
+  </transition-group>
 
     </div>
 </div>
@@ -201,14 +246,12 @@
 -->
 
     <div id="select" class="section pp-scrollable">
-      <div id="selectDescription" class="card tabDescription">
+      <div id="selectDescription" class="tabDescription">
 
-        <p class="menuButton" onclick="toggleMenu()">&#9776</p>
-
-        <h2>Select Teams</h2>
-        <p>
+        <h1>Teams</h1>
+        <!-- <p>
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
-        </p>
+        </p> -->
         <div>
           <button class="tablinks" v-on:click="openTab('myTeams',$event);  loadUserTeams();">My teams</button>
           <button class="tablinks" v-on:click="openTab('addTeams',$event);">Add Teams</button>
@@ -216,23 +259,26 @@
         
       </div>
 
-      <div id="resetTeams" v-on:click="resetTeams(); toggleResetButton('off')">&#9666; BACK</div>
-
-      <div class="tabContent selectGrid selectTabs" id="myTeams">
+      <div id="myTeams" class="selectTabs">     
+        <transition-group name="list" tag="div" class="tabContent selectGrid">
         <remove-item
         v-for="item in userTeams"
         v-bind:item="item"
+        v-bind:key="item.id"
       ></remove-item>
+      </transition-group>
       </div>
 
-      <div class="tabContent selectGrid selectTabs" id="addTeams">
-      <team-option
+      <div  id="addTeams" class="selectTabs">
+      <div id="resetTeams" v-on:click="resetTeams(); toggleResetButton('off')">&#9666; Back</div>
+        <transition-group name="list" tag="div"   class="tabContent selectGrid">
+          <team-option
         v-for="item in teamOptions"
         v-bind:option="item"
+        v-bind:key="item.id"
       ></team-option>
-      </div>
-
-
+      </transition-group>
+    </div>
       
     </div>
     
@@ -255,15 +301,13 @@
 
 
 <div id="general" class="section pp-scrollable">
-  <div class="card tabDescription">
+  <div class="tabDescription">
 
-    <p class="menuButton" onclick="toggleMenu()">&#9776</p>
-
-    <h2>General Search</h2>
-    <p>
+    <h1>Search</h1>
+    <!-- <p>
       If You're Looking for general information, you can find the latest
       news and trending articles here.
-    </p>
+    </p> -->
 
     <form id="generalSearchForm" v-on:submit="generalSearch">
       <input
@@ -277,11 +321,13 @@
   </div>
 
     <div id="news" class="tabContent">
-
+      <transition-group name="list" tag="div">
           <news-item
             v-for="item in generalNews"
             v-bind:news="item"
+            v-bind:key="item.title"
           ></news-item>
+      </transition-group>
 
     </div>
 
@@ -292,35 +338,7 @@
   </div>
   </div>
   
-<!--
-  /*//////////////////////////////////////////////////////////
-  __  __                  
- |  \/  |                 
- | \  / | ___ _ __  _   _ 
- | |\/| |/ _ \ '_ \| | | |
- | |  | |  __/ | | | |_| |
- |_|  |_|\___|_| |_|\__,_|
-                                                
-//////////////////////////////////////////////////////////////*
--->
 
-<div id="navbar" onclick="toggleMenu()">
-  <ul id="myMenu">
-    <li data-menuanchor="feed" class="active">
-      <a href="#feed">Feed</a>
-    </li>
-    <li data-menuanchor="select">
-      <a href="#select"> Teams</a>
-    </li>
-      <li data-menuanchor="general">
-        <a href="#general">Search</a>
-      </li>
-    
-    <li id="submitLogout">
-      <a href="#login">Logout</a>
-    </li>
-  </ul>
-</div>
 
 
 

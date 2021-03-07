@@ -26,7 +26,7 @@
     <link
       id="favicon"
       rel="icon"
-      href="https://gomix.com/favicon-app.ico"
+      href="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fandroid-chrome-512x512.png?v=1614898106513"
       type="image/x-icon"
     />
 
@@ -34,6 +34,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
     <!-- Page Pilling CSS -->
     <link rel="stylesheet" href="../public/css/jquery.pagepiling.css" />
@@ -49,43 +52,139 @@
   
   <body >
 
+
+      <img id="logo" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fandroid-chrome-512x512.png?v=1614898106513">
+
+
     <div id="load">
       <div class="loader">
         <div class="lds-facebook"><div></div><div></div><div></div></div>
       </div>
     </div>
 
-<div>
-<div id="first" class="section instoSection">
+<div id="maincontent">
 
-  <div>
+<div id="first" class="section introSection">
+
+  <div class="introWords">
+      <div >
+        <h1 >Your Clean and Minimal Major League Sports Feed</h1>
+        <p>Tympdeja is a super minimalist news platform. We bring together latest major league sports content that matters most to you. </p>
+        
+        <!-- We cut through the clutter, remove social media drama, have zero ads and distractions and do not record your personal data.  -->
+        <a href="appPage">
+        <button>
+          Get Started
+        </button>
+        </a>
+
+        <a href="#second" data-menuanchor="second">
+        <button class="whiteButton" >
+          Learn More
+        </button>
+        </a>
+        <p>
+          <a href="#second" data-menuanchor="second"><span id="introArrow">&#10095;</span></a>
+        </p>
+    </div>
+
   </div>
 
-  <div>
-  </div>
+ 
 
-  <div>
+  <div class="appImage">
     <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
   </div>
 
+  <!-- <div class="backgroundImage firstImage"></div> -->
+  
+</div>
+
+<div id="second" class="section pp-scrollable introSection ">
+
   <div>
+    <h1>A Minimalist Feed</h1>
+    <p>We cut through the clutter, remove social media, have no ads and paid distractions and do not record your personal data.</p>
+ 
+  <div class="introFeatures">
+    <div>
+      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-life-of-pix-4291.jpg?v=1614986393555">
+      <div class="featureDescription">
+        <p><b>Privacy</b></p>
+        <p>We never collect any personal data, only your email, password and team choices.</p>
+      </div>
+    </div>
+    <div >
+      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-karolina-grabowska-4968390.jpg?v=1614986765667">
+      <div class="featureDescription">
+        <p><b>Zero Ads</b></p>
+        <p>We are a free platform that won't sell you stuff using annoying ads on your feed.</p>
+      </div>
+    </div>
+    <div >
+      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-brotin-biswas-518543.jpg?v=1614986266789">
+      <div class="featureDescription">
+        <p><b>Multiple Sources</b></p>
+        <p>We give you a variety of articles to read unlike other apps.</p>
+      </div>
+    </div>
+    <div >
+      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-tracy-le-blanc-607812(1).jpg?v=1614986364245">
+      <div class="featureDescription">
+        <p><b>Zero Drama</b></p>
+        <p>No social media based fluff or drama. Just you and your news.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <h2> App Shortcut</h2>
-    <p>Thank you for choosing Tympdeja for your sports news coverage</p>
-    <p>First, bookmark this page and on mobile, add an app shortcut to quickly get to your feed </p>
-    <ul>
-      <li>Launch “Chrome” app.</li>
-      <li>Open the website or web page you want to pin to your home screen.</li>
-      <li>Tap the menu icon (3 dots in upper right-hand corner) and tap Add to homescreen.</li>
-    </ul>
+</div>
 
-    <button onclick="hideWelcomeScreen()" data-menuanchor="select">
-      <a href="#select">Select Teams</a>
-    </button>
+
+<div id="third" class="section introSection">
+
+  <div>
+    <h1>Major League Sports</h1>
+    <p>Get latest articles from any of the teams in the four Major US leagues.</p>
+ 
+    <div class="introFeatures introLogos">
+      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmlb.png?v=1614216154946">
+      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974">
+      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788">
+      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">
+
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/necd5v1521905719.png">
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/h0dwny1600552068.png">
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/xtwxyt1421431860.png">
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/6pb37b1515849026.png">
+
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/0v985i1554032049.png">
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/051sjd1537102179.png">
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/0mrsd41546427902.png">
+      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/2975411515853129.png">
+
+    </div>
 
   </div>
+    
+  <!-- <div class="backgroundImage thirdImage"></div> -->
 
+</div>
+
+<div id="fourth" class="section introSection">
+  <div>
+    <h1>Let's Connect</h1>
+    <p>If you have any concerns or would like to contribute to the project we would love to have a chat. Can't wait to hear from you!</p>
+    <p>
+      <a href="https://github.com/msimbao/comp-225-project"><i class="fab fa-google"></i></a>
+      <a href="https://github.com/msimbao/comp-225-project"><i class="fab fa-facebook-messenger"></i></a>
+      <a href="https://github.com/msimbao/comp-225-project"><i class="fab fa-github"></i></a>
+    </p>
   
+</div>
+
+<!-- <div class="backgroundImage fourthImage"></div> -->
+
 </div>
 </div>
 

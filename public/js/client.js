@@ -26,16 +26,18 @@ Vue.component("feed-item", {
   props: ["feed"],
   template:
     '<a :href="feed.url">' +
-    '<div class="card newsItem">' +
+    '<transition name="fade">'+
+    '<div class="newsItem">' +
     '<div class="newsImageHolder">' +
-    '<img :src="feed.image">' +
+    '<img :src="feed.image" class="card">' +
     '</div>'+
     '<div class="articleWords">' +
     "<h4>{{feed.title}}</h4>" +
     '<p>"{{feed.description}}..."</p>' +
+    "</div>" +
     '<img class="teamImage" :src="feed.teamLogo">' +
     "</div>" +
-    "</div>" +
+    '</transition>'+
     "</a>",
 });
 
@@ -45,9 +47,10 @@ Vue.component("news-item", {
   props: ["news"],
   template:
     '<a :href="news.url">' +
-    '<div class="card newsItem">' +
+    '<transition name="fade">'+
+    '<div class=" newsItem">' +
     '<div class="newsImageHolder">' +
-    '<img :src="news.image">' +
+    '<img :src="news.image" class="card">' +
     '</div>'+
     '<div class="articleWords">' +
     "<h4>{{news.title}}</h4>" +
@@ -55,6 +58,7 @@ Vue.component("news-item", {
     '<div class="teamImage"></div>' +
     "</div>" +
     "</div>" +
+    '</transition>'+
     "</a>",
 });
 
@@ -138,7 +142,7 @@ Vue.component("team-option", {
     },
   },
   template:
-    '<div v-on:click="teamOption(option.id,option.record);" >' +
+    '<div class="card" v-on:click="teamOption(option.id,option.record);" >' +
     "<h4>{{option.title}}</h4>" +
     '<img :src="option.image">' +
     "</div>",
@@ -187,7 +191,7 @@ Vue.component("remove-item", {
     },
   },
   template:
-    "<div>" +
+    '<div class="card">' +
     '<h4 v-on:click="removeItem(item.id)">&#x2716;</h4>' +
     "<h4>{{item.title}}</h4>" +
     '<img :src="item.image">' +
@@ -270,12 +274,15 @@ var app = new Vue({
       console.log("Populating Feed")
       this.feedNews = []
       for (i = 0; i < this.userTeams.length; i++) {
-      var team = this.userTeams[i].title
-      var logoUrl = this.userTeams[i].image
+      var logoUrl, team
+      team = this.userTeams[i].title
+      logoUrl = this.userTeams[i].image
+      console.log(logoUrl)
       $.post(
         "/news?" + $.param({ newsItem: team, number:3 }),
         (news) => {
           for (j = 0; j < news.length; j++) {
+            console.log(logoUrl)
             news[j].teamLogo = logoUrl
             this.feedNews.push(news[j]);
           }
@@ -283,6 +290,9 @@ var app = new Vue({
       );
     }
     },
+    /**
+     * @name setTabs presets all tabs to display:none
+     */
     setTabs: function () {
       tabcontent = document.getElementsByClassName("selectTabs");
 
@@ -290,6 +300,13 @@ var app = new Vue({
         tabcontent[i].style.display = "none";
       }
     },
+    /**
+     * @name openTab switches tabs based on buttons in a list
+     * @param {event} evt the tab onclick event
+     * @param {string} tabName id of the tab
+     *
+     * @copyright https://www.w3schools.com (w3schools)
+     */
     openTab: function (tabName, event) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("selectTabs");
@@ -396,9 +413,9 @@ var app = new Vue({
 $(document).ready(function () {
   $("#maincontent").pagepiling({
     menu: "#myMenu",
-    direction: "vertical",
+    direction: "horizontal",
     verticalCentered: true,
-    sectionsColor: ["#fff", "#fff", "#fff"],
+    sectionsColor: ["#EDECF2", "#EDECF2", "#EDECF2"],
     anchors: ["feed", "select", "general"],
     scrollingSpeed: 100,
     easing: "linear",
@@ -443,7 +460,7 @@ var login = document.getElementById("login");
 var navbar = document.getElementById("navbar");
 
 $(document).ready(function () {
-  $("#login").children().eq(1).fadeOut();
+  $("#login").children().eq(0).fadeOut();
 });
 
 function toggleSignUp(state) {
@@ -473,21 +490,6 @@ function toggleLogin(state) {
   }
 }
 
-/**
- *  @name toggleMenu
- *  @brief Function to toggle the website Menu
- */
-
-var menu = 0;
-function toggleMenu() {
-  if (menu == 0) {
-    navbar.style.bottom = "0%";
-    menu = 1;
-  } else {
-    navbar.style.bottom = "100%";
-    menu = 0;
-  }
-}
 
 /**
  * @name hideWelcomeScreen
@@ -496,45 +498,4 @@ function toggleMenu() {
 function hideWelcomeScreen() {
   welcomeScreen = document.getElementById("welcomeScreen");
   welcomeScreen.style.top = "-200%";
-}
-
-/**
-    * ///////////////////////////////////////////////////////////
-
-  _______    _        _____            _             _ _           
- |__   __|  | |      / ____|          | |           | | |          
-    | | __ _| |__   | |     ___  _ __ | |_ _ __ ___ | | | ___ _ __ 
-    | |/ _` | '_ \  | |    / _ \| '_ \| __| '__/ _ \| | |/ _ \ '__|
-    | | (_| | |_) | | |___| (_) | | | | |_| | | (_) | | |  __/ |   
-    |_|\__,_|_.__/   \_____\___/|_| |_|\__|_|  \___/|_|_|\___|_|   
-                                                                                                                             
-                                              
-    * ///////////////////////////////////////////////////////////
-    */
-
-/**
- * @name openTab switches tabs based on buttons in a list
- * @param {event} evt the tab onclick event
- * @param {string} tabName id of the tab
- *
- * @copyright https://www.w3schools.com (w3schools)
- */
-
-var i, tabcontent, tablinks;
-tabcontent = document.getElementsByClassName("selectTabs");
-tablinks = document.getElementsByClassName("tablinks");
-
-for (i = 0; i < tabcontent.length; i++) {
-  tabcontent[i].style.display = "none";
-}
-
-function openTab(evt, tabName) {
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "grid";
-  evt.currentTarget.className += " active";
 }

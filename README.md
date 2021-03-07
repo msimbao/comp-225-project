@@ -67,24 +67,14 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-The following modules are needed. These are all python3 modules so make sure you are using python3 to run this app.
-* flask
+All modules are listed in the requirements.txt file and can be installed using pip. This step is included in the running section as well.
+
   ```sh
-  npm install npm@latest -g
-  ```
-* flask_cors
-  ```sh
-  pip install -U flask-cors
-  ```
-* urllib3
-  ```sh
-  pip install urllib3
+  pip install -r requirments.txt
   ```
 
-* newsapi
-  ```sh
-  pip install newsapi-python
-  ```
+NOTE: These are all python3 modules and some have specific versions so make sure you are using python3 to run this app.
+
   
 ### Running
 
@@ -98,9 +88,13 @@ The following modules are needed. These are all python3 modules so make sure you
    ```
 3. Install python3 packages
 
-4. Run server.py
+  ```sh
+  pip install -r requirments.txt
+  ```
+
+4. Run app.py
    ```sh
-   python3 server.py
+   python3 app.py
    ```
 5. Check the port that flask is running on in your terminal (last line in terminal). It should be http://127.0.0.1:5000/ by default.
    ```sh
