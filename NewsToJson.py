@@ -250,6 +250,7 @@ def createNewNews(query):
     images = bing_search.get_images()
     descriptions = bing_search.get_description()
     authors = bing_search.get_author()
+    ids = bing_search.get_ids()
 
     for i in range(0, len(titles) - 1):
         title = titles[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace("$",
@@ -259,12 +260,14 @@ def createNewNews(query):
         description = descriptions[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace(
         # "$", "").replace(".", "").replace("#", "")
         author = authors[i]
+        news_id = ids[i]
         newsDataBaseForm['newsItem' + str(i + 1)] = {
             'Title': title,
             'Url': url,
             'Image': image,
             'Description': description,
-            'Author': author
+            'Author': author,
+            'ID': news_id
         }
 
     return newsDataBaseForm
