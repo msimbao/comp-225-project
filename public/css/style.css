@@ -956,6 +956,7 @@ button:hover {
 }
 
 .introLogos div {
+  padding:5px;
   height:100px;
   width:100px;
   border-radius:15px;
