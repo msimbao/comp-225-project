@@ -519,12 +519,6 @@ def jsonToArray(fileName):
 # Utils for writing news as data directly into firebase
 def createNewsDataInFireBase(query, league="", conference="", division="", team=""):
     # Acquire the date of the current query
-    today = date.today()
-    month = today.strftime("%m")
-    day = today.strftime("%d")
-    year = today.strftime("%y")
-    now = datetime.now(timezone('America/Chicago'))
-    current_hour = now.strftime("%H")
 
     news = createNewNews(query)
 
@@ -533,9 +527,19 @@ def createNewsDataInFireBase(query, league="", conference="", division="", team=
     db = firebase.database()
 
     print("Uploading news of " + team + " from " + division + " " + conference + " " + league)
-    db.child(month + day + year + "news" + current_hour).child(league).child(conference).child(division).child(team).set(news)
+    db.child(getFileName()).child(league).child(conference).child(division).child(team).set(news)
 
     return
+
+
+def getFileName():
+    today = date.today()
+    month = today.strftime("%m")
+    day = today.strftime("%d")
+    year = today.strftime("%y")
+    now = datetime.now(timezone('America/Chicago'))
+    current_hour = now.strftime("%H")
+    return month + day + year + "news" + current_hour
 
 
 def uploadNBAData():
@@ -605,6 +609,9 @@ def uploadNews():
     uploadNHLData()
     uploadNFLData()
 
+    f = open("firebasefile.txt", "a")
+    f.write("\n" + getFileName())
+    f.close()
     return
 
 
