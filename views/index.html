@@ -280,7 +280,6 @@
       </div>
 
       <div  id="addTeams" class="selectTabs">
-      <div id="resetTeams" v-on:click="resetTeams(); toggleResetButton('off')">&#9666; Back</div>
         <transition-group name="list" tag="div"   class="tabContent selectGrid">
           <team-option
         v-for="item in teamOptions"
@@ -288,6 +287,7 @@
         v-bind:key="item.id"
       ></team-option>
       </transition-group>
+      <button id="resetTeams" v-on:click="resetTeams(); toggleResetButton('off')">&#9666; Back</button>
     </div>
       
     </div>

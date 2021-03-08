@@ -169,7 +169,7 @@ html {
 .tabDescription {
   position:relative;
   margin: auto;
-  text-align:center;
+  text-align:left;
   padding-top:100px;
 }
 
@@ -178,7 +178,7 @@ html {
   display: grid;
   grid-template-columns: auto;
   grid-gap: 5px;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 
@@ -188,6 +188,7 @@ html {
 
   .tabDescription {
     padding-top:0px;
+    text-align:center;
   }
 
   .tabContent {
@@ -209,8 +210,8 @@ html {
 #navbar {
   position: absolute;
   bottom: 2%;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 50%;
+  transform: translateX(50%);
   width: 80%;
   z-index: 100;
   transition: 0.3s;
@@ -218,7 +219,6 @@ html {
   background:white;
   border-radius: 15px;
   box-shadow: 1px 1px 4px 4px rgba(0,0,0,.1),1px 1px 4px 4px rgba(0,0,0,.1);
-  overflow:hidden;
 }
 
 #navbar > div {
@@ -229,6 +229,7 @@ html {
   font-variant: small-caps;
   display:grid;
   grid-template-columns: auto auto auto auto;
+  grid-gap:0px;
 }
 
 #navbar li a {
@@ -264,18 +265,27 @@ background:#DF0810;
 
 @media only screen and (min-width: 768px) {
 
-  #navbar > div {
-    font-size: 250%;
-  }
-
   #navbar {
     position:absolute;
+    background:none;
+    width:450px;
+    right:5%;
     bottom:90%;
-    top:2%;
+    top:5%;
+    box-shadow:none;
+    transform:none;
+  }
+
+  #navbar > div {
+    font-size: 180%;
+    grid-gap:20px;
   }
 
   #navbar li a{
     padding:1px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 1px 4px rgba(0,0,0,.1),0px 1px 4px rgba(0,0,0,.1);
   }
 
   #navbar > div li h6{
@@ -287,15 +297,11 @@ background:#DF0810;
   }
 
   #navbar li a:hover {
-    color:black;
-    /* background:none; */
-    border-bottom:#DF0810 2px solid;
+    color:fff;
   }
 
   #navbar div .active {
-    color:black;
-    /* background:none; */
-    border-bottom: #DF0810 2px solid;
+    color:fff;
   }
 
 
@@ -328,7 +334,7 @@ input {
 
 input:focus,
 input:hover {
-    background-color:#B9B7C6 !important;
+    background-color:#EDECF2 !important;
 }
 
 button {
@@ -342,6 +348,7 @@ button {
   cursor: pointer;
   transition: 0.3s;
   font-size:15px;
+  box-shadow:0px 1px 4px rgba(0,0,0,.1),0px 1px 4px rgba(0,0,0,.1);
 }
 
 .whiteButton{
@@ -487,14 +494,14 @@ button:hover {
 .selectGrid {
   display: grid;
   grid-template-columns: auto auto;
-  grid-gap: 5px;
+  grid-gap: 10px;
+  width:100%;
 }
 
 .selectGrid div {
   padding: 10px;
   transition: 0.1s;
   background:white;
-  /* vertical-align: center; */
   font-size:12px;
 }
 
@@ -522,22 +529,23 @@ button:hover {
   top:0;
 }
 
-.tablinks{
-  background:white;
-  color:black;
-  margin:5px;
+.tablinks {
+  background: white;
+  color: black;
+  margin: 0px 5px 5px 0px;
 }
 
-
 #resetTeams {
-  display:none;
+  display: none;
   position: relative;
   padding: 10px;
-  background: white;
   float: left;
-  border-radius:15px;
-  font-size:15px;
-  margin: 0px auto 15px 15px;
+  font-size: 15px;
+  margin: 10px auto 0px 0px;
+  transition: 0.2s;
+  background: #fff;
+  color: black;
+  border-radius: 10px;
 }
 
 #resetTeams:hover{

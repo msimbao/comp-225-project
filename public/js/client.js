@@ -413,7 +413,7 @@ $(document).ready(function () {
     menu: "#myMenu",
     direction: "horizontal",
     verticalCentered: true,
-    sectionsColor: ["#EDECF2", "#EDECF2", "#EDECF2"],
+    sectionsColor: ["#fff", "#fff", "#fff"],
     anchors: ["feed", "select", "general"],
     scrollingSpeed: 100,
     easing: "linear",
