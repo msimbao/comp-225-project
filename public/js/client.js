@@ -88,10 +88,7 @@ Vue.component("team-option", {
               if (doc.exists) {
                 docTeams = doc.data().teams; 
                 for (i = 0; i < app.teamOptions.length; i++) {
-                  // console.log("checking")
                   if (docTeams.includes(app.teamOptions[i].id) ){
-                      // console.log("removing item")
-                      // console.log("option: ",option,"\n index: ",i,"\n teamId:", app.teamOptions[i].id)
                       app.teamOptions.splice(i, 1);
                     }
                   }
@@ -109,20 +106,16 @@ Vue.component("team-option", {
 
         docRef.get().then((doc) => {
           if (doc.exists) {
-            // console.log("Document data:", doc.data().teams);
             docTeams = doc.data().teams;
-            // console.log("After Concat:", docTeams);
             if (!docTeams.includes(option)) {
               
               for (i = 0; i < app.teamOptions.length; i++) {
                 if (option == app.teamOptions[i].id){
-                  // console.log("option: ",option,"\n index: ",i,"\n teamId:", app.teamOptions[i].id)
                   app.teamOptions.splice(i, 1);
                 }
               }
 
               docTeams.push(option);
-              // console.log("After Push:", docTeams);
             }
 
             return db
@@ -259,7 +252,6 @@ var app = new Vue({
         if (td) {
           te = td.getElementsByTagName("h4")[0];
           txtValue = td.textContent || td.innerText;
-          // console.log(txtValue);
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             tr[i].parentNode.parentNode.style.display = "";
           } else {
@@ -364,9 +356,7 @@ var app = new Vue({
       var myTeamsDoc = db.collection("users").doc(user);
       myTeamsDoc.get().then((doc) => {
         if (doc.exists) {
-          // console.log("Document data:", doc.data().teams);
           docTeams = doc.data().teams;
-          // console.log("After Concat:", docTeams);
           this.userTeams = [];
 
           for (i = 0; i < docTeams.length; i++) {
@@ -492,7 +482,6 @@ function toggleSignUp(state) {
 
 function toggleLogin(state) {
   if (state == "hideLogin") {
-    // console.log("Login Bypassed");
     login.style.top = "-200%";
     maincontent.style.display = "block";
   } else {
