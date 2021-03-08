@@ -221,9 +221,8 @@ html {
   box-shadow: 1px 1px 4px 4px rgba(0,0,0,.1),1px 1px 4px 4px rgba(0,0,0,.1);
 }
 
-#navbar > div {
+#myMenu {
   position:relative;
-  list-style-type: none;
   margin: 0;
   text-align: center;
   font-variant: small-caps;
@@ -232,7 +231,7 @@ html {
   grid-gap:0px;
 }
 
-#navbar li a {
+#myMenu div a {
   display: block;
   color: #777;
   text-decoration: none;
@@ -242,10 +241,10 @@ html {
   /* border-bottom:#fff 2px solid; */
 }
 
-#navbar li a:hover {
+
+#myMenu div a:hover {
   color: #fff;
   background:#DF0810;
-
 }
 
 #navbar div .active a{
@@ -253,13 +252,12 @@ color: #fff;
 background:#DF0810;
 }
 
-#navbar > div {
-  font-size: 150%;
-}
 
-#navbar > div li h6{
+#myMenu > div h6{
   display:none;
 }
+
+
 
 /* For Web: */
 
@@ -276,27 +274,34 @@ background:#DF0810;
     transform:none;
   }
 
-  #navbar > div {
-    font-size: 180%;
+  #myMenu {
+    font-size: 20px;
     grid-gap:20px;
+    display:grid;
   }
 
-  #navbar li a{
-    padding:1px;
-    border-radius: 10px;
+  #myMenu div{
+    width:100px;
+    float:left;
+  }
+
+  #myMenu div a{
+    padding:10px 0px 10px 0px;
+    border-radius: 10px !important;
     background: #fff;
     box-shadow: 0px 1px 4px rgba(0,0,0,.1),0px 1px 4px rgba(0,0,0,.1);
   }
 
-  #navbar > div li h6{
+  #myMenu div h6{
     display:block;
+    margin:0px;
   }
 
-  #navbar > div li i{
+  #myMenu div i{
     display:none;
   }
 
-  #navbar li a:hover {
+  #myMenu div a:hover {
     color:fff;
   }
 
