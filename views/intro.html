@@ -10,11 +10,10 @@
 
 <!DOCTYPE html>
 <html>
-  
   <!-------------------------------------------------------->
   <!-- Head -->
   <!-------------------------------------------------------->
-  
+
   <head>
     <!-- Site Title -->
     <title>Tympdeja</title>
@@ -26,7 +25,7 @@
     <link
       id="favicon"
       rel="icon"
-      href="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fandroid-chrome-512x512.png?v=1614898106513"
+      href="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fwhite.png?v=1615177105156"
       type="image/x-icon"
     />
 
@@ -36,166 +35,239 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Font Awesome 5 -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
 
     <!-- Page Pilling CSS -->
     <link rel="stylesheet" href="../public/css/jquery.pagepiling.css" />
-  
+
     <!-- Site CSS -->
     <link rel="stylesheet" href="../public/css/style.css" />
-
   </head>
 
   <!-------------------------------------------------------->
   <!-- Main Body -->
   <!-------------------------------------------------------->
-  
-  <body >
 
-
-      <img id="logo" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fandroid-chrome-512x512.png?v=1614898106513">
-
+  <body>
+    <a href="intro">
+      <img
+        id="logo"
+        src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fwhite.png?v=1615177105156"
+      />
+    </a>
 
     <div id="load">
       <div class="loader">
-        <div class="lds-facebook"><div></div><div></div><div></div></div>
+        <div class="lds-facebook">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </div>
 
-<div id="maincontent">
+    <div id="maincontent">
+      <div id="first" class="section introSection">
+        <div class="introWords">
+          <div>
+            <h1>Your Clean and Minimal Major League Sports Feed</h1>
+            <p>
+              Tympdeja is a super minimalist news platform. We bring together
+              latest major league sports content that matters most to you.
+            </p>
 
-<div id="first" class="section introSection">
+            <!-- We cut through the clutter, remove social media drama, have zero ads and distractions and do not record your personal data.  -->
+            <a href="/">
+              <button>Get Started</button>
+            </a>
 
-  <div class="introWords">
-      <div >
-        <h1 >Your Clean and Minimal Major League Sports Feed</h1>
-        <p>Tympdeja is a super minimalist news platform. We bring together latest major league sports content that matters most to you. </p>
-        
-        <!-- We cut through the clutter, remove social media drama, have zero ads and distractions and do not record your personal data.  -->
-        <a href="appPage">
-        <button>
-          Get Started
-        </button>
-        </a>
+            <a href="#second" data-menuanchor="second">
+              <button class="whiteButton">Learn More</button>
+            </a>
+            <p>
+              <a href="#second" data-menuanchor="second"
+                ><span id="introArrow">&#10095;</span></a
+              >
+            </p>
+          </div>
+        </div>
 
-        <a href="#second" data-menuanchor="second">
-        <button class="whiteButton" >
-          Learn More
-        </button>
-        </a>
-        <p>
-          <a href="#second" data-menuanchor="second"><span id="introArrow">&#10095;</span></a>
-        </p>
-    </div>
+        <div class="appImage">
+          <img
+            src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreen%20Shot%202021-03-08%20at%2003.23.02_iphone12black_portrait.png?v=1615174009245"
+            width="300px"
+          />
+        </div>
 
-  </div>
+        <!-- <div class="backgroundImage firstImage"></div> -->
+      </div>
 
- 
+      <div id="second" class="section pp-scrollable introSection">
+        <div>
+          <h1>A Minimalist Feed</h1>
+          <p>
+            We cut through the clutter, remove social media, have no ads and
+            paid distractions and do not record your personal data.
+          </p>
 
-  <div class="appImage">
-    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
-  </div>
+          <div class="introFeatures">
+            <div>
 
-  <!-- <div class="backgroundImage firstImage"></div> -->
-  
-</div>
+              <i class="fas card fa-user-lock"></i>
+              <div class="featureDescription">
+                <p><b>Privacy</b></p>
+                <p>
+                  We never collect any personal data, only your email, password
+                  and team choices.
+                </p>
+              </div>
+            </div>
+            <div>
+              <i class="fas card fa-ad"></i>
+              <div class="featureDescription">
+                <p><b>Zero Ads</b></p>
+                <p>
+                  We are a free platform that won't sell you stuff using
+                  annoying ads on your feed.
+                </p>
+              </div>
+            </div>
+            <div>
+              <i class="fas card fa-newspaper"></i>
+              <div class="featureDescription">
+                <p><b>Multiple Sources</b></p>
+                <p>
+                  We give you a variety of articles to read unlike other apps.
+                </p>
+              </div>
+            </div>
+            <div>
+              <i class="fas card fa-comment-slash"></i>
+              <div class="featureDescription">
+                <p><b>Zero Drama</b></p>
+                <p>
+                  No social media based fluff or drama. Just you and your news.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<div id="second" class="section pp-scrollable introSection ">
+      <div id="third" class="section introSection">
+        <div>
+          <h1>Major League Sports</h1>
+          <p>
+            Articles from any team in the four Major US leagues.
+          </p>
 
-  <div>
-    <h1>A Minimalist Feed</h1>
-    <p>We cut through the clutter, remove social media, have no ads and paid distractions and do not record your personal data.</p>
- 
-  <div class="introFeatures">
-    <div>
-      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-life-of-pix-4291.jpg?v=1614986393555">
-      <div class="featureDescription">
-        <p><b>Privacy</b></p>
-        <p>We never collect any personal data, only your email, password and team choices.</p>
+          <div class="introFeatures introLogos">
+            <div style="height: 70px; margin-top:15px;">
+              <img style="width: 100px;height: auto;/*! margin: auto; *//*! margin-top: 15px; */"
+                src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmlb.png?v=1614216154946"
+              />
+            </div>
+            <div style="width: 70px;/*! margin: auto; */margin-left: 15px;">
+              <img
+                src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974"
+              />
+            </div>
+            <div>
+              <img
+                src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788"
+              />
+            </div>
+            <div>
+              <img
+                src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169"
+              />
+            </div>
+
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/necd5v1521905719.png"
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/h0dwny1600552068.png"
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/xtwxyt1421431860.png"
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/6pb37b1515849026.png"
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/0v985i1554032049.png"
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/051sjd1537102179.png"
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/0mrsd41546427902.png"
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.thesportsdb.com/images/media/team/badge/2975411515853129.png"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="backgroundImage thirdImage"></div> -->
+      </div>
+
+      <div id="fourth" class="section introSection">
+        <div>
+          <h1>Let's Connect</h1>
+          <p>
+            If you have any concerns or would like to contribute to the project
+            we would love to have a chat. Can't wait to hear from you!
+          </p>
+          <p>
+            <a href="https://github.com/msimbao/comp-225-project"
+              ><i class="fab fa-google"></i
+            ></a>
+            <a href="https://github.com/msimbao/comp-225-project"
+              ><i class="fab fa-facebook-messenger"></i
+            ></a>
+            <a href="https://github.com/msimbao/comp-225-project"
+              ><i class="fab fa-github"></i
+            ></a>
+          </p>
+        </div>
+
+        <!-- <div class="backgroundImage fourthImage"></div> -->
       </div>
     </div>
-    <div >
-      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-karolina-grabowska-4968390.jpg?v=1614986765667">
-      <div class="featureDescription">
-        <p><b>Zero Ads</b></p>
-        <p>We are a free platform that won't sell you stuff using annoying ads on your feed.</p>
-      </div>
-    </div>
-    <div >
-      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-brotin-biswas-518543.jpg?v=1614986266789">
-      <div class="featureDescription">
-        <p><b>Multiple Sources</b></p>
-        <p>We give you a variety of articles to read unlike other apps.</p>
-      </div>
-    </div>
-    <div >
-      <img class="card" src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fpexels-tracy-le-blanc-607812(1).jpg?v=1614986364245">
-      <div class="featureDescription">
-        <p><b>Zero Drama</b></p>
-        <p>No social media based fluff or drama. Just you and your news.</p>
-      </div>
-    </div>
-  </div>
-</div>
 
-</div>
+    <!--  JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!--  Pagepilling Javascript -->
+    <script
+      type="text/javascript"
+      src="../public/js/jquery.pagepiling.min.js"
+    ></script>
 
-<div id="third" class="section introSection">
-
-  <div>
-    <h1>Major League Sports</h1>
-    <p>Get latest articles from any of the teams in the four Major US leagues.</p>
- 
-    <div class="introFeatures introLogos">
-      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fmlb.png?v=1614216154946">
-      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnba-logo-transparent.png?v=1612974800974">
-      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnhl-1-logo-black-and-white.png?v=1612974870788">
-      <img src="https://cdn.glitch.com/8db8a81a-3c21-4049-a279-408bafb3a783%2Fnfl-1-logo-png-transparent.png?v=1612974806169">
-
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/necd5v1521905719.png">
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/h0dwny1600552068.png">
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/xtwxyt1421431860.png">
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/6pb37b1515849026.png">
-
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/0v985i1554032049.png">
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/051sjd1537102179.png">
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/0mrsd41546427902.png">
-      <img class="introTeam" src="https://www.thesportsdb.com/images/media/team/badge/2975411515853129.png">
-
-    </div>
-
-  </div>
-    
-  <!-- <div class="backgroundImage thirdImage"></div> -->
-
-</div>
-
-<div id="fourth" class="section introSection">
-  <div>
-    <h1>Let's Connect</h1>
-    <p>If you have any concerns or would like to contribute to the project we would love to have a chat. Can't wait to hear from you!</p>
-    <p>
-      <a href="https://github.com/msimbao/comp-225-project"><i class="fab fa-google"></i></a>
-      <a href="https://github.com/msimbao/comp-225-project"><i class="fab fa-facebook-messenger"></i></a>
-      <a href="https://github.com/msimbao/comp-225-project"><i class="fab fa-github"></i></a>
-    </p>
-  
-</div>
-
-<!-- <div class="backgroundImage fourthImage"></div> -->
-
-</div>
-</div>
-
-  <!--  JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!--  Pagepilling Javascript -->
-  <script type="text/javascript" src="../public/js/jquery.pagepiling.min.js"></script>
-
-  <!--  Firebase Login Script -->
-  <script src="../public/js/intro.js"></script>
-
+    <!--  Firebase Login Script -->
+    <script src="../public/js/intro.js"></script>
   </body>
 </html>

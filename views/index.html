@@ -26,7 +26,7 @@
     <link
       id="favicon"
       rel="icon"
-      href="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fandroid-chrome-512x512.png?v=1614898106513"
+      href="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fwhite.png?v=1615177105156"
       type="image/x-icon"
     />
 
@@ -52,7 +52,7 @@
   
   <body >
 
-   
+
 
     <div id="load">
       <div class="loader">
@@ -103,12 +103,13 @@
       <div class="loginForm">
         <form id="createAccount">
         <h2 style="font-variant: small-caps;">Create Account</h2>
-        <p>Register With Your Email Account</p>
+        <h2>Register With Your Email Account</h2>
         <input id="signupEmail" type="text" placeholder="Email Address..." />
         <input id="signupPassword" type="password" placeholder="Password..." />
+        <input id="confirmPassword" type="password" placeholder="Confirm Password..." />
         <button id="submitSignUp" class="button introButton" type="submit">SIGN UP</button>
         </form>
-        <p>Or <u class="pointerItem" onclick="toggleSignUp('hideSignup')">Login Into Your Account</u></p>
+        <h2>Or <u class="pointerItem" onclick="toggleSignUp('hideSignup')">Login Into Your Account</u></h2>
       </div>
 
       <div class="loginForm">
@@ -129,7 +130,13 @@
         <!-- <h2>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></h2> -->
 
       </div>
-
+      
+      <a href="intro">
+        <img
+          id="logo"
+          src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fwhite.png?v=1615177105156"
+        />
+      </a>
 
     </div>
 
@@ -176,7 +183,7 @@
           <h6>Dark mode</h6>
         </a>
       </li> -->
-    <li id="submitLogout" onclick="toggleLogin('hideLogin');">
+    <li id="submitLogout" onclick="toggleLogin('showLogin');">
       <a href="#login">
         <i class="fas fa-door-open"></i>
         <h6>Logout</h6>
