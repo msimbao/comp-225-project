@@ -51,7 +51,7 @@ a {
   color: #EDECF2;
   color: #333;
   color: #DF0810;
-  color: #DC4A47;
+  color: #54b6fd;
 }
 
 #logo{
@@ -332,6 +332,8 @@ input {
 }
 
 
+
+
 input:focus,
 input:hover {
     background-color:#EDECF2 !important;
@@ -348,6 +350,7 @@ button {
   cursor: pointer;
   transition: 0.3s;
   font-size:15px;
+  font-variant:small-caps;
   box-shadow:0px 1px 4px rgba(0,0,0,.1),0px 1px 4px rgba(0,0,0,.1);
 }
 
@@ -385,16 +388,21 @@ button:hover {
 .newsItem {
   position:relative;
   height: 200px;
-  transition: 0.05s;
+  transition: 0.2s;
   overflow: hidden;
   display:grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 10px;
   margin:10px;
+  border-radius:15px;
 }
 
 .newsItem:hover {
-  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
+  box-shadow:0px 1px 4px rgba(0,0,0,.1),0px 1px 4px rgba(0,0,0,.1);
+}
+
+.newsItem:hover .newsImageHolder, .newsItem:hover .newsItem img:not(.teamImage){
+  box-shadow:none;
 }
 
 .newsImageHolder{
@@ -404,8 +412,14 @@ button:hover {
   border-radius: 15px;
   overflow: hidden;
   text-align:center;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  background-image:url(https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fwhite.png?v=1615177105156);
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: 0 1px 4px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.1);
 }
+
 
 .newsItem img:not(.teamImage) {
   position:absolute;
@@ -420,9 +434,18 @@ button:hover {
 
 .teamImage{
   position:absolute;
-  right:10px;
-  bottom:10px;
+  right:5px;
+  bottom:5px;
   height: 50px !important;
+}
+
+.newsItem h6{
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  color:#54b6fd;
+  font-variant:small-caps;
+  font-size:10px;
 }
 
 .articleWords{
@@ -435,10 +458,15 @@ button:hover {
 
 .articleWords p, .articleWords h4 {
   width:100%;
-  font-size:10px;
+  font-size:15px;
   float:left;
 }
 
+
+
+.articleWords h4::after{
+  content:"...";
+}
 
 /* For Mobile */
 
@@ -458,21 +486,29 @@ button:hover {
   }
 
   .articleWords h4 {
-    /* position:absolute;
-  left:100px; */
     grid-column-start: 1;
     grid-column-end: 3;
     font-size:200%;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px;
   }
+  
 
   .teamImage{
     position:absolute;
     right:5px;
     bottom:5px;
     height: 20px !important;
+  }
+
+  .newsItem h6{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    color:#DF0810;
+    font-variant: small-caps;
+    font-size:6px;
   }
 }
 /*//////////////////////////////////////////////////////////////
@@ -533,6 +569,12 @@ button:hover {
   background: white;
   color: black;
   margin: 0px 5px 5px 0px;
+  font-variant: normal;
+}
+
+.activeTab{
+  background:#DF0810;
+  color:white;
 }
 
 #resetTeams {
@@ -561,8 +603,12 @@ button:hover {
   }
 
   #resetTeams {
-    width:300px;
-    margin:auto;
+    width: 300px;
+    margin: auto;
+    position: absolute;
+    margin-top:5px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
 
@@ -570,11 +616,17 @@ button:hover {
     width:300px;
     font-size: 9px;
     margin-top: 5px;
+    position: relative;
+    margin: auto;
   }
 
   .selectGrid div img {
     height: 50px;
     float: right;
+  }
+
+  #addTeams .selectGrid{
+    padding-top: 30px;
   }
 }
 

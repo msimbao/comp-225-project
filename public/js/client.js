@@ -25,7 +25,7 @@
 Vue.component("feed-item", {
   props: ["feed"],
   template:
-    '<a :href="feed.url">' +
+    '<a :href="feed.url" target="_blank" rel="noopener noreferrer">' +
     '<transition name="fade">'+
     '<div class="newsItem">' +
     '<div class="newsImageHolder">' +
@@ -34,6 +34,7 @@ Vue.component("feed-item", {
     '<div class="articleWords">' +
     "<h4>{{feed.title}}</h4>" +
     '<p>"{{feed.description}}..."</p>' +
+    '<h6>{{feed.author}}</h6>'+
     "</div>" +
     '<img class="teamImage" :src="feed.teamLogo">' +
     "</div>" +
@@ -46,7 +47,7 @@ Vue.component("feed-item", {
 Vue.component("news-item", {
   props: ["news"],
   template:
-    '<a :href="news.url">' +
+    '<a :href="news.url" target="_blank" rel="noopener noreferrer">' +
     '<transition name="fade">'+
     '<div class=" newsItem">' +
     '<div class="newsImageHolder">' +
@@ -55,8 +56,9 @@ Vue.component("news-item", {
     '<div class="articleWords">' +
     "<h4>{{news.title}}</h4>" +
     '<p>"{{news.description}}..."</p>' +
-    '<div class="teamImage"></div>' +
+    '<h6>{{news.author}}</h6>'+
     "</div>" +
+    '<div class="teamImage"></div>' +
     "</div>" +
     '</transition>'+
     "</a>",
@@ -293,10 +295,16 @@ var app = new Vue({
      */
     setTabs: function () {
       tabcontent = document.getElementsByClassName("selectTabs");
+      tablinks = document.getElementsByClassName("tablinks");
 
       for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
       }
+
+      tabcontent[0].style.display = "grid";
+      tablinks[0].className += " activeTab";
+
+
     },
     /**
      * @name openTab switches tabs based on buttons in a list
@@ -314,11 +322,13 @@ var app = new Vue({
         tabcontent[i].style.display = "none";
       }
       for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(" activeTab", "");
       }
       document.getElementById(tabName).style.display = "grid";
-      event.currentTarget.className += " active";
+      event.currentTarget.className += " activeTab";
     },
+
+
     /**
      * @name resetTeams
      * @brief Function to clear the teamOptions array
@@ -433,7 +443,10 @@ $(document).ready(function () {
     afterLoad: function (anchorLink, index) {},
     afterRender: function () {},
   });
+  $.fn.pagepiling.setAllowScrolling(false);
 });
+
+
 
 /*//////////////////////////////////////////////////////////////
   _                 _                  _____ _                         
