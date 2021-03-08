@@ -62,6 +62,7 @@
             });
         }).then(() => {
             toggleLogin('hideLogin');
+            app.resetTeams();
             welcomeScreen = document.getElementById("welcomeScreen");
             welcomeScreen.style.display = "grid";
             signUpForm.reset();
