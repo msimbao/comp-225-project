@@ -614,6 +614,13 @@ button:hover {
   text-align: center;
 }
 
+.loginForm img, .loginForm a{
+  position:relative;
+  height:50px;
+  width:auto;
+  margin:auto;
+}
+
 #welcomeScreen{
   display:none;
   position:absolute;
