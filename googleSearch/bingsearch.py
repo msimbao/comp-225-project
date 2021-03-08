@@ -38,7 +38,7 @@ class BingSearch:
             newDict["title"] = html.unescape(i["name"])
             newDict["url"] = i["url"]
             newDict["description"] = html.unescape(i["description"])
-            newDict["author"] = i["provider"][0]["name"]
+            newDict["author"] = html.unescape(i["provider"][0]["name"])
             try:
                 newDict["image"] = i["image"]["thumbnail"]["contentUrl"] + "&h=500&p=0"
             except KeyError:
@@ -46,14 +46,6 @@ class BingSearch:
             list.append(newDict)
 
         return list
-
-    # def __get_team_logo(self, team_name):
-    #     team_name = team_name.replace(" ", "+")
-    #     url = "https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t={}".format(team_name)
-    #     response = requests.get(url)
-    #     response.raise_for_status()
-    #     search_results = json.dumps(response.json(), indent=4)
-    #     return json.loads(search_results)["teams"][0]['strTeamBadge']
 
     def get_article_list(self, n=50):
         if n > len(self.__filteredList):
