@@ -463,11 +463,11 @@ $(document).ready(function () {
 
 function toggleSignUp(state) {
   if (state == "showSignUp") {
-    $("#login").children().eq(2).fadeOut();
-    $("#login").children().eq(1).fadeIn();
-  } else {
-    $("#login").children().eq(2).fadeIn();
     $("#login").children().eq(1).fadeOut();
+    $("#login").children().eq(0).fadeIn();
+  } else {
+    $("#login").children().eq(1).fadeIn();
+    $("#login").children().eq(0).fadeOut();
   }
 }
 
@@ -498,25 +498,21 @@ function hideWelcomeScreen() {
   welcomeScreen.style.top = "-200%";
 }
 
+/**
+ * @name validatePassword function to ask user to confirm their password in a second password entry box
+ * @copyright Diego Leme https://codepen.io/diegoleme
+ */
 
+var password = document.getElementById("signupPassword")
+  , confirm_password = document.getElementById("confirmPassword");
 
-$( document ).ready(function() {      
-  var is_mobile = false;
-
-  if( $('#navbar').css('top')=='2%') {
-      is_mobile = true;       
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
   }
+}
 
-  if (is_mobile == true) {
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
-    var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
-      } else {
-        document.getElementById("navbar").style.top = "-20%";
-      }
-      prevScrollpos = currentScrollPos;
-    }
-  }
-});
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;

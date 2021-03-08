@@ -58,7 +58,7 @@ a {
   position:absolute;
   top:20px;
   left:20px;
-  height:30px;
+  height:50px;
   font-size:10px;
   z-index:50;
   cursor:pointer;
@@ -129,6 +129,17 @@ html {
   grid-template-columns: auto;
   grid-gap: 5px;
 }
+
+ /* Hide scrollbar for Chrome, Safari and Opera */
+ .pp-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.pp-section {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 
 
 .pp-section > div {
   width: 80%;
@@ -210,7 +221,7 @@ html {
   opacity: 1;
   background:white;
   border-radius: 15px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.1);
+  box-shadow: 1px 1px 4px 4px rgba(0,0,0,.1),1px 1px 4px 4px rgba(0,0,0,.1);
   overflow:hidden;
 }
 
@@ -678,7 +689,7 @@ button:hover {
 /////////////////////////////////////////////////////////////////////////*/
 
 #load {
-  background: #003153;
+  background: #fff;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -690,6 +701,7 @@ button:hover {
   -webkit-opacity: 1;
   display: block;
   text-align: center;
+  box-shadow: 1px 1px 4px 4px rgba(0,0,0,.1),1px 1px 4px 4px rgba(0,0,0,.1);
 }
 
 /* Safari */
@@ -794,7 +806,7 @@ button:hover {
   position: absolute;
   left: 8px;
   width: 16px;
-  background: #fff;
+  background: #DF0810;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {
@@ -860,9 +872,10 @@ button:hover {
 
 
 #fourth > div > div{
-  position:absolute;
+  position:relative;
   top:50%;
   transform: translateY(-50%) ;
+  margin:auto;
 }
 
 
@@ -886,7 +899,7 @@ button:hover {
 }
 
 #fourth a:hover{
-  color:black;
+  color:#DF0810;
 }
 
 #second h1, #third h1, #fourth h1{
@@ -896,8 +909,19 @@ button:hover {
 .introFeatures{
   position:relative;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 40px;
+  margin:auto;
   grid-template-columns: auto auto auto auto;
+}
+
+.introFeatures i {
+  font-size: 80px;
+  width: 100%;
+  padding: 20px 0px 20px 0px;
+}
+
+.introFeatures b{
+  font-weight:500;
 }
 
 .introFeatures img{
@@ -924,18 +948,24 @@ button:hover {
 
 .featureDescription p b{
   font-size: 15px;
-  /* color:#333; */
+  font-variant: small-caps;
 }
 
 .introLogos{
   padding:0% 10% 0% 10%;
-  filter: drop-shadow(5px 5px 5px #222); 
+}
+
+.introLogos div {
+  height:100px;
+  width:100px;
+  border-radius:15px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.1);
 }
 
 .introLogos img {
   height: 100px;
   width: auto;
-  margin: auto;
+
 }
 
 .item1 { grid-area: center; }
@@ -975,6 +1005,10 @@ button:hover {
 
 @media only screen and (max-width: 768px) {
 
+  .featureDescription{
+    text-align:center;
+  }
+
   #first > div{
     grid-template-columns: auto;
   }
@@ -992,8 +1026,12 @@ button:hover {
     grid-template-columns: auto auto;
   }
 
-  .introTeam{
+  .introLogos div:nth-child(n+5){
     display:none;
+  }
+
+  .introFeatures i {
+    width:80%;
   }
 }
 
