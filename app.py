@@ -41,12 +41,12 @@ app.secret = os.environ.get('SECRET')
 @app.route('/')
 def homepage():
     """Displays the homepage."""
-    return render_template('index.html')
+    return render_template('intro.html')
 
-@app.route('/intro')
+@app.route('/home')
 def appPage():
     """Displays the Intro Page"""
-    return render_template('intro.html')
+    return render_template('index.html')
 
 
 OPTION_DATA = {}

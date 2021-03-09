@@ -508,11 +508,6 @@ button:hover {
   }
 
   .newsItem h6{
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    color:#DF0810;
-    font-variant: small-caps;
     font-size:6px;
   }
 }
@@ -650,6 +645,7 @@ button:hover {
 #login {
   position: absolute;
   z-index: 200;
+
   height: 100%;
   width: 100%;
   transition: 1.5s;
@@ -688,15 +684,10 @@ button:hover {
   top:0%;
   width:100%;
   height:100%;
-  background:white;
   z-index:51;
-  grid-template-columns: auto auto auto auto;
+  background:white;
+  grid-template-columns: auto auto;
   transition: 0.5s;
-}
-
-#welcomeScreen div:first-child(1){
-  grid-column-start: 1;
-  grid-column-end: 3;
 }
 
 #welcomeScreen div{
@@ -705,20 +696,15 @@ button:hover {
   width:80%;
 }
 
-#welcome div img{
-  width:60%;
-}
 
-#welcome button{
-  vertical-align:center;
+#welcomeScreen ol{
+  font-size:17px;
 }
 
 /* For Mobile: */
 
 @media only screen and (max-width: 768px) {
-  .loginCover {
-    display: none;
-  }
+
   #login {
     width: 100%;
     height: 100%;
@@ -732,14 +718,20 @@ button:hover {
   }
 
   #welcomeScreen{
-    grid-template-columns: auto;
-    padding:50px 10px 10px 10px;
+    display:block;
     font-size:15px;
     overflow-y:scroll;
+    margin-bottom:70px;
   }
 
   #welcomeScreen div{
     width:80%;
+    margin-bottom:70px;
+  }
+
+
+  #welcomeScreen img{
+    /* display:none; */
   }
 }
 

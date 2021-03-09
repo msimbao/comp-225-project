@@ -74,16 +74,23 @@
 ///////////////////////////////////////////////////////////////////
 -->
 <div id="welcomeScreen">
+
+  <div style="text-align: right;">
+    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
+  </div>
+
   <div>
 
-    <h2> App Shortcut</h2>
-    <p>Thank you for choosing Tympdeja for your sports news coverage</p>
-    <p>First, bookmark this page and on mobile, add an app shortcut to quickly get to your feed </p>
-    <ul>
+    <h1>Welcome!</h1>
+    <p>Thanks for Joining Tympdeja.</p>
+    <p>First, bookmark this page to quickly get to your feed. </p>
+    <p>Additionally, add an app shortcut to your smartphone: </p>
+    <ol>
       <li>Launch “Chrome” app.</li>
-      <li>Open the website or web page you want to pin to your home screen.</li>
-      <li>Tap the menu icon (3 dots in upper right-hand corner) and tap Add to homescreen.</li>
-    </ul>
+      <li>Open Tympdeja and navigate to your home feed</li>
+      <li>Tap the menu icon (3 dots in upper right-hand corner)</li>
+      <li>Tap 'Add to homescreen.'</li>
+    </ol>
 
     <a href="#select">
     <button onclick="hideWelcomeScreen()" data-menuanchor="select">
@@ -92,16 +99,14 @@
   </a>
 
   </div>
-  <div>
-    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
-  </div>
+
   
 </div>
 
     <div id="login">
 
       <div class="loginForm">
-        <a href="intro">
+        <a href="/">
           <img
             src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fgrey.png?v=1615177105156"
           />
@@ -115,9 +120,9 @@
         </form>
         <h2>Or <u class="pointerItem" onclick="toggleSignUp('hideSignup')">Login Into Your Account</u></h2>
       </div>
-
+8
       <div class="loginForm">
-        <a href="intro">
+        <a href="/">
           <img
             src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fgrey.png?v=1615177105156"
           />
@@ -233,7 +238,7 @@
       <feed-item
       v-for="item in feedNews"
       v-bind:feed="item"
-      v-bind:key="item.title"
+      v-bind:key="item.id"
   
     ></feed-item>
   </transition-group>
@@ -335,7 +340,7 @@
           <news-item
             v-for="item in generalNews"
             v-bind:news="item"
-            v-bind:key="item.title"
+            v-bind:key="item.id"
           ></news-item>
       </transition-group>
 
