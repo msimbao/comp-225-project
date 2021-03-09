@@ -272,7 +272,7 @@ var app = new Vue({
       team = this.userTeams[i].title
       logo = this.userTeams[i].image
       $.post(
-        "/news?" + $.param({ newsItem: team, number:3, logo: logo }),
+        "/news?" + $.param({ newsItem: team, number:10, logo: logo }),
         (data) => {
           for (j = 0; j < data.news.length; j++) {
             data.news[j].teamLogo = data.logoUrl
