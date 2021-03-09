@@ -32,6 +32,7 @@ class BingSearch:
     def __filter_articles(self, articleList, query):
         list = []
         # print(len(articleList))
+        news_id = 0
         for i in articleList:
             newDict = {}
 
@@ -39,6 +40,8 @@ class BingSearch:
             newDict["url"] = i["url"]
             newDict["description"] = html.unescape(i["description"])
             newDict["author"] = html.unescape(i["provider"][0]["name"])
+            newDict["id"] = news_id
+            news_id += 1
             try:
                 newDict["image"] = i["image"]["thumbnail"]["contentUrl"] + "&h=500&p=0"
             except KeyError:
@@ -73,6 +76,9 @@ class BingSearch:
 
     def get_author(self):
         return self.__get_object("author")
+
+    def get_ids(self):
+        return self.__get_object("id")
 
 
 if __name__ == '__main__':
