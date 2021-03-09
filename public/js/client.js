@@ -111,7 +111,8 @@ Vue.component("team-option", {
               
               for (i = 0; i < app.teamOptions.length; i++) {
                 if (option == app.teamOptions[i].id){
-                  app.teamOptions.splice(i, 1);
+                  // app.teamOptions.splice(i, 1);
+                  alert("This Team has been added")
                 }
               }
 
@@ -163,9 +164,7 @@ Vue.component("remove-item", {
           docTeams = doc.data().teams;
           if (docTeams.includes(option)) {
             var index = docTeams.indexOf(option);
-            // console.log("Splice started for:", option);
             docTeams.splice(index, 1);
-            // console.log("After Deletion:", docTeams);
             app.loadUserTeams();
           }
 
@@ -202,6 +201,7 @@ var app = new Vue({
     teamOptions: [],
     feedNews: [],
     userTeams: [],
+    selectionDict: {},
   },
   methods: {
     /**
