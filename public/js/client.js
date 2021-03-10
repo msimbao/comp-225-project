@@ -77,10 +77,14 @@ Vue.component("team-option", {
      */
     teamOption: function (option, record) {
       if (record == "") {
-        $.post(
-          "/conferences?" + $.param({ option: option }),
-          (option_data) => {
-            app.teamOptions = option_data;
+
+        var childrenIds = app.teamsJson[option]["children"]
+        var childrenData = []
+        for (i = 0; i < childrenIds.length; i++) {
+          childrenData.push(app.teamsJson[childrenIds[i]])
+        }
+
+            app.teamOptions = childrenData;
 
             var docTeams = [];
             var docRef = db.collection("users").doc(user);
@@ -97,8 +101,6 @@ Vue.component("team-option", {
                 console.log("No such document!");
               }
             });
-          }
-        );
       } else {
         //Insert Data to user teams
         var docTeams = [];
@@ -112,11 +114,12 @@ Vue.component("team-option", {
               for (i = 0; i < app.teamOptions.length; i++) {
                 if (option == app.teamOptions[i].id){
                   // app.teamOptions.splice(i, 1);
-                  alert("This Team has been added")
+                  alert("This team's articles have been added to your feed!")
                 }
               }
 
               docTeams.push(option);
+              app.loadUserTeams();
             }
 
             return db
@@ -164,6 +167,7 @@ Vue.component("remove-item", {
           docTeams = doc.data().teams;
           if (docTeams.includes(option)) {
             var index = docTeams.indexOf(option);
+            alert("This team's articles have been removed from your feed!");
             docTeams.splice(index, 1);
             app.loadUserTeams();
           }
@@ -201,7 +205,7 @@ var app = new Vue({
     teamOptions: [],
     feedNews: [],
     userTeams: [],
-    selectionDict: {},
+    teamsJson: {},
   },
   methods: {
     /**
@@ -326,10 +330,17 @@ var app = new Vue({
      * @brief Function to clear the teamOptions array
      */
     resetTeams: function () {
+          this.teamOptions = [this.teamsJson["0"],this.teamsJson["37"],this.teamsJson["70"],this.teamsJson["111"]];
+    },
+    /**
+     * 
+     * @param {*} state 
+     */
+    setTeamsJson: function () {
       $.post(
-        "/resetTeams?" + $.param({ option: "begin" }),
+        "/setTeamsJson?" + $.param({ option: "begin" }),
         (resetTeams) => {
-          this.teamOptions = resetTeams;
+          this.teamsJson = resetTeams;
         }
       );
     },
@@ -361,12 +372,8 @@ var app = new Vue({
 
           for (i = 0; i < docTeams.length; i++) {
             teamId = docTeams[i];
-            $.post(
-              "/grabTeam?" + $.param({ teamId: teamId }),
-              (grabbedTeam) => {
-                this.userTeams.push(grabbedTeam);
-              }
-            );
+            currentTeam = this.teamsJson[teamId]
+                this.userTeams.push(currentTeam);
           }
 
           return db
@@ -389,6 +396,7 @@ var app = new Vue({
   created: function () {
     this.setTabs();
     this.toggleResetButton('off')
+    this.setTeamsJson()
     // console.log(this);
   },
 });

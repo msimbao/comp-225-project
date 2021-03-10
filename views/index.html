@@ -234,14 +234,13 @@
   </div>
     <div id="newsFeed" class="tabContent">
 
-      <transition-group name="list" tag="div">
+      <!-- <transition-group name="list" tag="div"> -->
       <feed-item
       v-for="item in feedNews"
       v-bind:feed="item"
-      v-bind:key="item.id"
   
     ></feed-item>
-  </transition-group>
+  <!-- </transition-group> -->
 
     </div>
 </div>
@@ -268,7 +267,7 @@
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p> -->
         <div>
-          <button class="tablinks" v-on:click="openTab('myTeams',$event);  loadUserTeams();">My teams</button>
+          <button class="tablinks" v-on:click="openTab('myTeams',$event);">My teams</button>
           <button class="tablinks" v-on:click="openTab('addTeams',$event);">Add Teams</button>
         </div>
         
@@ -336,13 +335,12 @@
   </div>
 
     <div id="news" class="tabContent">
-      <transition-group name="list" tag="div">
+      <!-- <transition-group name="list" tag="div"> -->
           <news-item
             v-for="item in generalNews"
             v-bind:news="item"
-            v-bind:key="item.id"
           ></news-item>
-      </transition-group>
+      <!-- </transition-group> -->
 
     </div>
 
