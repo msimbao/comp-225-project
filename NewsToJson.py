@@ -245,15 +245,14 @@ def createNewNews(query):
         A dictionary containing article title, article url, article image, article description, article author.
     """
     bing_search = BingSearch(query)
-    article_list = bing_search.get_article_list(n=80)
     newsDataBaseForm = {}
 
-    titles = article_list.get_titles()
-    urls = article_list.get_urls()
-    images = article_list.get_images()
-    descriptions = article_list.get_description()
-    authors = article_list.get_author()
-    ids = article_list.get_ids()
+    titles = bing_search.get_titles()
+    urls = bing_search.get_urls()
+    images = bing_search.get_images()
+    descriptions = bing_search.get_description()
+    authors = bing_search.get_author()
+    ids = bing_search.get_ids()
 
     for i in range(0, len(titles) - 1):
         title = titles[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace("$",
