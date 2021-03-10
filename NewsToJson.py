@@ -72,6 +72,12 @@ WCSOUTHWEST = ["WCSOUTHWEST",
                "New Orleans Pelicans",
                "San Antonio Spurs"]
 
+ECNBA = [ECATLANTA, ECCENTRAL, ECSOUTHEAST]
+
+WCNBA = [WCNORTHEAST, WCPACIFIC, WCSOUTHWEST]
+
+NBAQUERYLIST = ["NBA", ECNBA, WCNBA]
+
 # MLB Division List
 NLE = ["NLE",
        "Atlanta Braves",
@@ -209,11 +215,7 @@ AL = [ALE, ALC, ALW]
 
 MLBQUERYLIST = ["MLB", NL, AL]
 
-ECNBA = [ECATLANTA, ECCENTRAL, ECSOUTHEAST]
 
-WCNBA = [WCNORTHEAST, WCPACIFIC, WCSOUTHWEST]
-
-NBAQUERYLIST = ["NBA", ECNBA, WCNBA]
 
 AFC = [AFCEAST, AFCNORTH, AFCSOUTH, AFCWEST]
 
@@ -530,7 +532,7 @@ def createNewsDataInFireBase(query, league="", conference="", division="", team=
     db = firebase.database()
 
     print("Uploading news of " + team + " from " + division + " " + conference + " " + league)
-    db.child(getFileName()).child(league).child(conference).child(division).child(team).set(news)
+    db.child("news").child(getFileName()).child(league).child(conference).child(division).child(team).set(news)
 
     return
 
