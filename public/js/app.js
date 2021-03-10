@@ -54,12 +54,12 @@
 
         //sign up user
         auth.createUserWithEmailAndPassword(email, password).then(cred => {
-            //console.log(cred.user) this was just for testing
-            //TODO: Move from sign up page to the select teams page/gen feed page and reset the sign up form
-            user = cred.user.uid;
+            newUser = cred.user.uid;
             return db.collection("users").doc(cred.user.uid).set({
                 teams: []
             });
+        }).catch(error => {
+            console.error(error);
         }).then(() => {
             toggleLogin('hideLogin');
             app.resetTeams();
@@ -94,7 +94,9 @@
             app.resetTeams();
             app.loadUserTeams();
             loginForm.reset();
-        });
+        }).catch(error => {
+            console.error(error);
+        })
     });
 
 
