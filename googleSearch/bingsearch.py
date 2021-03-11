@@ -55,7 +55,7 @@ class BingSearch:
 
         return list
 
-    def get_article_list(self, n=50):
+    def get_article_list(self, n=200):
         if n > len(self.__filteredList):
             return self.__filteredList
         else:

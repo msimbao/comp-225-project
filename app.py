@@ -48,55 +48,21 @@ def appPage():
     """Displays the Intro Page"""
     return render_template('index.html')
 
+@app.route('/setTeamsJson', methods=['GET', 'POST'])
+def setTeamsJson():
+    """[summary]
+    Simple endpoint to fetch the teams.json file and read and jsonify it to be used in javascript
 
-OPTION_DATA = {}
-OPTION_LIST = []
-
-@app.route('/resetTeams', methods=['GET', 'POST'])
-def resetTeams():
-    
-    global OPTION_DATA
+    Returns: OPTION_DATA the teams.json file jsonified to a javascript object
+    """
+    OPTION_DATA = {}
 
     f = open("sportsData/teamData.json", "r")
     OPTION_DATA =  json.loads(f.read())
-    OPTION_LIST = [OPTION_DATA['0'],OPTION_DATA['37'],OPTION_DATA['70'],OPTION_DATA['111']]
     f.close()
 
-    return jsonify(OPTION_LIST)
+    return jsonify(OPTION_DATA)
 
-#============================================================================
-
-@app.route('/grabTeam', methods=['GET', 'POST'])
-def grabTeam():
-    if 'teamId' in request.args:
-        teamId = request.args['teamId']
-        # print("this is the teamId:",teamId)
-        TEAM = OPTION_DATA[str(teamId)]
-    return jsonify(TEAM)
-
-
-@app.route('/conferences', methods=['GET', 'POST'])
-def option_data():
-
-    # TODO: Replace this json read with the working output from sportDictionaries.
-    # has to be made so that OPTION_DATA is also not a global variable
-    # TODO: Also we need images for the team logos. Preferably urls. Example given 
-    # for the top level league logos. We can also just leave logos out. They need to be 
-    # added as keys to the respective league data
-
-    global OPTION_DATA
-    global OPTION_LIST
-
-    #============================================================================
-
-    if 'option' in request.args:
-        option = request.args['option']
-        OPTION_LIST = []
-        for i in OPTION_DATA[option]["children"]:
-            OPTION_LIST.append(OPTION_DATA[str(i)])
-
-    # print(OPTION_DATA)
-    return jsonify(OPTION_LIST)
 
 @app.route('/news', methods=['GET', 'POST'])
 def news():

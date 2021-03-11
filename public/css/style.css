@@ -454,6 +454,7 @@ button:hover {
 }
 
 .articleWords{
+  padding-left:10px;
   width:100%;
   position:relative;
   grid-column-start: 2;
@@ -626,7 +627,7 @@ button:hover {
   }
 
   #addTeams .selectGrid{
-    padding-top: 30px;
+    padding-top: 40px;
   }
 }
 
