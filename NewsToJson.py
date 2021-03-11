@@ -32,7 +32,7 @@ CONFIG_TRIAL = {
 # NBA division lists
 ECATLANTA = ["ECATLANTA",
              "Boston Celtics",
-             "Brooklin Nets",
+             "Brooklyn Nets",
              "New York Knicks",
              "Philadelphia 76ers",
              "Toronto Raptors"]
@@ -85,7 +85,7 @@ NLC = ["NLC",
        "Cincinnati Reds",
        "Milwaukee Brewers",
        "Pittsburgh Pirates",
-       "St Louis Cardinals"]
+       "St. Louis Cardinals"]
 
 NLW = ["NLW",
        "Arizona Diamondbacks",
@@ -144,7 +144,7 @@ NFCEAST = ["NFCEAST",
            "Dallas Cowboys",
            "New York Giants",
            "Philadelphia Eagles",
-           "Washington Redskins"]
+           "Washington Football Team"]
 
 NFCNORTH = ["NFCNORTH",
             "Chicago Bears",
@@ -190,7 +190,7 @@ WCCENTRAL = ["WCCENTRAL",
              "Dallas Stars",
              "Minnesota Wild",
              "Nashville Predators",
-             "St Louis Blues",
+             "St. Louis Blues",
              "Winnipeg Jets"]
 
 WCPACIFICNHL = ["WCPACIFIC",
@@ -251,6 +251,7 @@ def createNewNews(query):
     descriptions = bing_search.get_description()
     authors = bing_search.get_author()
     ids = bing_search.get_ids()
+    date_list = bing_search.get_date()
 
     for i in range(0, len(titles) - 1):
         title = titles[i]  # .replace("/", "").replace("[", "").replace("]", "").replace("%", "").replace("$",
@@ -267,7 +268,8 @@ def createNewNews(query):
             'Image': image,
             'Description': description,
             'Author': author,
-            'ID': news_id
+            'ID': news_id,
+            'Date': date_list
         }
 
     return newsDataBaseForm
@@ -520,7 +522,7 @@ def jsonToArray(fileName):
 
 
 # Utils for writing news as data directly into firebase
-def createNewsDataInFireBase(query, league="", conference="", division="", team=""):
+def createNewsDataInFireBase(query, id):
     # Acquire the date of the current query
 
     news = createNewNews(query)
@@ -529,8 +531,8 @@ def createNewsDataInFireBase(query, league="", conference="", division="", team=
     firebase = pyrebase.initialize_app(CONFIG)
     db = firebase.database()
 
-    print("Uploading news of " + team + " from " + division + " " + conference + " " + league)
-    db.child(getFileName()).child(league).child(conference).child(division).child(team).set(news)
+    print("Uploading news of " + query)
+    db.child(getFileName()).child(id).set(news)
 
     return
 
@@ -611,14 +613,22 @@ def uploadNews():
     uploadMLBData()
     uploadNHLData()
     uploadNFLData()
-
-    f = open("firebasefile.txt", "a")
-    f.write("\n" + getFileName())
-    f.close()
     return
+
+def get_from_teamDataJson():
+    with open("sportsData/teamData.json") as f:
+        team_data = json.load(f)
+
+    results = json.dumps(team_data)
+    data_dict = json.loads(results)
+    for i in data_dict:
+        team = data_dict[i]["title"]
+        createNewsDataInFireBase(team, i)
+
 
 
 if __name__ == '__main__':
-    start_time = time.time()
-    uploadNews()
-    print(time.time() - start_time)
+    # start_time = time.time()
+    # uploadNews()
+    # print(time.time() - start_time)
+    get_from_teamDataJson()
