@@ -629,6 +629,6 @@ def get_from_teamDataJson():
 
 if __name__ == '__main__':
     # start_time = time.time()
-    # uploadNews()
+    # uploadNews(
     # print(time.time() - start_time)
     get_from_teamDataJson()
