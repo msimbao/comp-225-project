@@ -50,7 +50,11 @@ def appPage():
 
 @app.route('/setTeamsJson', methods=['GET', 'POST'])
 def setTeamsJson():
+    """[summary]
+    Simple endpoint to fetch the teams.json file and read and jsonify it to be used in javascript
 
+    Returns: OPTION_DATA the teams.json file jsonified to a javascript object
+    """
     OPTION_DATA = {}
 
     f = open("sportsData/teamData.json", "r")
@@ -58,14 +62,6 @@ def setTeamsJson():
     f.close()
 
     return jsonify(OPTION_DATA)
-
-@app.route('/grabTeam', methods=['GET', 'POST'])
-def grabTeam():
-    if 'teamId' in request.args:
-        teamId = request.args['teamId']
-        # print("this is the teamId:",teamId)
-        TEAM = OPTION_DATA[str(teamId)]
-    return jsonify(TEAM)
 
 
 @app.route('/news', methods=['GET', 'POST'])
