@@ -237,7 +237,8 @@ html {
   text-decoration: none;
   transition: 0.1s;
   font-weight: bold;
-  padding: 20px;
+  padding: 15px 0px 5px 0px;
+  font-size:10px;
   /* border-bottom:#fff 2px solid; */
 }
 
@@ -254,7 +255,8 @@ background:#DF0810;
 
 
 #myMenu > div h6{
-  display:none;
+  /* display:none; */
+  margin-top:3px;
 }
 
 
@@ -275,7 +277,7 @@ background:#DF0810;
   }
 
   #myMenu {
-    font-size: 20px;
+    font-size: 30px;
     grid-gap:20px;
     display:grid;
   }
@@ -288,8 +290,8 @@ background:#DF0810;
   #myMenu div a{
     padding:10px 0px 10px 0px;
     border-radius: 10px !important;
-    background: #fff;
-    box-shadow: 0px 1px 4px rgba(0,0,0,.1),0px 1px 4px rgba(0,0,0,.1);
+    /* background: #fff; */
+    /* box-shadow: 0px 1px 4px rgba(0,0,0,.1),0px 1px 4px rgba(0,0,0,.1); */
   }
 
   #myMenu div h6{
@@ -302,11 +304,11 @@ background:#DF0810;
   }
 
   #myMenu div a:hover {
-    color:fff;
+    color:#DF0810;
   }
 
   #navbar div .active {
-    color:fff;
+    color:#DF0810;
   }
 
 
@@ -472,6 +474,14 @@ button:hover {
 
 .articleWords h4::after{
   content:"...";
+}
+
+#newsFeed a:nth-child(1) .newsItem{
+  height:400px;
+}
+
+#newsFeed a:nth-child(1) .newsItem .newsImageHolder{
+  width:400px;
 }
 
 /* For Mobile */
@@ -719,7 +729,7 @@ button:hover {
   }
 
   #welcomeScreen{
-    display:block;
+    display:none;
     font-size:15px;
     overflow-y:scroll;
     margin-bottom:70px;
