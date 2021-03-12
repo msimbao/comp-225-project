@@ -353,6 +353,8 @@ def jsonDumpNewsItems(query, league_directory="", division_directory="", optiona
 
 
 def buildNBANews():
+    """Builds NBA news in the directory '../newsJson/league/conference/division/team.json' locally.
+    """
     # Build NBA json folder for each day's news
     jsonDumpNewsItems("NBA", "NBA", "NBA League News")
 
@@ -368,6 +370,8 @@ def buildNBANews():
 
 
 def buildMLBNews():
+    """Builds MLB news in the directory '../newsJson/league/conference/division/team.json' locally.
+    """
     # Build MLB json folder for each day's news
     jsonDumpNewsItems("MLB", "MLB", "MLB League News")
 
@@ -383,6 +387,8 @@ def buildMLBNews():
 
 
 def buildNFLNews():
+    """Builds NFL news in the directory '../newsJson/league/conference/division/team.json' locally
+    """
     # Build NFL json folder for each day's news
     jsonDumpNewsItems("NFL", "NFL", "NFL League News")
 
@@ -398,6 +404,8 @@ def buildNFLNews():
 
 
 def buildNHLNews():
+    """Builds NHL news in the directory '../newsJson/league/conference/division/team.json' locally
+    """
     # Build NHL json folder for each day's news
     jsonDumpNewsItems("NHL", "NHL", "NHL League News")
 
@@ -413,6 +421,9 @@ def buildNHLNews():
 
 
 def buildLocalNews():
+    """
+    This is an integrated method that build all the news from NBA, MLB, NFL, NHL into .json form.
+    """
     makeDirectoryToday()
 
     buildNBANews()
@@ -491,6 +502,9 @@ def downLoadNewsJsonToLocal():
 
 
 def exploreNewsJson():
+    """
+    Explores local newsJson directory and returns all the absolute directory of each json for uploading to github.
+    """
     directory = "../newsJson"
 
     # Acquire the date of the current query
@@ -524,6 +538,14 @@ def jsonToArray(fileName):
 
 # Utils for writing news as data directly into firebase
 def createNewsDataInFireBaseWithId(query, id):
+    """
+    Upload news items in dictionary form directly to firebase.
+
+    Parameters:
+    -----------
+    query: String for Bingsearch object to search for news.
+    id: See teamData.json for the id of each team in NBA, MLB, NHL, NFL.
+    """
     # Acquire the date of the current query
 
     news = createNewNews(query)
@@ -540,6 +562,17 @@ def createNewsDataInFireBaseWithId(query, id):
 
 # Utils for writing news as data directly into firebase
 def createNewsDataInFireBase(query, league="", conference="", division="", team=""):
+    """
+    Upload news items in dictionary form directly to firebase.
+
+    Parameters:
+    -----------
+    query: String for Bingsearch object to search for news.
+    league: League name of the current search, DEFAULT is "".
+    conference: Conference name of the current search, DEFAULT is "".
+    division: Division name of the current search, DEFAULT is "".
+    team: Team name of the current search, DEFAULT is "".
+    """
     # Acquire the date of the current query
 
     news = createNewNews(query)
@@ -555,6 +588,9 @@ def createNewsDataInFireBase(query, league="", conference="", division="", team=
 
 
 def getFileName():
+    """
+    Reads the date time information and creates nicely formatted file name for each request of sports news.
+    """
     today = date.today()
     month = today.strftime("%m")
     day = today.strftime("%d")
@@ -565,6 +601,9 @@ def getFileName():
 
 
 def uploadNBAData():
+    """
+    Similar method to buildNBANews().
+    """
     # upload NBA news to Firebase
     createNewsDataInFireBase("NBA", "NBA", "General", "NBA League News")
 
@@ -580,6 +619,9 @@ def uploadNBAData():
 
 
 def uploadMLBData():
+    """
+        Similar method to buildMLBNews().
+    """
     # upload MLB news to Firebase
     createNewsDataInFireBase("MLB", "MLB", "General", "MLB League News")
 
@@ -595,6 +637,9 @@ def uploadMLBData():
 
 
 def uploadNFLData():
+    """
+        Similar method to buildNFLNews().
+    """
     # upload NFL news to Firebase
     createNewsDataInFireBase("NFL", "NFL", "General", "NFL League News")
 
@@ -610,6 +655,9 @@ def uploadNFLData():
 
 
 def uploadNHLData():
+    """
+        Similar method to buildNHLNews().
+    """
     # upload NHL news to Firebase
     createNewsDataInFireBase("NHL", "NHL", "General", "NHL League News")
 
@@ -625,15 +673,22 @@ def uploadNHLData():
 
 
 def uploadNews():
+    """
+        Similar method to buildNews().
+    """
     # Upload news for all four leagues to firebase
     uploadNBAData()
     uploadMLBData()
     uploadNHLData()
     uploadNFLData()
+
     return
 
 
 def get_from_teamDataJson():
+    """
+    Uploads news items to the firebase realtime database by the pre-configured ids of the teams.
+    """
     with open("sportsData/teamData.json") as f:
         team_data = json.load(f)
 
@@ -642,6 +697,8 @@ def get_from_teamDataJson():
     for i in data_dict:
         team = data_dict[i]["title"]
         createNewsDataInFireBaseWithId(team, i)
+
+    return
 
 
 if __name__ == '__main__':
