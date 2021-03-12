@@ -21,7 +21,7 @@ class BingSearch:
         search_url = "https://api.bing.microsoft.com/v7.0/news/search"
         headers = {"Ocp-Apim-Subscription-Key": subscription_key}
         params = {"q": search_term,
-                  "count": 50,
+                  "count": 20,
                   "textFormat": "HTML",
                   "mkt": "en-US"}
         response = requests.get(search_url, headers=headers, params=params)
@@ -34,7 +34,8 @@ class BingSearch:
         Takes the list returned by self.__get_from_bing() and creates a list of new dictionaries
         containing the data necessary for what we need. It also tries to get an image from the
         list returned by the Bing Search, but if there is not article, it uses the query to
-        get the team logo from the team logo dictionary
+        get the team logo from the team logo dictionary. It then returns a the list of dictionaries
+        sorted by date of the article.
         """
         list = []
         news_id = 0
