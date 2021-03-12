@@ -60,6 +60,7 @@
             });
         }).catch(error => {
             console.error(error);
+            alert(error);
         }).then(() => {
             toggleLogin('hideLogin');
             app.resetTeams();
@@ -96,6 +97,7 @@
             loginForm.reset();
         }).catch(error => {
             console.error(error);
+            alert(error);
         })
     });
 
