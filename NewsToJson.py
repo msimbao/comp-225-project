@@ -523,7 +523,7 @@ def jsonToArray(fileName):
 
 
 # Utils for writing news as data directly into firebase
-def createNewsDataInFireBase(query, id):
+def createNewsDataInFireBaseWithId(query, id):
     # Acquire the date of the current query
 
     news = createNewNews(query)
@@ -533,7 +533,23 @@ def createNewsDataInFireBase(query, id):
     db = firebase.database()
 
     print("Uploading news of " + query)
-    db.child(getFileName()).child(id).set(news)
+    db.child("news").child(getFileName()).child(id).set(news)
+
+    return
+
+
+# Utils for writing news as data directly into firebase
+def createNewsDataInFireBase(query, league="", conference="", division="", team=""):
+    # Acquire the date of the current query
+
+    news = createNewNews(query)
+
+    # Initialize firebase
+    firebase = pyrebase.initialize_app(CONFIG)
+    db = firebase.database()
+
+    print("Uploading news of " + query)
+    db.child("news").child(getFileName()).child(league).child(conference).child(division).child(team).set(news)
 
     return
 
@@ -616,6 +632,7 @@ def uploadNews():
     uploadNFLData()
     return
 
+
 def get_from_teamDataJson():
     with open("sportsData/teamData.json") as f:
         team_data = json.load(f)
@@ -624,12 +641,10 @@ def get_from_teamDataJson():
     data_dict = json.loads(results)
     for i in data_dict:
         team = data_dict[i]["title"]
-        createNewsDataInFireBase(team, i)
-
+        createNewsDataInFireBaseWithId(team, i)
 
 
 if __name__ == '__main__':
-    # start_time = time.time()
-    # uploadNews(
-    # print(time.time() - start_time)
+    start_time = time.time()
     get_from_teamDataJson()
+    print(time.time() - start_time)
