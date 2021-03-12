@@ -12,16 +12,16 @@ class BingSearch:
 
     def __get_from_bing(self, query):
         """
-        Given the query, uses the API key from Bing News API to search for news articles related
-        to the query and returns a list of dictionaries containing data about the article. The API
-        only allows for 100
+        Given the query, uses the API key from Bing News API to search for news articles.
+        It then converts the JSON object returned by the API into a list of dictionaries
+        containing data about the article. And returns that list
         """
         subscription_key = "a18adff624cb4da7a6c9c52a2fc2f28a"
         search_term = query
         search_url = "https://api.bing.microsoft.com/v7.0/news/search"
         headers = {"Ocp-Apim-Subscription-Key": subscription_key}
         params = {"q": search_term,
-                  "count": 100,
+                  "count": 50,
                   "textFormat": "HTML",
                   "mkt": "en-US"}
         response = requests.get(search_url, headers=headers, params=params)
@@ -29,37 +29,40 @@ class BingSearch:
         search_results = json.dumps(response.json(), indent=4)
         return json.loads(search_results)["value"]
 
-    def __filter_articles(self, articleList, query):
+    def __filter_articles(self, article_list, query):
+        """
+        Takes the list returned by self.__get_from_bing() and creates a list of new dictionaries
+        containing the data necessary for what we need. It also tries to get an image from the
+        list returned by the Bing Search, but if there is not article, it uses the query to
+        get the team logo from the team logo dictionary
+        """
         list = []
-        # print(len(articleList))
         news_id = 0
-        for i in articleList:
-            newDict = {}
+        for i in article_list:
+            new_dict = {"title": html.unescape(i["name"]),
+                        "url": i["url"],
+                        "description": html.unescape(i["description"]),
+                        "author": html.unescape(i["provider"][0]["name"]),
+                        "id": news_id,
+                        "date published": i["datePublished"]}
 
-            newDict["title"] = html.unescape(i["name"])
-            newDict["url"] = i["url"]
-            newDict["description"] = html.unescape(i["description"])
-            newDict["author"] = html.unescape(i["provider"][0]["name"])
-            newDict["id"] = news_id
-            newDict["date published"] = i["datePublished"]
             news_id += 1
             try:
-                newDict["image"] = i["image"]["thumbnail"]["contentUrl"] + "&h=500&p=0"
+                new_dict["image"] = i["image"]["thumbnail"]["contentUrl"] + "&h=500&p=0"
             except KeyError:
                 try:
-                    newDict["image"] = self.team_logo_dict[query]
+                    new_dict["image"] = self.team_logo_dict[query]
                 except:
-                    newDict["image"] = None
-            list.append(newDict)
+                    new_dict["image"] = None
+            list.append(new_dict)
 
         return sorted(list, key=lambda k: k["date published"], reverse=True)
 
-    def get_article_list(self, n=200):
+    def get_article_list(self, n=100):
         if n > len(self.__filteredList):
             return self.__filteredList
         else:
             return self.__filteredList[0:n]
-
 
     def __get_object(self, object):
         list = []
