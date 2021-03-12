@@ -29,7 +29,7 @@ Vue.component("feed-item", {
     '<transition name="fade">'+
     '<div class="newsItem">' +
     '<div class="newsImageHolder">' +
-    '<img :src="feed.image" class="card">' +
+    '<img :src="feed.image" >' +
     '</div>'+
     '<div class="articleWords">' +
     "<h4>{{feed.title}}</h4>" +
@@ -221,7 +221,7 @@ var app = new Vue({
      *        grab directly from database
      */
     generalSearch: function (event) {
-      $("ul#news").empty();
+      $("ul#searchFeed").empty();
       event.preventDefault();
       newsItem = $("#searchBar").val();
       $.post(
@@ -279,7 +279,13 @@ var app = new Vue({
         "/news?" + $.param({ newsItem: team, number:10, logo: logo }),
         (data) => {
           for (j = 0; j < data.news.length; j++) {
-            data.news[j].teamLogo = data.logoUrl
+            if (data.news[j].image == null){
+              data.news[j].image = data.logoUrl
+              // data.news[j].teamLogo = ""
+            }
+
+              data.news[j].teamLogo = data.logoUrl
+
             this.feedNews.push(data.news[j]);
           }
         }
@@ -432,7 +438,7 @@ $(document).ready(function () {
     // normalScrollElements: "#feed, #select, #general",
     normalScrollElementTouchThreshold: 1000,
     touchSensitivity: 5,
-    keyboardScrolling: true,
+    keyboardScrolling: false,
     sectionSelector: ".section",
     animateAnchor: false,
 
