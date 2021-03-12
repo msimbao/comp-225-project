@@ -262,6 +262,7 @@ def createNewNews(query):
         # "$", "").replace(".", "").replace("#", "")
         author = authors[i]
         news_id = ids[i]
+        date = date_list[i]
         newsDataBaseForm['newsItem' + str(i + 1)] = {
             'Title': title,
             'Url': url,
@@ -269,7 +270,7 @@ def createNewNews(query):
             'Description': description,
             'Author': author,
             'ID': news_id,
-            'Date': date_list
+            'Date': date
         }
 
     return newsDataBaseForm

@@ -53,13 +53,14 @@ class BingSearch:
                     newDict["image"] = None
             list.append(newDict)
 
-        return list
+        return sorted(list, key=lambda k: k["date published"], reverse=True)
 
     def get_article_list(self, n=200):
         if n > len(self.__filteredList):
             return self.__filteredList
         else:
             return self.__filteredList[0:n]
+
 
     def __get_object(self, object):
         list = []
@@ -90,6 +91,6 @@ class BingSearch:
 
 
 if __name__ == '__main__':
-    search = "Pittsburgh Steelers"
+    search = "Tampa Bay Lightning"
     bing_search = BingSearch(search)
-    print(bing_search.get_date())
+    print(bing_search.get_images())
