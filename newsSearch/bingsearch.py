@@ -59,11 +59,8 @@ class BingSearch:
 
         return sorted(list, key=lambda k: k["date published"], reverse=True)
 
-    def get_article_list(self, n=100):
-        if n > len(self.__filteredList):
-            return self.__filteredList
-        else:
-            return self.__filteredList[0:n]
+    def get_article_list(self):
+        return self.__filteredList
 
     def __get_object(self, object):
         list = []
@@ -94,8 +91,9 @@ class BingSearch:
 
 
 if __name__ == '__main__':
-    search = "Pittsburgh Penguins"
-    bing_search = BingSearch(search).get_article_list()
-    for key in bing_search[0]:
-        print(key + ": " + str(bing_search[3][key]))
+    search = "Tampa Bay Lightning"
+    bing_search = BingSearch(search)
+    a = bing_search.get_article_list()
+    for i in a:
+        print(i)
 
