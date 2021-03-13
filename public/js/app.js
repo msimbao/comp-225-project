@@ -36,6 +36,8 @@ const txtPassword = document.getElementById("loginPassword");
 
 const signupEmail = document.getElementById("signupEmail");
 const signupPassword = document.getElementById("signupPassword");
+const confirmPassword = document.getElementById("confirmPassword");
+
 
 const btnLogin = document.getElementById("submitLogin");
 const btnSignUp = document.getElementById("submitSignUp");
@@ -47,6 +49,11 @@ var user = "";
 btnSignUp.addEventListener("click", (ev) => {
   ev.preventDefault();
 
+  if (signupPassword.value != confirmPassword.value){
+    swal("Sign Up Failed", "Passwords are not matching", "error");
+    return 0;
+  }
+
   //get user info
   const email = signupEmail.value;
   const password = signupPassword.value;
@@ -56,24 +63,27 @@ btnSignUp.addEventListener("click", (ev) => {
     .createUserWithEmailAndPassword(email, password)
     .then((cred) => {
       newUser = cred.user.uid;
+      user = newUser;
+      console.log(user)
+      console.log("Signed Up")
       return db.collection("users").doc(cred.user.uid).set({
         teams: [],
         darkMode: "off",
-      });
-    })
-    .catch((error) => {
-      console.error(error);
-      swal("Login Failed", '"' + error + '"', "error");
+      }); 
     })
     .then(() => {
-      toggleLogin("hideLogin");
-      app.resetTeams();
-      welcomeScreens = document.getElementsByClassName("welcomeScreen");
-      welcomeScreens[1].style.display = "grid";
-      welcomeScreens[0].style.display = "grid";
-      document.getElementById("addTeamsButton").click();
-      signUpForm.reset();
-    });
+        toggleLogin("hideLogin");
+        app.resetTeams();
+        welcomeScreens = document.getElementsByClassName("welcomeScreen");
+        welcomeScreens[1].style.display = "grid";
+        welcomeScreens[0].style.display = "grid";
+        document.getElementById("addTeamsButton").click();
+        signUpForm.reset();
+      })
+    .catch((error) => {
+      swal("Sign Up Failed", '"' + error + '"', "error");
+    })
+
 });
 
 //log out
@@ -105,7 +115,6 @@ btnLogin.addEventListener("click", (ev) => {
       loginForm.reset();
     })
     .catch((error) => {
-      console.error(error);
       swal("Login Failed", '"' + error + '"', "error");
     });
 });

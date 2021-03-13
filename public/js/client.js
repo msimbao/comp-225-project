@@ -87,6 +87,8 @@ Vue.component("team-option", {
      */
     teamOption: function (option, record) {
       if (record == "") {
+        //Replace Team selection options with children of 
+        // the clicked team, conference or league           
         var childrenIds = app.teamsJson[option]["children"];
         var childrenData = [];
         for (i = 0; i < childrenIds.length; i++) {
@@ -94,22 +96,6 @@ Vue.component("team-option", {
         }
 
         app.teamOptions = childrenData;
-
-        var docTeams = [];
-        var docRef = db.collection("users").doc(user);
-        docRef.get().then((doc) => {
-          if (doc.exists) {
-            docTeams = doc.data().teams;
-            for (i = 0; i < app.teamOptions.length; i++) {
-              if (docTeams.includes(app.teamOptions[i].id)) {
-                app.teamOptions.splice(i, 1);
-              }
-            }
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
-        });
       } else {
         //Insert Data to user teams
         var docTeams = [];
@@ -243,7 +229,7 @@ var app = new Vue({
      *        the Bing Search API
      * @param event the submit event when a user presses enter
      */
-    
+
     generalSearch: function (event) {
       $("ul#searchFeed").empty();
       event.preventDefault();
