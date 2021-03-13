@@ -466,7 +466,6 @@ var app = new Vue({
     this.setTabs();
     this.toggleResetButton("off");
     this.setTeamsJson();
-    // console.log(this);
   },
 });
 
