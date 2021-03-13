@@ -20,7 +20,10 @@
   * //////////////////////////////////////
   */
 
-/* Feed Component */
+/** 
+* @name feed-item
+* @brief Component For News Items That exist in the Feed Page 
+*/
 
 Vue.component("feed-item", {
   props: ["feed"],
@@ -42,7 +45,10 @@ Vue.component("feed-item", {
     "</a>",
 });
 
-/* General News Component */
+/** 
+* @name news-item
+* @brief Component For News Items That exist in the Search Page
+*/
 
 Vue.component("news-item", {
   props: ["news"],
@@ -64,7 +70,11 @@ Vue.component("news-item", {
     "</a>",
 });
 
-/* Team Selection Component */
+/** 
+* @name team-option
+* @brief  Component for the selection options for adding teams in the 
+*         'Add Teams' section of the 'Teams' page
+*/
 
 Vue.component("team-option", {
   props: ["option"],
@@ -111,7 +121,6 @@ Vue.component("team-option", {
             if (!docTeams.includes(option)) {
               for (i = 0; i < app.teamOptions.length; i++) {
                 if (option == app.teamOptions[i].id) {
-                  // app.teamOptions.splice(i, 1);
                   swal(
                     "Team Added!",
                     "This team's articles have been added to your feed!",
@@ -149,8 +158,11 @@ Vue.component("team-option", {
     "</div>",
 });
 
-/* Team Remove Component */
-
+/** 
+* @name remove-item
+* @brief  Component for the team removal options in the 'My Teams'
+*         section of the 'Teams' page
+*/
 Vue.component("remove-item", {
   props: ["item"],
   methods: {
@@ -201,32 +213,37 @@ Vue.component("remove-item", {
     "</div>",
 });
 
-/* Initialize */
+/* Initialize Vue */
 
 var app = new Vue({
   el: "#vue",
   data: {
-    generalNews: [],
-    teamOptions: [],
-    feedNews: [],
-    userTeams: [],
-    teamsJson: {},
-    darkMode: "off",
+    generalNews: [],  // Array to hold news for the Search News Page
+    teamOptions: [],  // Array to hold options for the Team selecton page
+    feedNews: [],     // Array to hold news for the My Feed News Page
+    userTeams: [],    // Array to hold team ids for a logged in user
+    teamsJson: {},    // Object showing teams in different leagues by id
+    darkMode: "off",  // Variable to decide if dark mode is on or off
   },
   methods: {
+
     /**
      * @name talk
      * @brief Function to test if vue is handling requests
      */
+
     talk: function () {
       console.log("Request Sent");
     },
+
     /**
      * @name generalSearch
-     * @brief Function to search for news data. Right now it talks to server but will hopefully
-     *        grab directly from database
+     * @brief Function to search for news data. Right now it 
+     *        talks to the python server and gets news from
+     *        the Bing Search API
      * @param event the submit event when a user presses enter
      */
+    
     generalSearch: function (event) {
       $("ul#searchFeed").empty();
       event.preventDefault();
@@ -249,7 +266,6 @@ var app = new Vue({
      * @copyright https://www.w3schools.com/
      */
     filterSearch: function (event) {
-      // console.log("Searching");
       event.preventDefault();
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("filterSearch");
@@ -275,7 +291,6 @@ var app = new Vue({
      * @brief Function to populate user feed with team data
      */
     populateFeed: function () {
-      console.log("Populating Feed");
       this.feedNews = [];
       for (i = 0; i < this.userTeams.length; i++) {
         var logo, team;
@@ -287,7 +302,6 @@ var app = new Vue({
             for (j = 0; j < data.news.length; j++) {
               if (data.news[j].image == null) {
                 data.news[j].image = data.logoUrl;
-                // data.news[j].teamLogo = ""
               }
 
               data.news[j].teamLogo = data.logoUrl;
@@ -299,7 +313,8 @@ var app = new Vue({
       }
     },
     /**
-     * @name setTabs presets all tabs to display:none
+     * @name setTabs 
+     * @brief presets both tabs in the 'Team' page to be hidden when the page loads
      */
     setTabs: function () {
       tabcontent = document.getElementsByClassName("selectTabs");
@@ -313,7 +328,8 @@ var app = new Vue({
       tablinks[0].className += " activeTab";
     },
     /**
-     * @name openTab switches tabs based on buttons in a list
+     * @name openTab 
+     * @brief switches tabs based on buttons in a list
      * @param {event} evt the tab onclick event
      * @param {string} tabName id of the tab
      *
@@ -347,8 +363,10 @@ var app = new Vue({
       ];
     },
     /**
-     *
-     * @param {*} state
+     *  @name setTeamsJson 
+     *  @brief  fuction to get the dictionary containing teams by the league 
+     *          and conferences they belong to and save it in the teamsJson
+     *          object in vue.
      */
     setTeamsJson: function () {
       $.post("/setTeamsJson?" + $.param({ option: "begin" }), (resetTeams) => {
@@ -357,7 +375,8 @@ var app = new Vue({
     },
     /**
      * @name toggleResetButton
-     * @brief Function to toggle the reset button
+     * @brief Function to toggle the reset button. The state is set to be the
+     *        opposite of whatever the current state is
      * @param state on/off state of button
      */
     toggleResetButton: function (state) {
@@ -372,7 +391,7 @@ var app = new Vue({
     },
     /**
      * @name loadUserTeams
-     * @brief Function to load user selected team on login
+     * @brief Function to load user selected teams when a user logs in
      */
     loadUserTeams: function () {
       var myTeamsDoc = db.collection("users").doc(user);
@@ -405,7 +424,7 @@ var app = new Vue({
     },
     /**
      * @name toggleDarkMode
-     * @brief a function to turn dark mode on or off based on the state needed
+     * @brief a function to turn dark mode on or off based on the state needed.
      */
     toggleDarkMode: function () {
       if (this.darkMode == "off") {
@@ -444,6 +463,15 @@ var app = new Vue({
         this.darkMode = "off";
       }
     },
+
+    /**
+     * @name sendEmail
+     * @brief Function to send an email when a user types a message in the contact 
+     *        page. The email is annonymous and is sent to an admin of the app
+     * @param {*} event the on submit event that happens when a user presses enter
+     *                  or clicks the send button
+     */
+
     sendEmail: function (event) {
       $("#contactFormMessage").empty();
       event.preventDefault();
@@ -482,7 +510,11 @@ var app = new Vue({
 
 ///////////////////////////////////////////////////////////////////*/
 
-/* Initialize */
+/*  
+*   Page Piling is a lightweight 
+*   library to handle navigation 
+*   for single page websites 
+*/
 
 $(document).ready(function () {
   $("#maincontent").pagepiling({
@@ -497,7 +529,6 @@ $(document).ready(function () {
     loopTop: false,
     css3: true,
     navigation: false,
-    // normalScrollElements: "#feed, #select, #general",
     normalScrollElementTouchThreshold: 1000,
     touchSensitivity: 5,
     keyboardScrolling: false,
@@ -523,6 +554,13 @@ $(document).ready(function () {
               |___/                            |___/            |_|    
 
 //////////////////////////////////////////////////////////////*/
+
+/*  
+*   The Login and Signup Functions and Elements are outside the Vue app
+*   This was done to make it easier to handle unique errors that were
+*   Popping up and to make it easier to insert user Data into the Vue app
+*
+*/
 
 /**
  *  @name toggleSignUp
@@ -564,12 +602,14 @@ function toggleLogin(state) {
   }
 }
 
-var welcomeScreenId = 0;
 
 /**
  * @name hideWelcomeScreen
  * @brief Function to hide welcomeScreens that function to orient new users
  */
+
+ var welcomeScreenId = 0;
+
 function hideWelcomeScreen() {
   welcomeScreens = document.getElementsByClassName("welcomeScreen");
   welcomeScreens[welcomeScreenId].style.top = "-300%";
@@ -578,7 +618,8 @@ function hideWelcomeScreen() {
 }
 
 /**
- * @name validatePassword function to ask user to confirm their password in a second password entry box
+ * @name validatePassword 
+ * @brief function to ask user to confirm their password in a second password entry box
  * @copyright Diego Leme https://codepen.io/diegoleme
  */
 
