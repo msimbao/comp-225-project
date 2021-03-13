@@ -73,7 +73,10 @@
 
 ///////////////////////////////////////////////////////////////////
 -->
-<div id="welcomeScreen">
+
+<div id="welcomeScreenHolder">
+
+<div class="welcomeScreen">
 
   <div style="text-align: right;">
     <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
@@ -94,13 +97,43 @@
 
     <a href="#select">
     <button onclick="hideWelcomeScreen()" data-menuanchor="select">
+      Next
+    </button>
+  </a>
+
+  </div>
+</div>
+
+<div class="welcomeScreen">
+
+  <div style="text-align: right;">
+    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreen%20Shot%202021-03-12%20at%2016.33.45_iphone12black_portrait.png?v=1615589118703" width="300px">
+  </div>
+
+  <div>
+
+    <h1>Select Your Teams</h1>
+    <p>To start receiving news, first pick the teams you want to follow.</p>
+    <p>This is done in the 'Add Teams' section of the 'Teams' Page </p>
+    <p>To pick a team: </p>
+    <ol>
+      <li>Select A League that the team is under</li>
+      <li>Select A Conference that the team is found in</li>
+      <li>Tap the team you want to follow</li>
+      <li>Press the back button to start over and pick other teams</li>
+    </ol>
+    <p>Every team you've selected can be seen and removed in the 'My Teams' section</p>
+    <p>Once you're done go to your 'Feed' page to see the top 10 articles for each team</p>
+
+    <a href="#select">
+    <button onclick="hideWelcomeScreen()" data-menuanchor="select">
       Select Teams
     </button>
   </a>
 
   </div>
+</div>
 
-  
 </div>
 
     <div id="login">
@@ -116,11 +149,11 @@
         <input id="signupEmail" type="text" placeholder="Email Address..." />
         <input id="signupPassword" type="password" placeholder="Password..." />
         <input id="confirmPassword" type="password" placeholder="Confirm Password..." />
-        <button id="submitSignUp" class="button introButton" type="submit">Sign Up</button>
+        <button id="submitSignUp" type="submit">Sign Up</button>
         </form>
         <h2>Or <u class="pointerItem" onclick="toggleSignUp('hideSignup')">Login Into Your Account</u></h2>
       </div>
-8
+
       <div class="loginForm">
         <a href="/">
           <img
@@ -131,7 +164,7 @@
         <h2>Sign In With Your Email Account</h2>
         <input id="loginEmail" type="text" placeholder="Email Address..." />
         <input id="loginPassword" type="password" placeholder="Password..." />
-        <button id="submitLogin" class="button introButton" type="submit">Login</button>
+        <button id="submitLogin" type="submit">Login</button>
         </form>
         <h2>Or <u class="pointerItem" onclick="toggleSignUp('showSignUp')">Create an Account</u></h2>
 
@@ -167,14 +200,9 @@
 
 <div id="navbar">
   <div id="myMenu">
-    <div>
-      <a href="/" style="border-radius: 15px 0px 0px 15px;">
-        <i class="fas fa-home"></i>
-        <h6>Tympdeja</h6>
-      </a>
-    </div>
+
     <div data-menuanchor="feed" class="active">
-      <a href="#feed">
+      <a href="#feed" style="border-radius: 15px 0px 0px 15px;">
         <i class="fas fas fa-newspaper"></i>
         <h6>Feed</h6>
       </a>
@@ -186,17 +214,23 @@
       </a>
     </div>
       <div data-menuanchor="general">
-        <a href="#general">
+        <a href="#general" >
           <i class="fas fa-search"></i>
           <h6>Search</h6>
         </a>
       </div>
-      <!-- <li id="darkMode">
-        <a href="#darkMode">
+      <div id="darkModeButton" v-on:click="toggleDarkMode('on')">
+        <a >
           <i class="fas fa-moon"></i>
-          <h6>Dark mode</h6>
+          <h6>Dark</h6>
         </a>
-      </li> -->
+      </div>
+      <div data-menuanchor="contactus">
+        <a href="#contactus" style="border-radius: 0px 15px 15px 0px;">
+          <i class="fas fa-envelope"></i>
+          <h6>Contact</h6>
+        </a>
+      </div>
     <div id="submitLogout" onclick="toggleLogin('showLogin');">
       <a href="#login" style="border-radius: 0px 15px 15px 0px;">
         <i class="fas fa-door-open"></i>
@@ -224,18 +258,7 @@
   <div class="tabDescription">
 
     <h1>My Feed</h1>
-
-    <!-- <p>
-      All the latest articles about the teams you are currently following. To Add or Remove teams, go to the 'Teams' section.
-    </p> -->
-
-      <!-- <input
-        v-on:keyup="filterSearch"
-        id="filterSearch"
-        type="text"
-        maxlength="100"
-        placeholder="Filter Through Your Feed..."
-      /> -->
+    <hr />
 
   </div>
     <div id="newsFeed" class="tabContent">
@@ -273,8 +296,8 @@
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p> -->
         <div>
-          <button class="tablinks" v-on:click="openTab('myTeams',$event);">My teams</button>
-          <button class="tablinks" v-on:click="openTab('addTeams',$event);">Add Teams</button>
+          <button id="myTeamsButton" class="tablinks" v-on:click="openTab('myTeams',$event);">My teams</button>
+          <button id="addTeamsButton" class="tablinks" v-on:click="openTab('addTeams',$event);">Add Teams</button>
         </div>
         
       </div>
@@ -349,6 +372,46 @@
       <!-- </transition-group> -->
 
     </div>
+
+</div>
+
+
+  <!-- 
+////////////////////////////////////////////////////////////////////////
+
+   _____            _             _     _    _     
+  / ____|          | |           | |   | |  | |    
+ | |     ___  _ __ | |_ __ _  ___| |_  | |  | |___ 
+ | |    / _ \| '_ \| __/ _` |/ __| __| | |  | / __|
+ | |___| (_) | | | | || (_| | (__| |_  | |__| \__ \
+  \_____\___/|_| |_|\__\__,_|\___|\__|  \____/|___/
+                                                                                                    
+                                                                    
+///////////////////////////////////////////////////////////////////////
+-->
+
+
+<div id="contactus" class="section pp-scrollable">
+  <div class="tabDescription">
+
+    <h1>Contact Us</h1>
+    <p>
+      Tympdeja is under active development we would love to hear about any
+      features you'd like or bugs you see in the app. Would love to hear from you!
+    </p>
+
+    <form id="contactForm">
+      <textarea
+        id="searchBar"
+        placeholder="Your Message...."
+        rows="5"
+        columns="50"
+      >
+    </textarea>
+    <p><button id="send" type="submit">Send</button></p>
+    
+    </form>
+  </div>
 
 </div>
 

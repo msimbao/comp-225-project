@@ -27,7 +27,7 @@ Vue.component("feed-item", {
   template:
     '<a :href="feed.url" target="_blank" rel="noopener noreferrer">' +
     '<transition name="fade">'+
-    '<div class="newsItem">' +
+    '<div class="newsItem card">' +
     '<div class="newsImageHolder">' +
     '<img :src="feed.image" >' +
     '</div>'+
@@ -49,9 +49,9 @@ Vue.component("news-item", {
   template:
     '<a :href="news.url" target="_blank" rel="noopener noreferrer">' +
     '<transition name="fade">'+
-    '<div class=" newsItem">' +
+    '<div class=" newsItem card">' +
     '<div class="newsImageHolder">' +
-    '<img :src="news.image" class="card">' +
+    '<img :src="news.image">' +
     '</div>'+
     '<div class="articleWords">' +
     "<h4>{{news.title}}</h4>" +
@@ -398,6 +398,26 @@ var app = new Vue({
         }
       });
     },
+    /**
+     * @name toggleDarkMode
+     * @brief a function to turn dark mode on or off based on the state needed 
+     * @param {string} state whether dark mode is to be set on or off
+     */
+    toggleDarkMode: function (state){
+      console.log("Dark Mode Toggled")
+      if (state=="on"){
+        $(document).ready(function(){
+          $(".pp-section").css("background", "#131516");
+          $("#navbar").css("background", "#131516");
+          $(".newsImageHolder").css("background", "#131516");
+          $("html").css("color", "#fff");
+          $("a").css("color", "#fff");
+          $("input").css("color", "#fff");
+          $("button").css("color", "#fff");
+          $("#resetTeams").css("background", "#131516");
+        })
+      }
+    }
   },
   created: function () {
     this.setTabs();
@@ -427,8 +447,8 @@ $(document).ready(function () {
     menu: "#myMenu",
     direction: "horizontal",
     verticalCentered: true,
-    sectionsColor: ["#fff", "#fff", "#fff"],
-    anchors: ["feed", "select", "general"],
+    sectionsColor: [],
+    anchors: ["feed", "select", "general","contactus"],
     scrollingSpeed: 100,
     easing: "linear",
     loopBottom: false,
@@ -504,14 +524,17 @@ function toggleLogin(state) {
   }
 }
 
+var welcomeScreenId = 0
 
 /**
  * @name hideWelcomeScreen
- * @brief Function to hide welcomeScreen
+ * @brief Function to hide welcomeScreens that function to orient new users
  */
 function hideWelcomeScreen() {
-  welcomeScreen = document.getElementById("welcomeScreen");
-  welcomeScreen.style.top = "-200%";
+  welcomeScreens = document.getElementsByClassName("welcomeScreen");
+  welcomeScreens[welcomeScreenId].style.top = "-300%";
+  welcomeScreens[welcomeScreenId].style.display = "none";
+  welcomeScreenId++;
 }
 
 /**

@@ -56,7 +56,8 @@
         auth.createUserWithEmailAndPassword(email, password).then(cred => {
             newUser = cred.user.uid;
             return db.collection("users").doc(cred.user.uid).set({
-                teams: []
+                teams: [],
+                darkMode: "off"
             });
         }).catch(error => {
             console.error(error);
@@ -66,6 +67,7 @@
             app.resetTeams();
             welcomeScreen = document.getElementById("welcomeScreen");
             welcomeScreen.style.display = "grid";
+            document.getElementById("addTeamsButton").click();
             signUpForm.reset();
         });
     });
