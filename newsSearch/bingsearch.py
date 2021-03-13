@@ -1,7 +1,7 @@
 import json
 import requests
 import html
-import logoDictionary
+from newsSearch.logoDictionary import logo_dict
 
 
 class BingSearch:
@@ -13,7 +13,7 @@ class BingSearch:
         which contains a link to the image of each team's logo.
         """
         __articleList = self.__get_from_bing(query)
-        self.team_logo_dict = logoDictionary.logo_dict
+        self.team_logo_dict = logo_dict
         self.__filteredList = self.__filter_articles(__articleList, query)
 
     def __get_from_bing(self, query):
@@ -22,12 +22,12 @@ class BingSearch:
         It then converts the JSON object returned by the API into a list of dictionaries
         containing data about the article. And returns that list
         """
-        subscription_key = "a18adff624cb4da7a6c9c52a2fc2f28a"
+        subscription_key = "728de062afa9454da647014659c84b22"
         search_term = query
         search_url = "https://api.bing.microsoft.com/v7.0/news/search"
         headers = {"Ocp-Apim-Subscription-Key": subscription_key}
         params = {"q": search_term,
-                  "count": 20,
+                  "count": 10,
                   "textFormat": "HTML",
                   "mkt": "en-US"}
         response = requests.get(search_url, headers=headers, params=params)
@@ -65,8 +65,8 @@ class BingSearch:
 
         return sorted(list, key=lambda k: k["date published"], reverse=True)
 
-    def get_article_list(self):
-        return self.__filteredList
+    def get_article_list(self, n=20):
+        return self.__filteredList[0:n]
 
     def __get_object(self, object):
         list = []
