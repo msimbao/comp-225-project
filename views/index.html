@@ -197,17 +197,10 @@
             >Create an Account</u
           >
         </h2>
-
-        <!-- 
-        Uncomment this to provide Option to Bypass Login as Admin.
-        Note that since a user will not be defined there will be no data to populate the feed or team selection
-        -->
-
-        <!-- <h2>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></h2> -->
       </div>
     </div>
 
-    <!-- Begging of Main Content -->
+    <!-- Begging of Main Content For Website -->
 
     <div id="maincontent">
       <div id="vue">
@@ -284,9 +277,7 @@
             <hr />
           </div>
           <div id="newsFeed" class="tabContent">
-            <!-- <transition-group name="list" tag="div"> -->
             <feed-item v-for="item in feedNews" v-bind:feed="item"></feed-item>
-            <!-- </transition-group> -->
           </div>
         </div>
 
@@ -305,9 +296,6 @@
         <div id="select" class="section pp-scrollable">
           <div id="selectDescription" class="tabDescription">
             <h1>Teams</h1>
-            <!-- <p>
-          Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
-        </p> -->
             <div>
               <button
                 id="myTeamsButton"
@@ -378,11 +366,6 @@
         <div id="general" class="section pp-scrollable">
           <div class="tabDescription">
             <h1>Search</h1>
-            <!-- <p>
-      If You're Looking for general information, you can find the latest
-      news and trending articles here.
-    </p> -->
-
             <form id="generalSearchForm" v-on:submit="generalSearch">
               <input
                 id="searchBar"
@@ -394,12 +377,10 @@
           </div>
 
           <div id="searchFeed" class="tabContent">
-            <!-- <transition-group name="list" tag="div"> -->
             <news-item
               v-for="item in generalNews"
               v-bind:news="item"
             ></news-item>
-            <!-- </transition-group> -->
           </div>
         </div>
 
