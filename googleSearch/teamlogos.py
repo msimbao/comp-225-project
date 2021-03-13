@@ -3,26 +3,8 @@ import requests
 from NewsToJson import *
 
 
-def clean_team_list(team_list):
-    league_dict = {}
-    league = ""
-    for i in team_list:
-        if type(i) == str:
-            league_dict[i] = []
-            league = i
-        if type(i) == list:
-            league_dict[league] = i
-
-    return league_dict
-
-
-def clean_dict(league_dict):
-    for i in league_dict:
-        for j in league_dict[i]:
-            print(j)
-
-
 def get_team_logo(team_name):
+    """Gets team logo from thesportsdb.com using their free API"""
     if team_name != "[":
         print(team_name)
         team_name = team_name.replace(" ", "+")
@@ -34,6 +16,11 @@ def get_team_logo(team_name):
 
 
 def set_team_logo():
+    """
+    Using teams lists from NewsToJson, removes divisions, and creates league lists,
+    then uses those lists to create a dictionary with team names as keys and
+    logo image urls as values
+    """
     MLB = NLE[1:] + NLC[1:] + NLW[1:] + ALE[1:] + ALC[1:] + ALW[1:]
 
     NBA = ECATLANTA[1:] + ECCENTRAL[1:] + ECSOUTHEAST[1:] + WCNORTHEAST[1:] + WCPACIFIC[1:] + WCSOUTHWEST[1:]
@@ -52,6 +39,9 @@ def set_team_logo():
 
 
 def create_file():
+    """
+    Creates file logoDictionary.py and writes dictionary of team logos to it
+    """
     logo_dict = set_team_logo()
     with open("logoDictionary.py", "w") as f:
         f.write("logo_dict = " + str(logo_dict))

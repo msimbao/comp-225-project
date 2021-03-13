@@ -3,7 +3,7 @@ from datetime import date, datetime
 from pytz import timezone
 import pyrebase
 import os
-from newsSearch.bingsearch import BingSearch
+from googleSearch.bingsearch import BingSearch
 import time
 
 # Firebase Configuration
