@@ -10,17 +10,19 @@
 
 <!DOCTYPE html>
 <html>
-  
   <!-------------------------------------------------------->
   <!-- Head -->
   <!-------------------------------------------------------->
-  
+
   <head>
     <!-- Site Title -->
     <title>Tympdeja</title>
 
     <!-- Site Description -->
-    <meta name="description" content="Your Clean and Minimal Sports News Feed" />
+    <meta
+      name="description"
+      content="Your Clean and Minimal Sports News Feed"
+    />
 
     <!-- Site Favicon -->
     <link
@@ -36,31 +38,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Font Awesome 5 -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
 
     <!-- Page Pilling CSS -->
     <link rel="stylesheet" href="../public/css/jquery.pagepiling.css" />
 
     <!-- Site CSS -->
     <link rel="stylesheet" href="../public/css/style.css" />
-
   </head>
 
   <!-------------------------------------------------------->
   <!-- Main Body -->
   <!-------------------------------------------------------->
-  
-  <body >
 
-
-
+  <body>
     <div id="load">
       <div class="loader">
-        <div class="lds-facebook"><div></div><div></div><div></div></div>
+        <div class="lds-facebook">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </div>
 
-<!-- 
+    <!-- 
 /*///////////////////////////////////////////////////////////////
   _                 _                  _____ _                         
  | |               (_)          _     / ____(_)                        
@@ -74,70 +81,75 @@
 ///////////////////////////////////////////////////////////////////
 -->
 
-<div id="welcomeScreenHolder">
+    <div id="welcomeScreenHolder">
+      <div class="welcomeScreen">
+        <div style="text-align: right">
+          <img
+            src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819"
+            width="300px"
+          />
+        </div>
 
-<div class="welcomeScreen">
+        <div>
+          <h1>Welcome!</h1>
+          <p>Thanks for Joining Tympdeja.</p>
+          <p>First, bookmark this page to quickly get to your feed.</p>
+          <p>Additionally, add an app shortcut to your smartphone:</p>
+          <ol>
+            <li>Launch “Chrome” app.</li>
+            <li>Open Tympdeja and navigate to your home feed</li>
+            <li>Tap the menu icon (3 dots in upper right-hand corner)</li>
+            <li>Tap 'Add to homescreen.'</li>
+          </ol>
 
-  <div style="text-align: right;">
-    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreenshot_20210228-122832_iphone12black_portrait.png?v=1614539793819" width="300px">
-  </div>
+          <a href="#select">
+            <button onclick="hideWelcomeScreen()" data-menuanchor="select">
+              Next
+            </button>
+          </a>
+        </div>
+      </div>
 
-  <div>
+      <div class="welcomeScreen">
+        <div style="text-align: right">
+          <img
+            src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreen%20Shot%202021-03-12%20at%2016.33.45_iphone12black_portrait.png?v=1615589118703"
+            width="300px"
+          />
+        </div>
 
-    <h1>Welcome!</h1>
-    <p>Thanks for Joining Tympdeja.</p>
-    <p>First, bookmark this page to quickly get to your feed. </p>
-    <p>Additionally, add an app shortcut to your smartphone: </p>
-    <ol>
-      <li>Launch “Chrome” app.</li>
-      <li>Open Tympdeja and navigate to your home feed</li>
-      <li>Tap the menu icon (3 dots in upper right-hand corner)</li>
-      <li>Tap 'Add to homescreen.'</li>
-    </ol>
+        <div>
+          <h1>Select Your Teams</h1>
+          <p>
+            To start receiving news, first pick the teams you want to follow.
+          </p>
+          <p>This is done in the 'Add Teams' section of the 'Teams' Page</p>
+          <p>To pick a team:</p>
+          <ol>
+            <li>Select A League that the team is under</li>
+            <li>Select A Conference that the team is found in</li>
+            <li>Tap the team you want to follow</li>
+            <li>Press the back button to start over and pick other teams</li>
+          </ol>
+          <p>
+            Every team you've selected can be seen and removed in the 'My Teams'
+            section
+          </p>
+          <p>
+            Once you're done go to your 'Feed' page to see the top 10 articles
+            for each team
+          </p>
 
-    <a href="#select">
-    <button onclick="hideWelcomeScreen()" data-menuanchor="select">
-      Next
-    </button>
-  </a>
-
-  </div>
-</div>
-
-<div class="welcomeScreen">
-
-  <div style="text-align: right;">
-    <img src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2FScreen%20Shot%202021-03-12%20at%2016.33.45_iphone12black_portrait.png?v=1615589118703" width="300px">
-  </div>
-
-  <div>
-
-    <h1>Select Your Teams</h1>
-    <p>To start receiving news, first pick the teams you want to follow.</p>
-    <p>This is done in the 'Add Teams' section of the 'Teams' Page </p>
-    <p>To pick a team: </p>
-    <ol>
-      <li>Select A League that the team is under</li>
-      <li>Select A Conference that the team is found in</li>
-      <li>Tap the team you want to follow</li>
-      <li>Press the back button to start over and pick other teams</li>
-    </ol>
-    <p>Every team you've selected can be seen and removed in the 'My Teams' section</p>
-    <p>Once you're done go to your 'Feed' page to see the top 10 articles for each team</p>
-
-    <a href="#select">
-    <button onclick="hideWelcomeScreen()" data-menuanchor="select">
-      Select Teams
-    </button>
-  </a>
-
-  </div>
-</div>
-
-</div>
+          <a href="#select">
+            <button onclick="hideWelcomeScreen()" data-menuanchor="select">
+              Select Teams
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <div id="login">
-
       <div class="loginForm">
         <a href="">
           <img
@@ -145,13 +157,26 @@
           />
         </a>
         <form id="createAccount">
-        <h2>Register With Your Email Account</h2>
-        <input id="signupEmail" type="text" placeholder="Email Address..." />
-        <input id="signupPassword" type="password" placeholder="Password..." />
-        <input id="confirmPassword" type="password" placeholder="Confirm Password..." />
-        <button id="submitSignUp" type="submit">Sign Up</button>
+          <h2>Register With Your Email Account</h2>
+          <input id="signupEmail" type="text" placeholder="Email Address..." />
+          <input
+            id="signupPassword"
+            type="password"
+            placeholder="Password..."
+          />
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm Password..."
+          />
+          <button id="submitSignUp" type="submit">Sign Up</button>
         </form>
-        <h2>Or <u class="pointerItem" onclick="toggleSignUp('hideSignup')">Login Into Your Account</u></h2>
+        <h2>
+          Or
+          <u class="pointerItem" onclick="toggleSignUp('hideSignup')"
+            >Login Into Your Account</u
+          >
+        </h2>
       </div>
 
       <div class="loginForm">
@@ -161,32 +186,32 @@
           />
         </a>
         <form id="loginToAccount">
-        <h2>Sign In With Your Email Account</h2>
-        <input id="loginEmail" type="text" placeholder="Email Address..." />
-        <input id="loginPassword" type="password" placeholder="Password..." />
-        <button id="submitLogin" type="submit">Login</button>
+          <h2>Sign In With Your Email Account</h2>
+          <input id="loginEmail" type="text" placeholder="Email Address..." />
+          <input id="loginPassword" type="password" placeholder="Password..." />
+          <button id="submitLogin" type="submit">Login</button>
         </form>
-        <h2>Or <u class="pointerItem" onclick="toggleSignUp('showSignUp')">Create an Account</u></h2>
+        <h2>
+          Or
+          <u class="pointerItem" onclick="toggleSignUp('showSignUp')"
+            >Create an Account</u
+          >
+        </h2>
 
         <!-- 
         Uncomment this to provide Option to Bypass Login as Admin.
         Note that since a user will not be defined there will be no data to populate the feed or team selection
         -->
-        
+
         <!-- <h2>Or <u class="pointerItem" onclick="toggleLogin('hideLogin')">Bypass Login as Admin</u></h2> -->
-
       </div>
-      
- 
-
     </div>
 
     <!-- Begging of Main Content -->
 
-  <div id="maincontent">
-    <div id="vue">
-
-<!--
+    <div id="maincontent">
+      <div id="vue">
+        <!--
   /*//////////////////////////////////////////////////////////
   __  __                  
  |  \/  |                 
@@ -198,49 +223,48 @@
 //////////////////////////////////////////////////////////////*
 -->
 
-<div id="navbar">
-  <div id="myMenu">
+        <div id="navbar">
+          <div id="myMenu">
+            <div data-menuanchor="feed" class="active">
+              <a href="#feed" style="border-radius: 15px 0px 0px 15px">
+                <i class="fas fas fa-newspaper"></i>
+                <h6>Feed</h6>
+              </a>
+            </div>
+            <div data-menuanchor="select">
+              <a href="#select">
+                <i class="fas fa-football-ball"></i>
+                <h6>Teams</h6>
+              </a>
+            </div>
+            <div data-menuanchor="general">
+              <a href="#general">
+                <i class="fas fa-search"></i>
+                <h6>Search</h6>
+              </a>
+            </div>
+            <div id="darkModeButton" v-on:click="toggleDarkMode()">
+              <a>
+                <i class="fas fa-moon"></i>
+                <h6>Dark</h6>
+              </a>
+            </div>
+            <div data-menuanchor="contactus">
+              <a href="#contactus" style="border-radius: 0px 15px 15px 0px">
+                <i class="fas fa-envelope"></i>
+                <h6>Contact</h6>
+              </a>
+            </div>
+            <div id="submitLogout" onclick="toggleLogin('showLogin');">
+              <a href="#login" style="border-radius: 0px 15px 15px 0px">
+                <i class="fas fa-door-open"></i>
+                <h6>Logout</h6>
+              </a>
+            </div>
+          </div>
+        </div>
 
-    <div data-menuanchor="feed" class="active">
-      <a href="#feed" style="border-radius: 15px 0px 0px 15px;">
-        <i class="fas fas fa-newspaper"></i>
-        <h6>Feed</h6>
-      </a>
-    </div>
-    <div data-menuanchor="select">
-      <a href="#select">
-        <i class="fas fa-football-ball"></i>
-        <h6>Teams</h6>
-      </a>
-    </div>
-      <div data-menuanchor="general">
-        <a href="#general" >
-          <i class="fas fa-search"></i>
-          <h6>Search</h6>
-        </a>
-      </div>
-      <div id="darkModeButton" v-on:click="toggleDarkMode()">
-        <a >
-          <i class="fas fa-moon"></i>
-          <h6>Dark</h6>
-        </a>
-      </div>
-      <div data-menuanchor="contactus">
-        <a href="#contactus" style="border-radius: 0px 15px 15px 0px;">
-          <i class="fas fa-envelope"></i>
-          <h6>Contact</h6>
-        </a>
-      </div>
-    <div id="submitLogout" onclick="toggleLogin('showLogin');">
-      <a href="#login" style="border-radius: 0px 15px 15px 0px;">
-        <i class="fas fa-door-open"></i>
-        <h6>Logout</h6>
-      </a>
-    </div>
-  </div>
-</div>
-
- <!-- 
+        <!-- 
 ////////////////////////////////////////////////////////////////////////
 
   _   _                   
@@ -254,29 +278,19 @@
 ///////////////////////////////////////////////////////////////////////
 -->
 
-<div id="feed" class="section pp-scrollable">
-  <div class="tabDescription">
+        <div id="feed" class="section pp-scrollable">
+          <div class="tabDescription">
+            <h1>My Feed</h1>
+            <hr />
+          </div>
+          <div id="newsFeed" class="tabContent">
+            <!-- <transition-group name="list" tag="div"> -->
+            <feed-item v-for="item in feedNews" v-bind:feed="item"></feed-item>
+            <!-- </transition-group> -->
+          </div>
+        </div>
 
-    <h1>My Feed</h1>
-    <hr />
-
-  </div>
-    <div id="newsFeed" class="tabContent">
-
-      <!-- <transition-group name="list" tag="div"> -->
-      <feed-item
-      v-for="item in feedNews"
-      v-bind:feed="item"
-  
-    ></feed-item>
-  <!-- </transition-group> -->
-
-    </div>
-</div>
-
-
-
-    <!-- 
+        <!-- 
 ////////////////////////////////////////////////////////////////////////
   _______                     _____ _      _             
  |__   __|                   |  __ (_)    | |            
@@ -288,46 +302,66 @@
 ///////////////////////////////////////////////////////////////////////
 -->
 
-    <div id="select" class="section pp-scrollable">
-      <div id="selectDescription" class="tabDescription">
-
-        <h1>Teams</h1>
-        <!-- <p>
+        <div id="select" class="section pp-scrollable">
+          <div id="selectDescription" class="tabDescription">
+            <h1>Teams</h1>
+            <!-- <p>
           Pick your top favorite teams to follow from one of the Four Major Leagues or remove teams you already follow.
         </p> -->
-        <div>
-          <button id="myTeamsButton" class="tablinks" v-on:click="openTab('myTeams',$event);">My teams</button>
-          <button id="addTeamsButton" class="tablinks" v-on:click="openTab('addTeams',$event);">Add Teams</button>
+            <div>
+              <button
+                id="myTeamsButton"
+                class="tablinks"
+                v-on:click="openTab('myTeams',$event);"
+              >
+                My teams
+              </button>
+              <button
+                id="addTeamsButton"
+                class="tablinks"
+                v-on:click="openTab('addTeams',$event);"
+              >
+                Add Teams
+              </button>
+            </div>
+          </div>
+
+          <div id="myTeams" class="selectTabs">
+            <transition-group
+              name="list"
+              tag="div"
+              class="tabContent selectGrid"
+            >
+              <remove-item
+                v-for="item in userTeams"
+                v-bind:item="item"
+                v-bind:key="item.id"
+              ></remove-item>
+            </transition-group>
+          </div>
+
+          <div id="addTeams" class="selectTabs">
+            <transition-group
+              name="list"
+              tag="div"
+              class="tabContent selectGrid"
+            >
+              <team-option
+                v-for="item in teamOptions"
+                v-bind:option="item"
+                v-bind:key="item.id"
+              ></team-option>
+            </transition-group>
+            <button
+              id="resetTeams"
+              v-on:click="resetTeams(); toggleResetButton('off')"
+            >
+              &#9666; Back
+            </button>
+          </div>
         </div>
-        
-      </div>
 
-      <div id="myTeams" class="selectTabs">     
-        <transition-group name="list" tag="div" class="tabContent selectGrid">
-        <remove-item
-        v-for="item in userTeams"
-        v-bind:item="item"
-        v-bind:key="item.id"
-      ></remove-item>
-      </transition-group>
-      </div>
-
-      <div  id="addTeams" class="selectTabs">
-        <transition-group name="list" tag="div"   class="tabContent selectGrid">
-          <team-option
-        v-for="item in teamOptions"
-        v-bind:option="item"
-        v-bind:key="item.id"
-      ></team-option>
-      </transition-group>
-      <button id="resetTeams" v-on:click="resetTeams(); toggleResetButton('off')">&#9666; Back</button>
-    </div>
-      
-    </div>
-    
-
-
-  <!-- 
+        <!-- 
 ////////////////////////////////////////////////////////////////////////
 
    _____                     _     
@@ -341,42 +375,35 @@
 ///////////////////////////////////////////////////////////////////////
 -->
 
-
-
-<div id="general" class="section pp-scrollable">
-  <div class="tabDescription">
-
-    <h1>Search</h1>
-    <!-- <p>
+        <div id="general" class="section pp-scrollable">
+          <div class="tabDescription">
+            <h1>Search</h1>
+            <!-- <p>
       If You're Looking for general information, you can find the latest
       news and trending articles here.
     </p> -->
 
-    <form id="generalSearchForm" v-on:submit="generalSearch">
-      <input
-        id="searchBar"
-        type="text"
-        maxlength="100"
-        placeholder="Press Enter to search for news...."
-      />
+            <form id="generalSearchForm" v-on:submit="generalSearch">
+              <input
+                id="searchBar"
+                type="text"
+                maxlength="100"
+                placeholder="Press Enter to search for news...."
+              />
+            </form>
+          </div>
 
-    </form>
-  </div>
+          <div id="searchFeed" class="tabContent">
+            <!-- <transition-group name="list" tag="div"> -->
+            <news-item
+              v-for="item in generalNews"
+              v-bind:news="item"
+            ></news-item>
+            <!-- </transition-group> -->
+          </div>
+        </div>
 
-    <div id="searchFeed" class="tabContent">
-      <!-- <transition-group name="list" tag="div"> -->
-          <news-item
-            v-for="item in generalNews"
-            v-bind:news="item"
-          ></news-item>
-      <!-- </transition-group> -->
-
-    </div>
-
-</div>
-
-
-  <!-- 
+        <!-- 
 ////////////////////////////////////////////////////////////////////////
 
    _____            _             _     _    _     
@@ -390,69 +417,63 @@
 ///////////////////////////////////////////////////////////////////////
 -->
 
+        <div id="contactus" class="section pp-scrollable">
+          <div class="tabDescription">
+            <h1>Contact Us</h1>
+            <p>
+              Tympdeja is under active development we would love to hear about
+              any features you'd like or bugs you see in the app. Would love to
+              hear from you!
+            </p>
 
-<div id="contactus" class="section pp-scrollable">
-  <div class="tabDescription">
+            <form id="contactForm" v-on:submit="sendEmail">
+              <textarea
+                id="contactFormMessage"
+                placeholder="Your anonymous message...."
+                rows="5"
+                columns="50"
+              >
+              </textarea>
+              <p><button id="send" type="submit">Send</button></p>
+            </form>
+          </div>
+        </div>
 
-    <h1>Contact Us</h1>
-    <p>
-      Tympdeja is under active development we would love to hear about any
-      features you'd like or bugs you see in the app. Would love to hear from you!
-    </p>
+        <!-- End of Main Content -->
+      </div>
+    </div>
 
-    <form id="contactForm" v-on:submit="sendEmail" >
-      <textarea
-        id="contactFormMessage"
-        placeholder="Your anonymous message...."
-        rows="5"
-        columns="50"
-      >
-    </textarea>
-    <p><button id="send" type="submit" >Send</button></p>
-    
-    </form>
-  </div>
+    <!-------------------------------------------------------->
+    <!-- Site Scripts-->
+    <!-------------------------------------------------------->
 
-</div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
 
- <!-- End of Main Content -->
+    <!-- Add Vue Js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
-  </div>
-  </div>
-  
+    <!--  JQuery Js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!--  Pagepilling Js -->
+    <script
+      type="text/javascript"
+      src="../public/js/jquery.pagepiling.min.js"
+    ></script>
 
+    <!--  Sweet Alert Js -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <!--  SMTP Js -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 
-  <!-------------------------------------------------------->
-  <!-- Site Scripts-->
-  <!-------------------------------------------------------->
-    
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <!--  Firebase Login Script -->
+    <script src="../public/js/app.js"></script>
 
-  <!-- Add Vue Js -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
-  <!--  JQuery Js -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!--  Pagepilling Js -->
-  <script type="text/javascript" src="../public/js/jquery.pagepiling.min.js"></script>
-
-  <!--  Sweet Alert Js -->
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-  <!--  SMTP Js -->
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-
-  <!--  Firebase Login Script -->
-  <script src="../public/js/app.js"></script>
-
-  <!--  Main Script for Grabbing Data From Server -->
-  <script src="../public/js/client.js"></script>
-
+    <!--  Main Script for Grabbing Data From Server -->
+    <script src="../public/js/client.js"></script>
   </body>
 </html>

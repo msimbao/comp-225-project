@@ -448,7 +448,7 @@ var app = new Vue({
       $("#contactFormMessage").empty();
       event.preventDefault();
       var emailMessage = document.getElementById("contactFormMessage").value;
-      document.getElementById("contactFormMessage").value = ""
+      document.getElementById("contactFormMessage").value = "";
       Email.send({
         Host: "smtp.gmail.com",
         Username: "sicblivn@gmail.com",

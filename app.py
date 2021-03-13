@@ -14,7 +14,8 @@ import os
 import json
 from flask import Flask, request, render_template, jsonify, Response
 from flask_cors import CORS
-import urllib.request, urllib.error
+import urllib.request
+import urllib.error
 
 # Import Our Own Modules
 
@@ -26,7 +27,7 @@ import urllib.request, urllib.error
 from newsSearch import bingsearch
 # from sportsData import sportDictionaries
 
-# Setup Flask 
+# Setup Flask
 # Support for gomix's 'front-end' and 'back-end' UI.
 app = Flask(__name__, static_folder='public', template_folder='views')
 
@@ -38,10 +39,12 @@ app.secret = os.environ.get('SECRET')
 
 # Setup Flask functions and end routes
 
+
 @app.route('/')
 def homepage():
     """Displays the homepage."""
     return render_template('index.html')
+
 
 @app.route('/setTeamsJson', methods=['GET', 'POST'])
 def setTeamsJson():
@@ -53,7 +56,7 @@ def setTeamsJson():
     OPTION_DATA = {}
 
     f = open("sportsData/teamData.json", "r")
-    OPTION_DATA =  json.loads(f.read())
+    OPTION_DATA = json.loads(f.read())
     f.close()
 
     return jsonify(OPTION_DATA)
@@ -68,11 +71,11 @@ def news():
     """
     SEARCH_RESULTS = []
 
-    # Add a news item to the in-memory database, if given. 
+    # Add a news item to the in-memory database, if given.
     if 'newsItem' in request.args:
         query = ""
         SEARCH_RESULTS = []
-        
+
         query = request.args['newsItem']
         number = request.args['number']
         logo = request.args['logo']
@@ -85,7 +88,7 @@ def news():
     # print('Search Resuls',SEARCH_RESULTS)
     # print(SEARCH_RESULTS)
 
-    return jsonify( {'news':SEARCH_RESULTS,'logoUrl':logo} )
+    return jsonify({'news': SEARCH_RESULTS, 'logoUrl': logo})
 
 
 if __name__ == '__main__':
