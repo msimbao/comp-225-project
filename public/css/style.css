@@ -793,7 +793,7 @@ button:hover {
 .selectGrid div {
   padding: 10px;
   transition: 0.1s;
-  background:#fff;
+  background:none;
   font-size:12px;
   color:black;
 }
