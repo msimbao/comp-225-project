@@ -26,19 +26,19 @@ Vue.component("feed-item", {
   props: ["feed"],
   template:
     '<a :href="feed.url" target="_blank" rel="noopener noreferrer">' +
-    '<transition name="fade">'+
+    '<transition name="fade">' +
     '<div class="newsItem card">' +
     '<div class="newsImageHolder">' +
     '<img :src="feed.image" >' +
-    '</div>'+
+    "</div>" +
     '<div class="articleWords">' +
     "<h4>{{feed.title}}</h4>" +
     '<p>"{{feed.description}}..."</p>' +
-    '<h6>{{feed.author}}</h6>'+
+    "<h6>{{feed.author}}</h6>" +
     "</div>" +
     '<img class="teamImage" :src="feed.teamLogo">' +
     "</div>" +
-    '</transition>'+
+    "</transition>" +
     "</a>",
 });
 
@@ -48,19 +48,19 @@ Vue.component("news-item", {
   props: ["news"],
   template:
     '<a :href="news.url" target="_blank" rel="noopener noreferrer">' +
-    '<transition name="fade">'+
+    '<transition name="fade">' +
     '<div class=" newsItem card">' +
     '<div class="newsImageHolder">' +
     '<img :src="news.image">' +
-    '</div>'+
+    "</div>" +
     '<div class="articleWords">' +
     "<h4>{{news.title}}</h4>" +
     '<p>"{{news.description}}..."</p>' +
-    '<h6>{{news.author}}</h6>'+
+    "<h6>{{news.author}}</h6>" +
     "</div>" +
     '<div class="teamImage"></div>' +
     "</div>" +
-    '</transition>'+
+    "</transition>" +
     "</a>",
 });
 
@@ -77,30 +77,29 @@ Vue.component("team-option", {
      */
     teamOption: function (option, record) {
       if (record == "") {
-
-        var childrenIds = app.teamsJson[option]["children"]
-        var childrenData = []
+        var childrenIds = app.teamsJson[option]["children"];
+        var childrenData = [];
         for (i = 0; i < childrenIds.length; i++) {
-          childrenData.push(app.teamsJson[childrenIds[i]])
+          childrenData.push(app.teamsJson[childrenIds[i]]);
         }
 
-            app.teamOptions = childrenData;
+        app.teamOptions = childrenData;
 
-            var docTeams = [];
-            var docRef = db.collection("users").doc(user);
-            docRef.get().then((doc) => {
-              if (doc.exists) {
-                docTeams = doc.data().teams; 
-                for (i = 0; i < app.teamOptions.length; i++) {
-                  if (docTeams.includes(app.teamOptions[i].id) ){
-                      app.teamOptions.splice(i, 1);
-                    }
-                  }
-              } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
+        var docTeams = [];
+        var docRef = db.collection("users").doc(user);
+        docRef.get().then((doc) => {
+          if (doc.exists) {
+            docTeams = doc.data().teams;
+            for (i = 0; i < app.teamOptions.length; i++) {
+              if (docTeams.includes(app.teamOptions[i].id)) {
+                app.teamOptions.splice(i, 1);
               }
-            });
+            }
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+        });
       } else {
         //Insert Data to user teams
         var docTeams = [];
@@ -110,11 +109,14 @@ Vue.component("team-option", {
           if (doc.exists) {
             docTeams = doc.data().teams;
             if (!docTeams.includes(option)) {
-              
               for (i = 0; i < app.teamOptions.length; i++) {
-                if (option == app.teamOptions[i].id){
+                if (option == app.teamOptions[i].id) {
                   // app.teamOptions.splice(i, 1);
-                  alert("This team's articles have been added to your feed!")
+                  swal(
+                    "Team Added!",
+                    "This team's articles have been added to your feed!",
+                    "success"
+                  );
                 }
               }
 
@@ -137,7 +139,7 @@ Vue.component("team-option", {
           }
         });
       }
-      app.toggleResetButton('on');
+      app.toggleResetButton("on");
     },
   },
   template:
@@ -167,7 +169,10 @@ Vue.component("remove-item", {
           docTeams = doc.data().teams;
           if (docTeams.includes(option)) {
             var index = docTeams.indexOf(option);
-            alert("This team's articles have been removed from your feed!");
+            swal(
+              "Team Removed!",
+              "This team's articles have been removed from your feed!"
+            );
             docTeams.splice(index, 1);
             app.loadUserTeams();
           }
@@ -206,6 +211,7 @@ var app = new Vue({
     feedNews: [],
     userTeams: [],
     teamsJson: {},
+    darkMode: "off",
   },
   methods: {
     /**
@@ -219,13 +225,14 @@ var app = new Vue({
      * @name generalSearch
      * @brief Function to search for news data. Right now it talks to server but will hopefully
      *        grab directly from database
+     * @param event the submit event when a user presses enter
      */
     generalSearch: function (event) {
       $("ul#searchFeed").empty();
       event.preventDefault();
       newsItem = $("#searchBar").val();
       $.post(
-        "/news?" + $.param({ newsItem: newsItem, number:20, logo:"" }),
+        "/news?" + $.param({ newsItem: newsItem, number: 20, logo: "" }),
         (data) => {
           this.generalNews = data.news;
           $("#searchBar").val("");
@@ -233,7 +240,6 @@ var app = new Vue({
         }
       );
     },
-    
 
     /**
      * @name filterSearch
@@ -269,28 +275,28 @@ var app = new Vue({
      * @brief Function to populate user feed with team data
      */
     populateFeed: function () {
-      console.log("Populating Feed")
-      this.feedNews = []
+      console.log("Populating Feed");
+      this.feedNews = [];
       for (i = 0; i < this.userTeams.length; i++) {
-      var logo, team
-      team = this.userTeams[i].title
-      logo = this.userTeams[i].image
-      $.post(
-        "/news?" + $.param({ newsItem: team, number:10, logo: logo }),
-        (data) => {
-          for (j = 0; j < data.news.length; j++) {
-            if (data.news[j].image == null){
-              data.news[j].image = data.logoUrl
-              // data.news[j].teamLogo = ""
+        var logo, team;
+        team = this.userTeams[i].title;
+        logo = this.userTeams[i].image;
+        $.post(
+          "/news?" + $.param({ newsItem: team, number: 10, logo: logo }),
+          (data) => {
+            for (j = 0; j < data.news.length; j++) {
+              if (data.news[j].image == null) {
+                data.news[j].image = data.logoUrl;
+                // data.news[j].teamLogo = ""
+              }
+
+              data.news[j].teamLogo = data.logoUrl;
+
+              this.feedNews.push(data.news[j]);
             }
-
-              data.news[j].teamLogo = data.logoUrl
-
-            this.feedNews.push(data.news[j]);
           }
-        }
-      )
-    }
+        );
+      }
     },
     /**
      * @name setTabs presets all tabs to display:none
@@ -305,8 +311,6 @@ var app = new Vue({
 
       tabcontent[0].style.display = "grid";
       tablinks[0].className += " activeTab";
-
-
     },
     /**
      * @name openTab switches tabs based on buttons in a list
@@ -330,25 +334,26 @@ var app = new Vue({
       event.currentTarget.className += " activeTab";
     },
 
-
     /**
      * @name resetTeams
      * @brief Function to clear the teamOptions array
      */
     resetTeams: function () {
-          this.teamOptions = [this.teamsJson["0"],this.teamsJson["37"],this.teamsJson["70"],this.teamsJson["111"]];
+      this.teamOptions = [
+        this.teamsJson["0"],
+        this.teamsJson["37"],
+        this.teamsJson["70"],
+        this.teamsJson["111"],
+      ];
     },
     /**
-     * 
-     * @param {*} state 
+     *
+     * @param {*} state
      */
     setTeamsJson: function () {
-      $.post(
-        "/setTeamsJson?" + $.param({ option: "begin" }),
-        (resetTeams) => {
-          this.teamsJson = resetTeams;
-        }
-      );
+      $.post("/setTeamsJson?" + $.param({ option: "begin" }), (resetTeams) => {
+        this.teamsJson = resetTeams;
+      });
     },
     /**
      * @name toggleResetButton
@@ -357,10 +362,10 @@ var app = new Vue({
      */
     toggleResetButton: function (state) {
       resetTeams = document.getElementById("resetTeams");
-      if ((state == "off")) {
+      if (state == "off") {
         resetTeams.style.display = "none";
         console.log("remove");
-      } else if ((state == "on")) {
+      } else if (state == "on") {
         console.log("reset");
         resetTeams.style.display = "block";
       }
@@ -378,8 +383,8 @@ var app = new Vue({
 
           for (i = 0; i < docTeams.length; i++) {
             teamId = docTeams[i];
-            currentTeam = this.teamsJson[teamId]
-                this.userTeams.push(currentTeam);
+            currentTeam = this.teamsJson[teamId];
+            this.userTeams.push(currentTeam);
           }
 
           return db
@@ -400,29 +405,67 @@ var app = new Vue({
     },
     /**
      * @name toggleDarkMode
-     * @brief a function to turn dark mode on or off based on the state needed 
-     * @param {string} state whether dark mode is to be set on or off
+     * @brief a function to turn dark mode on or off based on the state needed
      */
-    toggleDarkMode: function (state){
-      console.log("Dark Mode Toggled")
-      if (state=="on"){
-        $(document).ready(function(){
-          $(".pp-section").css("background", "#131516");
-          $("#navbar").css("background", "#131516");
+    toggleDarkMode: function () {
+      if (this.darkMode == "off") {
+        $(document).ready(function () {
+          $("#searchFeed .newsItem").css("background", "#313638");
           $(".newsImageHolder").css("background", "#131516");
+          $(".pp-section").css("background", "#131516");
+          $(".newsItem").css("background", "#313638");
+          $("#navbar").css("background", "#131516");
+          $("#login").css("background", "#131516");
+          $("#load").css("background", "#131516");
+          $(".newsItem").css("color", "#fff");
+          $(".tablinks").css("color", "#000");
+          $("textarea").css("color", "#fff");
           $("html").css("color", "#fff");
-          $("a").css("color", "#fff");
           $("input").css("color", "#fff");
-          $("button").css("color", "#fff");
-          $("#resetTeams").css("background", "#131516");
-        })
+          $("a").css("color", "#fff");
+        });
+        this.darkMode = "on";
+      } else {
+        $(document).ready(function () {
+          $("#searchFeed .newsItem").css("background", "#fff");
+          $(".newsImageHolder").css("background", "#fff");
+          $(".pp-section").css("background", "#fff");
+          $(".newsItem").css("background", "#fff");
+          $("#navbar").css("background", "#fff");
+          $("#login").css("background", "#fff");
+          $("#load").css("background", "#fff");
+          $(".newsItem").css("color", "#000");
+          $(".tablinks").css("color", "#000");
+          $("textarea").css("color", "#000");
+          $("html").css("color", "#000");
+          $("input").css("color", "#000");
+          $("a").css("color", "#000");
+        });
+        this.darkMode = "off";
       }
-    }
+    },
+    sendEmail: function (event) {
+      $("#contactFormMessage").empty();
+      event.preventDefault();
+      var emailMessage = document.getElementById("contactFormMessage").value;
+      document.getElementById("contactFormMessage").value = ""
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "sicblivn@gmail.com",
+        Password: "*********", // For full testing, I used my personal password but removed it
+        To: "msimbao@macalester.edu",
+        From: "sicblivn@gmail.com",
+        Subject: "Anyonymous Message From Tympdeja User",
+        Body: emailMessage,
+      }).then(function (message) {
+        swal("Done!", "Mail Sent Successfully!", "success");
+      });
+    },
   },
   created: function () {
     this.setTabs();
-    this.toggleResetButton('off')
-    this.setTeamsJson()
+    this.toggleResetButton("off");
+    this.setTeamsJson();
     // console.log(this);
   },
 });
@@ -448,7 +491,7 @@ $(document).ready(function () {
     direction: "horizontal",
     verticalCentered: true,
     sectionsColor: [],
-    anchors: ["feed", "select", "general","contactus"],
+    anchors: ["feed", "select", "general", "contactus"],
     scrollingSpeed: 100,
     easing: "linear",
     loopBottom: false,
@@ -469,8 +512,6 @@ $(document).ready(function () {
   });
   $.fn.pagepiling.setAllowScrolling(false);
 });
-
-
 
 /*//////////////////////////////////////////////////////////////
   _                 _                  _____ _                         
@@ -524,7 +565,7 @@ function toggleLogin(state) {
   }
 }
 
-var welcomeScreenId = 0
+var welcomeScreenId = 0;
 
 /**
  * @name hideWelcomeScreen
@@ -542,14 +583,14 @@ function hideWelcomeScreen() {
  * @copyright Diego Leme https://codepen.io/diegoleme
  */
 
-var password = document.getElementById("signupPassword")
-  , confirm_password = document.getElementById("confirmPassword");
+var password = document.getElementById("signupPassword"),
+  confirm_password = document.getElementById("confirmPassword");
 
-function validatePassword(){
-  if(password.value != confirm_password.value) {
+function validatePassword() {
+  if (password.value != confirm_password.value) {
     confirm_password.setCustomValidity("Passwords Don't Match");
   } else {
-    confirm_password.setCustomValidity('');
+    confirm_password.setCustomValidity("");
   }
 }
 

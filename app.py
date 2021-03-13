@@ -41,11 +41,6 @@ app.secret = os.environ.get('SECRET')
 @app.route('/')
 def homepage():
     """Displays the homepage."""
-    return render_template('intro.html')
-
-@app.route('/home')
-def appPage():
-    """Displays the Intro Page"""
     return render_template('index.html')
 
 @app.route('/setTeamsJson', methods=['GET', 'POST'])

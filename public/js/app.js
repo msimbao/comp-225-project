@@ -61,12 +61,13 @@
             });
         }).catch(error => {
             console.error(error);
-            alert(error);
+            swal("Login Failed",  '"'+error+'"', "error");
         }).then(() => {
             toggleLogin('hideLogin');
             app.resetTeams();
-            welcomeScreen = document.getElementById("welcomeScreen");
-            welcomeScreen.style.display = "grid";
+            welcomeScreens = document.getElementsByClassName("welcomeScreen");
+            welcomeScreens[1].style.display = "grid";
+            welcomeScreens[0].style.display = "grid";
             document.getElementById("addTeamsButton").click();
             signUpForm.reset();
         });
@@ -99,7 +100,7 @@
             loginForm.reset();
         }).catch(error => {
             console.error(error);
-            alert(error);
+            swal("Login Failed", '"'+error+'"', "error");
         })
     });
 

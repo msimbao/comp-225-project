@@ -139,7 +139,7 @@
     <div id="login">
 
       <div class="loginForm">
-        <a href="/">
+        <a href="">
           <img
             src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fgrey.png?v=1615177105156"
           />
@@ -155,7 +155,7 @@
       </div>
 
       <div class="loginForm">
-        <a href="/">
+        <a href="">
           <img
             src="https://cdn.glitch.com/34525fe5-c55a-46a2-ade0-7fd82e149df2%2Fgrey.png?v=1615177105156"
           />
@@ -219,7 +219,7 @@
           <h6>Search</h6>
         </a>
       </div>
-      <div id="darkModeButton" v-on:click="toggleDarkMode('on')">
+      <div id="darkModeButton" v-on:click="toggleDarkMode()">
         <a >
           <i class="fas fa-moon"></i>
           <h6>Dark</h6>
@@ -400,15 +400,15 @@
       features you'd like or bugs you see in the app. Would love to hear from you!
     </p>
 
-    <form id="contactForm">
+    <form id="contactForm" v-on:submit="sendEmail" >
       <textarea
-        id="searchBar"
-        placeholder="Your Message...."
+        id="contactFormMessage"
+        placeholder="Your anonymous message...."
         rows="5"
         columns="50"
       >
     </textarea>
-    <p><button id="send" type="submit">Send</button></p>
+    <p><button id="send" type="submit" >Send</button></p>
     
     </form>
   </div>
@@ -436,11 +436,17 @@
   <!-- Add Vue Js -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
-  <!--  JQuery -->
+  <!--  JQuery Js -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <!--  Pagepilling Javascript -->
+  <!--  Pagepilling Js -->
   <script type="text/javascript" src="../public/js/jquery.pagepiling.min.js"></script>
+
+  <!--  Sweet Alert Js -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!--  SMTP Js -->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 
   <!--  Firebase Login Script -->
   <script src="../public/js/app.js"></script>
