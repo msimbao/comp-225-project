@@ -418,7 +418,6 @@ var app = new Vue({
           $("#searchFeed .newsItem").css("background", "#313638");
           $(".newsImageHolder").css("background", "#131516");
           $(".pp-section").css("background", "#131516");
-          $(".newsItem").css("background", "#313638");
           $("#navbar").css("background", "#131516");
           $("#login").css("background", "#131516");
           $("#load").css("background", "#131516");
@@ -435,7 +434,6 @@ var app = new Vue({
           $("#searchFeed .newsItem").css("background", "#fff");
           $(".newsImageHolder").css("background", "#fff");
           $(".pp-section").css("background", "#fff");
-          $(".newsItem").css("background", "#fff");
           $("#navbar").css("background", "#fff");
           $("#login").css("background", "#fff");
           $("#load").css("background", "#fff");
