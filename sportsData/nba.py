@@ -11,6 +11,13 @@ from scraper import *
 
 
 def _set_nba_data(url):
+    """Creates a dictionary with keys being each conference and values being a list of dictionaries
+        of teams in that conference
+
+        Returns:
+            dictionary: dictionary with keys being each division which map to a list of dictionaries
+            with team stats in the division
+        """
     tables = get_tables(url)
     list = []
     for i in tables:
@@ -28,6 +35,10 @@ def _set_nba_data(url):
 
 
 def get_nba_data(year=2021):
+    """
+    Returns:
+
+    """
     url = "https://www.basketball-reference.com/leagues/NBA_{}_standings.html".format(
         year)
     return _set_nba_data(url)
