@@ -23,7 +23,7 @@ import urllib.request, urllib.error
 # to get the data the way we need it for vue so we just need a way to make the leagues output from
 # sportDictionaries get imported to here. Below i was testing individual modules
 
-from googleSearch import bingsearch
+from newsSearch import bingsearch
 # from sportsData import sportDictionaries
 
 # Setup Flask 
