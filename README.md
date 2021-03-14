@@ -37,6 +37,17 @@ COMP 225 Project - tympdeja
 
 ![Image 1](images/system/2.png)
 
+Tympdeja is a super minimalist news platform. We bring together latest major league sports content that matters most to a user without them having to go to multiple sites and also being able to have access to a huge amount of content all in one place.
+
+### Features:
+
+1. A Minimalist Feed
+We cut through the clutter, remove social media, have no ads and paid distractions and do not record your personal data.
+2. Privacy
+We never collect any personal data, only user emails, passwords and team choices.
+3. Multiple Sources
+We bring a large amount of articles from different authors and sources for a user to read.
+
 ### Product Vision:
 * To make it easier to get articles about a sports team(s) in one place
 * It allows fans to have their news in a single place
@@ -45,7 +56,7 @@ COMP 225 Project - tympdeja
 * Sports fans
 * Release unknown
 ### Risks:
-* Not knowing how to scrape articles onto the webpage
+* Not knowing how to scrape articles onto the webpage. We eventually dropped a lot of the code for scraping and switched to an api.
 * Difficult to get access to certain APIs
 * We don’t know what languages we are going to use
 
@@ -58,7 +69,8 @@ COMP 225 Project - tympdeja
 
 ![Image 2](images/system/3.png)
 
-The system is a simple app built with flask (Python) and Vue (Javascript) and hosted on glitch. Firebase stands as the main database for storing user preferences.
+The system is a simple app built with flask (Python) hosted on Heroku and Vue (Javascript) and hosted on glitch. Firebase stands as the main database for storing user preferences and news data. The news data is taken from the Bing News Api on the Microsoft Azure platform. News is taken from the Api daily and saved to firebase where the client app can access it from.
+
 * [Vue JS](https://vuejs.org/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [Firebase](https://firebase.google.com/)
