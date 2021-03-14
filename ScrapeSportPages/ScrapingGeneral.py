@@ -11,7 +11,7 @@ import socket
 
 """
 Code From Jack's file
-All the functions can be used in server.py to edit incoming data
+All the functions can be used in app.py to edit incoming data
 We import it into server.py at the top along with other necessary modules
 Extra modules are installed throught the terminal and listed in requirements.text
 """

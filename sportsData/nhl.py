@@ -41,6 +41,6 @@ def _set_nhl_data(url):
 
 
 def get_nhl_data():
-    """returns data from NHL teams"""
+    """returns data from NHL teams for a given year"""
     url = "https://www.hockey-reference.com/leagues/NHL_2021.html"
     return _set_nhl_data(url)

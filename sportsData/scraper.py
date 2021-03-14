@@ -16,7 +16,8 @@ def _get_soup(url):
     """Creates beautiful soup object from hockey reference
 
     Returns:
-        BeautifulSoup: BeautifulSoup object of hockey reference standing page"""
+        BeautifulSoup: BeautifulSoup object of hockey reference standing page
+    """
 
     url = url
     s = requests.get(url).content
@@ -24,13 +25,15 @@ def _get_soup(url):
 
 
 def get_tables(url):
-    """creates table of team data
+    """
+    creates table of team data
 
-        Args:
-            soup (BeautifulSoup): BeautifulSoup object of hockey reference standings page for 2021
+    Args:
+        soup (BeautifulSoup): BeautifulSoup object of hockey reference standings page for 2021
 
-        Return:
-            dataset (DataFrame): data frame of 2021 nhl team stats"""
+    Return:
+        dataset (DataFrame): data frame of 2021 nhl team stats
+    """
     soup = _get_soup(url)
     datasets = []
     tables = soup.find_all('table')

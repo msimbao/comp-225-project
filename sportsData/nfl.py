@@ -39,6 +39,7 @@ def _get_conference_dict(table, conference):
 
 
 def get_nfl_data(year=2020):
+    """returns data from NFL teams for a given year"""
     url = "https://www.pro-football-reference.com/years/{}/".format(year)
     return _set_nfl_data(url)
 

@@ -3,7 +3,7 @@
 """
 Main Server File for running the flask app.
 
-@Title: server.py
+@Title: app.py
 @Author: Ty, Declan, Jack, Mphatso
 
 """
@@ -19,15 +19,8 @@ import urllib.error
 
 # Import Our Own Modules
 
-# TODO: Make sportDictionaries and other packages get imported to server.py. Essentially, the others are
-# working but scraper seems to refuse to work. I've set all of them up in sportDictionaries.py
-# to get the data the way we need it for vue so we just need a way to make the leagues output from
-# sportDictionaries get imported to here. Below i was testing individual modules
-
 from newsSearch import bingsearch
-# from sportsData import sportDictionaries
 
-# Setup Flask
 # Support for gomix's 'front-end' and 'back-end' UI.
 app = Flask(__name__, static_folder='public', template_folder='views')
 
@@ -38,20 +31,25 @@ CORS(app)
 app.secret = os.environ.get('SECRET')
 
 # Setup Flask functions and end routes
-
-
 @app.route('/')
 def homepage():
-    """Displays the homepage."""
+    """
+    Displays the homepage.
+    
+    Returns: 
+        render template for index.html
+    """
+
     return render_template('index.html')
 
 
 @app.route('/setTeamsJson', methods=['GET', 'POST'])
 def setTeamsJson():
-    """[summary]
+    """
     Simple endpoint to fetch the teams.json file and read and jsonify it to be used in javascript
 
-    Returns: OPTION_DATA the teams.json file jsonified to a javascript object
+    Returns: 
+        OPTION_DATA the teams.json file jsonified to a javascript object
     """
     OPTION_DATA = {}
 
@@ -68,6 +66,9 @@ def news():
      Transient and Only Exists as long as the server is running
      For this case, we wont be storing data here but could build our
      user authentication systems using firebase
+
+    Returns: 
+        dictionary holding news objects and team logo urls
     """
     SEARCH_RESULTS = []
 
@@ -83,10 +84,6 @@ def news():
         news_search = bingsearch.BingSearch(query)
 
         SEARCH_RESULTS = news_search.get_article_list(n=int(number))
-    # else:
-    #     SEARCH_RESULTS = []
-    # print('Search Resuls',SEARCH_RESULTS)
-    # print(SEARCH_RESULTS)
 
     return jsonify({'news': SEARCH_RESULTS, 'logoUrl': logo})
 

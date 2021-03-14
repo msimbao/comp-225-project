@@ -158,7 +158,7 @@ Vue.component("remove-item", {
      * @param option the current team selected
      */
     removeItem: function (option) {
-      //Insert Data to user teams
+      //Find out user teams and remove a selected team from them
       var docTeams = [];
       var docRef = db.collection("users").doc(user);
 
@@ -545,8 +545,8 @@ $(document).ready(function () {
 
 /*  
 *   The Login and Signup Functions and Elements are outside the Vue app
-*   This was done to make it easier to handle unique errors that were
-*   Popping up and to make it easier to insert user Data into the Vue app
+*   This was done to make it easier to handle unique errors that were popping
+*   up and to make it easier to insert a logged in user's Data into the Vue app
 *
 */
 

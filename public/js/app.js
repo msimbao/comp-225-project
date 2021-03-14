@@ -38,7 +38,6 @@ const signupEmail = document.getElementById("signupEmail");
 const signupPassword = document.getElementById("signupPassword");
 const confirmPassword = document.getElementById("confirmPassword");
 
-
 const btnLogin = document.getElementById("submitLogin");
 const btnSignUp = document.getElementById("submitSignUp");
 const btnLogout = document.getElementById("submitLogout");
