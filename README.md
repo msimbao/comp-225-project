@@ -50,12 +50,12 @@ Tympdeja is a super minimalist news platform. We bring together latest major lea
 * It allows fans to have their news in a single place
 * It will present links to certain articles based on preferences for a certain sports team
 ### Audience: 
-* Sports fans
-* Release unknown
-### Risks:
+* Sports fans that follow news for specific team news
+* Sports fans that want a news app without distractions
+### Risks and Challenges:
 * Not knowing how to scrape articles onto the webpage. We eventually dropped a lot of the code for scraping and switched to an api.
-* Difficult to get access to certain APIs
-* We don’t know what languages we are going to use
+* Working with Firebase and being able to get data to and from it
+* Dealing with server based errors on Heroku and how access information from it.
 
 ### Display
 * Shows a preview of the article
@@ -111,17 +111,13 @@ NOTE: These are all python3 modules and some have specific versions so make sure
    ```sh
    python3 app.py
    ```
-5. Check the port that flask is running on in your terminal (last line in terminal). It should be http://127.0.0.1:5000/ by default.
+5. Check the port that flask is running on in your terminal (last line in terminal). It should be http://127.0.0.1:5000/ by default. 
    ```sh
    #Last line in Terminal tells you the port it is running on
    
    * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
    ```
-
-6. If the last line looks like that above (localhost port=5000), then click this link to launch the webapp: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-
-7. If the last line does not go to port=5000, then open the client.js file and change the beginning parts of the flask routes from http://127.0.0.1:5000/ to whatever your terminal gives you.
-
+6. go to http://127.0.0.1:5000/ in your web browser to launch the app.
 
 <!-- CONTRIBUTING -->
 ## Contributing
