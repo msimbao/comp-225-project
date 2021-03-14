@@ -21,10 +21,7 @@ COMP 225 Project - tympdeja
         <li><a href="#running">Running The App</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -42,11 +39,11 @@ Tympdeja is a super minimalist news platform. We bring together latest major lea
 ### Features:
 
 1. A Minimalist Feed
-We cut through the clutter, remove social media, have no ads and paid distractions and do not record your personal data.
+* We cut through the clutter, remove social media, have no ads and paid distractions and do not record your personal data.
 2. Privacy
-We never collect any personal data, only user emails, passwords and team choices.
+* We never collect any personal data, only user emails, passwords and team choices.
 3. Multiple Sources
-We bring a large amount of articles from different authors and sources for a user to read.
+* We bring a large amount of articles from different authors and sources for a user to read.
 
 ### Product Vision:
 * To make it easier to get articles about a sports team(s) in one place
@@ -125,18 +122,6 @@ NOTE: These are all python3 modules and some have specific versions so make sure
 
 7. If the last line does not go to port=5000, then open the client.js file and change the beginning parts of the flask routes from http://127.0.0.1:5000/ to whatever your terminal gives you.
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -148,14 +133,6 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [Vue JS](https://vuejs.org/)
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-* [Firebase](https://firebase.google.com/)
 
 
 
