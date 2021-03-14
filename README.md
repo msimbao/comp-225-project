@@ -33,6 +33,10 @@ COMP 225 Project - tympdeja
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+### Overview:
+
+![Image 1](images/system/2.png)
+
 ### Product Vision:
 * To make it easier to get articles about a sports team(s) in one place
 * It allows fans to have their news in a single place
@@ -52,12 +56,14 @@ COMP 225 Project - tympdeja
 
 ### Built With
 
-![Image 1](images/system/1.jpg)
+![Image 2](images/system/3.png)
 
 The system is a simple app built with flask (Python) and Vue (Javascript) and hosted on glitch. Firebase stands as the main database for storing user preferences.
 * [Vue JS](https://vuejs.org/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [Firebase](https://firebase.google.com/)
+* [Heroku](https://www.heroku.com/)
+* [Bing News Api](https://www.microsoft.com/en-us/bing/apis/bing-news-search-api)
 
 <!-- GETTING STARTED -->
 ## Getting Started
